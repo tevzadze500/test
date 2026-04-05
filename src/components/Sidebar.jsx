@@ -10,9 +10,7 @@ import {
   X
 } from 'lucide-react';
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/', description: 'Home' },
     { divider: true, label: 'Quick Tests' },
@@ -24,15 +22,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 bg-dark-800 rounded-xl border border-dark-700 hover:bg-dark-700 transition-colors shadow-lg"
-        aria-label="Toggle menu"
-      >
-        {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} className="text-white" />}
-      </button>
-
       {/* Overlay */}
       {isOpen && (
         <div

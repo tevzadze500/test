@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
+import MobileTopBar from '../components/MobileTopBar';
 import Hero from '../components/Hero';
 import FeaturedTest from '../components/FeaturedTest';
 import TestCard from '../components/TestCard';
@@ -8,23 +9,30 @@ import { tests, getFeaturedTest, getPopularTests, testCategories } from '../data
 import { Sparkles, Zap, Target, TrendingUp } from 'lucide-react';
 
 function HomePage() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const featuredTest = getFeaturedTest();
   const popularTests = getPopularTests();
 
   return (
     <div className="flex min-h-screen bg-dark-950">
+      {/* Mobile Top Bar */}
+      <MobileTopBar 
+        onMenuToggle={() => setIsSidebarOpen(!isSidebarOpen)} 
+        isMenuOpen={isSidebarOpen} 
+      />
+
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
-        <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 lg:pt-8">
           {/* Hero Section */}
           <Hero />
 
-          {/* Featured Test */}
+          {/* Featured Test - More spacing from hero */}
           {featuredTest && (
-            <section className="mb-10 sm:mb-14" id="featured">
+            <section className="mb-12 sm:mb-16 md:mb-20" id="featured">
               <FeaturedTest test={featuredTest} />
             </section>
           )}
