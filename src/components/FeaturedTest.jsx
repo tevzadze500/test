@@ -15,10 +15,11 @@ const FeaturedTest = ({ test }) => {
   return (
     <Link
       to={testRoute}
-      className="group relative bg-gradient-to-br from-green-500/10 via-emerald-600/10 to-green-500/5 border border-green-500/30 rounded-2xl p-6 sm:p-8 cursor-pointer overflow-hidden hover:border-green-500/50 transition-all duration-300 block"
+      className="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-2 border-green-500/40 rounded-2xl p-6 sm:p-8 cursor-pointer overflow-hidden hover:border-green-500/70 transition-all duration-300 block shadow-xl shadow-green-500/10 hover:shadow-2xl hover:shadow-green-500/20 hover:scale-[1.01]"
     >
       {/* Background Glow Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-emerald-500/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-radial from-green-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       {/* Content */}
       <div className="relative z-10">
@@ -48,7 +49,7 @@ const FeaturedTest = ({ test }) => {
 
         {/* Stats Grid - Mobile Optimized */}
         <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-5 sm:mb-6">
-          <div className="bg-dark-900/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-dark-800">
+          <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/5 shadow-md">
             <div className="flex items-center gap-1.5 text-dark-400 text-xs mb-1">
               <Users size={14} className="shrink-0" />
               <span className="hidden sm:inline">Participants</span>
@@ -56,7 +57,7 @@ const FeaturedTest = ({ test }) => {
             </div>
             <div className="text-lg sm:text-2xl font-bold text-white">{test.stats.participants}</div>
           </div>
-          <div className="bg-dark-900/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-dark-800">
+          <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/5 shadow-md">
             <div className="flex items-center gap-1.5 text-dark-400 text-xs mb-1">
               <Zap size={14} className="shrink-0" />
               <span className="hidden sm:inline">Avg Score</span>
@@ -64,7 +65,7 @@ const FeaturedTest = ({ test }) => {
             </div>
             <div className="text-lg sm:text-2xl font-bold text-white">{test.stats.avgScore}</div>
           </div>
-          <div className="bg-dark-900/50 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-dark-800">
+          <div className="bg-slate-900/80 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-white/5 shadow-md">
             <div className="flex items-center gap-1.5 text-dark-400 text-xs mb-1">
               <Clock size={14} className="shrink-0" />
               <span>Time</span>

@@ -4,21 +4,21 @@ import { Zap, ArrowRight, Users, Shield, CheckCircle2 } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <div className="mb-12 sm:mb-16">
+    <div className="mb-12 sm:mb-16 pt-8 sm:pt-12 md:pt-16">
       {/* Premium Hero - Mobile First */}
       <div className="text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
         
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 leading-[1.1] tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 leading-[1.15] tracking-tight">
           Test Your{' '}
           <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-green-600 bg-clip-text text-transparent">
-            Abilities
+            Reaction Time
           </span>
         </h1>
         
         {/* Shorter Description - Clear Separation */}
-        <p className="text-lg sm:text-xl text-dark-300 mb-8 sm:mb-10 font-light leading-relaxed">
-          Professional testing platform. Instant results.
+        <p className="text-base sm:text-lg md:text-xl text-dark-300 mb-8 sm:mb-10 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          Measure your reflex speed in milliseconds with instant results.
         </p>
 
         {/* Primary CTA - Standalone & Dominant */}

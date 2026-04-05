@@ -4,9 +4,9 @@ import { Clock, Users, ArrowRight, Zap, Star, Info } from 'lucide-react';
 
 const TestCard = ({ test }) => {
   const colorClasses = {
-    green: 'from-green-500/20 to-emerald-600/20 border-green-500/30 hover:border-green-500/50',
-    blue: 'from-blue-500/20 to-cyan-600/20 border-blue-500/30 hover:border-blue-500/50',
-    purple: 'from-purple-500/20 to-violet-600/20 border-purple-500/30 hover:border-purple-500/50',
+    green: 'border-green-500/30 hover:border-green-500 hover:shadow-green-500/20',
+    blue: 'border-blue-500/30 hover:border-blue-500 hover:shadow-blue-500/20',
+    purple: 'border-purple-500/30 hover:border-purple-500 hover:shadow-purple-500/20',
   };
 
   const iconBgClasses = {
@@ -40,9 +40,11 @@ const TestCard = ({ test }) => {
       target={shouldOpenInNewTab ? '_blank' : undefined}
       rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
       className={`
-        group relative bg-gradient-to-br ${colorClasses[test.color]}
-        border rounded-xl p-5 sm:p-6 cursor-pointer
-        transition-all duration-300 hover:scale-[1.02] hover:shadow-xl
+        group relative bg-gradient-to-br from-slate-900 to-slate-800
+        ${colorClasses[test.color]}
+        border rounded-2xl p-5 sm:p-6 cursor-pointer
+        transition-all duration-300 hover:scale-[1.03]
+        shadow-lg shadow-black/20 hover:shadow-2xl
         backdrop-blur-sm flex flex-col
       `}
     >
