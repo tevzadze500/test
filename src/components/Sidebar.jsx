@@ -47,7 +47,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                 ⚡
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">TestHub</h1>
+                <div className="text-xl font-bold text-white">TestHub</div>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </div>
