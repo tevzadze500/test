@@ -34,8 +34,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       <aside
         className={`
           fixed lg:sticky top-0 left-0 h-screen
-          w-72 bg-dark-900 border-r border-dark-800
-          transition-transform duration-300 z-40
+          w-72 bg-dark-900/98 backdrop-blur-xl border-r border-dark-800
+          transition-transform duration-300 z-[45]
           ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
         `}
       >

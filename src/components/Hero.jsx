@@ -4,7 +4,7 @@ import { Zap, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <div className="pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 px-1">
+    <div className="pt-16 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 px-1 lg:pt-8">
       {/* Premium Hero - Mobile First with Generous Spacing */}
       <div className="text-center max-w-2xl mx-auto">
         
