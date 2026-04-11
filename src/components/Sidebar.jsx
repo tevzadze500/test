@@ -1,24 +1,80 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Zap,
-  Flag,
   Brain, 
   Eye,
-  Menu,
-  X
+  Focus,
+  Headphones,
+  Target,
+  Activity
 } from 'lucide-react';
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/', description: 'Home' },
-    { divider: true, label: 'Quick Tests' },
-    { icon: Zap, label: 'Reaction Time', path: '/test/reaction-time', description: '2 min' },
-    { icon: Flag, label: 'F1 Reaction', path: '/test/f1-reaction', description: '1 min' },
-    { icon: Brain, label: 'ADHD Test', path: '/test/adhd', description: '5 min' },
-    { icon: Eye, label: 'Vision Test', path: '/test/vision', description: '3 min' },
+    { divider: true, label: 'Test Categories' },
+    { 
+      icon: Target, 
+      label: 'All Tests', 
+      categoryId: 'ALL',
+      description: 'View all',
+      isCategory: true 
+    },
+    { 
+      icon: Zap, 
+      label: 'Performance', 
+      categoryId: 'PERFORMANCE',
+      description: 'Speed & Timing',
+      isCategory: true 
+    },
+    { 
+      icon: Brain, 
+      label: 'Cognitive', 
+      categoryId: 'COGNITIVE',
+      description: 'Memory & Logic',
+      isCategory: true 
+    },
+    { 
+      icon: Focus, 
+      label: 'Focus', 
+      categoryId: 'FOCUS',
+      description: 'Attention',
+      isCategory: true 
+    },
+    { 
+      icon: Eye, 
+      label: 'Vision', 
+      categoryId: 'VISION',
+      description: 'Visual Tests',
+      isCategory: true 
+    },
+    { 
+      icon: Headphones, 
+      label: 'Hearing', 
+      categoryId: 'HEARING',
+      description: 'Audio Tests',
+      isCategory: true 
+    },
   ];
+
+  const handleCategoryClick = (categoryId) => {
+    if (setSelectedCategory) {
+      setSelectedCategory(categoryId);
+    }
+    if (!isHomePage) {
+      navigate('/#all-tests');
+    } else {
+      document.getElementById('all-tests')?.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
 
   return (
     <>
@@ -67,6 +123,42 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               }
 
               const Icon = item.icon;
+              
+              // For category items
+              if (item.isCategory) {
+                const isSelected = selectedCategory === item.categoryId;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => handleCategoryClick(item.categoryId)}
+                    className={`
+                      w-full flex items-center justify-between px-4 py-3 rounded-xl
+                      transition-all duration-200 group
+                      ${isSelected 
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-white border border-blue-500/40 shadow-lg shadow-blue-500/10' 
+                        : 'text-dark-300 hover:text-white hover:bg-dark-800/70 hover:shadow-md'
+                      }
+                    `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-lg ${isSelected ? 'bg-blue-500/30' : 'bg-dark-800 group-hover:bg-dark-700'} flex items-center justify-center transition-all`}>
+                        <Icon 
+                          size={18} 
+                          className={`shrink-0 ${isSelected ? 'text-blue-300' : 'text-dark-400 group-hover:text-blue-400'}`} 
+                        />
+                      </div>
+                      <span className="text-sm font-medium">{item.label}</span>
+                    </div>
+                    {item.description && (
+                      <span className={`text-xs ${isSelected ? 'text-blue-300' : 'text-dark-500'}`}>
+                        {item.description}
+                      </span>
+                    )}
+                  </button>
+                );
+              }
+
+              // For regular navigation items (Dashboard)
               return (
                 <NavLink
                   key={index}
@@ -84,10 +176,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                   {({ isActive }) => (
                     <>
                       <div className="flex items-center gap-3">
-                        <Icon 
-                          size={20} 
-                          className={`shrink-0 ${isActive ? 'text-green-400' : 'text-dark-400 group-hover:text-green-400'}`} 
-                        />
+                        <div className={`w-8 h-8 rounded-lg ${isActive ? 'bg-green-500/30' : 'bg-dark-800 group-hover:bg-dark-700'} flex items-center justify-center transition-all`}>
+                          <Icon 
+                            size={18} 
+                            className={`shrink-0 ${isActive ? 'text-green-300' : 'text-dark-400 group-hover:text-green-400'}`} 
+                          />
+                        </div>
                         <span className="text-sm font-medium">{item.label}</span>
                       </div>
                       {item.description && (

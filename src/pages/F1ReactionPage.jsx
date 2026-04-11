@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Zap, Clock, Users } from 'lucide-react';
 import F1LightsTestArea from '../components/test/F1LightsTestArea';
 import F1StatsCard from '../components/test/F1StatsCard';
@@ -78,6 +79,17 @@ const F1ReactionPage = () => {
 
   return (
     <div className="min-h-screen bg-dark-950">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>F1 Lights Reaction Test - Formula 1 Racing Reflexes | ReactionTestPro</title>
+        <meta name="description" content="Test your reaction time with the official F1 start lights procedure. React when the lights go out and measure your reflexes like a Formula 1 driver. Free online test with instant results." />
+        <meta name="keywords" content="F1 reaction test, formula 1 lights test, F1 start lights, racing reaction time, F1 reflexes, formula 1 reaction speed, racing lights test" />
+        <meta property="og:title" content="F1 Lights Reaction Test - Formula 1 Racing Reflexes" />
+        <meta property="og:description" content="Test your reaction time specific to Formula 1 and improve your reflexes for racing." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://reactiontestpro.com/test/f1-reaction" />
+      </Helmet>
+
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">

@@ -6,6 +6,8 @@ import GoNoGoPage from './pages/GoNoGoPage';
 import F1ReactionPage from './pages/F1ReactionPage';
 import AdhdTestPage from './pages/AdhdTestPage';
 import VisionTestPage from './pages/VisionTestPage';
+import GamingTestPage from './pages/GamingTestPage';
+import SportTestPage from './pages/SportTestPage';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Route path="/test/f1-reaction" element={<F1ReactionPage />} />
       <Route path="/test/adhd" element={<AdhdTestPage />} />
       <Route path="/test/vision" element={<VisionTestPage />} />
+      <Route path="/gaming-test" element={<GamingTestPage />} />
+      <Route path="/sport-test" element={<SportTestPage />} />
     </Routes>
   );
 }

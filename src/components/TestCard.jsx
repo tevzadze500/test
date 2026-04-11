@@ -1,8 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Users, ArrowRight, Zap, Star, Info } from 'lucide-react';
+import { Clock, Users, ArrowRight, Zap, Star, Info, Flag, Focus, Eye, Headphones, Palette, Brain, Activity, Target, Volume2 } from 'lucide-react';
+
+// Icon mapping for test icons
+const iconMap = {
+  Zap: Zap,
+  Flag: Flag,
+  Focus: Focus,
+  Eye: Eye,
+  Headphones: Headphones,
+  Palette: Palette,
+  Brain: Brain,
+  Activity: Activity,
+  Target: Target,
+  Volume2: Volume2,
+};
 
 const TestCard = ({ test }) => {
+  // Get the icon component from the mapping
+  const IconComponent = iconMap[test.icon] || Zap;
   const colorClasses = {
     green: 'border-green-500/30 hover:border-green-500 hover:shadow-green-500/20',
     blue: 'border-blue-500/30 hover:border-blue-500 hover:shadow-blue-500/20',
@@ -50,8 +66,8 @@ const TestCard = ({ test }) => {
     >
       {/* Top Section: Icon + Name */}
       <div className="flex items-start gap-3 mb-3">
-        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center text-2xl sm:text-3xl shadow-lg shrink-0`}>
-          {test.icon}
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center shadow-lg shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+          <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" strokeWidth={2.5} />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-base sm:text-lg font-bold text-white mb-1 leading-tight">

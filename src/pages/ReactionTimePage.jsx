@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Home, Zap, Clock, Users } from 'lucide-react';
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
@@ -66,6 +67,17 @@ const ReactionTimePage = () => {
 
   return (
     <div className="min-h-screen bg-dark-950">
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>Reaction Time Test - Free Online Visual Reflex Test | ReactionTestPro</title>
+        <meta name="description" content="Test your reaction time online for free. Measure your visual reflex speed in milliseconds with instant results. No signup required. Track your progress and improve your reflexes." />
+        <meta name="keywords" content="reaction time test, reflex test online, visual reaction speed, reaction time measurement, online reflex test, measure reaction time, improve reflexes" />
+        <meta property="og:title" content="Reaction Time Test - Measure Your Reflexes Online" />
+        <meta property="og:description" content="Measure your visual reaction speed in milliseconds. Free online test with instant results." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://reactiontestpro.com/test/reaction-time" />
+      </Helmet>
+
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
