@@ -295,111 +295,23 @@ function HomePage() {
               </p>
             </div>
 
-            {/* Mobile Category Selector */}
-            <div className="lg:hidden mb-6">
-              <button
-                onClick={() => setIsCategoryMenuOpen(!isCategoryMenuOpen)}
-                className="w-full flex items-center justify-between p-4 bg-dark-800/50 border border-dark-700 rounded-xl text-white font-semibold"
-              >
-                <span className="flex items-center gap-3">
-                  {categories.find(cat => cat.id === selectedCategory)?.icon && 
-                    React.createElement(categories.find(cat => cat.id === selectedCategory).icon, { className: "w-5 h-5" })
-                  }
-                  {categories.find(cat => cat.id === selectedCategory)?.name}
-                </span>
-                <span>{isCategoryMenuOpen ? '▲' : '▼'}</span>
-              </button>
-              
-              {isCategoryMenuOpen && (
-                <div className="mt-2 bg-dark-800 border border-dark-700 rounded-xl overflow-hidden">
-                  {categories.map((category) => {
-                    const IconComponent = category.icon;
-                    return (
-                      <button
-                        key={category.id}
-                        onClick={() => {
-                          setSelectedCategory(category.id);
-                          setIsCategoryMenuOpen(false);
-                        }}
-                        className={`w-full flex items-center gap-3 p-4 transition-colors ${
-                          selectedCategory === category.id
-                            ? 'bg-blue-500/20 border-l-4 border-blue-500'
-                            : 'hover:bg-dark-700'
-                        }`}
-                      >
-                        <IconComponent className="w-5 h-5 text-blue-400" />
-                        <span className="text-white font-medium">{category.name}</span>
-                        {selectedCategory === category.id && (
-                          <CheckCircle2 className="w-4 h-4 text-green-400 ml-auto" />
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
+            {/* Tests Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+              {filteredTests.map((test) => (
+                <TestCard key={test.id} test={test} />
+              ))}
             </div>
-
-            {/* Desktop Layout: Sidebar + Tests Grid */}
-            <div className="flex gap-6 lg:gap-8">
-              {/* Category Sidebar - Desktop Only */}
-              <div className="hidden lg:block w-64 shrink-0">
-                <div className="bg-dark-800/30 border border-dark-700 rounded-2xl p-4 sticky top-24">
-                  <h3 className="text-lg font-bold text-white mb-4 px-2">Categories</h3>
-                  <div className="space-y-1">
-                    {categories.map((category) => {
-                      const IconComponent = category.icon;
-                      const isSelected = selectedCategory === category.id;
-                      return (
-                        <button
-                          key={category.id}
-                          onClick={() => setSelectedCategory(category.id)}
-                          className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ${
-                            isSelected
-                              ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/50 text-white shadow-lg'
-                              : 'hover:bg-dark-700 text-dark-300 hover:text-white'
-                          }`}
-                        >
-                          <div className={`w-8 h-8 rounded-lg ${isSelected ? 'bg-blue-500/30' : 'bg-dark-700'} flex items-center justify-center shrink-0`}>
-                            <IconComponent className={`w-5 h-5 ${isSelected ? 'text-blue-400' : 'text-dark-400'}`} />
-                          </div>
-                          <span className="font-medium">{category.name}</span>
-                          {isSelected && (
-                            <CheckCircle2 className="w-4 h-4 text-green-400 ml-auto" />
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  
-                  {/* Test Count */}
-                  <div className="mt-4 pt-4 border-t border-dark-700">
-                    <div className="text-sm text-dark-400 px-2">
-                      Showing <span className="text-white font-semibold">{filteredTests.length}</span> test{filteredTests.length !== 1 ? 's' : ''}
-                    </div>
-                  </div>
+            
+            {/* No Results Message */}
+            {filteredTests.length === 0 && (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 rounded-full bg-dark-800 flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-dark-600" />
                 </div>
+                <h3 className="text-xl font-bold text-white mb-2">No tests found</h3>
+                <p className="text-dark-400">Try selecting a different category</p>
               </div>
-
-              {/* Tests Grid */}
-              <div className="flex-1">
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
-                  {filteredTests.map((test) => (
-                    <TestCard key={test.id} test={test} />
-                  ))}
-                </div>
-                
-                {/* No Results Message */}
-                {filteredTests.length === 0 && (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 rounded-full bg-dark-800 flex items-center justify-center mx-auto mb-4">
-                      <Target className="w-8 h-8 text-dark-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2">No tests found</h3>
-                    <p className="text-dark-400">Try selecting a different category</p>
-                  </div>
-                )}
-              </div>
-            </div>
+            )}
           </section>
 
           {/* Conversion Footer */}
