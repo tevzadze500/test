@@ -19,16 +19,17 @@ const Hero = () => {
         </div>
         
         {/* Hero Title - Ultra Clear & Dominant */}
-        <h1 className="text-[2.5rem] leading-[1.1] sm:text-5xl md:text-6xl font-bold text-white mb-5 sm:mb-6 tracking-tight px-4">
-          Test Your{' '}
+        <h1 className="text-3xl leading-[1.1] sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-5 tracking-tight px-4">
+          Improve Your{' '}
           <span className="bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent">
             Reaction Time
           </span>
+          {' '}with Our Free Tests
         </h1>
         
-        {/* Ultra-Short Description */}
-        <p className="text-base sm:text-lg text-dark-300 mb-8 sm:mb-10 font-normal leading-relaxed px-4">
-          See how fast you react in milliseconds.
+        {/* Introduction */}
+        <p className="text-sm sm:text-base text-dark-300 mb-6 sm:mb-8 font-normal leading-relaxed px-4 max-w-3xl mx-auto">
+          Reaction time is a crucial skill for many aspects of life, from sports and gaming to driving and decision-making. Measuring your reflexes with our online Reaction Time Test provides you with an accurate assessment of how quickly you can respond to visual stimuli. Whether you're training to improve your gaming skills or assessing your athletic performance, our test offers a simple, effective way to gauge your reflex speed.
         </p>
 
         {/* Premium CTA - Standalone & Highly Visible */}

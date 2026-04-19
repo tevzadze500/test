@@ -8,11 +8,13 @@ import AdhdTestPage from './pages/AdhdTestPage';
 import VisionTestPage from './pages/VisionTestPage';
 import GamingTestPage from './pages/GamingTestPage';
 import SportTestPage from './pages/SportTestPage';
+import BlogPage from './pages/BlogPage';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/blog/reaction-time-crucial" element={<BlogPage />} />
       <Route path="/test/reaction-time" element={<ReactionTimePage />} />
       <Route path="/test/go-no-go" element={<GoNoGoPage />} />
       <Route path="/test/f1-reaction" element={<F1ReactionPage />} />

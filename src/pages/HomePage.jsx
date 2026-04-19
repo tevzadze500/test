@@ -6,6 +6,7 @@ import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import Leaderboard from '../components/Leaderboard';
+import SeoContent from '../components/SeoContent';
 import { tests, testCategories } from '../data/tests';
 import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Flag, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users } from 'lucide-react';
 
@@ -235,6 +236,9 @@ function HomePage() {
                 </ul>
               </div>
             </div>
+
+            {/* SEO Content Component */}
+            <SeoContent />
 
             {/* SEO Content - How the Test Works */}
             <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8">
