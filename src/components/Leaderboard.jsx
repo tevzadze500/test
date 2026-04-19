@@ -2,7 +2,7 @@ import React from 'react';
 import { Trophy, Medal, Award, Zap, Clock } from 'lucide-react';
 
 const Leaderboard = () => {
-  // Top 10 reaction times with F1 driver comparisons
+  // Top 6 reaction times with F1 driver comparisons - Optimized for performance
   const leaderboardData = [
     { position: 1, name: 'Max Verstappen', time: 150, f1Driver: 'Max Verstappen', country: '🇳🇱' },
     { position: 2, name: 'Lewis Hamilton', time: 155, f1Driver: 'Lewis Hamilton', country: '🇬🇧' },
@@ -10,10 +10,6 @@ const Leaderboard = () => {
     { position: 4, name: 'Lando Norris', time: 162, f1Driver: 'Lando Norris', country: '🇬🇧' },
     { position: 5, name: 'Fernando Alonso', time: 165, f1Driver: 'Fernando Alonso', country: '🇪🇸' },
     { position: 6, name: 'Carlos Sainz', time: 168, f1Driver: 'Carlos Sainz', country: '🇪🇸' },
-    { position: 7, name: 'George Russell', time: 172, f1Driver: 'George Russell', country: '🇬🇧' },
-    { position: 8, name: 'Sergio Pérez', time: 175, f1Driver: 'Sergio Pérez', country: '🇲🇽' },
-    { position: 9, name: 'Oscar Piastri', time: 178, f1Driver: 'Oscar Piastri', country: '🇦🇺' },
-    { position: 10, name: 'Pierre Gasly', time: 182, f1Driver: 'Pierre Gasly', country: '🇫🇷' },
   ];
 
   const getMedalIcon = (position) => {

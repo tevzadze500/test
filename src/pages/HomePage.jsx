@@ -78,11 +78,11 @@ function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto p-4 pt-0 sm:p-6 lg:p-8 lg:pt-8">
           
           {/* Hero Section with F1 Focus */}
-          <section className="mb-12 sm:mb-16 md:mb-20 pt-6 sm:pt-8">
+          <section className="mb-12 sm:mb-16 md:mb-20 pt-20 sm:pt-24 md:pt-8">
             <div className="text-center mb-8">
-              <div className="flex items-center justify-center mb-6">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-                  <Flag className="w-12 h-12 text-white" strokeWidth={2.5} />
+              <div className="flex items-center justify-center mb-6 pt-4">
+                <div className="w-24 h-24 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
+                  <Flag className="w-14 h-14 sm:w-12 sm:h-12 text-white" strokeWidth={2.5} />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
@@ -139,55 +139,73 @@ function HomePage() {
             {/* Top 10 Leaderboard */}
             <Leaderboard />
 
-            {/* Explore More Tests - Prominent Section */}
+            {/* Explore More Tests - Enhanced Mobile-First Section */}
             <div className="max-w-4xl mx-auto mb-12">
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">
-                Explore More Tests:
+              <h3 className="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
+                Explore More Tests
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4">
                 <Link 
                   to="/test/reaction-time" 
-                  className="group relative overflow-hidden bg-gradient-to-br from-green-500/20 to-emerald-600/20 hover:from-green-500/30 hover:to-emerald-600/30 border-2 border-green-500/50 hover:border-green-400 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20"
+                  className="group relative overflow-hidden bg-gradient-to-br from-green-500/20 to-emerald-600/20 hover:from-green-500/30 hover:to-emerald-600/30 border-2 border-green-500/50 hover:border-green-400 rounded-2xl p-8 sm:p-6 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl hover:shadow-green-500/30"
                 >
-                  <div className="flex justify-center mb-3">
-                    <Zap className="w-12 h-12 text-green-400" />
+                  <div className="flex justify-center mb-4">
+                    <Zap className="w-16 h-16 sm:w-12 sm:h-12 text-green-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2 text-center group-hover:text-green-300 transition-colors">
+                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-green-300 transition-colors">
                     General Reaction Test
                   </h4>
-                  <p className="text-sm text-dark-300 text-center">
+                  <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Simple visual reaction time measurement
                   </p>
+                  <div className="flex justify-center">
+                    <span className="inline-flex items-center gap-2 px-5 py-3 sm:px-4 sm:py-2 bg-green-500 hover:bg-green-600 text-white font-bold text-base sm:text-sm rounded-xl transition-all duration-200 group-hover:scale-105 shadow-lg">
+                      Start Test Now
+                      <ArrowRight className="w-5 h-5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
                 </Link>
                 
                 <Link 
                   to="/gaming-test" 
-                  className="group relative overflow-hidden bg-gradient-to-br from-purple-500/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-600/30 border-2 border-purple-500/50 hover:border-purple-400 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20"
+                  className="group relative overflow-hidden bg-gradient-to-br from-purple-500/20 to-pink-600/20 hover:from-purple-500/30 hover:to-pink-600/30 border-2 border-purple-500/50 hover:border-purple-400 rounded-2xl p-8 sm:p-6 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl hover:shadow-purple-500/30"
                 >
-                  <div className="flex justify-center mb-3">
-                    <Gamepad2 className="w-12 h-12 text-purple-400" />
+                  <div className="flex justify-center mb-4">
+                    <Gamepad2 className="w-16 h-16 sm:w-12 sm:h-12 text-purple-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2 text-center group-hover:text-purple-300 transition-colors">
+                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-purple-300 transition-colors">
                     Gaming Reaction Test
                   </h4>
-                  <p className="text-sm text-dark-300 text-center">
+                  <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Optimize your gaming reflexes
                   </p>
+                  <div className="flex justify-center">
+                    <span className="inline-flex items-center gap-2 px-5 py-3 sm:px-4 sm:py-2 bg-purple-500 hover:bg-purple-600 text-white font-bold text-base sm:text-sm rounded-xl transition-all duration-200 group-hover:scale-105 shadow-lg">
+                      Try It Now
+                      <ArrowRight className="w-5 h-5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
                 </Link>
                 
                 <Link 
                   to="/sport-test" 
-                  className="group relative overflow-hidden bg-gradient-to-br from-blue-500/20 to-cyan-600/20 hover:from-blue-500/30 hover:to-cyan-600/30 border-2 border-blue-500/50 hover:border-blue-400 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20"
+                  className="group relative overflow-hidden bg-gradient-to-br from-blue-500/20 to-cyan-600/20 hover:from-blue-500/30 hover:to-cyan-600/30 border-2 border-blue-500/50 hover:border-blue-400 rounded-2xl p-8 sm:p-6 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] hover:shadow-2xl hover:shadow-blue-500/30"
                 >
-                  <div className="flex justify-center mb-3">
-                    <Activity className="w-12 h-12 text-blue-400" />
+                  <div className="flex justify-center mb-4">
+                    <Activity className="w-16 h-16 sm:w-12 sm:h-12 text-blue-400" />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2 text-center group-hover:text-blue-300 transition-colors">
+                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-blue-300 transition-colors">
                     Sports Reaction Test
                   </h4>
-                  <p className="text-sm text-dark-300 text-center">
+                  <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Test your athletic reflexes
                   </p>
+                  <div className="flex justify-center">
+                    <span className="inline-flex items-center gap-2 px-5 py-3 sm:px-4 sm:py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold text-base sm:text-sm rounded-xl transition-all duration-200 group-hover:scale-105 shadow-lg">
+                      Test Your Reflexes
+                      <ArrowRight className="w-5 h-5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
                 </Link>
               </div>
             </div>
