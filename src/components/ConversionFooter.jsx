@@ -7,6 +7,7 @@ const ConversionFooter = () => {
     { name: 'Reaction Time', path: '/test/reaction-time', time: '2 min', icon: '⚡' },
     { name: 'F1 Reaction', path: '/test/f1-reaction', time: '1 min', icon: '🏁' },
     { name: 'Vision Test', path: '/test/vision', time: '3 min', icon: '👁️' },
+    { name: 'Hearing Test', path: '/test/hearing', time: '4 min', icon: '🎧' },
   ];
 
   return (

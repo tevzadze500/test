@@ -9,6 +9,8 @@ import VisionTestPage from './pages/VisionTestPage';
 import GamingTestPage from './pages/GamingTestPage';
 import SportTestPage from './pages/SportTestPage';
 import BlogPage from './pages/BlogPage';
+import HearingTestPage from './pages/HearingTestPage';
+import ColorBlindTestPage from './pages/ColorBlindTestPage';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <Route path="/test/vision" element={<VisionTestPage />} />
       <Route path="/gaming-test" element={<GamingTestPage />} />
       <Route path="/sport-test" element={<SportTestPage />} />
+      <Route path="/test/hearing" element={<HearingTestPage />} />
+      <Route path="/test/color-blind" element={<ColorBlindTestPage />} />
     </Routes>
   );
 }

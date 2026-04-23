@@ -97,6 +97,64 @@ export const getGoNoGoMotivation = (accuracy) => {
   return "Keep trying! This test gets easier with practice! 🚀";
 };
 
+// Hearing Frequency Test Utilities
+export const getHearingLevel = (score) => {
+  if (score >= 90) return { name: 'Superhuman', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (score >= 75) return { name: 'Excellent', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (score >= 60) return { name: 'Good', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (score >= 45) return { name: 'Average', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
+  if (score >= 30) return { name: 'Below Average', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
+  return { name: 'Limited', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+};
+
+export const getHearingPercentile = (highestFreq) => {
+  if (highestFreq >= 20000) return 99;
+  if (highestFreq >= 18000) return 95;
+  if (highestFreq >= 17000) return 90;
+  if (highestFreq >= 16000) return 82;
+  if (highestFreq >= 14000) return 70;
+  if (highestFreq >= 12000) return 55;
+  if (highestFreq >= 10000) return 40;
+  if (highestFreq >= 8000) return 28;
+  if (highestFreq >= 4000) return 15;
+  return 5;
+};
+
+export const getHearingMotivation = (score, highestFreq) => {
+  if (score >= 90) return "Incredible hearing! You can detect almost every frequency! 🎵🏆";
+  if (score >= 75) return "Excellent hearing range! Your ears are in great shape! 🎶";
+  if (score >= 60) return "Good hearing! You cover a wide range of frequencies. 👂";
+  if (score >= 45) return "Decent hearing. Most everyday sounds are within your range. 🔊";
+  if (score >= 30) return "Your hearing covers essential frequencies. Consider a professional checkup. 💡";
+  return "Limited range detected. A professional hearing test is recommended. 🏥";
+};
+
+// Color Blindness Test Utilities
+export const getColorBlindLevel = (score) => {
+  if (score >= 90) return { name: 'Normal Vision', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (score >= 75) return { name: 'Mostly Normal', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (score >= 60) return { name: 'Mild Deficiency', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
+  if (score >= 40) return { name: 'Moderate', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
+  return { name: 'Significant', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+};
+
+export const getColorBlindPercentile = (score) => {
+  if (score >= 95) return 92;
+  if (score >= 90) return 85;
+  if (score >= 75) return 70;
+  if (score >= 60) return 50;
+  if (score >= 40) return 30;
+  return 10;
+};
+
+export const getColorBlindMotivation = (score) => {
+  if (score >= 90) return "Excellent color vision! You can distinguish colors very well! 🎨";
+  if (score >= 75) return "Good color vision with minor variations. Mostly normal! 👁️";
+  if (score >= 60) return "Some difficulty with certain colors. Consider a professional test. 🔍";
+  if (score >= 40) return "Moderate color vision differences detected. Consult an eye specialist. 💡";
+  return "Significant color vision differences. Please see an eye care professional. 🏥";
+};
+
 // General Share Message Generator
 export const generateShareMessage = (testName, score, level) => {
   return `I just scored ${score} on ${testName} at TestHub! 🎯\nRank: ${level}\n\nCan you beat me? Try it now!`;
@@ -129,6 +187,11 @@ export const getSuggestedTests = (currentTestId) => {
       { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
       { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
       { id: 'f1-reaction', name: 'F1 Reaction', icon: '🏁', path: '/test/f1-reaction' },
+    ],
+    'hearing': [
+      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
+      { id: 'vision-test', name: 'Vision Test', icon: '👁️', path: '/test/vision' },
+      { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
     ],
   };
 

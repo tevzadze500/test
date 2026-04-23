@@ -97,9 +97,7 @@ const F1ReactionPage = () => {
             {/* Left: Brand */}
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center text-2xl">
-                  🏁
-                </div>
+                <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-10 h-10 rounded-lg" />
                 <div>
                   <h1 className="text-lg font-bold text-white">
                     TestHub
@@ -149,9 +147,7 @@ const F1ReactionPage = () => {
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center text-3xl shadow-lg">
-              🏁
-            </div>
+            <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-12 h-12 rounded-xl shadow-lg" />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white">
                 F1 Lights Reaction Test
@@ -285,9 +281,7 @@ const F1ReactionPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center text-sm">
-                🏁
-              </div>
+              <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-6 h-6 rounded" />
               <span>© 2026 TestHub. Professional Testing Platform.</span>
             </div>
             <div className="flex items-center gap-6">

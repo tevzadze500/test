@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home } from 'lucide-react';
+import AdhdSeoContent from '../components/AdhdSeoContent';
 
 const questions = [
-  // Attention / Focus (10 questions)
+  // Attention / Focus (25 questions)
   "How often do you have difficulty staying focused on tasks or activities?",
   "How often do you make careless mistakes in work or daily activities?",
   "How often do you have trouble sustaining attention while reading or listening?",
@@ -14,8 +16,23 @@ const questions = [
   "How often do you overlook details in important tasks?",
   "How often do you need to re-read information multiple times to understand it?",
   "How often do you lose focus during long or repetitive tasks?",
+  "How often do you have trouble paying attention to details?",
+  "How often do you find it hard to listen when spoken to directly?",
+  "How often do you fail to follow through on instructions?",
+  "How often do you avoid tasks that require sustained mental effort?",
+  "How often do you lose things necessary for tasks?",
+  "How often do you get distracted by unrelated thoughts?",
+  "How often do you have difficulty maintaining focus in meetings?",
+  "How often do you struggle to complete paperwork or forms?",
+  "How often do you find yourself daydreaming when you should be working?",
+  "How often do you have trouble remembering what you just read?",
+  "How often do you miss important details in emails or messages?",
+  "How often do you have difficulty concentrating on one task at a time?",
+  "How often do you feel mentally exhausted from trying to focus?",
+  "How often do you need frequent breaks to maintain concentration?",
+  "How often do you struggle to filter out background noise?",
 
-  // Organization / Execution (8 questions)
+  // Organization / Execution (25 questions)
   "How often do you have difficulty organizing tasks or responsibilities?",
   "How often do you procrastinate on important tasks?",
   "How often do you feel overwhelmed by your daily workload?",
@@ -24,15 +41,77 @@ const questions = [
   "How often do you struggle to manage your time effectively?",
   "How often do you forget appointments or deadlines?",
   "How often do you start tasks but fail to complete them?",
+  "How often do you have trouble prioritizing tasks?",
+  "How often do you underestimate how long tasks will take?",
+  "How often do you have difficulty planning ahead?",
+  "How often do you feel disorganized in your workspace?",
+  "How often do you forget to return phone calls or messages?",
+  "How often do you have trouble keeping track of multiple tasks?",
+  "How often do you miss deadlines even when you know about them?",
+  "How often do you have difficulty breaking large tasks into smaller steps?",
+  "How often do you feel scattered or all over the place?",
+  "How often do you have trouble maintaining a schedule?",
+  "How often do you forget important dates or events?",
+  "How often do you have difficulty organizing your thoughts?",
+  "How often do you struggle to keep your living space tidy?",
+  "How often do you have trouble following multi-step instructions?",
+  "How often do you feel like you're always running late?",
+  "How often do you have difficulty managing finances or bills?",
+  "How often do you forget what you were about to say mid-conversation?",
 
-  // Impulsivity / Hyperactivity (7 questions)
+  // Impulsivity / Hyperactivity (25 questions)
   "How often do you feel restless or unable to stay still?",
   "How often do you feel the need to constantly move or fidget?",
   "How often do you interrupt others while they are speaking?",
   "How often do you find it difficult to wait your turn?",
   "How often do you act without thinking about consequences?",
   "How often do you feel impatient in everyday situations?",
-  "How often do you speak excessively in conversations?"
+  "How often do you speak excessively in conversations?",
+  "How often do you blurt out answers before questions are completed?",
+  "How often do you have difficulty waiting in lines?",
+  "How often do you make impulsive purchases?",
+  "How often do you feel driven by a motor?",
+  "How often do you have trouble sitting still during meetings or movies?",
+  "How often do you tap your hands or feet?",
+  "How often do you feel the need to be constantly busy?",
+  "How often do you have difficulty engaging in quiet activities?",
+  "How often do you talk excessively without realizing it?",
+  "How often do you make hasty decisions?",
+  "How often do you have trouble controlling your impulses?",
+  "How often do you feel like you're always on the go?",
+  "How often do you have difficulty relaxing?",
+  "How often do you interrupt or intrude on others?",
+  "How often do you have trouble taking turns in conversations?",
+  "How often do you feel impatient when others are talking?",
+  "How often do you act on the spur of the moment?",
+  "How often do you have difficulty staying seated when expected?",
+
+  // Emotional Regulation (25 questions)
+  "How often do you experience sudden mood changes?",
+  "How often do you feel easily frustrated?",
+  "How often do you have difficulty controlling your temper?",
+  "How often do you overreact to minor setbacks?",
+  "How often do you feel emotionally sensitive?",
+  "How often do you have trouble calming down when upset?",
+  "How often do you feel overwhelmed by emotions?",
+  "How often do you experience intense emotional reactions?",
+  "How often do you have difficulty managing stress?",
+  "How often do you feel anxious or worried?",
+  "How often do you have mood swings throughout the day?",
+  "How often do you feel irritable or short-tempered?",
+  "How often do you have trouble letting go of negative thoughts?",
+  "How often do you feel emotionally exhausted?",
+  "How often do you have difficulty expressing emotions appropriately?",
+  "How often do you feel restless or on edge?",
+  "How often do you have trouble managing disappointment?",
+  "How often do you feel overly excited about new things?",
+  "How often do you experience emotional highs and lows?",
+  "How often do you have difficulty staying calm in stressful situations?",
+  "How often do you feel emotionally reactive?",
+  "How often do you have trouble controlling emotional outbursts?",
+  "How often do you feel easily discouraged?",
+  "How often do you have difficulty bouncing back from setbacks?",
+  "How often do you feel emotionally drained by daily activities?"
 ];
 
 const answerOptions = [
@@ -72,13 +151,17 @@ const AdhdTestPage = () => {
     setSelectedAnswer(null);
 
     // Check for section breaks
-    if (currentQuestion === 9) {
-      // After question 10 (index 9)
+    if (currentQuestion === 24) {
+      // After question 25 (index 24) - Attention/Focus section
       setSectionBreakType('focus');
       setTestState('section-break');
-    } else if (currentQuestion === 17) {
-      // After question 18 (index 17)
+    } else if (currentQuestion === 49) {
+      // After question 50 (index 49) - Organization section
       setSectionBreakType('organization');
+      setTestState('section-break');
+    } else if (currentQuestion === 74) {
+      // After question 75 (index 74) - Impulsivity section
+      setSectionBreakType('impulsivity');
       setTestState('section-break');
     } else if (currentQuestion === totalQuestions - 1) {
       // Test complete
@@ -119,7 +202,17 @@ const AdhdTestPage = () => {
   // INTRO SCREEN
   if (testState === 'intro') {
     return (
-      <div className="min-h-screen bg-dark-950">
+      <>
+        <Helmet>
+          <title>100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment</title>
+          <meta name="description" content="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms." />
+          <meta name="keywords" content="ADHD test, reaction time test, ADHD quiz, attention deficit test, focus test, impulse control test, ADHD self-assessment, online ADHD test, free ADHD quiz, ADHD symptoms test" />
+          <meta property="og:title" content="100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment" />
+          <meta property="og:description" content="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms." />
+          <meta property="og:type" content="website" />
+          <link rel="canonical" href="https://yoursite.com/test/adhd" />
+        </Helmet>
+        <div className="min-h-screen bg-dark-950">
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
@@ -207,7 +300,11 @@ const AdhdTestPage = () => {
             Start Test
           </button>
         </main>
+
+        {/* SEO Content Section on Intro Page */}
+        <AdhdSeoContent />
       </div>
+      </>
     );
   }
 
@@ -219,7 +316,11 @@ const AdhdTestPage = () => {
     const breakIcon = sectionBreakType === 'focus' ? '✓' : '✓';
 
     return (
-      <div className="min-h-screen bg-dark-950 flex items-center justify-center px-6">
+      <>
+        <Helmet>
+          <title>ADHD Test in Progress | TestHub</title>
+        </Helmet>
+        <div className="min-h-screen bg-dark-950 flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center animate-fade-in">
           <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 items-center justify-center text-5xl mb-6 shadow-xl">
             {breakIcon}
@@ -236,6 +337,7 @@ const AdhdTestPage = () => {
           </button>
         </div>
       </div>
+      </>
     );
   }
 
@@ -245,7 +347,12 @@ const AdhdTestPage = () => {
     const category = getScoreCategory(score);
     
     return (
-      <div className="min-h-screen bg-dark-950">
+      <>
+        <Helmet>
+          <title>Your ADHD Test Results | TestHub</title>
+          <meta name="description" content="View your ADHD self-assessment results and get insights into your attention, focus, and impulse control patterns." />
+        </Helmet>
+        <div className="min-h-screen bg-dark-950">
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
@@ -354,13 +461,21 @@ const AdhdTestPage = () => {
             </Link>
           </div>
         </main>
+
+        {/* SEO Content Section */}
+        <AdhdSeoContent />
       </div>
+      </>
     );
   }
 
   // TESTING SCREEN (Questions)
   return (
-    <div className="min-h-screen bg-dark-950">
+    <>
+      <Helmet>
+        <title>ADHD Test - Question {currentQuestion + 1} of {totalQuestions} | TestHub</title>
+      </Helmet>
+      <div className="min-h-screen bg-dark-950">
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -441,6 +556,7 @@ const AdhdTestPage = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

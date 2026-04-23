@@ -119,9 +119,7 @@ const F1LightsTestArea = ({ onResult }) => {
       <div className="relative z-10 text-center w-full max-w-4xl px-4">
         {state === TEST_STATES.INTRO && (
           <div className="space-y-4 sm:space-y-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-              <Play size={32} className="sm:w-10 sm:h-10 text-white ml-1" />
-            </div>
+            <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full shadow-2xl" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
               F1 Lights Reaction Test
             </h2>

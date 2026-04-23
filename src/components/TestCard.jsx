@@ -44,6 +44,8 @@ const TestCard = ({ test }) => {
     if (testId === 'f1-reaction') return '/test/f1-reaction';
     if (testId === 'adhd-test') return '/test/adhd';
     if (testId === 'vision-test') return '/test/vision';
+    if (testId === 'hearing-test') return '/test/hearing';
+    if (testId === 'color-blind-test') return '/test/color-blind';
     return '#';
   };
 
