@@ -6,7 +6,8 @@ import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import { tests } from '../data/tests';
-import { Trophy, Zap, Target, ArrowLeft } from 'lucide-react';
+import { Trophy, Zap, Target, ArrowLeft, Lightbulb, Swords, Activity, Circle, Footprints } from 'lucide-react';
+import F1LightsIcon from '../components/icons/F1LightsIcon';
 
 function SportTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,6 +30,7 @@ function SportTestPage() {
         <meta property="og:title" content="Sports Reaction Test - Test Your Athletic Reflexes" />
         <meta property="og:description" content="Improve your sports reaction time with tests designed for athletes and competitive sports." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/sport-test" />
       </Helmet>
 
@@ -60,8 +62,8 @@ function SportTestPage() {
           <section className="mb-12 sm:mb-16 md:mb-20">
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-5xl shadow-2xl">
-                  ⚽
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-2xl shadow-blue-500/30">
+                  <Trophy size={44} className="text-white" strokeWidth={2.4} />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
@@ -95,37 +97,37 @@ function SportTestPage() {
               <div className="text-dark-300 space-y-4">
                 <ul className="space-y-3 ml-4">
                   <li className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold text-xl shrink-0">🥊</span>
+                    <Swords size={20} className="text-red-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">Combat Sports:</strong> In boxing, MMA, and martial arts, quick reflexes help you dodge strikes, block punches, and counter-attack. Elite fighters have reaction times under 200ms.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">🎾</span>
+                    <Activity size={20} className="text-green-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">Racquet Sports:</strong> Tennis, badminton, and squash require split-second reactions to return serves and volleys. Professional tennis players can react to 140mph serves in under 200ms.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-blue-500 font-bold text-xl shrink-0">⚽</span>
+                    <Circle size={20} className="text-blue-400 shrink-0 mt-1" strokeWidth={2.4} fill="currentColor" />
                     <div>
                       <strong className="text-white">Ball Sports:</strong> Soccer, basketball, baseball, and cricket all demand quick reactions for catching, blocking, hitting, or saving. Goalkeepers and catchers especially benefit from superior reflexes.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-orange-500 font-bold text-xl shrink-0">🏎️</span>
+                    <F1LightsIcon size={20} className="text-orange-400 shrink-0 mt-1" />
                     <div>
                       <strong className="text-white">Racing Sports:</strong> Formula 1, MotoGP, and track cycling require lightning-fast reactions to maintain control, avoid collisions, and respond to changing conditions.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-yellow-500 font-bold text-xl shrink-0">🏃</span>
+                    <Footprints size={20} className="text-yellow-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">Track & Field:</strong> Sprinters need explosive reaction times off the starting blocks. Olympic sprinters typically react to the gun in 120-160ms.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-xl shrink-0">🏐</span>
+                    <Target size={20} className="text-purple-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">Net Sports:</strong> Volleyball and table tennis players need quick reflexes to react to spikes, blocks, and fast-paced rallies.
                     </div>
@@ -206,28 +208,28 @@ function SportTestPage() {
               </h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center text-2xl shrink-0">
-                    🥇
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center shadow-lg shrink-0">
+                    <Trophy size={22} className="text-white" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Elite Athletes (120-180ms)</div>
                     <div className="text-sm text-dark-300">Olympic athletes, professional fighters, F1 drivers</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center text-2xl shrink-0">
-                    🥈
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center shadow-lg shrink-0">
+                    <Trophy size={22} className="text-white" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Professional Level (180-220ms)</div>
                     <div className="text-sm text-dark-300">Professional athletes and competitive sports players</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-2xl shrink-0">
-                    🥉
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-700 to-orange-700 flex items-center justify-center shadow-lg shrink-0">
+                    <Trophy size={22} className="text-white" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Competitive Amateur (220-270ms)</div>
@@ -246,9 +248,10 @@ function SportTestPage() {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
+              <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl flex items-start gap-3">
+                <Lightbulb size={20} className="text-blue-300 shrink-0 mt-0.5" />
                 <p className="text-sm text-dark-300">
-                  <strong className="text-blue-400">💡 Pro Tip:</strong> Elite sprinters like Usain Bolt have reaction times around 155ms. However, anything under 100ms is considered a false start in track and field because it's deemed humanly impossible to react that quickly to the starting gun.
+                  <strong className="text-blue-400">Pro Tip:</strong> Elite sprinters like Usain Bolt have reaction times around 155ms. However, anything under 100ms is considered a false start in track and field because it's deemed humanly impossible to react that quickly to the starting gun.
                 </p>
               </div>
             </div>

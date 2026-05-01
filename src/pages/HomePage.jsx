@@ -8,7 +8,8 @@ import ConversionFooter from '../components/ConversionFooter';
 import Leaderboard from '../components/Leaderboard';
 import SeoContent from '../components/SeoContent';
 import { tests, testCategories } from '../data/tests';
-import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Flag, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users } from 'lucide-react';
+import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users, AlertTriangle } from 'lucide-react';
+import F1LightsIcon from '../components/icons/F1LightsIcon';
 
 function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -37,12 +38,13 @@ function HomePage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Helmet>
-        <title>Formula 1 Reaction Test - Free Online Reflex Test | ReactionTestPro</title>
-        <meta name="description" content="Test your reaction time with our online Formula 1 test. Improve your reflexes and compare your results with professional F1 drivers. Free, instant results, no signup required." />
-        <meta name="keywords" content="F1 reaction test, formula 1 reaction time, racing reflex test, reaction time test, reflex test online, F1 start lights, racing reaction speed" />
-        <meta property="og:title" content="Formula 1 Reaction Test - Test Your Racing Reflexes" />
-        <meta property="og:description" content="Test your reaction time with our online Formula 1 test. Improve your reflexes for free." />
+        <title>Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro</title>
+        <meta name="description" content="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required." />
+        <meta name="keywords" content="reaction time test, reflex test online, cognitive tests, vision test, hearing test, F1 reaction test, Go No-Go test, free online tests" />
+        <meta property="og:title" content="Free Online Reaction Time & Cognitive Tests | ReactionTestPro" />
+        <meta property="og:description" content="Measure your reflexes, test your vision, hearing, and cognitive performance for free. Instant results, no signup required." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/" />
       </Helmet>
 
@@ -62,43 +64,50 @@ function HomePage() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto relative">
-        {/* Background Image with Overlay */}
-        <div 
-          className="fixed inset-0 z-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: 'url(/Grille%20de%20d%C3%A9part%20au%20cr%C3%A9puscule.png)',
-            filter: 'brightness(0.4)',
-          }}
-        />
-        
+        {/* Background Image - responsive WebP with JPEG fallback. No bg-fixed (causes mobile scroll jank) */}
+        <picture>
+          <source media="(min-width: 1280px)" srcSet="/hero-1920.webp" type="image/webp" />
+          <source media="(min-width: 768px)" srcSet="/hero-1280.webp" type="image/webp" />
+          <source srcSet="/hero-768.webp" type="image/webp" />
+          <img
+            src="/hero-1280.jpg"
+            alt=""
+            aria-hidden="true"
+            className="fixed inset-0 z-0 w-full h-full object-cover pointer-events-none"
+            style={{ filter: 'brightness(0.4)' }}
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+
         {/* Dark Overlay for Better Text Readability */}
-        <div className="fixed inset-0 z-0 bg-gradient-to-b from-dark-950/80 via-dark-950/70 to-dark-950/90" />
+        <div className="fixed inset-0 z-0 bg-gradient-to-b from-dark-950/80 via-dark-950/70 to-dark-950/90 pointer-events-none" />
         
         {/* Content Container with Higher Z-Index */}
         <div className="relative z-10 max-w-7xl mx-auto p-4 pt-0 sm:p-6 lg:p-8 lg:pt-8">
           
-          {/* Hero Section with F1 Focus */}
+          {/* Hero Section */}
           <section className="mb-12 sm:mb-16 md:mb-20 pt-20 sm:pt-24 md:pt-8">
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-6 pt-4">
-                <div className="w-24 h-24 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-2xl">
-                  <Flag className="w-14 h-14 sm:w-12 sm:h-12 text-white" strokeWidth={2.5} />
+                <div className="w-24 h-24 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl">
+                  <Zap className="w-14 h-14 sm:w-12 sm:h-12 text-white" strokeWidth={2.5} />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
-                Formula 1 Reaction Test
+                Free Online Reaction & Cognitive Tests
               </h1>
               <p className="text-xl sm:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed mb-8 font-medium">
-                Test your reaction time with our online Formula 1 test. Experience the thrill of F1 start lights and measure your reflexes like a professional driver!
+                Measure your reflexes, vision, hearing, and cognitive performance in seconds. Free, instant results, no signup required.
               </p>
-              
+
               {/* F1 Test Card - Featured */}
               {f1Test && (
                 <div className="max-w-4xl mx-auto mb-8">
                   <div className="bg-gradient-to-br from-red-500/20 via-rose-500/10 to-orange-500/10 border-2 border-red-500/50 rounded-2xl p-8 shadow-2xl">
                     <div className="flex flex-col md:flex-row items-center gap-6">
                       <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0">
-                        <Flag className="w-14 h-14 text-white" strokeWidth={2.5} />
+                        <F1LightsIcon size={52} className="text-white" />
                       </div>
                       <div className="flex-1 text-left">
                         <h2 className="text-3xl font-bold text-white mb-3">
@@ -121,11 +130,11 @@ function HomePage() {
                             Instant results
                           </span>
                         </div>
-                        <Link 
-                          to="/test/f1-reaction" 
+                        <Link
+                          to="/test/f1-reaction"
                           className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-red-500/50 transition-all duration-200 text-xl transform hover:scale-105"
                         >
-                          <Flag className="w-6 h-6" />
+                          <F1LightsIcon size={22} className="text-white" />
                           Start your F1 Reflex Test Now!
                           <ArrowRight className="w-6 h-6" />
                         </Link>
@@ -293,9 +302,10 @@ function HomePage() {
                     </div>
                   </li>
                 </ol>
-                <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mt-4">
+                <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mt-4 flex items-start gap-3">
+                  <AlertTriangle size={20} className="text-orange-400 shrink-0 mt-0.5" />
                   <p className="text-sm">
-                    <strong className="text-orange-400">⚠️ False Start Warning:</strong> Just like in real F1, clicking before the lights go out counts as a false start and will be penalized. In Formula 1, false starts result in severe time penalties!
+                    <strong className="text-orange-400">False Start Warning:</strong> Just like in real F1, clicking before the lights go out counts as a false start and will be penalized. In Formula 1, false starts result in severe time penalties.
                   </p>
                 </div>
               </div>

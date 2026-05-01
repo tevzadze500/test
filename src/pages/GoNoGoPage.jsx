@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Clock, Users, Trophy } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, Home, Clock, Users, Trophy, Zap, Activity } from 'lucide-react';
 import GoNoGoTestArea from '../components/test/GoNoGoTestArea';
 import GoNoGoStatsCard from '../components/test/GoNoGoStatsCard';
 import EnhancedResultCard from '../components/EnhancedResultCard';
@@ -41,6 +42,16 @@ const GoNoGoPage = () => {
 
   return (
     <div className="min-h-screen bg-dark-950">
+      <Helmet>
+        <title>Go/No-Go Reaction Test - Impulse Control & Inhibition | ReactionTestPro</title>
+        <meta name="description" content="Test your cognitive inhibition and impulse control with the Go/No-Go reaction test. 10 trials measuring your ability to respond and inhibit responses. Free, instant results." />
+        <meta name="keywords" content="go no-go test, impulse control test, inhibition test, cognitive reaction test, response inhibition, go nogo task, executive function test" />
+        <meta property="og:title" content="Go/No-Go Reaction Test - Measure Your Impulse Control" />
+        <meta property="og:description" content="Test your cognitive inhibition with the Go/No-Go task. Measure response inhibition and impulse control for free." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
+        <link rel="canonical" href="https://reactiontestpro.com/test/go-no-go" />
+      </Helmet>
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -48,8 +59,8 @@ const GoNoGoPage = () => {
             {/* Left: Brand + Back */}
             <div className="flex items-center gap-6">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-2xl">
-                  🚦
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                  <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div>
                   <h1 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
@@ -102,8 +113,8 @@ const GoNoGoPage = () => {
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-3xl shadow-lg">
-              🚦
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+              <Activity size={26} className="text-white" strokeWidth={2.4} />
             </div>
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white">
@@ -150,13 +161,13 @@ const GoNoGoPage = () => {
                 percentile={currentStats.accuracy >= 90 ? 95 : currentStats.accuracy >= 75 ? 80 : currentStats.accuracy >= 60 ? 60 : 40}
                 motivation={getGoNoGoMotivation(currentStats.accuracy)}
                 comparisonMessage={
-                  currentStats.accuracy >= 90 
-                    ? "You're in the top tier of cognitive control! Outstanding! 🌟"
+                  currentStats.accuracy >= 90
+                    ? "You're in the top tier of cognitive control. Outstanding."
                     : currentStats.accuracy >= 75
-                    ? "Better than most users! Great impulse control! 🎯"
+                    ? "Better than most users. Great impulse control."
                     : currentStats.accuracy >= 60
-                    ? "Above average performance! Keep training! 💪"
-                    : "Keep practicing to improve your inhibition skills! 🚀"
+                    ? "Above average performance. Keep training."
+                    : "Keep practicing to improve your inhibition skills."
                 }
                 onRetry={handleRetry}
                 testId="go-no-go"
@@ -264,8 +275,8 @@ const GoNoGoPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-sm">
-                🚦
+              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
               <span>© 2026 TestHub. Professional Testing Platform.</span>
             </div>

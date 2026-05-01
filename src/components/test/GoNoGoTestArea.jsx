@@ -82,7 +82,9 @@ const GoNoGoTestArea = ({ onComplete }) => {
 
   const handleClick = () => {
     if (state === TEST_STATES.WAITING) {
-      // False start - clicked before signal
+      // False start - clicked before signal. Cancel the pending signal timeout
+      // so it doesn't fire later and overwrite the next trial's state.
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
       recordResult({
         type: trials[currentTrial],
         outcome: 'falseStart',
@@ -271,9 +273,29 @@ const GoNoGoTestArea = ({ onComplete }) => {
 
   const config = getStateDisplay();
 
+  const handleKeyDown = (e) => {
+    if (state === TEST_STATES.INTRO) return;
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
+  const ariaLabel = {
+    [TEST_STATES.WAITING]: 'Wait for the signal. Do not press anything yet.',
+    [TEST_STATES.GO]: 'Green Go signal. Press space or enter immediately.',
+    [TEST_STATES.NO_GO]: 'Red No-Go signal. Do not press anything.',
+    [TEST_STATES.PROCESSING]: 'Processing your response.',
+  }[state];
+
   return (
     <div
+      role={state !== TEST_STATES.INTRO ? 'button' : undefined}
+      tabIndex={state !== TEST_STATES.INTRO ? 0 : -1}
+      aria-label={ariaLabel}
+      aria-live="polite"
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`
         relative overflow-hidden
         ${config.bg} ${config.border}
@@ -284,6 +306,7 @@ const GoNoGoTestArea = ({ onComplete }) => {
         ${config.glow || ''}
         ${state !== TEST_STATES.INTRO ? 'cursor-pointer' : ''}
         select-none
+        focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/50
       `}
     >
       {/* Background Effect */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Target, XCircle, ShieldCheck, BarChart3, RotateCcw } from 'lucide-react';
+import { Trophy, Target, XCircle, ShieldCheck, BarChart3, RotateCcw, Lightbulb } from 'lucide-react';
 
 const GoNoGoStatsCard = ({ stats, onRetry }) => {
   const getAccuracyColor = (accuracy) => {
@@ -122,8 +122,9 @@ const GoNoGoStatsCard = ({ stats, onRetry }) => {
               : "Keep practicing to improve your accuracy and impulse control."}
           </p>
           {stats.falseStarts > 0 && (
-            <p className="text-xs text-dark-400 mt-2">
-              💡 Tip: Wait for the signal before clicking to avoid false starts
+            <p className="text-xs text-dark-400 mt-2 flex items-center gap-1.5">
+              <Lightbulb size={12} className="text-amber-400 shrink-0" />
+              <span><strong className="text-dark-300">Tip:</strong> Wait for the signal before clicking to avoid false starts.</span>
             </p>
           )}
         </div>

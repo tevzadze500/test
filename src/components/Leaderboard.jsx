@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Medal, Award, Zap, Clock } from 'lucide-react';
+import { Trophy, Medal, Award, Zap, Clock, Lightbulb } from 'lucide-react';
 
 const Leaderboard = () => {
   // Top 6 reaction times with F1 driver comparisons - Optimized for performance
@@ -155,9 +155,12 @@ const Leaderboard = () => {
 
       {/* Info Box */}
       <div className="mt-6 bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-        <p className="text-sm text-dark-300 text-center">
-          <strong className="text-blue-400">💡 Can you beat them?</strong> Take the F1 Reaction Test and see how you compare with the world's fastest drivers!
-        </p>
+        <div className="flex items-start gap-3 justify-center">
+          <Lightbulb size={18} className="text-blue-300 shrink-0 mt-0.5" />
+          <p className="text-sm text-dark-300 text-center sm:text-left">
+            <strong className="text-blue-400">Can you beat them?</strong> Take the F1 Reaction Test and see how you compare with the world's fastest drivers.
+          </p>
+        </div>
       </div>
     </section>
   );

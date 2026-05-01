@@ -29,34 +29,32 @@ export const getReactionTimeLevel = (score) => {
 };
 
 export const getReactionTimeMotivation = (score, bestScore) => {
-  const level = getReactionTimeLevel(score);
-  
   if (score < 180) {
-    return "Phenomenal! You're a reaction time legend! 🏆";
+    return "Phenomenal reflexes — you're a reaction time legend.";
   }
   if (score < 200) {
-    return "Incredible reflexes! You're in the elite tier! 🚀";
+    return "Incredible reflexes — you're in the elite tier.";
   }
   if (score < 250) {
-    return bestScore && score < bestScore 
-      ? "New personal best! You're improving! 🎯" 
-      : "Excellent! Can you break into Elite? ⚡";
+    return bestScore && score < bestScore
+      ? "New personal best — you're improving fast."
+      : "Excellent. Can you break into Elite?";
   }
   if (score < 300) {
-    return "Great job! Keep training to reach Advanced! 💪";
+    return "Great job. Keep training to reach Advanced.";
   }
   if (score < 350) {
-    return "Good work! Push yourself to beat this score! 🔥";
+    return "Good work. Push yourself to beat this score.";
   }
-  return "Keep practicing! Every attempt makes you faster! 💡";
+  return "Keep practicing — every attempt makes you faster.";
 };
 
 export const getComparisonMessage = (percentile) => {
-  if (percentile >= 95) return `You're faster than ${percentile}% of all users! Outstanding! 🌟`;
-  if (percentile >= 80) return `You beat ${percentile}% of users! Impressive! 🎯`;
-  if (percentile >= 60) return `Better than ${percentile}% of users! Above average! 📈`;
-  if (percentile >= 40) return `You're in the middle ${percentile}% range. Keep improving! 💪`;
-  return `You're faster than ${percentile}% of users. There's room to grow! 🚀`;
+  if (percentile >= 95) return `You're faster than ${percentile}% of all users. Outstanding.`;
+  if (percentile >= 80) return `You beat ${percentile}% of users. Impressive.`;
+  if (percentile >= 60) return `Better than ${percentile}% of users. Above average.`;
+  if (percentile >= 40) return `You're in the middle ${percentile}% range. Keep improving.`;
+  return `You're faster than ${percentile}% of users. Room to grow.`;
 };
 
 // F1 Reaction Test Utilities
@@ -70,12 +68,12 @@ export const getF1ReactionLevel = (score) => {
 };
 
 export const getF1Motivation = (score) => {
-  if (score < 180) return "You could compete with F1 legends! 🏎️🏆";
-  if (score < 220) return "Pro driver reflexes! Race-ready! 🏁";
-  if (score < 260) return "Great start! Train to reach Pro level! 🚀";
-  if (score < 300) return "Good timing! Keep pushing your limits! ⚡";
-  if (score < 350) return "Keep practicing! Speed comes with repetition! 💪";
-  return "Every racer starts somewhere! Keep training! 🔥";
+  if (score < 180) return "You could compete with F1 legends.";
+  if (score < 220) return "Pro driver reflexes. Race-ready.";
+  if (score < 260) return "Great start. Train to reach Pro level.";
+  if (score < 300) return "Good timing. Keep pushing your limits.";
+  if (score < 350) return "Keep practicing. Speed comes with repetition.";
+  return "Every racer starts somewhere. Keep training.";
 };
 
 // Go/No-Go Test Utilities
@@ -89,12 +87,12 @@ export const getGoNoGoLevel = (accuracy) => {
 };
 
 export const getGoNoGoMotivation = (accuracy) => {
-  if (accuracy >= 95) return "Perfect control! Your impulse inhibition is exceptional! 🎯";
-  if (accuracy >= 85) return "Excellent focus! Your cognitive control is impressive! 🧠";
-  if (accuracy >= 75) return "Great work! Keep refining your inhibition skills! ⚡";
-  if (accuracy >= 65) return "Good effort! Practice makes perfect! 💪";
-  if (accuracy >= 50) return "You're learning! Focus on the No-Go signals! 🔍";
-  return "Keep trying! This test gets easier with practice! 🚀";
+  if (accuracy >= 95) return "Perfect control. Your impulse inhibition is exceptional.";
+  if (accuracy >= 85) return "Excellent focus. Your cognitive control is impressive.";
+  if (accuracy >= 75) return "Great work. Keep refining your inhibition skills.";
+  if (accuracy >= 65) return "Good effort. Practice makes perfect.";
+  if (accuracy >= 50) return "You're learning. Focus on the No-Go signals.";
+  return "Keep trying. This test gets easier with practice.";
 };
 
 // Hearing Frequency Test Utilities
@@ -121,12 +119,12 @@ export const getHearingPercentile = (highestFreq) => {
 };
 
 export const getHearingMotivation = (score, highestFreq) => {
-  if (score >= 90) return "Incredible hearing! You can detect almost every frequency! 🎵🏆";
-  if (score >= 75) return "Excellent hearing range! Your ears are in great shape! 🎶";
-  if (score >= 60) return "Good hearing! You cover a wide range of frequencies. 👂";
-  if (score >= 45) return "Decent hearing. Most everyday sounds are within your range. 🔊";
-  if (score >= 30) return "Your hearing covers essential frequencies. Consider a professional checkup. 💡";
-  return "Limited range detected. A professional hearing test is recommended. 🏥";
+  if (score >= 90) return "Incredible hearing — you can detect almost every frequency.";
+  if (score >= 75) return "Excellent hearing range. Your ears are in great shape.";
+  if (score >= 60) return "Good hearing. You cover a wide range of frequencies.";
+  if (score >= 45) return "Decent hearing. Most everyday sounds are within your range.";
+  if (score >= 30) return "Your hearing covers essential frequencies. Consider a professional checkup.";
+  return "Limited range detected. A professional hearing test is recommended.";
 };
 
 // Color Blindness Test Utilities
@@ -148,50 +146,51 @@ export const getColorBlindPercentile = (score) => {
 };
 
 export const getColorBlindMotivation = (score) => {
-  if (score >= 90) return "Excellent color vision! You can distinguish colors very well! 🎨";
-  if (score >= 75) return "Good color vision with minor variations. Mostly normal! 👁️";
-  if (score >= 60) return "Some difficulty with certain colors. Consider a professional test. 🔍";
-  if (score >= 40) return "Moderate color vision differences detected. Consult an eye specialist. 💡";
-  return "Significant color vision differences. Please see an eye care professional. 🏥";
+  if (score >= 90) return "Excellent color vision. You can distinguish colors very well.";
+  if (score >= 75) return "Good color vision with minor variations. Mostly normal.";
+  if (score >= 60) return "Some difficulty with certain colors. Consider a professional test.";
+  if (score >= 40) return "Moderate color vision differences detected. Consult an eye specialist.";
+  return "Significant color vision differences. Please see an eye care professional.";
 };
 
 // General Share Message Generator
 export const generateShareMessage = (testName, score, level) => {
-  return `I just scored ${score} on ${testName} at TestHub! 🎯\nRank: ${level}\n\nCan you beat me? Try it now!`;
+  return `I just scored ${score} on ${testName} at TestHub.\nRank: ${level}\n\nCan you beat me? Try it now!`;
 };
 
-// Get suggested tests based on current test
+// Get suggested tests based on current test.
+// `iconId` matches keys in src/components/icons/TestIcon.jsx for proper Lucide rendering.
 export const getSuggestedTests = (currentTestId) => {
   const suggestions = {
     'reaction-time': [
-      { id: 'f1-reaction', name: 'F1 Lights Reaction', icon: '🏁', path: '/test/f1-reaction' },
-      { id: 'go-no-go', name: 'Go/No-Go Test', icon: '🚦', path: '/test/go-no-go' },
-      { id: 'vision-test', name: 'Vision Test', icon: '👁️', path: '/test/vision' },
+      { id: 'f1-reaction', name: 'F1 Lights Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+      { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
     'f1-reaction': [
-      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
-      { id: 'go-no-go', name: 'Go/No-Go Test', icon: '🚦', path: '/test/go-no-go' },
-      { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
     ],
     'adhd': [
-      { id: 'go-no-go', name: 'Go/No-Go Test', icon: '🚦', path: '/test/go-no-go' },
-      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
-      { id: 'vision-test', name: 'Vision Test', icon: '👁️', path: '/test/vision' },
+      { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
     'vision': [
-      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
-      { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
-      { id: 'f1-reaction', name: 'F1 Reaction', icon: '🏁', path: '/test/f1-reaction' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
+      { id: 'f1-reaction', name: 'F1 Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
     ],
     'go-no-go': [
-      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
-      { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
-      { id: 'f1-reaction', name: 'F1 Reaction', icon: '🏁', path: '/test/f1-reaction' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
+      { id: 'f1-reaction', name: 'F1 Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
     ],
     'hearing': [
-      { id: 'reaction-time', name: 'Reaction Time', icon: '⚡', path: '/test/reaction-time' },
-      { id: 'vision-test', name: 'Vision Test', icon: '👁️', path: '/test/vision' },
-      { id: 'adhd-test', name: 'ADHD Test', icon: '🎯', path: '/test/adhd' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
+      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
     ],
   };
 

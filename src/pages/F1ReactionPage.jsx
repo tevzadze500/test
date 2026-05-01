@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Zap, Clock, Users } from 'lucide-react';
+import { ArrowLeft, Zap, Clock, Users, Lightbulb } from 'lucide-react';
 import F1LightsTestArea from '../components/test/F1LightsTestArea';
 import F1StatsCard from '../components/test/F1StatsCard';
 
@@ -87,6 +87,7 @@ const F1ReactionPage = () => {
         <meta property="og:title" content="F1 Lights Reaction Test - Formula 1 Racing Reflexes" />
         <meta property="og:description" content="Test your reaction time specific to Formula 1 and improve your reflexes for racing." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/test/f1-reaction" />
       </Helmet>
 
@@ -243,8 +244,9 @@ const F1ReactionPage = () => {
                   <span><strong className="text-white">Good (250-300ms):</strong> Above average human reaction time</span>
                 </li>
               </ul>
-              <p className="text-sm text-dark-400 mt-4">
-                💡 Note: Real F1 starts also involve clutch control, wheelspin management, and racecraft - pure reaction time is just one component!
+              <p className="text-sm text-dark-400 mt-4 flex items-start gap-2">
+                <Lightbulb size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                <span><strong className="text-dark-300">Note:</strong> Real F1 starts also involve clutch control, wheelspin management, and racecraft — pure reaction time is just one component.</span>
               </p>
             </div>
           </section>

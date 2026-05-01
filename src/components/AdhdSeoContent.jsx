@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, CheckCircle2, AlertCircle, Target, TrendingUp, Users } from 'lucide-react';
+import { Brain, CheckCircle2, AlertCircle, Target, TrendingUp, Users, FileText, Pin, ClipboardList, Zap, Eye } from 'lucide-react';
 
 const AdhdSeoContent = () => {
   return (
@@ -8,25 +8,35 @@ const AdhdSeoContent = () => {
       {/* Main Article Section */}
       <article className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8">
         {/* Main Heading */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-6 leading-tight">
-          🧠 100‑Question Reaction Test & ADHD Quiz: What It Measures and Why It Matters
-        </h1>
-        
+        <div className="flex items-start gap-4 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0 mt-1">
+            <Brain size={26} className="text-white" strokeWidth={2.4} />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+            100-Question Reaction Test & ADHD Quiz: What It Measures and Why It Matters
+          </h1>
+        </div>
+
         <p className="text-dark-300 leading-relaxed mb-6 text-lg">
-          Welcome to the <strong className="text-white">100‑question reaction and ADHD quiz</strong>, a detailed online tool designed to help you reflect on your attention, focus, and everyday behavior patterns. This type of interactive <strong className="text-white">reaction test & ADHD self‑assessment</strong> isn't a medical diagnosis, but it can be a helpful first step in recognizing common signs associated with Attention Deficit Hyperactivity Disorder (ADHD).
+          Welcome to the <strong className="text-white">100-question reaction and ADHD quiz</strong>, a detailed online tool designed to help you reflect on your attention, focus, and everyday behavior patterns. This type of interactive <strong className="text-white">reaction test & ADHD self-assessment</strong> isn't a medical diagnosis, but it can be a helpful first step in recognizing common signs associated with Attention Deficit Hyperactivity Disorder (ADHD).
         </p>
 
         <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-5 mb-6">
-          <p className="text-dark-200 leading-relaxed">
-            📝 This quiz combines reaction‑type tasks and questionnaire items to give you a broad perspective on how your cognitive and attentional patterns compare with everyday expectations.
-          </p>
+          <div className="flex items-start gap-3">
+            <FileText size={18} className="text-blue-300 shrink-0 mt-0.5" />
+            <p className="text-dark-200 leading-relaxed">
+              This quiz combines reaction-type tasks and questionnaire items to give you a broad perspective on how your cognitive and attentional patterns compare with everyday expectations.
+            </p>
+          </div>
         </div>
 
         {/* What Is ADHD Section */}
         <section className="mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center gap-3">
-            <Brain className="text-blue-400" size={32} />
-            📌 What Is ADHD?
+            <div className="w-10 h-10 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center">
+              <Brain className="text-blue-300" size={22} strokeWidth={2.4} />
+            </div>
+            What Is ADHD?
           </h2>
           
           <p className="text-dark-300 leading-relaxed mb-4">
@@ -69,8 +79,10 @@ const AdhdSeoContent = () => {
         {/* Why 100-Question Test Section */}
         <section className="mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center gap-3">
-            <TrendingUp className="text-green-400" size={32} />
-            📊 Why a 100‑Question ADHD & Reaction Test Can Be Helpful
+            <div className="w-10 h-10 rounded-lg bg-green-500/15 border border-green-500/30 flex items-center justify-center">
+              <TrendingUp className="text-green-300" size={22} strokeWidth={2.4} />
+            </div>
+            Why a 100-Question ADHD & Reaction Test Can Be Helpful
           </h2>
           
           <p className="text-dark-300 leading-relaxed mb-4">
@@ -100,8 +112,10 @@ const AdhdSeoContent = () => {
         {/* What This Test Measures Section */}
         <section className="mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center gap-3">
-            <Target className="text-purple-400" size={32} />
-            🧠 What This Reaction Test Measures
+            <div className="w-10 h-10 rounded-lg bg-purple-500/15 border border-purple-500/30 flex items-center justify-center">
+              <Target className="text-purple-300" size={22} strokeWidth={2.4} />
+            </div>
+            What This Reaction Test Measures
           </h2>
           
           <p className="text-dark-300 leading-relaxed mb-6">
@@ -112,7 +126,7 @@ const AdhdSeoContent = () => {
             {/* Attention & Focus */}
             <div className="bg-dark-800/50 border border-dark-700 rounded-xl p-5">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                <span className="text-2xl">🔹</span> Attention & Focus
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-400 shrink-0" />Attention & Focus
               </h3>
               <p className="text-dark-300 leading-relaxed">
                 Questions explore how often you feel distracted, have trouble completing tasks, or lose track of details — behaviors that are commonly seen in ADHD symptoms.
@@ -122,7 +136,7 @@ const AdhdSeoContent = () => {
             {/* Impulsivity & Executive Control */}
             <div className="bg-dark-800/50 border border-dark-700 rounded-xl p-5">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                <span className="text-2xl">🔹</span> Impulsivity & Executive Control
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-400 shrink-0" />Impulsivity & Executive Control
               </h3>
               <p className="text-dark-300 leading-relaxed">
                 Some questions help evaluate whether you tend to act without thinking, interrupt others, or have trouble waiting — traits related to impulsivity.
@@ -132,7 +146,7 @@ const AdhdSeoContent = () => {
             {/* Consistency and Reactions */}
             <div className="bg-dark-800/50 border border-dark-700 rounded-xl p-5">
               <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                <span className="text-2xl">🔹</span> Consistency and Reactions
+                <span className="inline-block w-2 h-2 rounded-full bg-blue-400 shrink-0" />Consistency and Reactions
               </h3>
               <p className="text-dark-300 leading-relaxed">
                 Parts of this quiz may also look at how consistently you react to prompts or questions over time — similar in concept to a <strong className="text-white">reaction time test</strong> — though in a questionnaire format rather than milliseconds. Together, they help give you a broad snapshot of your cognitive patterns.
@@ -145,8 +159,10 @@ const AdhdSeoContent = () => {
         <section className="mb-8">
           <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 border-2 border-red-500/30 rounded-xl p-6">
             <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-              <AlertCircle className="text-red-400" size={28} />
-              ⚠️ Important: What This Test Is – and Isn't
+              <div className="w-10 h-10 rounded-lg bg-red-500/15 border border-red-500/30 flex items-center justify-center">
+                <AlertCircle className="text-red-300" size={22} strokeWidth={2.4} />
+              </div>
+              Important: What This Test Is – and Isn't
             </h2>
             
             <div className="space-y-3 mb-4">
@@ -179,8 +195,10 @@ const AdhdSeoContent = () => {
         {/* What to Do After Section */}
         <section className="mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 flex items-center gap-3">
-            <Users className="text-cyan-400" size={32} />
-            📌 What to Do After Taking the Quiz
+            <div className="w-10 h-10 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center">
+              <Users className="text-cyan-300" size={22} strokeWidth={2.4} />
+            </div>
+            What to Do After Taking the Quiz
           </h2>
           
           <p className="text-dark-300 leading-relaxed mb-4">
@@ -211,7 +229,12 @@ const AdhdSeoContent = () => {
 
         {/* Summary Section */}
         <section className="bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-xl p-6">
-          <h2 className="text-2xl font-bold text-white mb-4">📝 Summary</h2>
+          <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-blue-500/20 border border-blue-500/40 flex items-center justify-center">
+              <ClipboardList size={18} className="text-blue-300" strokeWidth={2.4} />
+            </div>
+            Summary
+          </h2>
           <ul className="space-y-3 text-dark-200">
             <li className="flex items-start gap-3">
               <CheckCircle2 className="text-blue-400 flex-shrink-0 mt-0.5" size={20} />
@@ -280,11 +303,13 @@ const AdhdSeoContent = () => {
           Explore More Cognitive Tests
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link 
+          <Link
             to="/test/reaction-time"
             className="bg-dark-800/50 border border-dark-700 hover:border-blue-500/50 rounded-xl p-5 transition-all duration-300 hover:scale-105 group"
           >
-            <div className="text-3xl mb-3">⚡</div>
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform">
+              <Zap size={22} className="text-white" strokeWidth={2.5} fill="white" />
+            </div>
             <h4 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
               Reaction Time Test
             </h4>
@@ -293,12 +318,14 @@ const AdhdSeoContent = () => {
             </p>
           </Link>
 
-          <Link 
+          <Link
             to="/test/go-no-go"
-            className="bg-dark-800/50 border border-dark-700 hover:border-green-500/50 rounded-xl p-5 transition-all duration-300 hover:scale-105 group"
+            className="bg-dark-800/50 border border-dark-700 hover:border-blue-500/50 rounded-xl p-5 transition-all duration-300 hover:scale-105 group"
           >
-            <div className="text-3xl mb-3">🎯</div>
-            <h4 className="text-lg font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform">
+              <Target size={22} className="text-white" strokeWidth={2.5} />
+            </div>
+            <h4 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
               Go/No-Go Test
             </h4>
             <p className="text-sm text-dark-400">
@@ -306,11 +333,13 @@ const AdhdSeoContent = () => {
             </p>
           </Link>
 
-          <Link 
+          <Link
             to="/test/vision"
             className="bg-dark-800/50 border border-dark-700 hover:border-purple-500/50 rounded-xl p-5 transition-all duration-300 hover:scale-105 group"
           >
-            <div className="text-3xl mb-3">👁️</div>
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-600 flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform">
+              <Eye size={22} className="text-white" strokeWidth={2.5} />
+            </div>
             <h4 className="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
               Vision Test
             </h4>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home } from 'lucide-react';
+import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent from '../components/AdhdSeoContent';
 
 const questions = [
@@ -210,7 +210,8 @@ const AdhdTestPage = () => {
           <meta property="og:title" content="100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment" />
           <meta property="og:description" content="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms." />
           <meta property="og:type" content="website" />
-          <link rel="canonical" href="https://yoursite.com/test/adhd" />
+          <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
+          <link rel="canonical" href="https://reactiontestpro.com/test/adhd" />
         </Helmet>
         <div className="min-h-screen bg-dark-950">
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
@@ -218,8 +219,8 @@ const AdhdTestPage = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-6">
                 <Link to="/" className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-2xl">
-                    🎯
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                    <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                   </div>
                   <div>
                     <h1 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
@@ -245,8 +246,8 @@ const AdhdTestPage = () => {
 
         <main className="max-w-3xl mx-auto px-6 py-12">
           <div className="text-center mb-8">
-            <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 items-center justify-center text-5xl mb-6 shadow-xl">
-              🎯
+            <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 items-center justify-center mb-6 shadow-xl shadow-blue-500/30">
+              <Brain size={44} className="text-white" strokeWidth={2.4} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               ADHD Self-Assessment Test
@@ -357,8 +358,8 @@ const AdhdTestPage = () => {
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-2xl">
-                  🎯
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                  <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div>
                   <h1 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
@@ -480,8 +481,8 @@ const AdhdTestPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-2xl">
-                🎯
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
               <div>
                 <h1 className="text-sm font-bold text-white">ADHD Self-Assessment</h1>

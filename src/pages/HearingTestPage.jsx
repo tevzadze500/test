@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart } from 'lucide-react';
+import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart, Lightbulb } from 'lucide-react';
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 
@@ -85,6 +85,7 @@ const HearingTestPage = () => {
         <meta property="og:title" content="Hearing Frequency Test - Audio Health Check" />
         <meta property="og:description" content="Test your auditory range and sensitivity. Discover which frequencies you can hear." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/test/hearing" />
       </Helmet>
 
@@ -257,8 +258,9 @@ const HearingTestPage = () => {
                   <span><strong className="text-white">50+ years:</strong> Often limited to 12 kHz or below</span>
                 </li>
               </ul>
-              <p className="text-sm text-dark-400 mt-4">
-                💡 Note: This test is not a medical diagnosis. If you have concerns about your hearing, please consult a qualified audiologist.
+              <p className="text-sm text-dark-400 mt-4 flex items-start gap-2">
+                <Lightbulb size={16} className="text-amber-400 shrink-0 mt-0.5" />
+                <span><strong className="text-dark-300">Note:</strong> This test is not a medical diagnosis. If you have concerns about your hearing, please consult a qualified audiologist.</span>
               </p>
             </div>
           </section>

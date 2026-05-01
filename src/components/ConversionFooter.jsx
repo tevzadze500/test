@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight, Trophy, Clock, Shield, BookOpen } from 'lucide-react';
+import { Zap, ArrowRight, Trophy, Clock, Shield, BookOpen, Eye, Headphones } from 'lucide-react';
+import F1LightsIcon from './icons/F1LightsIcon';
 
 const ConversionFooter = () => {
   const quickTests = [
-    { name: 'Reaction Time', path: '/test/reaction-time', time: '2 min', icon: '⚡' },
-    { name: 'F1 Reaction', path: '/test/f1-reaction', time: '1 min', icon: '🏁' },
-    { name: 'Vision Test', path: '/test/vision', time: '3 min', icon: '👁️' },
-    { name: 'Hearing Test', path: '/test/hearing', time: '4 min', icon: '🎧' },
+    { name: 'Reaction Time', path: '/test/reaction-time', time: '2 min', Icon: Zap, accent: 'from-green-500 to-emerald-600' },
+    { name: 'F1 Reaction', path: '/test/f1-reaction', time: '1 min', Icon: F1LightsIcon, accent: 'from-red-500 to-rose-600' },
+    { name: 'Vision Test', path: '/test/vision', time: '3 min', Icon: Eye, accent: 'from-cyan-500 to-teal-600' },
+    { name: 'Hearing Test', path: '/test/hearing', time: '4 min', Icon: Headphones, accent: 'from-pink-500 to-rose-600' },
   ];
 
   return (
@@ -49,21 +50,26 @@ const ConversionFooter = () => {
           </p>
 
           {/* Quick Test Options */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
-            {quickTests.map((test, index) => (
-              <Link
-                key={index}
-                to={test.path}
-                className="group bg-dark-800/50 hover:bg-dark-800 border border-dark-700 hover:border-green-500/50 rounded-xl p-4 transition-all duration-300 hover:scale-105"
-              >
-                <div className="text-3xl mb-2">{test.icon}</div>
-                <div className="text-sm font-semibold text-white mb-1">{test.name}</div>
-                <div className="flex items-center justify-center gap-1.5 text-xs text-dark-400">
-                  <Clock size={12} />
-                  <span>{test.time}</span>
-                </div>
-              </Link>
-            ))}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            {quickTests.map((test, index) => {
+              const Icon = test.Icon;
+              return (
+                <Link
+                  key={index}
+                  to={test.path}
+                  className="group bg-dark-800/50 hover:bg-dark-800 border border-dark-700 hover:border-green-500/50 rounded-xl p-4 transition-all duration-300 hover:scale-105 flex flex-col items-center"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${test.accent} flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform`}>
+                    <Icon size={22} className="text-white" strokeWidth={2.4} />
+                  </div>
+                  <div className="text-sm font-semibold text-white mb-1 text-center">{test.name}</div>
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-dark-400">
+                    <Clock size={12} />
+                    <span>{test.time}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Primary CTA */}
@@ -82,8 +88,8 @@ const ConversionFooter = () => {
       <div className="py-6 sm:py-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-dark-400 px-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-sm">
-              ⚡
+            <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
             </div>
             <span>© 2026 TestHub. Professional Testing Platform.</span>
           </div>

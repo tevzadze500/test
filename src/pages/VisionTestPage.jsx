@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
 
 // Letters commonly used in vision tests
 const TEST_LETTERS = ['C', 'D', 'E', 'F', 'H', 'K', 'N', 'O', 'P', 'R', 'S', 'V', 'Z'];
@@ -115,16 +116,16 @@ const VisionTestPage = () => {
         category: 'Excellent Vision',
         acuity: '20/20',
         color: 'green',
-        description: 'Outstanding! Your visual acuity appears to be at the standard level. You successfully identified letters at the smallest size.',
-        icon: '🎯'
+        description: 'Outstanding. Your visual acuity appears to be at the standard level. You successfully identified letters at the smallest size.',
+        Icon: Target,
       };
     } else if (level >= 7) {
       return {
         category: 'Good Vision',
         acuity: '20/30',
         color: 'blue',
-        description: 'Great job! Your visual acuity is quite good. You performed well with small letters.',
-        icon: '👁️'
+        description: 'Great job. Your visual acuity is quite good. You performed well with small letters.',
+        Icon: Eye,
       };
     } else if (level >= 4) {
       return {
@@ -132,7 +133,7 @@ const VisionTestPage = () => {
         acuity: '20/50',
         color: 'yellow',
         description: 'Your visual acuity is in the average range. You may benefit from an eye examination.',
-        icon: '👓'
+        Icon: Glasses,
       };
     } else {
       return {
@@ -140,7 +141,7 @@ const VisionTestPage = () => {
         acuity: '20/100',
         color: 'orange',
         description: 'You had difficulty with smaller letters. Consider scheduling an eye examination.',
-        icon: '🔍'
+        Icon: Search,
       };
     }
   };
@@ -149,17 +150,31 @@ const VisionTestPage = () => {
     setTestState('intro');
   };
 
+  const helmetTags = (
+    <Helmet>
+      <title>Visual Acuity Test - Check Your Eyesight Online | ReactionTestPro</title>
+      <meta name="description" content="Check your visual acuity with our free online eye test. Measures from 20/200 down to 20/20 vision. No signup required, instant results." />
+      <meta name="keywords" content="visual acuity test, online eye test, vision test, eyesight test, 20/20 vision test, free eye exam, visual clarity test" />
+      <meta property="og:title" content="Visual Acuity Test - Check Your Eyesight Online" />
+      <meta property="og:description" content="Test your visual acuity for free. Measure your eyesight from 20/200 to 20/20 with instant results." />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
+      <link rel="canonical" href="https://reactiontestpro.com/test/vision" />
+    </Helmet>
+  );
+
   // INTRO SCREEN
   if (testState === 'intro') {
     return (
       <div className="min-h-screen bg-dark-950">
+        {helmetTags}
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-6">
                 <Link to="/" className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-2xl">
-                    👁️
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                    <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                   </div>
                   <div>
                     <h1 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
@@ -185,8 +200,8 @@ const VisionTestPage = () => {
 
         <main className="max-w-3xl mx-auto px-6 py-12">
           <div className="text-center mb-8">
-            <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 items-center justify-center text-5xl mb-6 shadow-xl">
-              👁️
+            <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 items-center justify-center mb-6 shadow-xl shadow-purple-500/30">
+              <Eye size={44} className="text-white" strokeWidth={2.4} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Visual Acuity Test
@@ -254,15 +269,16 @@ const VisionTestPage = () => {
   // RESULTS SCREEN
   if (testState === 'results') {
     const result = getVisionResult();
-    
+
     return (
       <div className="min-h-screen bg-dark-950">
+        {helmetTags}
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-2xl">
-                  👁️
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                  <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div>
                   <h1 className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
@@ -285,7 +301,9 @@ const VisionTestPage = () => {
 
           {/* Result Card */}
           <div className="bg-gradient-to-br from-dark-900 to-dark-800 border border-dark-700 rounded-2xl p-8 mb-6 text-center">
-            <div className="text-6xl mb-4">{result.icon}</div>
+            <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 items-center justify-center mb-4 shadow-xl shadow-purple-500/30">
+              <result.Icon size={44} className="text-white" strokeWidth={2.4} />
+            </div>
             <div className="text-5xl font-bold text-white mb-2">{result.acuity}</div>
             <div className={`inline-block px-6 py-3 rounded-xl text-lg font-bold ${
               result.color === 'green' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
@@ -369,15 +387,16 @@ const VisionTestPage = () => {
 
   // TESTING SCREEN
   const currentLevelData = LEVELS[currentLevel];
-  
+
   return (
     <div className="min-h-screen bg-dark-950">
+      {helmetTags}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center text-2xl">
-                👁️
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
               <div>
                 <h1 className="text-sm font-bold text-white">Visual Acuity Test</h1>

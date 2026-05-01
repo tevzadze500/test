@@ -6,7 +6,8 @@ import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import { tests } from '../data/tests';
-import { Gamepad2, Zap, Target, ArrowLeft } from 'lucide-react';
+import { Gamepad2, Zap, Target, ArrowLeft, Crosshair, Brain, Trophy, Star, Sparkles, ThumbsUp, Swords } from 'lucide-react';
+import F1LightsIcon from '../components/icons/F1LightsIcon';
 
 function GamingTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,6 +30,7 @@ function GamingTestPage() {
         <meta property="og:title" content="Gaming Reaction Test - Test Your Gaming Reflexes" />
         <meta property="og:description" content="Improve your gaming reaction time with our specialized tests for gamers and esports players." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/gaming-test" />
       </Helmet>
 
@@ -60,8 +62,8 @@ function GamingTestPage() {
           <section className="mb-12 sm:mb-16 md:mb-20">
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-5xl shadow-2xl">
-                  🎮
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-2xl shadow-purple-500/30">
+                  <Gamepad2 size={44} className="text-white" strokeWidth={2.4} />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
@@ -95,31 +97,31 @@ function GamingTestPage() {
               <div className="text-dark-300 space-y-4">
                 <ul className="space-y-3 ml-4">
                   <li className="flex items-start gap-3">
-                    <span className="text-purple-500 font-bold text-xl shrink-0">🎯</span>
+                    <Crosshair size={20} className="text-purple-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">FPS Games:</strong> Faster reactions help you land the first shot in duels, react to enemy movements, and flick to targets with precision in games like Call of Duty, CS:GO, Valorant, and Overwatch.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-pink-500 font-bold text-xl shrink-0">⚡</span>
+                    <Zap size={20} className="text-pink-400 shrink-0 mt-1" strokeWidth={2.4} fill="currentColor" />
                     <div>
                       <strong className="text-white">Battle Royales:</strong> Quick reflexes allow you to respond to sudden encounters, react to third-party attacks, and make split-second building or movement decisions in Fortnite, PUBG, and Apex Legends.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-blue-500 font-bold text-xl shrink-0">🧠</span>
+                    <Brain size={20} className="text-blue-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">MOBA Games:</strong> In League of Legends and Dota 2, reaction time helps you dodge skillshots, execute combos perfectly, and respond to enemy abilities during team fights.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">🏎️</span>
+                    <F1LightsIcon size={20} className="text-green-400 shrink-0 mt-1" />
                     <div>
                       <strong className="text-white">Racing Games:</strong> In simulators like iRacing, F1, and Gran Turismo, quick reactions help you avoid collisions, take optimal racing lines, and respond to changing track conditions.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="text-orange-500 font-bold text-xl shrink-0">🥊</span>
+                    <Swords size={20} className="text-orange-400 shrink-0 mt-1" strokeWidth={2.4} />
                     <div>
                       <strong className="text-white">Fighting Games:</strong> Street Fighter, Tekken, and Mortal Kombat require frame-perfect reactions to block, counter, and punish opponent moves.
                     </div>
@@ -194,38 +196,38 @@ function GamingTestPage() {
               </h2>
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center text-2xl shrink-0">
-                    🏆
+                  <div className="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center shrink-0">
+                    <Trophy size={22} className="text-green-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Pro Level (150-200ms)</div>
                     <div className="text-sm text-dark-300">Professional esports players and top-tier competitive gamers</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-2xl shrink-0">
-                    ⭐
+                  <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center shrink-0">
+                    <Star size={22} className="text-blue-300" strokeWidth={2.4} fill="currentColor" />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Competitive (200-250ms)</div>
                     <div className="text-sm text-dark-300">High-ranked players in competitive games</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center text-2xl shrink-0">
-                    ✨
+                  <div className="w-12 h-12 rounded-lg bg-yellow-500/20 flex items-center justify-center shrink-0">
+                    <Sparkles size={22} className="text-yellow-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Above Average (250-300ms)</div>
                     <div className="text-sm text-dark-300">Dedicated gamers with good reflexes</div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-4 p-4 bg-orange-500/10 border border-orange-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-2xl shrink-0">
-                    👍
+                  <div className="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center shrink-0">
+                    <ThumbsUp size={22} className="text-orange-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-white mb-1">Average (300-350ms)</div>

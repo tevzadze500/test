@@ -1,5 +1,5 @@
 import React from 'react';
-import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw } from 'lucide-react';
+import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
 
 const F1StatsCard = ({ stats, onReset }) => {
   const getScoreColor = (score) => {
@@ -108,17 +108,18 @@ const F1StatsCard = ({ stats, onReset }) => {
             <div>
               <h4 className="text-sm font-semibold text-white mb-1">Performance Analysis</h4>
               <p className="text-sm text-dark-300">
-                {stats.best < 200 
-                  ? "Elite F1 reflexes! You could compete with professional drivers! 🏎️"
+                {stats.best < 200
+                  ? "Elite F1 reflexes — you could compete with professional drivers."
                   : stats.best < 250
-                  ? "Outstanding reaction time! You're in the top tier of performers."
+                  ? "Outstanding reaction time. You're in the top tier of performers."
                   : stats.best < 300
-                  ? "Great performance! Above average reaction speed."
+                  ? "Great performance. Above average reaction speed."
                   : "Keep practicing to improve your start reaction time."}
               </p>
               {stats.falseStarts > 0 && (
-                <div className="mt-2 text-xs text-dark-400">
-                  💡 Tip: {stats.falseStarts === 1 ? '1 false start' : `${stats.falseStarts} false starts`} - wait for all lights to go out
+                <div className="mt-2 text-xs text-dark-400 flex items-center gap-1.5">
+                  <Lightbulb size={12} className="text-amber-400 shrink-0" />
+                  <span><strong className="text-dark-300">Tip:</strong> {stats.falseStarts === 1 ? '1 false start' : `${stats.falseStarts} false starts`} — wait for all lights to go out.</span>
                 </div>
               )}
             </div>

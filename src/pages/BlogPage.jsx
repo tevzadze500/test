@@ -18,6 +18,8 @@ function BlogPage() {
         <meta property="og:title" content="Why Reaction Time is Crucial in Everyday Life and Performance" />
         <meta property="og:description" content="Learn how reaction time affects sports performance, driving safety, cognitive health, and everyday decision-making." />
         <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
+        <link rel="canonical" href="https://reactiontestpro.com/blog/reaction-time-crucial" />
       </Helmet>
 
       {/* Mobile Top Bar */}

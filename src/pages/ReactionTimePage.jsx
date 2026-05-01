@@ -75,6 +75,7 @@ const ReactionTimePage = () => {
         <meta property="og:title" content="Reaction Time Test - Measure Your Reflexes Online" />
         <meta property="og:description" content="Measure your visual reaction speed in milliseconds. Free online test with instant results." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/test/reaction-time" />
       </Helmet>
 
@@ -85,8 +86,8 @@ const ReactionTimePage = () => {
             {/* Left: Brand + Back */}
             <div className="flex items-center gap-3 sm:gap-6">
               <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-xl sm:text-2xl">
-                  ⚡
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
+                  <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div className="hidden sm:block">
                   <h1 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">
@@ -137,8 +138,8 @@ const ReactionTimePage = () => {
         {/* Page Header */}
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-2xl sm:text-3xl shadow-lg shrink-0">
-              ⚡
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 shrink-0">
+              <Zap size={26} className="text-white" strokeWidth={2.5} fill="white" />
             </div>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
@@ -206,8 +207,8 @@ const ReactionTimePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-dark-400">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-sm">
-                ⚡
+              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+                <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
               <span>© 2026 TestHub. Professional Testing Platform.</span>
             </div>

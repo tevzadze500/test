@@ -45,7 +45,7 @@ const ReactionTestArea = ({ onResult }) => {
 
     timeoutRef.current = setTimeout(() => {
       setState(TEST_STATES.READY);
-      startTimeRef.current = Date.now();
+      startTimeRef.current = performance.now();
       setIsProcessing(false);
     }, delay);
   };
@@ -61,9 +61,7 @@ const ReactionTestArea = ({ onResult }) => {
       setState(TEST_STATES.FALSE_START);
       setIsProcessing(false);
     } else if (state === TEST_STATES.READY) {
-      // Calculate reaction time
-      const endTime = Date.now();
-      const reaction = endTime - startTimeRef.current;
+      const reaction = Math.round(performance.now() - startTimeRef.current);
       setReactionTime(reaction);
       setState(TEST_STATES.RESULT);
       
@@ -172,9 +170,28 @@ const ReactionTestArea = ({ onResult }) => {
   // Don't render anything if config is null (result state handled above)
   if (!config) return null;
 
+  const handleKeyDown = (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
+  const ariaLabel = {
+    [TEST_STATES.IDLE]: 'Start reaction time test. Press space or enter, then react when the screen turns green.',
+    [TEST_STATES.WAITING]: 'Wait for the green signal, then press space or enter as fast as you can.',
+    [TEST_STATES.READY]: 'React now! Press space or enter immediately.',
+    [TEST_STATES.FALSE_START]: 'False start. Press space or enter to try again.',
+  }[state];
+
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={ariaLabel}
+      aria-live="polite"
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`
         relative overflow-hidden
         ${config.bg} ${config.border} ${config.cursor} ${config.hover}
@@ -184,6 +201,7 @@ const ReactionTestArea = ({ onResult }) => {
         min-h-[400px] sm:min-h-[500px] md:min-h-[600px]
         ${config.glow || ''}
         select-none touch-manipulation
+        focus:outline-none focus-visible:ring-4 focus-visible:ring-green-500/50
       `}
     >
       {/* Background Effect */}

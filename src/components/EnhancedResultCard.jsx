@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Trophy, 
-  RotateCcw, 
-  Share2, 
-  Check, 
+import {
+  Trophy,
+  RotateCcw,
+  Share2,
+  Check,
   ArrowRight,
   TrendingUp,
-  Zap
+  Zap,
+  Lightbulb,
 } from 'lucide-react';
+import TestIcon from './icons/TestIcon';
 
 /**
  * Enhanced Result Card Component
@@ -156,17 +158,19 @@ const EnhancedResultCard = ({
                 className="group relative bg-dark-800/50 hover:bg-dark-800 border border-dark-700 hover:border-blue-500/50 rounded-lg sm:rounded-xl p-3 sm:p-4 transition-all touch-manipulation min-h-[60px]"
               >
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="text-2xl sm:text-3xl shrink-0">{test.icon}</div>
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center shrink-0 group-hover:from-blue-500/30 group-hover:to-purple-500/30 group-hover:scale-110 transition-all">
+                    <TestIcon testId={test.iconId || test.id} size={20} className="text-blue-300" strokeWidth={2.4} />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-sm sm:text-base text-white group-hover:text-blue-400 transition-colors truncate">
                       {test.name}
                     </div>
-                    <div className="text-xs text-dark-400 group-hover:text-dark-300">
-                      Test now →
+                    <div className="text-xs text-dark-400 group-hover:text-dark-300 flex items-center gap-1">
+                      Test now <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Hover Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/5 group-hover:to-purple-500/5 rounded-xl transition-all pointer-events-none" />
               </Link>
@@ -177,12 +181,14 @@ const EnhancedResultCard = ({
 
       {/* Quick Tip */}
       <div className="bg-dark-800/30 border border-dark-800 rounded-lg sm:rounded-xl p-3 sm:p-4">
-        <div className="flex items-start gap-2 sm:gap-3">
-          <div className="text-xl sm:text-2xl shrink-0">💡</div>
+        <div className="flex items-start gap-3">
+          <div className="w-9 h-9 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center shrink-0">
+            <Lightbulb size={16} className="text-amber-300" strokeWidth={2.4} />
+          </div>
           <div>
             <div className="text-sm font-semibold text-white mb-1">Pro Tip</div>
             <div className="text-xs sm:text-sm text-dark-300">
-              Take short breaks between attempts to maintain peak performance. Consistency is key to improvement!
+              Take short breaks between attempts to maintain peak performance. Consistency is key to improvement.
             </div>
           </div>
         </div>

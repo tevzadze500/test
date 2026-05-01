@@ -1,5 +1,5 @@
 import React from 'react';
-import { Headphones, Trophy, Target, BarChart3, Hash, RotateCcw } from 'lucide-react';
+import { Headphones, Trophy, Target, BarChart3, Hash, RotateCcw, Lightbulb } from 'lucide-react';
 
 const HearingStatsCard = ({ stats, onReset }) => {
   const getScoreColor = (score) => {
@@ -112,9 +112,9 @@ const HearingStatsCard = ({ stats, onReset }) => {
               <h4 className="text-sm font-semibold text-white mb-1">Hearing Analysis</h4>
               <p className="text-sm text-dark-300">
                 {stats.highestFrequency >= 18000
-                  ? "Exceptional hearing! You can detect frequencies near the human limit! 🎵"
+                  ? "Exceptional hearing — you can detect frequencies near the human limit."
                   : stats.highestFrequency >= 16000
-                  ? "Excellent hearing range! Your ears are in great shape. 🎶"
+                  ? "Excellent hearing range. Your ears are in great shape."
                   : stats.highestFrequency >= 12000
                   ? "Good hearing! Most everyday sounds are well within your range."
                   : stats.highestFrequency >= 8000
@@ -146,8 +146,9 @@ const HearingStatsCard = ({ stats, onReset }) => {
             <li>• <strong className="text-white">8000–16000 Hz</strong> — High-frequency detail</li>
             <li>• <strong className="text-white">16000–20000 Hz</strong> — Near human limit (declines with age)</li>
           </ul>
-          <p className="mt-2 text-dark-400">
-            💡 High-frequency hearing naturally declines with age. Most adults over 25 lose some ability above 16 kHz.
+          <p className="mt-2 text-dark-400 flex items-start gap-1.5">
+            <Lightbulb size={12} className="text-amber-400 shrink-0 mt-0.5" />
+            <span>High-frequency hearing naturally declines with age. Most adults over 25 lose some ability above 16 kHz.</span>
           </p>
         </div>
       </div>

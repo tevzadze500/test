@@ -3,8 +3,45 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-dark-950 text-dark-100 antialiased;
+  }
+
+  /* Focus-visible styles for keyboard navigation */
+  :focus-visible {
+    @apply outline-none ring-2 ring-green-500/70 ring-offset-2 ring-offset-dark-950;
+  }
+
+  /* Respect users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: theme('colors.dark.900');
+  }
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.dark.700');
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.dark.600');
   }
 }
 
@@ -12,11 +49,11 @@
   .glow-green {
     box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
   }
-  
+
   .glow-blue {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
   }
-  
+
   .glow-purple {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
   }

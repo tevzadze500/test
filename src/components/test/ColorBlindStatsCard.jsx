@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, Trophy, Target, BarChart3, Hash, RotateCcw } from 'lucide-react';
+import { Eye, Trophy, Target, BarChart3, Hash, RotateCcw, Lightbulb } from 'lucide-react';
 
 const ColorBlindStatsCard = ({ stats, onReset }) => {
   const getScoreColor = (score) => {
@@ -90,9 +90,9 @@ const ColorBlindStatsCard = ({ stats, onReset }) => {
               <h4 className="text-sm font-semibold text-white mb-1">Vision Analysis</h4>
               <p className="text-sm text-dark-300">
                 {stats.bestScore >= 90
-                  ? "Excellent color vision! You can distinguish colors very well. 🎨"
+                  ? "Excellent color vision. You can distinguish colors very well."
                   : stats.bestScore >= 75
-                  ? "Good color vision with minor variations. Mostly normal. 👁️"
+                  ? "Good color vision with minor variations. Mostly normal."
                   : stats.bestScore >= 60
                   ? "Some difficulty distinguishing certain colors. Consider a professional test."
                   : "Significant color vision differences detected. Consult an eye specialist."}
@@ -121,8 +121,9 @@ const ColorBlindStatsCard = ({ stats, onReset }) => {
             <li>• <strong className="text-white">Blue-Yellow</strong> — Less common</li>
             <li>• <strong className="text-white">Total</strong> — Very rare (achromatopsia)</li>
           </ul>
-          <p className="mt-2 text-dark-400">
-            💡 This test is a screening tool only. For a definitive diagnosis, consult an eye care professional.
+          <p className="mt-2 text-dark-400 flex items-start gap-1.5">
+            <Lightbulb size={12} className="text-amber-400 shrink-0 mt-0.5" />
+            <span>This test is a screening tool only. For a definitive diagnosis, consult an eye care professional.</span>
           </p>
         </div>
       </div>

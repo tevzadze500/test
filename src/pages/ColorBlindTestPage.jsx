@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, Eye, Clock, Users, Palette } from 'lucide-react';
+import { ArrowLeft, Eye, Clock, Users, Palette, AlertTriangle } from 'lucide-react';
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 
@@ -63,6 +63,7 @@ const ColorBlindTestPage = () => {
         <meta property="og:title" content="Color Blindness Test - Quick Screening" />
         <meta property="og:description" content="Detect color vision deficiencies with our free online color blindness test." />
         <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
         <link rel="canonical" href="https://reactiontestpro.com/test/color-blind" />
       </Helmet>
 
@@ -203,8 +204,9 @@ const ColorBlindTestPage = () => {
                   <span><strong className="text-white">Below 50%:</strong> Significant deficiency — consult an eye care specialist</span>
                 </li>
               </ul>
-              <p className="text-sm text-dark-400 mt-4">
-                ⚠️ This is a screening tool only and not a medical diagnosis. Screen brightness, ambient lighting, and display calibration can affect results.
+              <p className="text-sm text-dark-400 mt-4 flex items-start gap-2">
+                <AlertTriangle size={16} className="text-orange-400 shrink-0 mt-0.5" />
+                <span>This is a screening tool only and not a medical diagnosis. Screen brightness, ambient lighting, and display calibration can affect results.</span>
               </p>
             </div>
           </section>
