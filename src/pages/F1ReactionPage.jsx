@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Zap, Clock, Users, Lightbulb } from 'lucide-react';
 import F1LightsTestArea from '../components/test/F1LightsTestArea';
 import F1StatsCard from '../components/test/F1StatsCard';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+
+const faqs = [
+  {
+    question: 'How does the F1 lights reaction test work?',
+    answer: 'Five red lights illuminate one at a time, just like the real Formula 1 start gantry. After all five are lit, they switch off together following a random delay, and your reaction time is measured from the moment the lights go out until you click or tap.',
+  },
+  {
+    question: 'What counts as a false start (jump start)?',
+    answer: 'A false start happens when you react before all five lights have gone out. In real Formula 1, jumping the start triggers a 5 or 10 second time penalty, so this test flags any early reaction as a false start to mirror that rule.',
+  },
+  {
+    question: 'What is a good reaction time on this test?',
+    answer: 'Reactions under 200ms are at professional F1 driver level, 200-250ms is excellent, and 250-300ms is above the average human reaction time. The typical human visual reaction time is around 250ms.',
+  },
+  {
+    question: 'Why is the delay before the lights go out random?',
+    answer: 'In Formula 1 the lead time before the lights extinguish is deliberately unpredictable (roughly 1 to 4 seconds) so drivers cannot anticipate the exact moment. This test uses the same random delay to ensure you are genuinely reacting rather than guessing.',
+  },
+];
 
 const F1ReactionPage = () => {
   const [stats, setStats] = useState({
@@ -80,16 +100,22 @@ const F1ReactionPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>F1 Lights Reaction Test - Formula 1 Racing Reflexes | ReactionTestPro</title>
-        <meta name="description" content="Test your reaction time with the official F1 start lights procedure. React when the lights go out and measure your reflexes like a Formula 1 driver. Free online test with instant results." />
-        <meta name="keywords" content="F1 reaction test, formula 1 lights test, F1 start lights, racing reaction time, F1 reflexes, formula 1 reaction speed, racing lights test" />
-        <meta property="og:title" content="F1 Lights Reaction Test - Formula 1 Racing Reflexes" />
-        <meta property="og:description" content="Test your reaction time specific to Formula 1 and improve your reflexes for racing." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/test/f1-reaction" />
-      </Helmet>
+      <Seo
+        title="F1 Lights Reaction Test - Formula 1 Racing Reflexes | ReactionTestPro"
+        description="Test your reaction time with the official F1 start lights procedure. React when the lights go out and measure your reflexes like a Formula 1 driver. Free online test with instant results."
+        keywords="F1 reaction test, formula 1 lights test, F1 start lights, racing reaction time, F1 reflexes, formula 1 reaction speed, racing lights test"
+        canonical="/test/f1-reaction"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'F1 Lights Reaction Test',
+            description: 'Test your reaction time with the official F1 start lights procedure and react when the lights go out like a Formula 1 driver.',
+            path: '/test/f1-reaction',
+            category: 'GameApplication',
+          }),
+          breadcrumbSchema('F1 Lights Reaction Test', '/test/f1-reaction'),
+          faqSchema(faqs),
+        ]}
+      />
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
@@ -274,6 +300,22 @@ const F1ReactionPage = () => {
             <p className="text-sm text-dark-400 mt-3">
               This is why drivers must balance aggression with precision - reacting instantly while not anticipating the lights going out.
             </p>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
+                  <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </main>

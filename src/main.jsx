@@ -1,16 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
-import App from './App.jsx'
-import './index.css'
+import { ViteReactSSG } from 'vite-react-ssg';
+import { routes } from './App.jsx';
+import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>,
-)
+// vite-react-ssg owns both the build-time prerender and the client hydration,
+// and wraps the app with its own Router + HelmetProvider. SEO tags are provided
+// per route via the <Seo> component (which uses vite-react-ssg's <Head>).
+export const createRoot = ViteReactSSG({ routes });

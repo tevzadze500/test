@@ -46,6 +46,9 @@ const TestCard = ({ test }) => {
     if (testId === 'vision-test') return '/test/vision';
     if (testId === 'hearing-test') return '/test/hearing';
     if (testId === 'color-blind-test') return '/test/color-blind';
+    if (testId === 'memory-test') return '/test/memory';
+    if (testId === 'anticipation-test') return '/test/anticipation';
+    if (testId === 'auditory-reaction') return '/test/auditory-reaction';
     return '#';
   };
 

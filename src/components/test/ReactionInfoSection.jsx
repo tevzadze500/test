@@ -1,10 +1,9 @@
 import React from 'react';
 import { Brain, Target, Activity, AlertCircle, HelpCircle } from 'lucide-react';
 
-const ReactionInfoSection = () => {
-  const faqs = [
-    {
-      question: 'What is a good reaction time?',
+export const reactionFaqs = [
+  {
+    question: 'What is a good reaction time?',
       answer: 'The average human reaction time is around 250-300ms for visual stimuli. Professional gamers and athletes often achieve times below 200ms. Anything under 250ms is considered excellent.',
     },
     {
@@ -19,8 +18,9 @@ const ReactionInfoSection = () => {
       question: 'Is this test accurate?',
       answer: 'While this test provides a good indication of your reaction time, results can be affected by your device performance, display latency, and internet connection. For precise measurements, professional equipment is recommended.',
     },
-  ];
+];
 
+const ReactionInfoSection = () => {
   return (
     <div className="space-y-8">
       {/* Main Description */}
@@ -138,7 +138,7 @@ const ReactionInfoSection = () => {
           <h3 className="text-xl font-bold text-white">Frequently Asked Questions</h3>
         </div>
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {reactionFaqs.map((faq, index) => (
             <div key={index} className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5">
               <h4 className="text-white font-semibold mb-2 flex items-start gap-2">
                 <span className="text-green-500 flex-shrink-0">Q:</span>

@@ -12,9 +12,9 @@ const AdhdSeoContent = () => {
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0 mt-1">
             <Brain size={26} className="text-white" strokeWidth={2.4} />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
             100-Question Reaction Test & ADHD Quiz: What It Measures and Why It Matters
-          </h1>
+          </h2>
         </div>
 
         <p className="text-dark-300 leading-relaxed mb-6 text-lg">

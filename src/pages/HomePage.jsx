@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { websiteSchema, organizationSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
@@ -37,16 +38,13 @@ function HomePage() {
   return (
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro</title>
-        <meta name="description" content="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required." />
-        <meta name="keywords" content="reaction time test, reflex test online, cognitive tests, vision test, hearing test, F1 reaction test, Go No-Go test, free online tests" />
-        <meta property="og:title" content="Free Online Reaction Time & Cognitive Tests | ReactionTestPro" />
-        <meta property="og:description" content="Measure your reflexes, test your vision, hearing, and cognitive performance for free. Instant results, no signup required." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/" />
-      </Helmet>
+      <Seo
+        title="Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro"
+        description="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required."
+        keywords="reaction time test, reflex test online, cognitive tests, vision test, hearing test, F1 reaction test, Go No-Go test, free online tests"
+        canonical="/"
+        jsonLd={[websiteSchema(), organizationSchema()]}
+      />
 
       {/* Mobile Top Bar */}
       <MobileTopBar 

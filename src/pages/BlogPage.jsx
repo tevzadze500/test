@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
+import Seo from '../components/Seo';
+import { articleSchema } from '../utils/structuredData';
 import { ArrowLeft, Zap, Activity, Car, Brain, Target, TrendingUp } from 'lucide-react';
 
 function BlogPage() {
@@ -11,16 +12,19 @@ function BlogPage() {
   return (
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Why Reaction Time is Crucial in Everyday Life and Performance | ReactionTestPro</title>
-        <meta name="description" content="Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test." />
-        <meta name="keywords" content="reaction time test, improve reaction time, reaction time for sports, reaction time driving, reaction speed test, reaction time exercises, cognitive health reaction time, measure your reaction time" />
-        <meta property="og:title" content="Why Reaction Time is Crucial in Everyday Life and Performance" />
-        <meta property="og:description" content="Learn how reaction time affects sports performance, driving safety, cognitive health, and everyday decision-making." />
-        <meta property="og:type" content="article" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/blog/reaction-time-crucial" />
-      </Helmet>
+      <Seo
+        title="Why Reaction Time is Crucial in Everyday Life and Performance | ReactionTestPro"
+        description="Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test."
+        keywords="reaction time test, improve reaction time, reaction time for sports, reaction time driving, reaction speed test, reaction time exercises, cognitive health reaction time, measure your reaction time"
+        canonical="/blog/reaction-time-crucial"
+        type="article"
+        jsonLd={articleSchema({
+          headline: 'Why Reaction Time is Crucial in Everyday Life and Performance',
+          description: 'Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test.',
+          path: '/blog/reaction-time-crucial',
+          datePublished: '2026-01-20',
+        })}
+      />
 
       {/* Mobile Top Bar */}
       <MobileTopBar 

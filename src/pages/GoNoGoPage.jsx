@@ -1,16 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Home, Clock, Users, Trophy, Zap, Activity } from 'lucide-react';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import GoNoGoTestArea from '../components/test/GoNoGoTestArea';
 import GoNoGoStatsCard from '../components/test/GoNoGoStatsCard';
 import EnhancedResultCard from '../components/EnhancedResultCard';
-import { 
-  getGoNoGoLevel, 
+import {
+  getGoNoGoLevel,
   getGoNoGoMotivation,
   generateShareMessage,
   getSuggestedTests
 } from '../utils/scoreUtils';
+
+const faqs = [
+  {
+    question: 'What does the Go/No-Go reaction test measure?',
+    answer:
+      'It measures response inhibition and impulse control: your ability to respond quickly to "Go" signals while withholding your response to "No-Go" signals. Performance reflects how well your brain can suppress a prepotent, automatic action.',
+  },
+  {
+    question: 'What is response inhibition?',
+    answer:
+      'Response inhibition is the cognitive ability to suppress an action that is no longer appropriate or that would be inappropriate to perform. It is a core component of executive function and is largely supported by the prefrontal cortex.',
+  },
+  {
+    question: 'What counts as a good Go/No-Go score?',
+    answer:
+      'Strong performance combines high accuracy with fast Go reaction times. A low number of "commission errors" (clicking on No-Go signals) indicates good impulse control, while fast, accurate Go responses indicate efficient processing speed.',
+  },
+  {
+    question: 'Why is the No-Go signal less frequent than the Go signal?',
+    answer:
+      'Because Go signals appear far more often (around 80% of trials), you build a strong habit of responding. This makes withholding a response on the rarer No-Go trials genuinely difficult, so the test can sensitively probe your inhibitory control.',
+  },
+];
 
 const GoNoGoPage = () => {
   const [testComplete, setTestComplete] = useState(false);
@@ -42,16 +66,23 @@ const GoNoGoPage = () => {
 
   return (
     <div className="min-h-screen bg-dark-950">
-      <Helmet>
-        <title>Go/No-Go Reaction Test - Impulse Control & Inhibition | ReactionTestPro</title>
-        <meta name="description" content="Test your cognitive inhibition and impulse control with the Go/No-Go reaction test. 10 trials measuring your ability to respond and inhibit responses. Free, instant results." />
-        <meta name="keywords" content="go no-go test, impulse control test, inhibition test, cognitive reaction test, response inhibition, go nogo task, executive function test" />
-        <meta property="og:title" content="Go/No-Go Reaction Test - Measure Your Impulse Control" />
-        <meta property="og:description" content="Test your cognitive inhibition with the Go/No-Go task. Measure response inhibition and impulse control for free." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/test/go-no-go" />
-      </Helmet>
+      <Seo
+        title="Go/No-Go Reaction Test - Impulse Control & Inhibition | ReactionTestPro"
+        description="Test your cognitive inhibition and impulse control with the Go/No-Go reaction test. 10 trials measuring your ability to respond and inhibit responses. Free, instant results."
+        keywords="go no-go test, impulse control test, inhibition test, cognitive reaction test, response inhibition, go nogo task, executive function test"
+        canonical="/test/go-no-go"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Go/No-Go Reaction Test',
+            description:
+              'Test your cognitive inhibition and impulse control with the Go/No-Go reaction test.',
+            path: '/test/go-no-go',
+            category: 'HealthApplication',
+          }),
+          breadcrumbSchema('Go/No-Go Reaction Test', '/test/go-no-go'),
+          faqSchema(faqs),
+        ]}
+      />
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -254,6 +285,22 @@ const GoNoGoPage = () => {
                   <span><strong className="text-white">Impulse Control Disorders:</strong> Helps evaluate self-regulation abilities</span>
                 </li>
               </ul>
+            </section>
+
+            {/* FAQ */}
+            <section>
+              <h2 className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                  >
+                    <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
+                    <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
             </section>
           </div>
         </div>

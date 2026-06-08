@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
@@ -13,26 +14,51 @@ function GamingTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Get gaming-related tests
-  const gamingTests = tests.filter(test => 
-    test.id === 'reaction-time' || 
-    test.id === 'f1-reaction' || 
-    test.id === 'go-no-go' || 
+  const gamingTests = tests.filter(test =>
+    test.id === 'reaction-time' ||
+    test.id === 'f1-reaction' ||
+    test.id === 'go-no-go' ||
     test.id === 'anticipation-test'
   );
+
+  const faqs = [
+    {
+      question: 'What is a good reaction time for FPS games?',
+      answer: 'For competitive FPS titles like CS:GO, Valorant, and Overwatch, a reaction time under 250ms is solid, while top players and pros often sit between 150-200ms. Faster reactions help you win first-shot duels and flick to targets more reliably.'
+    },
+    {
+      question: 'Does reaction time matter for MOBA and esports players?',
+      answer: 'Yes. In MOBAs like League of Legends and Dota 2, quick reactions let you dodge skillshots, cancel enemy combos, and respond during team fights. Across esports generally, consistent reaction speed combined with game knowledge separates high-ranked players from average ones.'
+    },
+    {
+      question: 'Can I actually improve my gaming reaction time?',
+      answer: 'You can improve your effective in-game response by training reflexes daily, warming up before matches, and reducing hardware latency with a high-refresh monitor and low-latency mouse. Your baseline reaction time has biological limits, but staying near your personal best through practice, sleep, and focus makes a measurable difference.'
+    },
+    {
+      question: 'How does my setup affect gaming reaction time?',
+      answer: 'Input lag, monitor refresh rate, and network latency all add delay on top of your biological reaction time. A 144Hz or higher monitor, a low-latency wired mouse, and a stable connection can shave precious milliseconds off how fast your reactions register in-game.'
+    }
+  ];
 
   return (
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Gaming Reaction Test - Improve Your Gaming Reflexes | ReactionTestPro</title>
-        <meta name="description" content="Test and improve your gaming reaction time. Perfect for FPS, MOBA, and competitive gaming. Measure your reflexes in milliseconds and boost your gaming performance." />
-        <meta name="keywords" content="gaming reaction test, gamer reflex test, FPS reaction time, esports reflexes, gaming performance test, competitive gaming, reaction speed gaming" />
-        <meta property="og:title" content="Gaming Reaction Test - Test Your Gaming Reflexes" />
-        <meta property="og:description" content="Improve your gaming reaction time with our specialized tests for gamers and esports players." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/gaming-test" />
-      </Helmet>
+      <Seo
+        title="Gaming Reaction Test - Improve Your Gaming Reflexes | ReactionTestPro"
+        description="Test and improve your gaming reaction time. Perfect for FPS, MOBA, and competitive gaming. Measure your reflexes in milliseconds and boost your gaming performance."
+        keywords="gaming reaction test, gamer reflex test, FPS reaction time, esports reflexes, gaming performance test, competitive gaming, reaction speed gaming"
+        canonical="/gaming-test"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Gaming Reaction Test',
+            description: 'Test and improve your gaming reaction time for FPS, MOBA, and competitive esports performance.',
+            path: '/gaming-test',
+            category: 'GameApplication'
+          }),
+          breadcrumbSchema('Gaming Reaction Test', '/gaming-test'),
+          faqSchema(faqs)
+        ]}
+      />
 
       {/* Mobile Top Bar */}
       <MobileTopBar 
@@ -234,6 +260,26 @@ function GamingTestPage() {
                     <div className="text-sm text-dark-300">Casual gamers and average reaction time</div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mb-12 sm:mb-16">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                  >
+                    <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
+                    <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

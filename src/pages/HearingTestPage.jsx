@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart, Lightbulb } from 'lucide-react';
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 
 const HearingTestPage = () => {
   const [stats, setStats] = useState({
@@ -75,19 +76,44 @@ const HearingTestPage = () => {
     window.close();
   };
 
+  const faqs = [
+    {
+      question: 'What frequency range does the online hearing test cover?',
+      answer: 'The test plays pure tones from 250 Hz (deep bass) up to 20 kHz (ultra-high). This spans the full range of human hearing, which is typically considered to be 20 Hz to 20 kHz in healthy young adults.',
+    },
+    {
+      question: 'What frequencies should I be able to hear for my age?',
+      answer: 'Hearing of high frequencies declines naturally with age (presbycusis). People under 20 can often hear up to 20 kHz, those aged 20-30 typically reach 17-18 kHz, ages 30-50 commonly hear up to 14-16 kHz, and people over 50 are often limited to around 12 kHz or below.',
+    },
+    {
+      question: 'Is this online hearing frequency test accurate?',
+      answer: 'It gives a useful indication of your hearing range, but accuracy depends heavily on your equipment and surroundings. For best results use quality headphones in a quiet room at a comfortable volume; many consumer speakers cannot reproduce the highest or lowest frequencies faithfully.',
+    },
+    {
+      question: 'Can this test replace a professional hearing exam?',
+      answer: 'No. This test is for informational and educational purposes only and is not a medical diagnosis. If you notice reduced hearing, ringing, or any other concerns, consult a qualified audiologist for proper audiometry.',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Hearing Frequency Test - Audio Health Check | TestHub</title>
-        <meta name="description" content="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required." />
-        <meta name="keywords" content="hearing test, frequency test, hearing range, audio test, hearing health, frequency hearing test, online hearing test, audiometry" />
-        <meta property="og:title" content="Hearing Frequency Test - Audio Health Check" />
-        <meta property="og:description" content="Test your auditory range and sensitivity. Discover which frequencies you can hear." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/test/hearing" />
-      </Helmet>
+      <Seo
+        title="Hearing Frequency Test - Audio Health Check | TestHub"
+        description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
+        keywords="hearing test, frequency test, hearing range, audio test, hearing health, frequency hearing test, online hearing test, audiometry"
+        canonical="/test/hearing"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Hearing Frequency Test',
+            description: 'A free online hearing frequency test that checks the range of pure tones you can hear, from 250 Hz to 20 kHz.',
+            path: '/test/hearing',
+            category: 'HealthApplication',
+          }),
+          breadcrumbSchema('Hearing Frequency Test', '/test/hearing'),
+          faqSchema(faqs),
+        ]}
+      />
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
@@ -286,6 +312,22 @@ const HearingTestPage = () => {
                 <span>Be honest with your responses — only say "yes" if you truly heard the tone</span>
               </li>
             </ul>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
+                  <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </main>

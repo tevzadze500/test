@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
 
 // Letters commonly used in vision tests
@@ -150,24 +151,49 @@ const VisionTestPage = () => {
     setTestState('intro');
   };
 
-  const helmetTags = (
-    <Helmet>
-      <title>Visual Acuity Test - Check Your Eyesight Online | ReactionTestPro</title>
-      <meta name="description" content="Check your visual acuity with our free online eye test. Measures from 20/200 down to 20/20 vision. No signup required, instant results." />
-      <meta name="keywords" content="visual acuity test, online eye test, vision test, eyesight test, 20/20 vision test, free eye exam, visual clarity test" />
-      <meta property="og:title" content="Visual Acuity Test - Check Your Eyesight Online" />
-      <meta property="og:description" content="Test your visual acuity for free. Measure your eyesight from 20/200 to 20/20 with instant results." />
-      <meta property="og:type" content="website" />
-      <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-      <link rel="canonical" href="https://reactiontestpro.com/test/vision" />
-    </Helmet>
+  const faqs = [
+    {
+      question: 'Is this online visual acuity test a replacement for an eye exam?',
+      answer: 'No. This is an interactive screening simulation for educational purposes only and is not a medical test. For an accurate diagnosis, see a qualified optometrist or ophthalmologist.',
+    },
+    {
+      question: 'How does the online eyesight test work?',
+      answer: 'Letters are displayed at progressively smaller sizes across 10 levels, from a 20/200 equivalent down to 20/20. You identify each letter from four options, and the smallest size you can read estimates your visual acuity.',
+    },
+    {
+      question: 'How should I set up my screen for accurate results?',
+      answer: 'Sit at roughly arm\'s length from the screen in a well-lit room and keep your display at its normal brightness. Because screen size, resolution, and viewing distance vary, the results are an approximation rather than a clinical measurement.',
+    },
+    {
+      question: 'Can I test each eye separately?',
+      answer: 'Yes. Cover one eye with your hand and complete the test, then repeat with the other eye. This can help you notice differences between your eyes, though it is not a substitute for a professional examination.',
+    },
+  ];
+
+  const seoTags = (
+    <Seo
+      title="Visual Acuity Test - Check Your Eyesight Online | ReactionTestPro"
+      description="Check your visual acuity with our free online eye test. Measures from 20/200 down to 20/20 vision. No signup required, instant results."
+      keywords="visual acuity test, online eye test, vision test, eyesight test, 20/20 vision test, free eye exam, visual clarity test"
+      canonical="/test/vision"
+      jsonLd={[
+        webApplicationSchema({
+          name: 'Visual Acuity Test',
+          description: 'Check your visual acuity with our free online eye test, measuring from 20/200 down to 20/20 vision.',
+          path: '/test/vision',
+          category: 'HealthApplication',
+        }),
+        breadcrumbSchema('Visual Acuity Test', '/test/vision'),
+        faqSchema(faqs),
+      ]}
+    />
   );
 
   // INTRO SCREEN
   if (testState === 'intro') {
     return (
       <div className="min-h-screen bg-dark-950">
-        {helmetTags}
+        {seoTags}
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
@@ -261,6 +287,19 @@ const VisionTestPage = () => {
               <span>Start Test</span>
             </div>
           </button>
+
+          {/* FAQ */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqs.map((faq) => (
+                <div key={faq.question} className="bg-dark-900/50 border border-dark-800 rounded-xl p-5">
+                  <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
+                  <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </main>
       </div>
     );
@@ -272,7 +311,7 @@ const VisionTestPage = () => {
 
     return (
       <div className="min-h-screen bg-dark-950">
-        {helmetTags}
+        {seoTags}
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
@@ -390,7 +429,7 @@ const VisionTestPage = () => {
 
   return (
     <div className="min-h-screen bg-dark-950">
-      {helmetTags}
+      {seoTags}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">

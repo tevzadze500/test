@@ -74,7 +74,7 @@ const ConversionFooter = () => {
 
           {/* Primary CTA */}
           <Link
-            to="#popular"
+            to="/#all-tests"
             className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white font-bold transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 group min-h-[56px]"
           >
             <Zap size={20} />

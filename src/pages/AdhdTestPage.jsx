@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent from '../components/AdhdSeoContent';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema } from '../utils/structuredData';
 
 const questions = [
   // Attention / Focus (25 questions)
@@ -203,16 +204,21 @@ const AdhdTestPage = () => {
   if (testState === 'intro') {
     return (
       <>
-        <Helmet>
-          <title>100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment</title>
-          <meta name="description" content="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms." />
-          <meta name="keywords" content="ADHD test, reaction time test, ADHD quiz, attention deficit test, focus test, impulse control test, ADHD self-assessment, online ADHD test, free ADHD quiz, ADHD symptoms test" />
-          <meta property="og:title" content="100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment" />
-          <meta property="og:description" content="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms." />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-          <link rel="canonical" href="https://reactiontestpro.com/test/adhd" />
-        </Helmet>
+        <Seo
+          title="100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment"
+          description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
+          keywords="ADHD test, reaction time test, ADHD quiz, attention deficit test, focus test, impulse control test, ADHD self-assessment, online ADHD test, free ADHD quiz, ADHD symptoms test"
+          canonical="/test/adhd"
+          jsonLd={[
+            webApplicationSchema({
+              name: "ADHD Test",
+              description: "A free online 100-question ADHD self-assessment for attention, focus, and impulse control with instant results.",
+              path: "/test/adhd",
+              category: "HealthApplication",
+            }),
+            breadcrumbSchema("ADHD Test", "/test/adhd"),
+          ]}
+        />
         <div className="min-h-screen bg-dark-950">
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
@@ -318,9 +324,11 @@ const AdhdTestPage = () => {
 
     return (
       <>
-        <Helmet>
-          <title>ADHD Test in Progress | TestHub</title>
-        </Helmet>
+        <Seo
+          title="ADHD Test in Progress | TestHub"
+          description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
+          canonical="/test/adhd"
+        />
         <div className="min-h-screen bg-dark-950 flex items-center justify-center px-6">
         <div className="max-w-md w-full text-center animate-fade-in">
           <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 items-center justify-center text-5xl mb-6 shadow-xl">
@@ -349,10 +357,11 @@ const AdhdTestPage = () => {
     
     return (
       <>
-        <Helmet>
-          <title>Your ADHD Test Results | TestHub</title>
-          <meta name="description" content="View your ADHD self-assessment results and get insights into your attention, focus, and impulse control patterns." />
-        </Helmet>
+        <Seo
+          title="Your ADHD Test Results | TestHub"
+          description="View your ADHD self-assessment results and get insights into your attention, focus, and impulse control patterns."
+          canonical="/test/adhd"
+        />
         <div className="min-h-screen bg-dark-950">
         <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
           <div className="max-w-7xl mx-auto px-6 py-4">
@@ -473,9 +482,11 @@ const AdhdTestPage = () => {
   // TESTING SCREEN (Questions)
   return (
     <>
-      <Helmet>
-        <title>ADHD Test - Question {currentQuestion + 1} of {totalQuestions} | TestHub</title>
-      </Helmet>
+      <Seo
+        title={`ADHD Test - Question ${currentQuestion + 1} of ${totalQuestions} | TestHub`}
+        description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
+        canonical="/test/adhd"
+      />
       <div className="min-h-screen bg-dark-950">
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-6 py-4">

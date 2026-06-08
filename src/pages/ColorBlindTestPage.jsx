@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Eye, Clock, Users, Palette, AlertTriangle } from 'lucide-react';
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 
 const ColorBlindTestPage = () => {
   const [stats, setStats] = useState({
@@ -54,18 +55,48 @@ const ColorBlindTestPage = () => {
 
   const closeWindow = () => window.close();
 
+  const faqs = [
+    {
+      question: 'What is an Ishihara-style color blindness test?',
+      answer:
+        'It is a screening test made of plates filled with colored dots, each hiding a number or shape. People with normal color vision can read the figure easily, while those with a color vision deficiency see a different number or none at all.',
+    },
+    {
+      question: 'What are the main types of color blindness?',
+      answer:
+        'The most common is red-green deficiency (protanopia/protanomaly and deuteranopia/deuteranomaly). Blue-yellow deficiency (tritanopia/tritanomaly) is rarer, and total color blindness (achromatopsia), where the world appears in shades of gray, is very rare.',
+    },
+    {
+      question: 'Who is most likely to be color blind?',
+      answer:
+        'Red-green color blindness is largely inherited and X-linked, so it affects roughly 8% of males but under 1% of females. Blue-yellow deficiency affects males and females about equally.',
+    },
+    {
+      question: 'Can an online test diagnose color blindness?',
+      answer:
+        'No. This is a quick screening tool, not a medical diagnosis. Screen brightness, ambient lighting, and display calibration can affect your results, so see an eye care professional for a definitive assessment.',
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-dark-950">
-      <Helmet>
-        <title>Color Blindness Test - Quick Screening | TestHub</title>
-        <meta name="description" content="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required." />
-        <meta name="keywords" content="color blindness test, color vision test, Ishihara test, color deficiency, red green color blind, color vision screening" />
-        <meta property="og:title" content="Color Blindness Test - Quick Screening" />
-        <meta property="og:description" content="Detect color vision deficiencies with our free online color blindness test." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/test/color-blind" />
-      </Helmet>
+      <Seo
+        title="Color Blindness Test - Quick Screening | TestHub"
+        description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
+        keywords="color blindness test, color vision test, Ishihara test, color deficiency, red green color blind, color vision screening"
+        canonical="/test/color-blind"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Color Blindness Test',
+            description:
+              'Free online color blindness test that detects color vision deficiencies with Ishihara-style plates.',
+            path: '/test/color-blind',
+            category: 'HealthApplication',
+          }),
+          breadcrumbSchema('Color Blindness Test', '/test/color-blind'),
+          faqSchema(faqs),
+        ]}
+      />
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
@@ -231,6 +262,22 @@ const ColorBlindTestPage = () => {
                 <span>Answer quickly based on your first impression</span>
               </li>
             </ul>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                >
+                  <h3 className="text-lg font-semibold text-white mb-2">{faq.question}</h3>
+                  <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
       </main>

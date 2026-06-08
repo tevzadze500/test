@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
@@ -13,26 +14,51 @@ function SportTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Get sports-related tests
-  const sportsTests = tests.filter(test => 
-    test.id === 'reaction-time' || 
-    test.id === 'f1-reaction' || 
-    test.id === 'anticipation-test' || 
+  const sportsTests = tests.filter(test =>
+    test.id === 'reaction-time' ||
+    test.id === 'f1-reaction' ||
+    test.id === 'anticipation-test' ||
     test.id === 'auditory-reaction'
   );
+
+  const faqs = [
+    {
+      question: 'What is a good reaction time for athletes?',
+      answer: 'Elite athletes typically have reaction times between 120 and 180 milliseconds, while competitive amateurs usually fall in the 220 to 270ms range. The average healthy adult reacts to a visual stimulus in roughly 200 to 270ms.'
+    },
+    {
+      question: 'Which sports demand the fastest reaction times?',
+      answer: 'Combat sports, racquet sports like tennis and table tennis, and sprint starts in track and field demand the fastest reactions. Elite fighters and tennis players often react in under 200ms, and sprinters respond to the starting gun in about 120 to 160ms.'
+    },
+    {
+      question: 'Can you train and improve your sports reaction time?',
+      answer: 'Yes. Sport-specific drills, plyometric training, vision and anticipation exercises, and regular testing can all improve reaction speed. Adequate sleep, hydration, and nutrition also help you maintain fast reactions during competition.'
+    },
+    {
+      question: 'Why is a reaction under 100ms a false start in sprinting?',
+      answer: 'In track and field, any reaction faster than 100ms to the starting gun is ruled a false start because it is considered humanly impossible to process the sound and respond that quickly. A genuine reaction means the athlete anticipated rather than reacted.'
+    }
+  ];
 
   return (
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Sports Reaction Test - Improve Athletic Reflexes | ReactionTestPro</title>
-        <meta name="description" content="Test your sports reaction time and improve your athletic performance. Perfect for athletes in boxing, tennis, baseball, soccer, and all competitive sports. Measure your reflexes like a pro." />
-        <meta name="keywords" content="sports reaction test, athletic reflex test, athlete reaction time, sports performance test, boxing reflexes, tennis reaction speed, baseball reaction time" />
-        <meta property="og:title" content="Sports Reaction Test - Test Your Athletic Reflexes" />
-        <meta property="og:description" content="Improve your sports reaction time with tests designed for athletes and competitive sports." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/sport-test" />
-      </Helmet>
+      <Seo
+        title="Sports Reaction Test - Improve Athletic Reflexes | ReactionTestPro"
+        description="Test your sports reaction time and improve your athletic performance. Perfect for athletes in boxing, tennis, baseball, soccer, and all competitive sports. Measure your reflexes like a pro."
+        keywords="sports reaction test, athletic reflex test, athlete reaction time, sports performance test, boxing reflexes, tennis reaction speed, baseball reaction time"
+        canonical="/sport-test"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Sports Reaction Test',
+            description: 'Test your sports reaction time and improve your athletic performance across boxing, tennis, baseball, soccer, and all competitive sports.',
+            path: '/sport-test',
+            category: 'HealthApplication'
+          }),
+          breadcrumbSchema('Sports Reaction Test', '/sport-test'),
+          faqSchema(faqs)
+        ]}
+      />
 
       {/* Mobile Top Bar */}
       <MobileTopBar 
@@ -253,6 +279,26 @@ function SportTestPage() {
                 <p className="text-sm text-dark-300">
                   <strong className="text-blue-400">Pro Tip:</strong> Elite sprinters like Usain Bolt have reaction times around 155ms. However, anything under 100ms is considered a false start in track and field because it's deemed humanly impossible to react that quickly to the starting gun.
                 </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Frequently Asked Questions */}
+          <section className="mb-12 sm:mb-16">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5"
+                  >
+                    <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
+                    <p className="text-dark-300 leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

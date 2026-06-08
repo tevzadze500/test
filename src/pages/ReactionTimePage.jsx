@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Home, Zap, Clock, Users } from 'lucide-react';
+import Seo from '../components/Seo';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
-import ReactionInfoSection from '../components/test/ReactionInfoSection';
+import ReactionInfoSection, { reactionFaqs } from '../components/test/ReactionInfoSection';
 
 const ReactionTimePage = () => {
   const [stats, setStats] = useState({
@@ -68,16 +69,21 @@ const ReactionTimePage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Reaction Time Test - Free Online Visual Reflex Test | ReactionTestPro</title>
-        <meta name="description" content="Test your reaction time online for free. Measure your visual reflex speed in milliseconds with instant results. No signup required. Track your progress and improve your reflexes." />
-        <meta name="keywords" content="reaction time test, reflex test online, visual reaction speed, reaction time measurement, online reflex test, measure reaction time, improve reflexes" />
-        <meta property="og:title" content="Reaction Time Test - Measure Your Reflexes Online" />
-        <meta property="og:description" content="Measure your visual reaction speed in milliseconds. Free online test with instant results." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://reactiontestpro.com/og-image.png" />
-        <link rel="canonical" href="https://reactiontestpro.com/test/reaction-time" />
-      </Helmet>
+      <Seo
+        title="Reaction Time Test - Free Online Visual Reflex Test | ReactionTestPro"
+        description="Test your reaction time online for free. Measure your visual reflex speed in milliseconds with instant results. No signup required. Track your progress and improve your reflexes."
+        keywords="reaction time test, reflex test online, visual reaction speed, reaction time measurement, online reflex test, measure reaction time, improve reflexes"
+        canonical="/test/reaction-time"
+        jsonLd={[
+          webApplicationSchema({
+            name: 'Reaction Time Test',
+            description: 'Measure your visual reaction speed in milliseconds with instant results.',
+            path: '/test/reaction-time',
+          }),
+          breadcrumbSchema('Reaction Time Test', '/test/reaction-time'),
+          faqSchema(reactionFaqs),
+        ]}
+      />
 
       {/* Header */}
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
