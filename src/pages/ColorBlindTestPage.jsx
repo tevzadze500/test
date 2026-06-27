@@ -108,7 +108,7 @@ const ColorBlindTestPage = () => {
                   <Palette size={20} className="text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-white">TestHub</h1>
+                  <p className="text-lg font-bold text-white">TestHub</p>
                   <p className="text-xs text-dark-400">Quick screening</p>
                 </div>
               </div>

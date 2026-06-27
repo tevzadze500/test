@@ -148,9 +148,9 @@ function HomePage() {
 
             {/* Explore More Tests - Enhanced Mobile-First Section */}
             <div className="max-w-4xl mx-auto mb-12">
-              <h3 className="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
                 Explore More Tests
-              </h3>
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4">
                 <Link 
                   to="/test/reaction-time" 

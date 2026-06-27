@@ -45,6 +45,9 @@ const Seo = ({
       <meta property="og:type" content={type} />
       {url && <meta property="og:url" content={url} />}
       <meta property="og:image" content={image} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content={SITE_NAME} />
 
       {/* Twitter Card */}
@@ -52,6 +55,7 @@ const Seo = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={title} />
 
       {/* Structured data (JSON-LD) */}
       {schemas.map((schema, i) => (

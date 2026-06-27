@@ -122,9 +122,8 @@ const ReactionStatsCard = ({ stats, onReset }) => {
         </div>
       )}
 
-      {/* Reaction Time Scale */}
-      {stats.attempts > 0 && (
-        <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4">
+      {/* Reaction Time Scale — always shown (generic reference; avoids layout shift / adds static content) */}
+      <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4">
           <h4 className="text-sm font-semibold text-white mb-3">Reaction Time Scale</h4>
           <div className="space-y-2 text-xs">
             <div className="flex items-center justify-between">
@@ -149,7 +148,6 @@ const ReactionStatsCard = ({ stats, onReset }) => {
             </div>
           </div>
         </div>
-      )}
     </div>
   );
 };

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
-import AdhdSeoContent from '../components/AdhdSeoContent';
+import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 
 const questions = [
   // Attention / Focus (25 questions)
@@ -217,6 +217,7 @@ const AdhdTestPage = () => {
               category: "HealthApplication",
             }),
             breadcrumbSchema("ADHD Test", "/test/adhd"),
+            faqSchema(adhdFaqs),
           ]}
         />
         <div className="min-h-screen bg-dark-950">
@@ -229,9 +230,9 @@ const AdhdTestPage = () => {
                     <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                   </div>
                   <div>
-                    <h1 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
+                    <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
                       TestHub
-                    </h1>
+                    </p>
                     <p className="text-xs text-dark-400">Testing Platform</p>
                   </div>
                 </Link>
@@ -371,9 +372,9 @@ const AdhdTestPage = () => {
                   <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
                     TestHub
-                  </h1>
+                  </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
               </Link>

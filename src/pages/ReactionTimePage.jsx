@@ -96,9 +96,9 @@ const ReactionTimePage = () => {
                   <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">
+                  <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">
                     TestHub
-                  </h1>
+                  </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
               </Link>

@@ -126,9 +126,9 @@ const HearingTestPage = () => {
                   <Headphones size={20} className="text-white" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-bold text-white">
+                  <p className="text-lg font-bold text-white">
                     TestHub
-                  </h1>
+                  </p>
                   <p className="text-xs text-dark-400">Hearing health check</p>
                 </div>
               </div>

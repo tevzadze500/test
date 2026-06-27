@@ -1,6 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, CheckCircle2, AlertCircle, Target, TrendingUp, Users, FileText, Pin, ClipboardList, Zap, Eye } from 'lucide-react';
+import { Brain, CheckCircle2, AlertCircle, Target, TrendingUp, Users, FileText, Pin, ClipboardList, Zap, Eye, HelpCircle } from 'lucide-react';
+
+export const adhdFaqs = [
+  {
+    question: 'Can this test diagnose ADHD?',
+    answer: 'No. This is an educational self-assessment, not a diagnostic tool. Only a qualified healthcare professional can diagnose ADHD after a full clinical evaluation. Use your results as a starting point for reflection or a conversation with a doctor.',
+  },
+  {
+    question: 'What does the ADHD test measure?',
+    answer: 'It combines a 100-question self-report covering attention, focus, impulsivity, and activity level with a reaction-time component that reflects how consistently you respond. Together they give a picture of attention-related patterns — not a medical verdict.',
+  },
+  {
+    question: 'Is the ADHD test free and private?',
+    answer: 'Yes. It is completely free, requires no signup, and your answers are scored in your browser. Nothing is submitted to a server, so your responses stay on your device.',
+  },
+  {
+    question: 'What should I do with my results?',
+    answer: 'Treat the score as a reflection aid, not a diagnosis. If you recognise patterns that affect work, school, relationships, or daily life, consider discussing them with a qualified clinician who can provide a proper assessment.',
+  },
+];
 
 const AdhdSeoContent = () => {
   return (
@@ -249,6 +268,27 @@ const AdhdSeoContent = () => {
               <span>Your <strong className="text-white">100‑question assessment</strong> offers a detailed way to reflect on daily experiences and cognitive style.</span>
             </li>
           </ul>
+        </section>
+
+        {/* FAQ Section */}
+        <section>
+          <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-blue-500/20 border border-blue-500/40 flex items-center justify-center">
+              <HelpCircle size={18} className="text-blue-300" strokeWidth={2.4} />
+            </div>
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {adhdFaqs.map((faq, i) => (
+              <div key={i} className="bg-dark-800/40 border border-dark-700/50 rounded-xl p-5">
+                <h3 className="text-white font-semibold mb-2 flex items-start gap-2">
+                  <span className="text-blue-400 flex-shrink-0">Q:</span>
+                  {faq.question}
+                </h3>
+                <p className="text-dark-300 text-sm pl-6">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
         </section>
       </article>
 

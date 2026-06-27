@@ -8,7 +8,7 @@ const MobileTopBar = ({ onMenuToggle, isMenuOpen }) => {
         {/* Logo/Brand - Enhanced Visibility */}
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
-            <img src="/favicon.png" alt="" width="24" height="24" className="w-6 h-6 object-contain" />
+            <img src="/favicon.png" alt="" aria-hidden="true" width="24" height="24" className="w-6 h-6 object-contain" />
           </div>
           <span className="text-white font-bold text-base">TestHub</span>
         </div>

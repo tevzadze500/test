@@ -126,9 +126,9 @@ const F1ReactionPage = () => {
               <div className="flex items-center gap-3">
                 <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-10 h-10 rounded-lg" />
                 <div>
-                  <h1 className="text-lg font-bold text-white">
+                  <p className="text-lg font-bold text-white">
                     TestHub
-                  </h1>
+                  </p>
                   <p className="text-xs text-dark-400">F1 Lights Reaction</p>
                 </div>
               </div>
