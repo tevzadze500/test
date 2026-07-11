@@ -70,9 +70,9 @@ const ReactionTimePage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Reaction Time Test - Free Online Visual Reflex Test | ReactionTestPro"
-        description="Test your reaction time online for free. Measure your visual reflex speed in milliseconds with instant results. No signup required. Track your progress and improve your reflexes."
-        keywords="reaction time test, reflex test online, visual reaction speed, reaction time measurement, online reflex test, measure reaction time, improve reflexes"
+        title="Reaction Time Test – Check Your Reflexes & Average Speed"
+        description="Test your reaction time free in milliseconds. See how your reflexes compare to the average human reaction speed, learn what affects them, and how to react faster. No signup."
+        keywords="reaction time test, average reaction speed, human reflexes, how to test reflexes, millisecond reaction clock, visual reaction speed, measure reaction time"
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
@@ -149,10 +149,10 @@ const ReactionTimePage = () => {
             </div>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                Reaction Time Test
+                Reaction Time Test: Measure Your Instant Reflexes
               </h1>
               <p className="text-sm sm:text-base text-dark-400 mt-1">
-                Measure your visual reaction speed in milliseconds
+                How fast can you react? Measure your reflexes in milliseconds
               </p>
             </div>
           </div>
