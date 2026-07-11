@@ -205,18 +205,18 @@ const AdhdTestPage = () => {
     return (
       <>
         <Seo
-          title="100-Question ADHD Test & Reaction Time Quiz | Free Online Assessment"
-          description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
-          keywords="ADHD test, reaction time test, ADHD quiz, attention deficit test, focus test, impulse control test, ADHD self-assessment, online ADHD test, free ADHD quiz, ADHD symptoms test"
+          title="ADHD Screening Test – Check Your Focus & Impulse Control"
+          description="A free, private ADHD screening self-assessment for attention and impulse control. For education only — not a medical diagnosis. Get instant insights and clear next steps."
+          keywords="adhd screening test, adhd test, impulse control test, attention span check, adhd self-assessment, attention deficit test, focus test, online adhd screening"
           canonical="/test/adhd"
           jsonLd={[
             webApplicationSchema({
-              name: "ADHD Test",
-              description: "A free online 100-question ADHD self-assessment for attention, focus, and impulse control with instant results.",
+              name: "ADHD Screening Test",
+              description: "A free online ADHD screening self-assessment for attention, focus, and impulse control, with instant educational insights (not a diagnosis).",
               path: "/test/adhd",
               category: "HealthApplication",
             }),
-            breadcrumbSchema("ADHD Test", "/test/adhd"),
+            breadcrumbSchema("ADHD Screening Test", "/test/adhd"),
             faqSchema(adhdFaqs),
           ]}
         />
@@ -257,7 +257,7 @@ const AdhdTestPage = () => {
               <Brain size={44} className="text-white" strokeWidth={2.4} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              ADHD Self-Assessment Test
+              ADHD Screening Test: Check Your Attention & Impulse Control
             </h1>
             <p className="text-lg text-dark-300 max-w-2xl mx-auto">
               A behavioral self-assessment to help you understand patterns related to attention, focus, and impulse control.
