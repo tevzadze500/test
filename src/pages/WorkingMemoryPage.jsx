@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Brain, Clock, Users, Activity, Target, HelpCircle, AlertCircle, Trophy, Hash, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Brain, Clock, Users, Target, AlertCircle, Trophy, Hash, RotateCcw } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import MemoryTestArea from '../components/test/MemoryTestArea';
@@ -8,20 +8,20 @@ import ConversionFooter from '../components/ConversionFooter';
 
 const faqs = [
   {
-    question: 'What is working memory?',
-    answer: 'Working memory is your brain’s short-term workspace for holding and manipulating information over a few seconds — like remembering a phone number long enough to dial it. It underpins reasoning, learning, and following instructions.',
+    question: 'What is a good working memory span?',
+    answer: 'Reaching 7 or more items is excellent, and most adults land between 5 and 9 — the classic "seven plus or minus two" range. On this visual sequence test, a span of 9 or more is genius-tier.',
   },
   {
-    question: 'What is a good memory span?',
-    answer: 'The classic estimate is "seven plus or minus two" items for adults, so reaching a span of 5–9 is typical. Reproducing sequences of 7 or more is excellent, and 9+ is exceptional for this visual sequence test.',
+    question: 'How many numbers or items can the average person remember?',
+    answer: 'About seven, give or take two — so roughly 5 to 9 items in short-term memory. Grouping items into chunks (like a phone number) lets you effectively hold far more.',
   },
   {
-    question: 'How can I improve my working memory?',
-    answer: 'Practice, quality sleep, regular aerobic exercise, and reducing multitasking all help. Chunking (grouping items into meaningful patterns) and rehearsal strategies can noticeably increase how many items you can hold.',
+    question: 'Can working memory be improved with cognitive training?',
+    answer: 'You can meaningfully improve how well you use your capacity. Chunking, quality sleep, aerobic exercise, and cutting distractions all help you reach and sustain a higher span over time.',
   },
   {
-    question: 'Is this a clinical memory assessment?',
-    answer: 'No. This is an educational, entertainment-oriented test. It gives a rough indication of short-term visual-spatial memory but is not a diagnostic tool. For memory concerns, consult a qualified healthcare professional.',
+    question: 'Is this the same as a digit span task?',
+    answer: 'It is a visual-spatial version of the classic digit span task. Instead of recalling spoken numbers, you reproduce a growing sequence of tile positions, which taps your visual working memory.',
   },
 ];
 
@@ -57,9 +57,9 @@ const WorkingMemoryPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Working Memory Test - Sequence Recall & Memory Span | ReactionTestPro"
-        description="Test your working memory for free. Repeat growing sequences and measure your short-term memory span. Instant results, no signup required."
-        keywords="working memory test, memory span test, sequence memory, short-term memory test, digit span, visual memory test, cognitive memory test"
+        title="Working Memory Test – Can You Remember More Than 7 Digits?"
+        description="Take the free working memory test. Memorize a growing sequence, measure your short-term memory span, and see how you rank — most adults manage 5 to 9. No signup."
+        keywords="working memory test, working memory capacity, short-term memory test, digit span task, sequence memory, improve working memory, cognitive training, brain health"
         canonical="/test/memory"
         jsonLd={[
           webApplicationSchema({
@@ -80,7 +80,7 @@ const WorkingMemoryPage = () => {
                 <Brain size={20} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="hidden sm:block">
-                <h2 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">TestHub</h2>
+                <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">TestHub</p>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </Link>
@@ -99,8 +99,8 @@ const WorkingMemoryPage = () => {
               <Brain size={26} className="text-white" strokeWidth={2.5} />
             </div>
             <div className="min-w-0">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Working Memory Test</h1>
-              <p className="text-sm sm:text-base text-dark-400 mt-1">Repeat the sequence — how far can you go?</p>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Working Memory Test: Challenge Your Short-Term Cognitive Capacity</h1>
+              <p className="text-sm sm:text-base text-dark-400 mt-1">Repeat the growing sequence — how far can your memory span stretch?</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
@@ -136,50 +136,100 @@ const WorkingMemoryPage = () => {
         </div>
 
         <div className="border-t border-dark-800 pt-8 sm:pt-12 space-y-8">
+          {/* Hook + What Is Working Memory */}
           <section>
-            <h2 className="text-3xl font-bold text-white mb-4">About the Working Memory Test</h2>
-            <p className="text-dark-300 text-lg leading-relaxed">
-              The Working Memory Test challenges your short-term memory by showing a sequence of tiles that light up on a 3&times;3 grid.
-              You then reproduce the sequence in the exact order. Each time you succeed, the sequence grows by one. The test ends when
-              you make a mistake, and your score is your memory span — the longest sequence you reproduced correctly.
+            <p className="text-dark-200 text-lg leading-relaxed mb-8">
+              How much can your mind actually hold at once? Your working memory — the brain's short-term scratchpad — sets the ceiling on your focus, learning and mental speed. This free working memory test pushes that limit: memorize a growing sequence, repeat it back perfectly, and find out exactly where your <strong className="text-white">working memory capacity</strong> ranks.
+            </p>
+            <h2 className="text-3xl font-bold text-white mb-4">What Is Working Memory?</h2>
+            <p className="text-dark-300 leading-relaxed">
+              Working memory is your brain's mental workspace — the system that holds and manipulates information for a few seconds while you actively use it. It is what lets you keep a phone number in mind long enough to dial it, follow multi-step instructions, or do mental math. Unlike long-term memory, it is small, fast and easily disrupted by distraction, and your capacity here is one of the strongest predictors of learning, focus and problem-solving ability.
             </p>
           </section>
 
-          <section className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center"><Activity className="text-white" size={20} /></div>
-              <h3 className="text-xl font-bold text-white">How It Works</h3>
-            </div>
-            <div className="space-y-3 text-dark-300">
-              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">1</span><p>Press Start and watch the tiles flash in sequence.</p></div>
-              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">2</span><p>Click the tiles in the same order to repeat the sequence.</p></div>
-              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">3</span><p>Each correct round adds one more tile, increasing the challenge.</p></div>
-              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">4</span><p>One mistake ends the test — your memory span is the longest sequence you nailed.</p></div>
-            </div>
-          </section>
-
-          <section className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center"><Target className="text-white" size={20} /></div>
-              <h3 className="text-xl font-bold text-white">Memory Span Benchmarks</h3>
-            </div>
-            <div className="space-y-3">
-              <div className="p-3 bg-dark-800/50 rounded-lg"><span className="text-purple-400 font-semibold">9+ items</span><p className="text-xs text-dark-400 mt-1">Exceptional — well above the typical adult range</p></div>
-              <div className="p-3 bg-dark-800/50 rounded-lg"><span className="text-green-400 font-semibold">7–8 items</span><p className="text-xs text-dark-400 mt-1">Excellent working memory</p></div>
-              <div className="p-3 bg-dark-800/50 rounded-lg"><span className="text-blue-400 font-semibold">5–6 items</span><p className="text-xs text-dark-400 mt-1">Average adult range ("seven plus or minus two")</p></div>
-              <div className="p-3 bg-dark-800/50 rounded-lg"><span className="text-yellow-400 font-semibold">3–4 items</span><p className="text-xs text-dark-400 mt-1">Room to grow — try again after a short break</p></div>
-            </div>
-          </section>
-
+          {/* How this test works */}
           <section>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center"><HelpCircle className="text-white" size={20} /></div>
-              <h3 className="text-xl font-bold text-white">Frequently Asked Questions</h3>
+            <h2 className="text-3xl font-bold text-white mb-4">How This Working Memory Test Works</h2>
+            <p className="text-dark-300 leading-relaxed mb-5">
+              This <strong className="text-white">short-term memory test</strong> is a visual sequence challenge on a 3&times;3 grid — a modern, spatial take on the classic <strong className="text-white">digit span task</strong>.
+            </p>
+            <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6 space-y-3 text-dark-300">
+              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">1</span><p><strong className="text-white">Watch:</strong> tiles light up one after another in a set order.</p></div>
+              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">2</span><p><strong className="text-white">Repeat:</strong> tap them back in the exact same sequence.</p></div>
+              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">3</span><p><strong className="text-white">Level up:</strong> every correct round adds one more tile.</p></div>
+              <div className="flex gap-3"><span className="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">4</span><p><strong className="text-white">Push your limit:</strong> one mistake ends the run — your score is your memory span, the longest sequence you reproduced perfectly.</p></div>
             </div>
+          </section>
+
+          {/* Average score + benchmark table */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">What Is an Average Working Memory Score?</h2>
+            <p className="text-dark-300 leading-relaxed mb-5">
+              Most adults land between <strong className="text-white">5 and 9 items</strong>. Because this is a <em>visual-spatial</em> sequence (closer to the Corsi block task than a spoken digit span), typical scores often sit a little lower than the famous "7" for numbers. Here is how to read your result:
+            </p>
+            <div className="overflow-x-auto rounded-xl border border-dark-800">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="bg-dark-900/60 text-dark-400">
+                    <th className="py-3 px-4 font-semibold whitespace-nowrap">Your span</th>
+                    <th className="py-3 px-4 font-semibold whitespace-nowrap">Level</th>
+                    <th className="py-3 px-4 font-semibold">What it means</th>
+                  </tr>
+                </thead>
+                <tbody className="text-dark-300">
+                  <tr className="border-t border-dark-800">
+                    <td className="py-3 px-4 font-bold text-purple-400 whitespace-nowrap">9+ items</td>
+                    <td className="py-3 px-4 whitespace-nowrap">🧠 Genius</td>
+                    <td className="py-3 px-4">Elite working memory — well beyond the average range</td>
+                  </tr>
+                  <tr className="border-t border-dark-800">
+                    <td className="py-3 px-4 font-bold text-green-400 whitespace-nowrap">7–8 items</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Above Average</td>
+                    <td className="py-3 px-4">Sharp, focused recall — better than most adults</td>
+                  </tr>
+                  <tr className="border-t border-dark-800">
+                    <td className="py-3 px-4 font-bold text-blue-400 whitespace-nowrap">5–6 items</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Typical Adult</td>
+                    <td className="py-3 px-4">Right in the normal human range for a visual span</td>
+                  </tr>
+                  <tr className="border-t border-dark-800">
+                    <td className="py-3 px-4 font-bold text-yellow-400 whitespace-nowrap">≤ 4 items</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Training Needed</td>
+                    <td className="py-3 px-4">Likely a warm-up or a distraction — try again refreshed</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* The science / Miller's Law */}
+          <section className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6">
+            <h2 className="text-2xl font-bold text-white mb-4">The Science Behind Your Memory Span</h2>
+            <p className="text-dark-300 leading-relaxed">
+              In 1956, psychologist George Miller published one of the most cited papers in cognitive science: "The Magical Number Seven, Plus or Minus Two." His insight — now known as <strong className="text-white">Miller's Law</strong> — is that the average person can hold about <strong className="text-white">7 items</strong> (give or take two) in short-term memory at once. Later research refined the number downward toward four "chunks," but the core idea holds: your mind has a hard ceiling on raw items. Top performers don't have a bigger brain — they simply encode information more cleverly.
+            </p>
+          </section>
+
+          {/* How to improve */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">How to Improve Your Working Memory and Focus</h2>
+            <p className="text-dark-300 leading-relaxed mb-4">Your raw capacity is partly fixed, but how well you <em>use</em> it responds strongly to <strong className="text-white">cognitive training</strong> and healthy habits:</p>
+            <ul className="space-y-3 text-dark-300">
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Chunk it</strong> — group items into meaningful clusters (think "555-0199", not seven loose digits). Chunking is the single biggest lever for <strong className="text-white">improving working memory</strong>.</span></li>
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Protect your sleep</strong> — memory consolidation happens overnight; even one poor night measurably shrinks your span.</span></li>
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Kill distractions</strong> — every notification forces a costly mental reload. Single-task when it matters.</span></li>
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Move your body</strong> — regular aerobic exercise supports <strong className="text-white">brain health</strong> and the prefrontal circuits behind working memory.</span></li>
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Train your processing speed too</strong> — memory works best when your brain registers information fast. Pair this with our <Link to="/test/f1-reaction" className="text-green-400 hover:text-green-300 underline font-medium">F1 Reaction Test</Link>: sharp visual processing speed is the perfect complement to short-term memory.</span></li>
+            </ul>
+          </section>
+
+          {/* FAQ */}
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
                 <div key={i} className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-5">
-                  <h4 className="text-white font-semibold mb-2 flex items-start gap-2"><span className="text-green-500 flex-shrink-0">Q:</span>{faq.question}</h4>
+                  <h3 className="text-white font-semibold mb-2 flex items-start gap-2"><span className="text-green-500 flex-shrink-0">Q:</span>{faq.question}</h3>
                   <p className="text-dark-300 text-sm pl-6">{faq.answer}</p>
                 </div>
               ))}
