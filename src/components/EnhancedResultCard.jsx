@@ -119,7 +119,7 @@ const EnhancedResultCard = ({
           className="flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-green-500/30 text-base sm:text-lg group touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
         >
           <RotateCcw size={20} className="sm:w-6 sm:h-6 group-hover:rotate-180 transition-transform duration-500" />
-          <span>Beat Your Score</span>
+          <span>Try Again</span>
         </button>
 
         {/* Share Button */}

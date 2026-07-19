@@ -453,7 +453,7 @@ const AdhdTestPage = () => {
               className="flex-1 flex items-center justify-center gap-2 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 text-white font-bold rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             >
               <RotateCcw size={20} />
-              Retry Test
+              Try Again
             </button>
             <button
               type="button"
