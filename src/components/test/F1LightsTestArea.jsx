@@ -8,6 +8,7 @@ import {
   getComparisonMessage,
   generateShareMessage,
   getSuggestedTests,
+  getDynamicF1Leaderboard,
 } from '../../utils/scoreUtils';
 
 const PHASES = {
@@ -251,6 +252,7 @@ const F1LightsTestArea = ({ onResult }) => {
               percentile={getReactionTimePercentile(reactionTime)}
               motivation={getF1Motivation(reactionTime)}
               comparisonMessage={getComparisonMessage(getReactionTimePercentile(reactionTime))}
+              leaderboard={getDynamicF1Leaderboard(reactionTime)}
               onRetry={(e) => {
                 if (e) e.stopPropagation();
                 retry();

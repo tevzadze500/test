@@ -76,6 +76,46 @@ export const getF1Motivation = (score) => {
   return "Oops, you stalled on the grid! Hit Start and take your revenge.";
 };
 
+// Tier bands used to build the F1 mini-leaderboard (fastest -> slowest).
+const F1_TIER_BANDS = [
+  { name: 'Hamilton Tier', max: 229 },
+  { name: 'Future F1 Pro', max: 280 },
+  { name: 'Pro Kart Racer', max: 350 },
+  { name: 'Solid Driver', max: 450 },
+  { name: 'Safety Car', max: Infinity },
+];
+
+/**
+ * Builds a 3-row mini-leaderboard where the player is ALWAYS in the middle:
+ * one rival just ahead (always faster) and one just behind (always slower).
+ * Rival names come from the neighbouring tiers; at the extremes we invent a
+ * plausible neighbour ("Verstappen (sim)" above, "Safety Car #2" below) so the
+ * board never breaks for a 100ms or a 1200ms run.
+ */
+export const getDynamicF1Leaderboard = (score) => {
+  const safeScore = Math.max(1, Math.round(score || 0));
+  const idx = F1_TIER_BANDS.findIndex((tier) => safeScore <= tier.max);
+  const gap = Math.max(18, Math.round(safeScore * 0.08));
+
+  // Rival ahead — guaranteed faster than the player
+  const aheadTier = idx > 0 ? F1_TIER_BANDS[idx - 1] : null;
+  const aheadName = aheadTier ? aheadTier.name : 'Verstappen (sim)';
+  const aheadRaw = aheadTier
+    ? Math.min(aheadTier.max - 10, safeScore - gap)
+    : safeScore - gap;
+  const aheadTime = Math.max(1, Math.min(aheadRaw, safeScore - 1));
+
+  // Rival behind — guaranteed slower than the player
+  const behindName =
+    idx < F1_TIER_BANDS.length - 1 ? F1_TIER_BANDS[idx + 1].name : 'Safety Car #2';
+
+  return [
+    { position: 1, name: aheadName, time: aheadTime, isPlayer: false },
+    { position: 2, name: 'You', time: safeScore, isPlayer: true },
+    { position: 3, name: behindName, time: safeScore + gap, isPlayer: false },
+  ];
+};
+
 // Go/No-Go Test Utilities
 export const getGoNoGoLevel = (accuracy) => {
   if (accuracy >= 95) return { name: 'Master', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };

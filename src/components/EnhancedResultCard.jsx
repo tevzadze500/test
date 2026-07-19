@@ -28,6 +28,7 @@ const EnhancedResultCard = ({
   suggestedTests,
   shareMessage,
   additionalStats,
+  leaderboard, // optional: [{ position, name, time, isPlayer }] — opt-in per test
   children
 }) => {
   const [copied, setCopied] = useState(false);
@@ -70,27 +71,47 @@ const EnhancedResultCard = ({
           </div>
         </div>
 
-        {/* Percentile */}
-        {percentile !== undefined && (
-          <div className="mb-3 sm:mb-4">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <TrendingUp size={18} className="sm:w-5 sm:h-5 text-blue-400" />
-              <span className="text-xl sm:text-2xl font-bold text-blue-400">
-                Top {100 - percentile}%
-              </span>
-            </div>
-            <p className="text-dark-300 text-sm sm:text-base md:text-lg px-4">
-              {comparisonMessage}
-            </p>
-          </div>
-        )}
-
-        {/* Motivational Message */}
-        {motivation && (
-          <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-green-500/10 to-emerald-600/10 border border-green-500/20 rounded-lg sm:rounded-xl">
-            <p className="text-base sm:text-lg text-white font-medium">
-              {motivation}
-            </p>
+        {/* Mini leaderboard — the player always sits in the middle */}
+        {leaderboard && leaderboard.length > 0 && (
+          <div className="mb-4 sm:mb-6 rounded-xl border border-dark-800 bg-dark-950/70 p-2 sm:p-3">
+            <ul className="space-y-1.5">
+              {leaderboard.map((row) => (
+                <li
+                  key={row.position}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 sm:py-2.5 ${
+                    row.isPlayer
+                      ? `${level?.bg || 'bg-green-500/10'} ${level?.border || 'border-green-500/30'} border-2`
+                      : 'border border-transparent bg-dark-900/60'
+                  }`}
+                >
+                  <span
+                    className={`w-6 shrink-0 text-center text-sm font-bold ${
+                      row.isPlayer ? level?.color || 'text-green-400' : 'text-dark-500'
+                    }`}
+                  >
+                    {row.position}
+                  </span>
+                  <span
+                    className={`flex-1 truncate text-left text-sm sm:text-base ${
+                      row.isPlayer
+                        ? `font-bold ${level?.color || 'text-green-400'}`
+                        : 'text-dark-300'
+                    }`}
+                  >
+                    {row.name}
+                  </span>
+                  <span
+                    className={`shrink-0 tabular-nums text-sm sm:text-base ${
+                      row.isPlayer
+                        ? `font-bold ${level?.color || 'text-green-400'}`
+                        : 'text-dark-400'
+                    }`}
+                  >
+                    {row.time} {scoreLabel}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
 
@@ -108,6 +129,26 @@ const EnhancedResultCard = ({
 
         {/* Custom Children Content */}
         {children}
+
+        {/* Compact footer: percentile + motivation, right above the action buttons */}
+        {(percentile !== undefined || motivation) && (
+          <div className="mt-4 sm:mt-6 space-y-1.5 border-t border-dark-800 pt-3 sm:pt-4">
+            {percentile !== undefined && (
+              <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm">
+                <span className="inline-flex items-center gap-1.5 font-semibold text-blue-400">
+                  <TrendingUp size={14} />
+                  Top {100 - percentile}%
+                </span>
+                {comparisonMessage && (
+                  <span className="text-dark-400">{comparisonMessage}</span>
+                )}
+              </div>
+            )}
+            {motivation && (
+              <p className="text-xs sm:text-sm text-dark-300 px-2">{motivation}</p>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Action Buttons */}
