@@ -85,35 +85,55 @@ const F1_TIER_BANDS = [
   { name: 'Safety Car', max: Infinity },
 ];
 
+// Full race grid, fastest -> slowest. The five scoring tiers sit at indices 3-7,
+// so there are always exactly three names above and three below the player.
+const F1_GRID_ROSTER = [
+  'Verstappen (sim)',
+  'Leclerc (sim)',
+  'Norris (sim)',
+  'Hamilton Tier',
+  'Future F1 Pro',
+  'Pro Kart Racer',
+  'Solid Driver',
+  'Safety Car',
+  'Safety Car #2',
+  'Pit Lane Rookie',
+  'Formation Lap',
+];
+
 /**
- * Builds a 3-row mini-leaderboard where the player is ALWAYS in the middle:
- * one rival just ahead (always faster) and one just behind (always slower).
- * Rival names come from the neighbouring tiers; at the extremes we invent a
- * plausible neighbour ("Verstappen (sim)" above, "Safety Car #2" below) so the
- * board never breaks for a 100ms or a 1200ms run.
+ * Builds a 7-row race grid where the player is ALWAYS 4th (dead centre):
+ * three rivals ahead (each strictly faster) and three behind (each strictly
+ * slower). Rival names are taken from the roster around the player's own tier,
+ * so the grid stays plausible whether the run is 100ms or 1200ms.
  */
 export const getDynamicF1Leaderboard = (score) => {
   const safeScore = Math.max(1, Math.round(score || 0));
-  const idx = F1_TIER_BANDS.findIndex((tier) => safeScore <= tier.max);
-  const gap = Math.max(18, Math.round(safeScore * 0.08));
+  const tierIdx = F1_TIER_BANDS.findIndex((tier) => safeScore <= tier.max);
+  const rosterIdx = F1_GRID_ROSTER.indexOf(F1_TIER_BANDS[tierIdx].name);
+  const gap = Math.max(12, Math.round(safeScore * 0.05));
 
-  // Rival ahead — guaranteed faster than the player
-  const aheadTier = idx > 0 ? F1_TIER_BANDS[idx - 1] : null;
-  const aheadName = aheadTier ? aheadTier.name : 'Verstappen (sim)';
-  const aheadRaw = aheadTier
-    ? Math.min(aheadTier.max - 10, safeScore - gap)
-    : safeScore - gap;
-  const aheadTime = Math.max(1, Math.min(aheadRaw, safeScore - 1));
+  // Three rivals ahead — strictly decreasing times
+  const ahead = [];
+  let prev = safeScore;
+  for (let n = 1; n <= 3; n += 1) {
+    const time = Math.max(1, Math.min(prev - 1, safeScore - gap * n));
+    ahead.push({ name: F1_GRID_ROSTER[rosterIdx - n], time, isPlayer: false });
+    prev = time;
+  }
+  ahead.reverse(); // fastest at the top of the grid
 
-  // Rival behind — guaranteed slower than the player
-  const behindName =
-    idx < F1_TIER_BANDS.length - 1 ? F1_TIER_BANDS[idx + 1].name : 'Safety Car #2';
+  // Three rivals behind — strictly increasing times
+  const behind = [];
+  for (let n = 1; n <= 3; n += 1) {
+    behind.push({
+      name: F1_GRID_ROSTER[rosterIdx + n],
+      time: safeScore + gap * n,
+      isPlayer: false,
+    });
+  }
 
-  return [
-    { position: 1, name: aheadName, time: aheadTime, isPlayer: false },
-    { position: 2, name: 'You', time: safeScore, isPlayer: true },
-    { position: 3, name: behindName, time: safeScore + gap, isPlayer: false },
-  ];
+  return [...ahead, { name: 'You', time: safeScore, isPlayer: true }, ...behind];
 };
 
 // Go/No-Go Test Utilities

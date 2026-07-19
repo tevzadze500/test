@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Zap,
   Lightbulb,
+  CircleUser,
 } from 'lucide-react';
 import TestIcon from './icons/TestIcon';
 
@@ -32,6 +33,12 @@ const EnhancedResultCard = ({
   children
 }) => {
   const [copied, setCopied] = useState(false);
+
+  // Normalise the grid times so each row can show a "pace" bar: the quickest lap
+  // fills the row, the slowest keeps a short stub.
+  const gridTimes = leaderboard?.map((row) => row.time) ?? [];
+  const gridFastest = gridTimes.length ? Math.min(...gridTimes) : 0;
+  const gridSpan = (gridTimes.length ? Math.max(...gridTimes) : 0) - gridFastest || 1;
 
   const handleShare = async () => {
     try {
@@ -71,47 +78,60 @@ const EnhancedResultCard = ({
           </div>
         </div>
 
-        {/* Mini leaderboard — the player always sits in the middle */}
+        {/* Race grid — the player always sits dead centre */}
         {leaderboard && leaderboard.length > 0 && (
-          <div className="mb-4 sm:mb-6 rounded-xl border border-dark-800 bg-dark-950/70 p-2 sm:p-3">
-            <ul className="space-y-1.5">
-              {leaderboard.map((row) => (
-                <li
-                  key={row.position}
-                  className={`flex items-center gap-3 rounded-lg px-3 py-2 sm:py-2.5 ${
-                    row.isPlayer
-                      ? `${level?.bg || 'bg-green-500/10'} ${level?.border || 'border-green-500/30'} border-2`
-                      : 'border border-transparent bg-dark-900/60'
-                  }`}
-                >
-                  <span
-                    className={`w-6 shrink-0 text-center text-sm font-bold ${
-                      row.isPlayer ? level?.color || 'text-green-400' : 'text-dark-500'
-                    }`}
-                  >
-                    {row.position}
-                  </span>
-                  <span
-                    className={`flex-1 truncate text-left text-sm sm:text-base ${
+          <div className="mb-4 sm:mb-6 rounded-xl border border-dark-800 bg-dark-950/70 p-2 sm:p-2.5">
+            <div className="flex flex-col gap-1">
+              {leaderboard.map((row, index) => {
+                // Wider bar = quicker lap (100% for the fastest, ~30% for the slowest)
+                const pace = Math.round(100 - ((row.time - gridFastest) / gridSpan) * 70);
+                return (
+                  <div
+                    key={index}
+                    className={`relative overflow-hidden rounded-lg px-3 py-2 ${
                       row.isPlayer
-                        ? `font-bold ${level?.color || 'text-green-400'}`
-                        : 'text-dark-300'
+                        ? 'border-2 border-green-500/50 bg-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
+                        : 'border border-dark-800 bg-dark-900/40'
                     }`}
                   >
-                    {row.name}
-                  </span>
-                  <span
-                    className={`shrink-0 tabular-nums text-sm sm:text-base ${
-                      row.isPlayer
-                        ? `font-bold ${level?.color || 'text-green-400'}`
-                        : 'text-dark-400'
-                    }`}
-                  >
-                    {row.time} {scoreLabel}
-                  </span>
-                </li>
-              ))}
-            </ul>
+                    <div className="flex items-center gap-2.5">
+                      <CircleUser
+                        size={16}
+                        className={`shrink-0 ${row.isPlayer ? 'text-green-400' : 'text-dark-500'}`}
+                      />
+                      <span
+                        className={`flex-1 truncate text-left ${
+                          row.isPlayer
+                            ? 'text-sm sm:text-base font-bold text-green-400'
+                            : 'text-sm text-dark-300'
+                        }`}
+                      >
+                        {row.name}
+                      </span>
+                      {row.isPlayer && (
+                        <span className="shrink-0 rounded bg-green-500 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-dark-950">
+                          YOU
+                        </span>
+                      )}
+                      <span
+                        className={`shrink-0 tabular-nums text-sm ${
+                          row.isPlayer ? 'font-bold text-green-400' : 'text-dark-400'
+                        }`}
+                      >
+                        {row.time} {scoreLabel}
+                      </span>
+                    </div>
+                    {/* Pace bar */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-0.5 rounded-r ${
+                        row.isPlayer ? 'bg-green-400' : 'bg-dark-600'
+                      }`}
+                      style={{ width: `${pace}%` }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
