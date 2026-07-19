@@ -58,22 +58,22 @@ export const getComparisonMessage = (percentile) => {
 };
 
 // F1 Reaction Test Utilities
+// Tiers are deliberately generous and share-oriented: the goal is for players to
+// finish the run feeling fast and want to post their result.
 export const getF1ReactionLevel = (score) => {
-  if (score < 180) return { name: 'F1 Legend', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
-  if (score < 220) return { name: 'Pro Driver', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
-  if (score < 260) return { name: 'Racing Pro', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
-  if (score < 300) return { name: 'Skilled', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
-  if (score < 350) return { name: 'Amateur', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
-  return { name: 'Rookie', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+  if (score < 230) return { name: 'Hamilton Tier', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (score <= 280) return { name: 'Future F1 Pro', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (score <= 350) return { name: 'Pro Kart Racer', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (score <= 450) return { name: 'Solid Driver', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
+  return { name: 'Safety Car', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
 };
 
 export const getF1Motivation = (score) => {
-  if (score < 180) return "You could compete with F1 legends.";
-  if (score < 220) return "Pro driver reflexes. Race-ready.";
-  if (score < 260) return "Great start. Train to reach Pro level.";
-  if (score < 300) return "Good timing. Keep pushing your limits.";
-  if (score < 350) return "Keep practicing. Speed comes with repetition.";
-  return "Every racer starts somewhere. Keep training.";
+  if (score < 230) return "Unreal! You've got the launch reflexes of a seven-time world champion. Straight-up F1 material.";
+  if (score <= 280) return "Elite reflexes. You're faster than 90% of drivers — Formula 1 is calling.";
+  if (score <= 350) return "Seriously sharp reaction time! A little more practice and you're running with the big leagues.";
+  if (score <= 450) return "Solid! Your tyres were just a little cold — go again and warm those reflexes up.";
+  return "Oops, you stalled on the grid! Hit Start and take your revenge.";
 };
 
 // Go/No-Go Test Utilities

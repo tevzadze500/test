@@ -1,24 +1,12 @@
 import React from 'react';
 import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
+import { getF1ReactionLevel } from '../../utils/scoreUtils';
 
 const F1StatsCard = ({ stats, onReset }) => {
-  const getScoreColor = (score) => {
-    if (!score) return 'text-dark-400';
-    if (score < 200) return 'text-green-500';
-    if (score < 250) return 'text-green-400';
-    if (score < 300) return 'text-blue-400';
-    if (score < 350) return 'text-yellow-400';
-    return 'text-orange-400';
-  };
-
-  const getScoreRating = (score) => {
-    if (!score) return 'No data';
-    if (score < 200) return 'Elite';
-    if (score < 250) return 'Excellent';
-    if (score < 300) return 'Good';
-    if (score < 350) return 'Average';
-    return 'Slow';
-  };
+  // Single source of truth: the same tiers the result screen shows, so the
+  // sidebar can never disagree with the headline level.
+  const getScoreColor = (score) => (score ? getF1ReactionLevel(score).color : 'text-dark-400');
+  const getScoreRating = (score) => (score ? getF1ReactionLevel(score).name : 'No data');
 
   return (
     <div className="space-y-4">
