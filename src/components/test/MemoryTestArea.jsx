@@ -90,7 +90,7 @@ const MemoryTestArea = ({ onResult }) => {
         <p className="text-dark-400 text-sm mb-2">Your memory span</p>
         <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{finalSpan}<span className="text-2xl text-dark-400 ml-2">items</span></div>
         <div className={`text-lg font-semibold mb-8 ${rating.color}`}>{rating.name}</div>
-        <button onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px]">
+        <button type="button" onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
           <RotateCcw size={18} /> Play Again
         </button>
       </div>
@@ -122,7 +122,7 @@ const MemoryTestArea = ({ onResult }) => {
               aria-label={`Tile ${tile + 1}`}
               onClick={() => handleTile(tile)}
               disabled={phase !== 'input'}
-              className={`w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 transition-all duration-150 touch-manipulation
+              className={`w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 transition-all duration-150 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400
                 ${lit
                   ? 'bg-gradient-to-br from-green-400 to-emerald-500 border-green-300 scale-105 shadow-lg shadow-green-500/40'
                   : 'bg-dark-800 border-dark-700'}
@@ -133,7 +133,7 @@ const MemoryTestArea = ({ onResult }) => {
       </div>
 
       {phase === 'idle' && (
-        <button onClick={startGame} className="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white font-bold transition-colors min-h-[52px]">
+        <button type="button" onClick={startGame} className="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white font-bold transition-colors min-h-[52px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
           <Play size={20} /> Start Test
         </button>
       )}

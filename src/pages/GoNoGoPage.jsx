@@ -216,7 +216,7 @@ const GoNoGoPage = () => {
 
           {/* Stats Sidebar (1 column on large screens) */}
           <div className="lg:col-span-1">
-            <GoNoGoStatsCard stats={currentStats} onRetry={testComplete ? handleRetry : null} />
+            <GoNoGoStatsCard stats={currentStats} onRetry={null} />
           </div>
         </div>
 

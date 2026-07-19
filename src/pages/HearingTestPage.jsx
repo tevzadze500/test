@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart, Lightbulb } from 'lucide-react';
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
@@ -72,10 +73,6 @@ const HearingTestPage = () => {
     }
   };
 
-  const closeWindow = () => {
-    window.close();
-  };
-
   const faqs = [
     {
       question: 'What frequency range does the online hearing test cover?',
@@ -121,27 +118,31 @@ const HearingTestPage = () => {
           <div className="flex items-center justify-between">
             {/* Left: Brand */}
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                aria-label="TestHub home"
+                className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
                   <Headphones size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-white">
+                  <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
                     TestHub
                   </p>
                   <p className="text-xs text-dark-400">Hearing health check</p>
                 </div>
-              </div>
+              </Link>
 
               <div className="h-8 w-px bg-dark-800" />
 
-              <button
-                onClick={closeWindow}
-                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
+              <Link
+                to="/"
+                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               >
                 <ArrowLeft size={16} />
-                <span className="text-sm font-medium">Close</span>
-              </button>
+                <span className="text-sm font-medium">Back to Home</span>
+              </Link>
             </div>
 
             {/* Right: Quick Stats */}

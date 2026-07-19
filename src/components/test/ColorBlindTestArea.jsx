@@ -295,8 +295,9 @@ const ColorBlindTestArea = ({ onResult }) => {
             </div>
 
             <button
+              type="button"
               onClick={startTest}
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-purple-500/30 text-base sm:text-lg touch-manipulation min-h-[48px]"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-purple-500/30 text-base sm:text-lg touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
             >
               <Play size={20} className="sm:w-6 sm:h-6" />
               <span>Start Test</span>
@@ -358,9 +359,10 @@ const ColorBlindTestArea = ({ onResult }) => {
                 return (
                   <button
                     key={option}
+                    type="button"
                     onClick={() => handleAnswer(option)}
                     disabled={showFeedback}
-                    className={`py-3 sm:py-4 text-xl sm:text-2xl font-bold rounded-xl transition-all touch-manipulation min-h-[56px] ${btnClass}`}
+                    className={`py-3 sm:py-4 text-xl sm:text-2xl font-bold rounded-xl transition-all touch-manipulation min-h-[56px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${btnClass}`}
                   >
                     {option}
                   </button>

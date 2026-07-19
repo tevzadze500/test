@@ -256,8 +256,9 @@ const HearingTestArea = ({ onResult }) => {
             </div>
 
             <button
+              type="button"
               onClick={initAudio}
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-blue-500/30 text-base sm:text-lg touch-manipulation min-h-[48px]"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-blue-500/30 text-base sm:text-lg touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
               <Play size={20} className="sm:w-6 sm:h-6" />
               <span>Start Test</span>
@@ -335,9 +336,10 @@ const HearingTestArea = ({ onResult }) => {
               </p>
               <div className="flex justify-center gap-4">
                 <button
+                  type="button"
                   onClick={() => handleResponse(true)}
                   disabled={isPlaying}
-                  className={`flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-4 font-bold rounded-xl transition-all touch-manipulation min-h-[48px] text-base sm:text-lg ${
+                  className={`flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-4 font-bold rounded-xl transition-all touch-manipulation min-h-[48px] text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                     isPlaying
                       ? 'bg-dark-800 text-dark-500 cursor-not-allowed'
                       : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white shadow-lg shadow-green-500/30'
@@ -347,9 +349,10 @@ const HearingTestArea = ({ onResult }) => {
                   <span>Yes, I heard it</span>
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleResponse(false)}
                   disabled={isPlaying}
-                  className={`flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-4 font-bold rounded-xl transition-all touch-manipulation min-h-[48px] text-base sm:text-lg ${
+                  className={`flex items-center gap-2 px-8 sm:px-10 py-3 sm:py-4 font-bold rounded-xl transition-all touch-manipulation min-h-[48px] text-base sm:text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                     isPlaying
                       ? 'bg-dark-800 text-dark-500 cursor-not-allowed'
                       : 'bg-dark-800 hover:bg-dark-700 border-2 border-dark-700 hover:border-red-500/50 text-white'
@@ -363,8 +366,9 @@ const HearingTestArea = ({ onResult }) => {
               {/* Replay Button */}
               {!isPlaying && (
                 <button
+                  type="button"
                   onClick={replayTone}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-blue-400 transition-colors text-sm touch-manipulation"
+                  className="inline-flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-blue-400 transition-colors text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg"
                 >
                   <RotateCcw size={14} />
                   <span>Replay tone</span>

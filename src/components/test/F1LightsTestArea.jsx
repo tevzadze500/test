@@ -36,6 +36,8 @@ const F1LightsTestArea = ({ onResult }) => {
   }, []);
 
   const startTest = () => {
+    clearInterval(intervalRef.current);
+    clearTimeout(timeoutRef.current);
     setState(TEST_STATES.LIGHTING_SEQUENCE);
     setActiveLights(0);
     setReactionTime(null);
@@ -91,15 +93,29 @@ const F1LightsTestArea = ({ onResult }) => {
   };
 
   const retry = () => {
+    clearInterval(intervalRef.current);
+    clearTimeout(timeoutRef.current);
     setState(TEST_STATES.INTRO);
     setActiveLights(0);
     setReactionTime(null);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      handleClick();
+    }
+  };
+
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label="F1 lights reaction test — react when the lights go out"
+      aria-live="polite"
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       className={`
         relative overflow-hidden
         bg-gradient-to-br from-dark-900 to-dark-950
@@ -109,6 +125,7 @@ const F1LightsTestArea = ({ onResult }) => {
         min-h-[500px] sm:min-h-[600px] md:min-h-[700px]
         ${state !== TEST_STATES.INTRO && state !== TEST_STATES.RESULT && state !== TEST_STATES.FALSE_START ? 'cursor-pointer' : ''}
         select-none touch-manipulation
+        focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-red-500/50
         ${state === TEST_STATES.LIGHTS_OUT ? 'bg-dark-950 border-dark-700' : 'border-dark-800'}
       `}
     >
@@ -146,11 +163,12 @@ const F1LightsTestArea = ({ onResult }) => {
             </div>
 
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 startTest();
               }}
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-red-500/30 text-base sm:text-lg touch-manipulation min-h-[48px]"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-red-500/30 text-base sm:text-lg touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
             >
               <Play size={20} className="sm:w-6 sm:h-6" />
               <span>Start Test</span>
@@ -249,11 +267,12 @@ const F1LightsTestArea = ({ onResult }) => {
             </div>
 
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 retry();
               }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-colors touch-manipulation min-h-[48px]"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg transition-colors touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
             >
               <RotateCcw size={20} />
               <span>Try Again</span>

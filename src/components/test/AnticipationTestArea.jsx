@@ -59,6 +59,7 @@ const AnticipationTestArea = ({ onResult }) => {
   };
 
   const startTrial = () => {
+    stopRaf(); if (feedbackTimer.current) clearTimeout(feedbackTimer.current);
     clickedRef.current = false;
     durRef.current = 1600 + Math.random() * 900;
     startRef.current = performance.now();
@@ -117,7 +118,7 @@ const AnticipationTestArea = ({ onResult }) => {
         <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{finalScore}<span className="text-2xl text-dark-400 ml-1">%</span></div>
         <div className={`text-lg font-semibold mb-1 ${rating.color}`}>{rating.name}</div>
         <p className="text-dark-400 text-sm mb-8">Avg. timing error: {avgError} ms over {TRIALS} trials</p>
-        <button onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px]">
+        <button type="button" onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
           <RotateCcw size={18} /> Try Again
         </button>
       </div>
@@ -162,7 +163,7 @@ const AnticipationTestArea = ({ onResult }) => {
       </div>
 
       {phase === 'idle' && (
-        <button onClick={(e) => { e.stopPropagation(); startGame(); }} className="mt-10 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white font-bold transition-colors min-h-[52px]">
+        <button type="button" onClick={(e) => { e.stopPropagation(); startGame(); }} className="mt-10 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-xl text-white font-bold transition-colors min-h-[52px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
           <Play size={20} /> Start Test
         </button>
       )}

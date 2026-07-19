@@ -1,22 +1,28 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const MobileTopBar = ({ onMenuToggle, isMenuOpen }) => {
   return (
     <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-dark-950/95 backdrop-blur-lg border-b border-dark-800/50">
       <div className="flex items-center justify-between px-4 py-3.5">
-        {/* Logo/Brand - Enhanced Visibility */}
-        <div className="flex items-center gap-2.5">
+        {/* Logo/Brand - links back to the homepage */}
+        <Link
+          to="/"
+          aria-label="TestHub home"
+          className="flex items-center gap-2.5 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+        >
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
             <img src="/favicon.png" alt="" aria-hidden="true" width="24" height="24" className="w-6 h-6 object-contain" />
           </div>
-          <span className="text-white font-bold text-base">TestHub</span>
-        </div>
+          <span className="text-white font-bold text-base group-hover:text-green-400 transition-colors">TestHub</span>
+        </Link>
 
         {/* Menu Button - Compact & Clean */}
         <button
+          type="button"
           onClick={onMenuToggle}
-          className="p-2 rounded-lg bg-dark-800/50 border border-dark-700/50 hover:bg-dark-700/80 transition-all duration-200 active:scale-95"
+          className="p-2 rounded-lg bg-dark-800/50 border border-dark-700/50 hover:bg-dark-700/80 transition-all duration-200 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (

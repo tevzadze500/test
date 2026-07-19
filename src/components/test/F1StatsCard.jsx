@@ -125,8 +125,9 @@ const F1StatsCard = ({ stats, onReset }) => {
             </div>
             {onReset && stats.attempts > 0 && (
               <button
+                type="button"
                 onClick={onReset}
-                className="flex items-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 rounded-lg text-sm text-dark-300 hover:text-white transition-colors whitespace-nowrap"
+                className="flex items-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 rounded-lg text-sm text-dark-300 hover:text-white transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
               >
                 <RotateCcw size={14} />
                 <span>Reset</span>

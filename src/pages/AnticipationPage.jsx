@@ -76,7 +76,7 @@ const AnticipationPage = () => {
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center gap-3 sm:gap-6">
-            <Link to="/" className="flex items-center gap-2 sm:gap-3 group">
+            <Link to="/" aria-label="TestHub home" className="flex items-center gap-2 sm:gap-3 group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                 <Target size={20} className="text-white" strokeWidth={2.5} />
               </div>
@@ -129,7 +129,7 @@ const AnticipationPage = () => {
               </div>
             </div>
             {stats.attempts > 0 && (
-              <button onClick={handleReset} className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-lg text-sm text-dark-300 hover:text-white transition-colors">
+              <button type="button" onClick={handleReset} className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-lg text-sm text-dark-300 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
                 <RotateCcw size={14} /> Reset stats
               </button>
             )}

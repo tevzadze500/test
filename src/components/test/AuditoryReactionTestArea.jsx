@@ -152,8 +152,9 @@ const AuditoryReactionTestArea = ({ onResult }) => {
         <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{reaction}<span className="text-2xl text-dark-400 ml-1">ms</span></div>
         <div className={`text-lg font-semibold mb-8 ${rating.color}`}>{rating.name}</div>
         <button
+          type="button"
           onClick={handleClick}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px]"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
         >
           <RotateCcw size={18} /> Try Again
         </button>

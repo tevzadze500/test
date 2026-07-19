@@ -241,10 +241,12 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
               return (
                 <button
                   key={key}
+                  type="button"
                   onClick={() => handleCategoryClick(key)}
                   className={`
                     w-full flex items-center justify-between px-3 py-2.5 rounded-xl
                     transition-all duration-200 group
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400
                     ${selected
                       ? `${theme.selectedBg} text-white border ${theme.selectedBorder} shadow-md ${theme.selectedShadow}`
                       : 'text-dark-300 hover:text-white hover:bg-dark-800/60'

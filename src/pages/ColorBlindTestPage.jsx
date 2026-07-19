@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowLeft, Eye, Clock, Users, Palette, AlertTriangle } from 'lucide-react';
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
@@ -53,8 +54,6 @@ const ColorBlindTestPage = () => {
     }
   };
 
-  const closeWindow = () => window.close();
-
   const faqs = [
     {
       question: 'What is an Ishihara-style color blindness test?',
@@ -103,23 +102,27 @@ const ColorBlindTestPage = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                aria-label="TestHub home"
+                className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
+              >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
                   <Palette size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-white">TestHub</p>
+                  <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">TestHub</p>
                   <p className="text-xs text-dark-400">Quick screening</p>
                 </div>
-              </div>
+              </Link>
               <div className="h-8 w-px bg-dark-800" />
-              <button
-                onClick={closeWindow}
-                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
+              <Link
+                to="/"
+                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 <ArrowLeft size={16} />
-                <span className="text-sm font-medium">Close</span>
-              </button>
+                <span className="text-sm font-medium">Back to Home</span>
+              </Link>
             </div>
             <div className="hidden md:flex items-center gap-4">
               {stats.attempts > 0 && (

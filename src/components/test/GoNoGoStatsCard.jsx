@@ -152,8 +152,9 @@ const GoNoGoStatsCard = ({ stats, onRetry }) => {
       {/* Retry Button */}
       {onRetry && (
         <button
+          type="button"
           onClick={onRetry}
-          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-colors"
+          className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
         >
           <RotateCcw size={18} />
           <span>Try Again</span>

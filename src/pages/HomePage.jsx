@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { websiteSchema, organizationSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
@@ -16,6 +16,14 @@ function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "#all-tests") {
+      const el = document.getElementById("all-tests");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [hash]);
 
   // Get F1 test
   const f1Test = tests.find(test => test.id === 'f1-reaction');

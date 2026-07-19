@@ -279,8 +279,9 @@ const VisionTestPage = () => {
 
           {/* Start Button */}
           <button
+            type="button"
             onClick={handleStart}
-            className="w-full py-4 bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+            className="w-full py-4 min-h-[48px] bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
           >
             <div className="flex items-center justify-center gap-2">
               <Eye size={24} />
@@ -405,8 +406,9 @@ const VisionTestPage = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button
+              type="button"
               onClick={handleRetry}
-              className="flex-1 flex items-center justify-center gap-2 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 text-white font-bold rounded-xl transition-all"
+              className="flex-1 flex items-center justify-center gap-2 py-4 min-h-[48px] bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 text-white font-bold rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             >
               <RotateCcw size={20} />
               Retry Test
@@ -484,9 +486,10 @@ const VisionTestPage = () => {
           {options.map((option) => (
             <button
               key={option}
+              type="button"
               onClick={() => handleAnswerSelect(option)}
               disabled={showFeedback}
-              className={`py-6 text-3xl font-bold rounded-xl border-2 transition-all duration-200 ${
+              className={`py-6 text-3xl font-bold rounded-xl border-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 ${
                 showFeedback && option === currentLetter
                   ? 'bg-green-500/20 border-green-500 text-green-400'
                   : showFeedback && option === selectedAnswer && option !== currentLetter

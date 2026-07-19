@@ -302,8 +302,9 @@ const AdhdTestPage = () => {
 
           {/* Start Button */}
           <button
+            type="button"
             onClick={handleStart}
-            className="w-full py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+            className="w-full min-h-[48px] py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
           >
             Start Test
           </button>
@@ -340,8 +341,9 @@ const AdhdTestPage = () => {
             You're doing great! Let's continue to the next section.
           </p>
           <button
+            type="button"
             onClick={handleContinueFromBreak}
-            className="w-full py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02]"
+            className="w-full min-h-[48px] py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
           >
             Continue
           </button>
@@ -446,15 +448,17 @@ const AdhdTestPage = () => {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <button
+              type="button"
               onClick={handleRetry}
-              className="flex-1 flex items-center justify-center gap-2 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 text-white font-bold rounded-xl transition-all"
+              className="flex-1 flex items-center justify-center gap-2 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 text-white font-bold rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             >
               <RotateCcw size={20} />
               Retry Test
             </button>
             <button
+              type="button"
               onClick={handleShare}
-              className="flex-1 flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold rounded-xl transition-all"
+              className="flex-1 flex items-center justify-center gap-2 min-h-[48px] py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
               <Share2 size={20} />
               Share Result
@@ -531,9 +535,10 @@ const AdhdTestPage = () => {
           <div className="space-y-3">
             {answerOptions.map((option) => (
               <button
+                type="button"
                 key={option.value}
                 onClick={() => handleAnswerSelect(option.value)}
-                className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all duration-200 ${
+                className={`w-full text-left px-6 py-4 rounded-xl border-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                   selectedAnswer === option.value
                     ? 'bg-blue-500/20 border-blue-500 text-white shadow-lg scale-[1.02]'
                     : 'bg-dark-800/50 border-dark-700 text-dark-300 hover:border-dark-600 hover:bg-dark-800'
@@ -552,9 +557,10 @@ const AdhdTestPage = () => {
 
         {/* Next Button */}
         <button
+          type="button"
           onClick={handleNext}
           disabled={selectedAnswer === null}
-          className={`w-full py-4 font-bold text-lg rounded-xl transition-all duration-300 ${
+          className={`w-full min-h-[48px] py-4 font-bold text-lg rounded-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
             selectedAnswer !== null
               ? 'bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white hover:scale-[1.02] hover:shadow-xl cursor-pointer'
               : 'bg-dark-800 text-dark-500 cursor-not-allowed'

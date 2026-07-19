@@ -19,11 +19,13 @@ const GoNoGoTestArea = ({ onComplete }) => {
   
   const timeoutRef = useRef(null);
   const signalTimeoutRef = useRef(null);
+  const processingTimeoutRef = useRef(null);
 
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       if (signalTimeoutRef.current) clearTimeout(signalTimeoutRef.current);
+      if (processingTimeoutRef.current) clearTimeout(processingTimeoutRef.current);
     };
   }, []);
 
@@ -136,7 +138,7 @@ const GoNoGoTestArea = ({ onComplete }) => {
     setState(TEST_STATES.PROCESSING);
     
     // Move to next trial or complete
-    setTimeout(() => {
+    processingTimeoutRef.current = setTimeout(() => {
       if (currentTrial + 1 < trials.length) {
         setCurrentTrial(currentTrial + 1);
         startTrial(trials[currentTrial + 1]);
@@ -181,15 +183,6 @@ const GoNoGoTestArea = ({ onComplete }) => {
     };
   };
 
-  const restart = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    if (signalTimeoutRef.current) clearTimeout(signalTimeoutRef.current);
-    setState(TEST_STATES.INTRO);
-    setCurrentTrial(0);
-    setResults([]);
-    setTrials([]);
-  };
-
   const getStateDisplay = () => {
     switch (state) {
       case TEST_STATES.INTRO:
@@ -214,8 +207,9 @@ const GoNoGoTestArea = ({ onComplete }) => {
           ),
           action: (
             <button
+              type="button"
               onClick={startTest}
-              className="mt-6 flex items-center gap-2 px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-colors mx-auto text-lg"
+              className="mt-6 flex items-center gap-2 px-8 py-4 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-lg transition-colors mx-auto text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
               <Play size={20} />
               <span>Start Test</span>

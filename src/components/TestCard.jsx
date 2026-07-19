@@ -133,11 +133,11 @@ const TestCard = ({ test }) => {
 
       {/* CTA Button - Spacer to push to bottom */}
       <div className="mt-auto pt-2">
-        <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg text-white text-sm font-semibold transition-all group-hover:gap-3 touch-manipulation min-h-[48px]">
+        <span className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-lg text-white text-sm font-semibold transition-all group-hover:gap-3 touch-manipulation min-h-[48px]">
           <Zap size={16} className="shrink-0" />
           <span>Start Test</span>
           <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-        </button>
+        </span>
       </div>
     </Link>
   );

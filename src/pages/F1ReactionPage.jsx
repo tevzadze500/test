@@ -94,10 +94,6 @@ const F1ReactionPage = () => {
     }
   };
 
-  const closeWindow = () => {
-    window.close();
-  };
-
   return (
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
@@ -124,25 +120,29 @@ const F1ReactionPage = () => {
           <div className="flex items-center justify-between">
             {/* Left: Brand */}
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                aria-label="TestHub home"
+                className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+              >
                 <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-10 h-10 rounded-lg" />
                 <div>
-                  <p className="text-lg font-bold text-white">
+                  <p className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
                     TestHub
                   </p>
                   <p className="text-xs text-dark-400">F1 Lights Reaction</p>
                 </div>
-              </div>
-              
+              </Link>
+
               <div className="h-8 w-px bg-dark-800" />
-              
-              <button
-                onClick={closeWindow}
-                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors"
+
+              <Link
+                to="/"
+                className="flex items-center gap-2 px-4 py-2 text-dark-400 hover:text-white hover:bg-dark-800 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
               >
                 <ArrowLeft size={16} />
-                <span className="text-sm font-medium">Close</span>
-              </button>
+                <span className="text-sm font-medium">Back to Home</span>
+              </Link>
             </div>
 
             {/* Right: Quick Stats */}
