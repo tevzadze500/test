@@ -76,58 +76,37 @@ export const getF1Motivation = (score) => {
   return "Oops, you stalled on the grid! Hit Start and take your revenge.";
 };
 
-// Tier bands used to build the F1 mini-leaderboard (fastest -> slowest).
-const F1_TIER_BANDS = [
-  { name: 'Hamilton Tier', max: 229 },
-  { name: 'Future F1 Pro', max: 280 },
-  { name: 'Pro Kart Racer', max: 350 },
-  { name: 'Solid Driver', max: 450 },
-  { name: 'Safety Car', max: Infinity },
-];
-
-// Full race grid, fastest -> slowest. The five scoring tiers sit at indices 3-7,
-// so there are always exactly three names above and three below the player.
-const F1_GRID_ROSTER = [
-  'Verstappen (sim)',
-  'Leclerc (sim)',
-  'Norris (sim)',
-  'Hamilton Tier',
-  'Future F1 Pro',
-  'Pro Kart Racer',
-  'Solid Driver',
-  'Safety Car',
-  'Safety Car #2',
-  'Pit Lane Rookie',
-  'Formation Lap',
-];
+// Grid rivals. Ahead of the player, ordered fastest first; behind, ordered
+// closest first. Their times are simulated around the player's own run.
+const F1_GRID_AHEAD = ['Max Verstappen', 'Lewis Hamilton', 'Lando Norris'];
+const F1_GRID_BEHIND = ['George Russell', 'Charles Leclerc', 'Carlos Sainz'];
 
 /**
  * Builds a 7-row race grid where the player is ALWAYS 4th (dead centre):
- * three rivals ahead (each strictly faster) and three behind (each strictly
- * slower). Rival names are taken from the roster around the player's own tier,
- * so the grid stays plausible whether the run is 100ms or 1200ms.
+ * three drivers ahead (each strictly faster) and three behind (each strictly
+ * slower). Every rival time is derived from the player's own score, so the grid
+ * always feels like a close fight no matter how fast or slow the run was.
  */
 export const getDynamicF1Leaderboard = (score) => {
   const safeScore = Math.max(1, Math.round(score || 0));
-  const tierIdx = F1_TIER_BANDS.findIndex((tier) => safeScore <= tier.max);
-  const rosterIdx = F1_GRID_ROSTER.indexOf(F1_TIER_BANDS[tierIdx].name);
   const gap = Math.max(12, Math.round(safeScore * 0.05));
 
-  // Three rivals ahead — strictly decreasing times
+  // Three drivers ahead — strictly decreasing times.
+  // n = 1 is the closest rival, so it takes the last name in the list.
   const ahead = [];
   let prev = safeScore;
   for (let n = 1; n <= 3; n += 1) {
     const time = Math.max(1, Math.min(prev - 1, safeScore - gap * n));
-    ahead.push({ name: F1_GRID_ROSTER[rosterIdx - n], time, isPlayer: false });
+    ahead.push({ name: F1_GRID_AHEAD[F1_GRID_AHEAD.length - n], time, isPlayer: false });
     prev = time;
   }
   ahead.reverse(); // fastest at the top of the grid
 
-  // Three rivals behind — strictly increasing times
+  // Three drivers behind — strictly increasing times
   const behind = [];
   for (let n = 1; n <= 3; n += 1) {
     behind.push({
-      name: F1_GRID_ROSTER[rosterIdx + n],
+      name: F1_GRID_BEHIND[n - 1],
       time: safeScore + gap * n,
       isPlayer: false,
     });
