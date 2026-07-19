@@ -12,52 +12,54 @@ import {
 
 const PHASES = {
   IDLE: 'idle',
-  SEQUENCE: 'sequence', // columns lighting up, one per second
-  ARMED: 'armed', // all five lit — waiting for lights out
-  GO: 'go', // lights out — react now
+  READY: 'ready', // the 15 red lights are on, random hold running
+  GO: 'go', // reds off, the 5 green lights are on — react now
   RESULT: 'result',
   FALSE_START: 'falseStart',
 };
 
-const COLUMNS = [0, 1, 2, 3, 4]; // 5 light columns on the gantry
-const ROWS = [0, 1]; // 2 stacked bulbs per column (real F1 layout)
-const STEP_MS = 1000; // one column lights per second
-const MIN_HOLD_MS = 200; // shortest hold before lights out
-const MAX_HOLD_MS = 3000; // longest hold before lights out
+const COLUMNS = [0, 1, 2, 3, 4]; // 5 columns
+const ROWS = [0, 1, 2, 3]; // 4 lights stacked per column
+const GREEN_ROW = 3; // bottom light is the green "GO" light
+const MIN_HOLD_MS = 1000;
+const MAX_HOLD_MS = 3000;
 
 /**
- * The Formula 1 start gantry. `lightsStep` (0-5) drives how many columns are lit;
- * each lit column shows both of its bulbs in glowing red, exactly like the real
- * five-light gantry above the grid.
+ * Light tower: 5 columns x 4 stacked lights (20 total).
+ * The top three rows of every column light red together ("ready"),
+ * then they all cut out and the bottom row turns green — that green is the GO signal.
  */
-const LightGantry = ({ lightsStep }) => (
+const LightTower = ({ redsOn, greenOn }) => (
   <div className="w-full max-w-3xl mx-auto select-none" aria-hidden="true">
-    {/* Mounting rail on top of the gantry */}
+    {/* Mounting rail */}
     <div className="mx-auto h-3 w-2/3 rounded-t-md border-x-2 border-t-2 border-dark-600 bg-gradient-to-b from-dark-600 to-dark-700" />
 
     {/* Metal housing */}
     <div className="rounded-2xl border-4 border-dark-600 bg-gradient-to-b from-dark-700 via-dark-800 to-dark-900 p-3 sm:p-5 shadow-2xl shadow-black/60">
-      <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6">
-        {COLUMNS.map((col) => {
-          const lit = col < lightsStep;
-          return (
-            <div
-              key={col}
-              className="flex flex-col gap-2 sm:gap-3 rounded-xl border-2 border-dark-600 bg-black/60 p-1.5 sm:p-2.5 shadow-inner"
-            >
-              {ROWS.map((row) => (
+      <div className="flex items-start justify-center gap-2 sm:gap-4 md:gap-6">
+        {COLUMNS.map((col) => (
+          <div
+            key={col}
+            className="flex flex-col gap-2 sm:gap-3 rounded-xl border-2 border-dark-600 bg-black/60 p-1.5 sm:p-2.5 shadow-inner"
+          >
+            {ROWS.map((row) => {
+              const isGreenRow = row === GREEN_ROW;
+              const lit = isGreenRow ? greenOn : redsOn;
+              let tone = 'bg-dark-950 border-dark-700';
+              if (lit && isGreenRow) {
+                tone = 'bg-green-500 border-green-400 shadow-[0_0_35px_rgba(34,197,94,0.9)]';
+              } else if (lit) {
+                tone = 'bg-red-500 border-red-400 shadow-[0_0_30px_rgba(239,68,68,0.8)]';
+              }
+              return (
                 <div
                   key={row}
-                  className={`h-8 w-8 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full border-2 transition-all duration-150 ${
-                    lit
-                      ? 'bg-red-500 border-red-400 shadow-[0_0_30px_rgba(239,68,68,0.8)]'
-                      : 'bg-dark-950 border-dark-700'
-                  }`}
+                  className={`h-7 w-7 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full border-2 transition-all duration-100 ${tone}`}
                 />
-              ))}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
 
@@ -71,80 +73,61 @@ const LightGantry = ({ lightsStep }) => (
 
 const F1LightsTestArea = ({ onResult }) => {
   const [phase, setPhase] = useState(PHASES.IDLE);
-  const [lightsStep, setLightsStep] = useState(0); // 0-5 columns lit
   const [reactionTime, setReactionTime] = useState(null);
 
-  const intervalRef = useRef(null);
   const timeoutRef = useRef(null);
-  const lightsOutAtRef = useRef(0);
+  const goAtRef = useRef(0);
 
   const clearTimers = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
   };
 
-  // Cleanup any pending interval/timeout on unmount
+  // Cleanup any pending timeout on unmount
   useEffect(() => clearTimers, []);
 
-  const isPlayable =
-    phase === PHASES.SEQUENCE || phase === PHASES.ARMED || phase === PHASES.GO;
+  const isPlayable = phase === PHASES.READY || phase === PHASES.GO;
 
   const startTest = () => {
     clearTimers();
     setReactionTime(null);
-    setLightsStep(0);
-    setPhase(PHASES.SEQUENCE);
 
-    let step = 0;
-    intervalRef.current = setInterval(() => {
-      step += 1;
-      setLightsStep(step);
+    // Step 1 — the 15 red lights come on together
+    setPhase(PHASES.READY);
 
-      if (step >= COLUMNS.length) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-        setPhase(PHASES.ARMED);
-
-        // Random hold between 200ms and 3000ms, then LIGHTS OUT
-        const hold = MIN_HOLD_MS + Math.random() * (MAX_HOLD_MS - MIN_HOLD_MS);
-        timeoutRef.current = setTimeout(() => {
-          setLightsStep(0);
-          lightsOutAtRef.current = performance.now();
-          setPhase(PHASES.GO);
-        }, hold);
-      }
-    }, STEP_MS);
+    // Step 2 — random hold between 1000ms and 3000ms
+    const hold = MIN_HOLD_MS + Math.random() * (MAX_HOLD_MS - MIN_HOLD_MS);
+    timeoutRef.current = setTimeout(() => {
+      // Step 3 — reds out, greens on: this is the GO signal
+      goAtRef.current = performance.now();
+      setPhase(PHASES.GO);
+    }, hold);
   };
 
   const retry = () => {
     clearTimers();
     setPhase(PHASES.IDLE);
-    setLightsStep(0);
     setReactionTime(null);
   };
 
   const handlePress = () => {
-    if (phase === PHASES.SEQUENCE || phase === PHASES.ARMED) {
-      // Jumped the start while at least one red light was still on
+    if (phase === PHASES.READY) {
+      // Went before the green light appeared
       clearTimers();
       setPhase(PHASES.FALSE_START);
       if (onResult) onResult({ falseStart: true, reactionTime: null });
     } else if (phase === PHASES.GO) {
-      const reaction = Math.round(performance.now() - lightsOutAtRef.current);
+      const reaction = Math.round(performance.now() - goAtRef.current);
       setReactionTime(reaction);
       setPhase(PHASES.RESULT);
       if (onResult) onResult({ falseStart: false, reactionTime: reaction });
     }
   };
 
-  // Space/Enter anywhere while the run is live — keeps the test keyboard-playable
-  // even though the Start button unmounts once the sequence begins.
+  // Space/Enter anywhere while a run is live — keeps the test keyboard-playable
+  // even though the Start button unmounts once the run begins.
   useEffect(() => {
     if (!isPlayable) return undefined;
     const onKey = (e) => {
@@ -157,13 +140,17 @@ const F1LightsTestArea = ({ onResult }) => {
     return () => window.removeEventListener('keydown', onKey);
   }, [isPlayable, phase]);
 
+  // Reds stay frozen on a false start so the mistake is visible
+  const redsOn = phase === PHASES.READY || phase === PHASES.FALSE_START;
+  const greenOn = phase === PHASES.GO;
+
   return (
     <div
       role={isPlayable ? 'button' : undefined}
       tabIndex={isPlayable ? 0 : undefined}
       aria-label={
         isPlayable
-          ? 'F1 start gantry. Press anywhere the instant all five red lights go out.'
+          ? 'Reaction light tower. Press anywhere the instant the green lights come on.'
           : undefined
       }
       aria-live="polite"
@@ -190,12 +177,13 @@ const F1LightsTestArea = ({ onResult }) => {
         {/* ---------- IDLE ---------- */}
         {phase === PHASES.IDLE && (
           <div className="space-y-6">
-            <LightGantry lightsStep={0} />
+            <LightTower redsOn={false} greenOn={false} />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              F1 Start Gantry
+              Reaction Light Tower
             </h2>
             <p className="text-base sm:text-lg text-dark-300 max-w-2xl mx-auto">
-              Five red lights come on, one per second. When they all go out — react.
+              The red lights come on. The moment they switch to{' '}
+              <span className="text-green-400 font-semibold">green</span> — react.
             </p>
             <button
               type="button"
@@ -211,23 +199,23 @@ const F1LightsTestArea = ({ onResult }) => {
           </div>
         )}
 
-        {/* ---------- LIGHTS COMING ON / ALL LIT ---------- */}
-        {(phase === PHASES.SEQUENCE || phase === PHASES.ARMED) && (
+        {/* ---------- READY (reds on, random hold running) ---------- */}
+        {phase === PHASES.READY && (
           <div className="space-y-6 sm:space-y-8">
-            <LightGantry lightsStep={lightsStep} />
+            <LightTower redsOn greenOn={false} />
             <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-400 animate-pulse">
-              {phase === PHASES.SEQUENCE ? 'Lights coming on…' : 'Wait for it…'}
+              Wait for green…
             </div>
             <p className="text-dark-400 text-xs sm:text-sm">
-              Don&apos;t go yet — reacting while a light is on is a false start
+              Don&apos;t go yet — reacting while the lights are red is a false start
             </p>
           </div>
         )}
 
-        {/* ---------- LIGHTS OUT — GO! ---------- */}
+        {/* ---------- GO ---------- */}
         {phase === PHASES.GO && (
           <div className="space-y-6 sm:space-y-8">
-            <LightGantry lightsStep={0} />
+            <LightTower redsOn={false} greenOn />
             <Zap size={56} className="sm:w-16 sm:h-16 mx-auto text-green-400 animate-pulse" />
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-green-400 animate-pulse">
               GO!
@@ -266,21 +254,20 @@ const F1LightsTestArea = ({ onResult }) => {
         {/* ---------- FALSE START ---------- */}
         {phase === PHASES.FALSE_START && (
           <div className="space-y-5 sm:space-y-6">
-            {/* Lights stay frozen where they were, so the mistake is obvious */}
-            <LightGantry lightsStep={lightsStep} />
+            <LightTower redsOn greenOn={false} />
             <AlertCircle size={56} className="sm:w-16 sm:h-16 mx-auto text-orange-500" />
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-orange-500">
                 False Start!
               </div>
               <p className="text-base sm:text-lg text-dark-300">
-                You went while the lights were still on.
+                You went while the lights were still red.
               </p>
             </div>
             <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg sm:rounded-xl p-3 sm:p-4 max-w-md mx-auto">
               <p className="text-sm text-dark-300">
-                In Formula 1 this triggers the jump-start sensors and a time penalty. Wait for all
-                five lights to go out before you react.
+                Wait for the green lights before you react — anticipating the start is penalised in
+                real racing.
               </p>
             </div>
             <button
