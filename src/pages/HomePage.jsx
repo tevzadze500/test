@@ -10,7 +10,6 @@ import Leaderboard from '../components/Leaderboard';
 import SeoContent from '../components/SeoContent';
 import { tests, testCategories } from '../data/tests';
 import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users, AlertTriangle } from 'lucide-react';
-import F1LightsIcon from '../components/icons/F1LightsIcon';
 
 function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -113,7 +112,12 @@ function HomePage() {
                   <div className="bg-gradient-to-br from-red-500/20 via-rose-500/10 to-orange-500/10 border-2 border-red-500/50 rounded-2xl p-8 shadow-2xl">
                     <div className="flex flex-col md:flex-row items-center gap-6">
                       <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0">
-                        <F1LightsIcon size={52} className="text-white" />
+                        <img
+                          src="/f1-logo.png"
+                          alt="F1 Reflex Test"
+                          className="w-16 h-16 object-contain"
+                          decoding="async"
+                        />
                       </div>
                       <div className="flex-1 text-left">
                         <h2 className="text-3xl font-bold text-white mb-3">
@@ -140,7 +144,13 @@ function HomePage() {
                           to="/test/f1-reaction"
                           className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-red-500/50 transition-all duration-200 text-xl transform hover:scale-105"
                         >
-                          <F1LightsIcon size={22} className="text-white" />
+                          <img
+                            src="/f1-logo.png"
+                            alt=""
+                            aria-hidden="true"
+                            className="w-6 h-6 object-contain shrink-0"
+                            decoding="async"
+                          />
                           Start your F1 Reflex Test Now!
                           <ArrowRight className="w-6 h-6" />
                         </Link>
