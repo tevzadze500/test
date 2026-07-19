@@ -74,7 +74,7 @@ const TestCard = ({ test }) => {
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center shadow-lg shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
           {test.id === 'f1-reaction' ? (
             <img
-              src="/f1-logo.png"
+              src="/f1-logo.webp"
               alt="F1 Reflex Test"
               className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
               loading="lazy"

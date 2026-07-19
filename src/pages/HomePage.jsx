@@ -113,7 +113,7 @@ function HomePage() {
                     <div className="flex flex-col md:flex-row items-center gap-6">
                       <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0">
                         <img
-                          src="/f1-logo.png"
+                          src="/f1-logo.webp"
                           alt="F1 Reflex Test"
                           className="w-16 h-16 object-contain"
                           decoding="async"
@@ -145,7 +145,7 @@ function HomePage() {
                           className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-red-500/50 transition-all duration-200 text-xl transform hover:scale-105"
                         >
                           <img
-                            src="/f1-logo.png"
+                            src="/f1-logo.webp"
                             alt=""
                             aria-hidden="true"
                             className="w-6 h-6 object-contain shrink-0"
