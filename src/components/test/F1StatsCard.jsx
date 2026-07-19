@@ -96,18 +96,18 @@ const F1StatsCard = ({ stats, onReset }) => {
             <div>
               <h4 className="text-sm font-semibold text-white mb-1">Performance Analysis</h4>
               <p className="text-sm text-dark-300">
-                {stats.best < 200
-                  ? "Elite F1 reflexes — you could compete with professional drivers."
-                  : stats.best < 250
-                  ? "Outstanding reaction time. You're in the top tier of performers."
-                  : stats.best < 300
-                  ? "Great performance. Above average reaction speed."
-                  : "Keep practicing to improve your start reaction time."}
+                {stats.best < 230
+                  ? "Hamilton Tier reflexes — championship-winning reaction speed."
+                  : stats.best <= 280
+                  ? "Elite range. You're sharper than most everyday drivers."
+                  : stats.best <= 350
+                  ? "Genuinely quick — a little practice and you're in the big leagues."
+                  : "Keep practicing to sharpen your start reaction time."}
               </p>
               {stats.falseStarts > 0 && (
                 <div className="mt-2 text-xs text-dark-400 flex items-center gap-1.5">
                   <Lightbulb size={12} className="text-amber-400 shrink-0" />
-                  <span><strong className="text-dark-300">Tip:</strong> {stats.falseStarts === 1 ? '1 false start' : `${stats.falseStarts} false starts`} — wait for all lights to go out.</span>
+                  <span><strong className="text-dark-300">Tip:</strong> {stats.falseStarts === 1 ? '1 false start' : `${stats.falseStarts} false starts`} — wait for the bottom row to turn green.</span>
                 </div>
               )}
             </div>
@@ -127,17 +127,17 @@ const F1StatsCard = ({ stats, onReset }) => {
 
       {/* F1 Context */}
       <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4">
-        <h4 className="text-sm font-semibold text-white mb-3">F1 Start Procedure</h4>
+        <h4 className="text-sm font-semibold text-white mb-3">Start Light Sequence</h4>
         <div className="space-y-2 text-xs text-dark-300">
-          <p>In Formula 1, the starting lights follow a precise sequence:</p>
+          <p>The starting lights follow a precise sequence:</p>
           <ul className="space-y-1 ml-4">
-            <li>• Five red lights illuminate one by one</li>
-            <li>• After a random delay (1-4 seconds)</li>
-            <li>• All lights go out simultaneously</li>
-            <li>• Drivers must react instantly to avoid losing positions</li>
+            <li>• Three rows of red lights cascade downward</li>
+            <li>• They hold through a random tension delay</li>
+            <li>• The reds cut out and the bottom row turns green</li>
+            <li>• React the instant you see green — that is the go signal</li>
           </ul>
           <p className="mt-2 text-dark-400">
-            Professional F1 drivers typically achieve reaction times under 200ms!
+            Anything under 280ms here puts you in elite territory!
           </p>
         </div>
       </div>
