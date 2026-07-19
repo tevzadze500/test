@@ -9,15 +9,15 @@ import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/stru
 const faqs = [
   {
     question: 'What is a good reaction time on the F1 test?',
-    answer: 'Under 250 ms is above average, under 200 ms is excellent, and 150–200 ms matches elite F1 driver launches. Below roughly 120 ms usually means you anticipated the lights rather than reacted.',
+    answer: 'Anything under 280 ms is elite territory on this test, and under 230 ms earns the top Hamilton Tier. Because you have to track a cascading light sequence and hold through a random delay before the green appears, times here naturally run a little higher than a bare click test.',
   },
   {
     question: 'How fast do real F1 drivers react at the start?',
-    answer: 'Top drivers typically launch in around 150–200 milliseconds. Reaction alone is not enough, though — clutch control and traction off the line matter just as much.',
+    answer: 'On a real grid, top drivers launch in around 150–200 milliseconds. This test uses a green-light start with a longer cascade to watch, which adds cognitive load — that is why the tiers here sit slightly higher than raw Formula 1 telemetry.',
   },
   {
     question: 'Why do I keep getting a false start?',
-    answer: 'You are moving before the lights actually go out. Do not try to predict the timing — the delay is random on purpose. Watch the lights and react to them, not to a rhythm in your head.',
+    answer: 'You are pressing while the red lights are still on. The hold before the green is random on purpose, so do not try to predict it — watch the bottom row and react only once it turns green.',
   },
   {
     question: 'Does this test really measure Formula 1 reflexes?',
@@ -98,14 +98,14 @@ const F1ReactionPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="F1 Reaction Test – Can You Beat 200ms Like a Pro Driver?"
-        description="Take the free F1 start-lights reaction test. React when the 5 red lights go out, get your time in milliseconds, and see how you rank against real F1 drivers."
+        title="F1 Reaction Test – Can You Beat 230ms Like Hamilton?"
+        description="Take the free F1 reaction test: three rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your driver tier."
         keywords="F1 reaction test, formula 1 reaction test, F1 reaction time test, F1 start lights, racing reaction time, F1 reflexes, formula 1 reaction speed"
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({
             name: 'F1 Reaction Test',
-            description: 'Recreate the Formula 1 start-lights procedure and measure your visual reaction time in milliseconds — react the instant the five red lights go out.',
+            description: 'Recreate a race-start light sequence and measure your visual reaction time in milliseconds — react the instant the bottom row of lights turns green.',
             path: '/test/f1-reaction',
             category: 'GameApplication',
           }),
@@ -181,7 +181,7 @@ const F1ReactionPage = () => {
                 F1 Reaction Test: Can You Launch Like a Formula 1 Driver?
               </h1>
               <p className="text-dark-400 mt-1">
-                React the instant the five start lights go out — and see how you rank against real F1 drivers
+                React the instant the bottom row turns green — and see how you rank against real F1 drivers
               </p>
             </div>
           </div>
@@ -225,30 +225,46 @@ const F1ReactionPage = () => {
           {/* Hook + What Is */}
           <section>
             <p className="text-dark-200 text-lg leading-relaxed mb-8">
-              When the five red lights go out at a Grand Prix, the race can be won or lost in a single blink. Elite F1 drivers launch in around <strong className="text-white">150–200 milliseconds</strong> — barely faster than one film frame. This free F1 reaction test drops you onto the starting grid: wait for the lights, fire the instant they vanish, and find out exactly how your reflexes stack up against the fastest drivers on earth.
+              At a race start, everything is decided in a single blink. Elite drivers launch in around <strong className="text-white">150–200 milliseconds</strong> — barely longer than one film frame. This free reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
             </p>
             <h2 className="text-3xl font-bold text-white mb-4">What Is the F1 Reaction Test?</h2>
             <p className="text-dark-300 leading-relaxed">
-              The F1 Reaction Test is a free online tool that recreates the Formula 1 starting procedure to measure your visual reaction time in milliseconds. Five red lights illuminate one by one, hold for an unpredictable delay, then switch off all at once — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
+              The F1 Reaction Test is a free online tool that recreates a race-start light sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
             </p>
           </section>
 
           {/* How the procedure works */}
           <section>
-            <h2 className="text-3xl font-bold text-white mb-4">How the Formula 1 Start Lights Procedure Works</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">How the Start Light Sequence Works</h2>
             <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6 grid md:grid-cols-2 gap-6 text-dark-300">
               <div>
-                <h3 className="text-white font-semibold mb-2">The Five-Light Sequence</h3>
-                <p className="text-sm mb-3">The five red lights come on one by one, building tension exactly like the real gantry above the grid. Every driver stares at them, throttle loaded, waiting.</p>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="w-6 h-6 rounded-full bg-red-500/30 border border-red-500/50" />
+                <h3 className="text-white font-semibold mb-2">The Red Cascade</h3>
+                <p className="text-sm mb-3">
+                  Three rows of red lights come on in sequence across all five columns, top to bottom, half a second apart. Tension builds with every row — throttle loaded, waiting.
+                </p>
+                {/* Miniature of the tower: 3 red rows + the green row */}
+                <div className="inline-flex gap-1.5 rounded-lg border border-dark-700 bg-black/50 p-2">
+                  {[0, 1, 2, 3, 4].map((col) => (
+                    <div key={col} className="flex flex-col gap-1.5">
+                      {[0, 1, 2, 3].map((row) => (
+                        <div
+                          key={row}
+                          className={`w-3.5 h-3.5 rounded-full border ${
+                            row === 3
+                              ? 'bg-green-500/30 border-green-500/50'
+                              : 'bg-red-500/30 border-red-500/50'
+                          }`}
+                        />
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-2">Lights Out: Your Signal to React</h3>
-                <p className="text-sm">Once all five are lit, they stay on for a random delay, then extinguish together. There is no countdown — the only trigger is the lights going dark. React too early and it is a false start; react late and you have lost the corner.</p>
+                <h3 className="text-white font-semibold mb-2">The Green Light: Your Signal to React</h3>
+                <p className="text-sm">
+                  Once the three red rows are lit, they hold for a random tension delay — anywhere from a split second to a few seconds. Then the reds cut out and the bottom row flashes <strong className="text-green-400">green</strong>. That green is the only trigger. Go before it appears and it is a false start; go late and you have lost the corner.
+                </p>
               </div>
             </div>
           </section>
@@ -257,7 +273,7 @@ const F1ReactionPage = () => {
           <section>
             <h2 className="text-3xl font-bold text-white mb-4">What Is a Good F1 Reaction Time?</h2>
             <p className="text-dark-300 leading-relaxed mb-5">
-              The average human reaction to a visual signal is roughly <strong className="text-white">250 ms</strong>. Trained drivers and top gamers push well below that. Anything under about 120–150 ms usually means you <em>anticipated</em> rather than reacted — in a real race, that is a jump start. Here is how your time stacks up:
+              A bare click reaction averages around <strong className="text-white">250 ms</strong> — but this is not a bare click test. Here you have to track a three-row cascade, hold through a random tension delay, and then react to a <em>colour change</em>. That extra processing adds real cognitive load, which is why scoring <strong className="text-white">under 280 ms on this test</strong> proves genuinely elite racing reflexes — faster than most everyday drivers. Here is how your time stacks up:
             </p>
             <div className="overflow-x-auto rounded-xl border border-dark-800">
               <table className="w-full text-left text-sm">
@@ -270,34 +286,29 @@ const F1ReactionPage = () => {
                 </thead>
                 <tbody className="text-dark-300">
                   <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-purple-400 whitespace-nowrap">&lt; 150 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">🏁 Superhuman</td>
-                    <td className="py-3 px-4">Near the human limit — in a real race this edges into a jump start</td>
+                    <td className="py-3 px-4 font-bold text-purple-400 whitespace-nowrap">&lt; 230 ms</td>
+                    <td className="py-3 px-4 whitespace-nowrap">🏆 Hamilton Tier</td>
+                    <td className="py-3 px-4">Championship-winning reflexes — the very top of the board</td>
                   </tr>
                   <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-green-400 whitespace-nowrap">150–200 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Pro Driver</td>
-                    <td className="py-3 px-4">Elite F1 launch range (Hamilton / Verstappen territory)</td>
+                    <td className="py-3 px-4 font-bold text-green-400 whitespace-nowrap">230–280 ms</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Future F1 Pro</td>
+                    <td className="py-3 px-4">Elite range — sharper than most everyday drivers</td>
                   </tr>
                   <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-blue-400 whitespace-nowrap">200–250 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Racing Pro</td>
-                    <td className="py-3 px-4">Sharp reflexes — competitive sim-racer level</td>
+                    <td className="py-3 px-4 font-bold text-blue-400 whitespace-nowrap">281–350 ms</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Pro Kart Racer</td>
+                    <td className="py-3 px-4">Genuinely quick — a little practice and you are in the big leagues</td>
                   </tr>
                   <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-cyan-400 whitespace-nowrap">250–300 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Skilled</td>
-                    <td className="py-3 px-4">Above average, solid gamer reflexes</td>
+                    <td className="py-3 px-4 font-bold text-cyan-400 whitespace-nowrap">351–450 ms</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Solid Driver</td>
+                    <td className="py-3 px-4">Solid launch — your tyres were just a little cold</td>
                   </tr>
                   <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-yellow-400 whitespace-nowrap">300–350 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Amateur</td>
-                    <td className="py-3 px-4">Around the typical adult average</td>
-                  </tr>
-                  <tr className="border-t border-dark-800">
-                    <td className="py-3 px-4 font-bold text-orange-400 whitespace-nowrap">&gt; 350 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Rookie</td>
-                    <td className="py-3 px-4">Warm up and go again — you will drop fast with practice</td>
+                    <td className="py-3 px-4 font-bold text-orange-400 whitespace-nowrap">&gt; 450 ms</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Safety Car</td>
+                    <td className="py-3 px-4">Stalled on the grid — go again and take your revenge</td>
                   </tr>
                 </tbody>
               </table>
@@ -308,7 +319,7 @@ const F1ReactionPage = () => {
           <section className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-6">
             <h2 className="text-2xl font-bold text-white mb-4">The Neuroscience Behind Your Reflexes</h2>
             <p className="text-dark-300 leading-relaxed">
-              Your reaction time is a chain reaction: your eyes detect the lights going out, your visual cortex processes the change, your brain fires a command, and your finger moves. Each link costs milliseconds. That is why pure <strong className="text-white">reaction</strong> has a hard human floor of about 100–120 ms — you cannot beat it, only get closer to it. Fatigue, distraction and screen lag stretch the chain; focus, rest and practice tighten it.
+              Your reaction time is a chain reaction: your eyes detect the lights turning green, your visual cortex processes the change, your brain fires a command, and your finger moves. Each link costs milliseconds. That is why pure <strong className="text-white">reaction</strong> has a hard human floor of about 100–120 ms — you cannot beat it, only get closer to it. Fatigue, distraction and screen lag stretch the chain; focus, rest and practice tighten it.
             </p>
           </section>
 
@@ -333,7 +344,7 @@ const F1ReactionPage = () => {
           <section className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-6">
             <h2 className="text-2xl font-bold text-white mb-4">False Starts and the Jump-Start Rule in F1</h2>
             <p className="text-dark-300 mb-3">
-              In Formula 1, jumping the start before the lights go out results in severe penalties:
+              In this test, going before the green light appears is a false start. In real Formula 1, jumping the start triggers the same kind of sanction — and the penalties are severe:
             </p>
             <ul className="space-y-2 text-dark-300 ml-4">
               <li className="flex items-start gap-2">
@@ -350,7 +361,7 @@ const F1ReactionPage = () => {
               </li>
             </ul>
             <p className="text-sm text-dark-400 mt-3">
-              This is why drivers must balance aggression with precision - reacting instantly while not anticipating the lights going out.
+              This is why drivers must balance aggression with precision - reacting instantly to the green without anticipating it.
             </p>
           </section>
 
