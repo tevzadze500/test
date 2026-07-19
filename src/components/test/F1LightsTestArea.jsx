@@ -11,25 +11,28 @@ import {
 } from '../../utils/scoreUtils';
 
 const PHASES = {
-  IDLE: 'idle',
-  READY: 'ready', // the 15 red lights are on, random hold running
-  GO: 'go', // reds off, the 5 green lights are on — react now
+  IDLE: 'idle', // step 0 — everything off
+  CASCADE: 'cascade', // steps 1-3 — red rows light up one by one, top to bottom
+  TENSION: 'tension', // step 4 — three reds lit, random hold running
+  GO: 'go', // step 5 — reds out, green on, timer running
   RESULT: 'result',
   FALSE_START: 'falseStart',
 };
 
 const COLUMNS = [0, 1, 2, 3, 4]; // 5 columns
 const ROWS = [0, 1, 2, 3]; // 4 lights stacked per column
-const GREEN_ROW = 3; // bottom light is the green "GO" light
-const MIN_HOLD_MS = 1000;
-const MAX_HOLD_MS = 3000;
+const RED_ROWS = 3; // top three rows are the red staging lights
+const GREEN_ROW = 3; // bottom row is the green GO light
+const CASCADE_MS = 500; // exactly 500ms between each red row
+const MIN_HOLD_MS = 500; // shortest tension hold
+const MAX_HOLD_MS = 2500; // longest tension hold
 
 /**
- * Light tower: 5 columns x 4 stacked lights (20 total).
- * The top three rows of every column light red together ("ready"),
- * then they all cut out and the bottom row turns green — that green is the GO signal.
+ * Drag-racing style light tower: 5 columns x 4 stacked lights (20 total).
+ * `redRows` (0-3) says how many red rows are lit — they cascade downward —
+ * and `greenOn` lights the bottom row, which is the GO signal.
  */
-const LightTower = ({ redsOn, greenOn }) => (
+const LightTower = ({ redRows, greenOn }) => (
   <div className="w-full max-w-3xl mx-auto select-none" aria-hidden="true">
     {/* Mounting rail */}
     <div className="mx-auto h-3 w-2/3 rounded-t-md border-x-2 border-t-2 border-dark-600 bg-gradient-to-b from-dark-600 to-dark-700" />
@@ -44,7 +47,7 @@ const LightTower = ({ redsOn, greenOn }) => (
           >
             {ROWS.map((row) => {
               const isGreenRow = row === GREEN_ROW;
-              const lit = isGreenRow ? greenOn : redsOn;
+              const lit = isGreenRow ? greenOn : row < redRows;
               let tone = 'bg-dark-950 border-dark-700';
               if (lit && isGreenRow) {
                 tone = 'bg-green-500 border-green-400 shadow-[0_0_35px_rgba(34,197,94,0.9)]';
@@ -73,49 +76,58 @@ const LightTower = ({ redsOn, greenOn }) => (
 
 const F1LightsTestArea = ({ onResult }) => {
   const [phase, setPhase] = useState(PHASES.IDLE);
+  const [redRows, setRedRows] = useState(0); // 0-3 red rows currently lit
   const [reactionTime, setReactionTime] = useState(null);
 
-  const timeoutRef = useRef(null);
   const goAtRef = useRef(0);
 
-  const clearTimers = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
+  /**
+   * Drives the whole sequence. Every branch returns its own cleanup, so changing
+   * phase (retry, false start) or unmounting always cancels the pending timer —
+   * no stale callback can fire into the next run.
+   */
+  useEffect(() => {
+    if (phase === PHASES.CASCADE) {
+      // Steps 1-3: light the next red row every 500ms, then move to the tension hold
+      if (redRows >= RED_ROWS) {
+        setPhase(PHASES.TENSION);
+        return undefined;
+      }
+      const t = setTimeout(() => setRedRows((r) => r + 1), CASCADE_MS);
+      return () => clearTimeout(t);
     }
-  };
 
-  // Cleanup any pending timeout on unmount
-  useEffect(() => clearTimers, []);
+    if (phase === PHASES.TENSION) {
+      // Step 4: random hold, then GO
+      const hold = MIN_HOLD_MS + Math.random() * (MAX_HOLD_MS - MIN_HOLD_MS);
+      const t = setTimeout(() => {
+        goAtRef.current = performance.now();
+        setPhase(PHASES.GO); // Step 5: reds out, green on
+      }, hold);
+      return () => clearTimeout(t);
+    }
 
-  const isPlayable = phase === PHASES.READY || phase === PHASES.GO;
+    return undefined;
+  }, [phase, redRows]);
+
+  const isPlayable =
+    phase === PHASES.CASCADE || phase === PHASES.TENSION || phase === PHASES.GO;
 
   const startTest = () => {
-    clearTimers();
     setReactionTime(null);
-
-    // Step 1 — the 15 red lights come on together
-    setPhase(PHASES.READY);
-
-    // Step 2 — random hold between 1000ms and 3000ms
-    const hold = MIN_HOLD_MS + Math.random() * (MAX_HOLD_MS - MIN_HOLD_MS);
-    timeoutRef.current = setTimeout(() => {
-      // Step 3 — reds out, greens on: this is the GO signal
-      goAtRef.current = performance.now();
-      setPhase(PHASES.GO);
-    }, hold);
+    setRedRows(1); // Step 1: the top row lights immediately
+    setPhase(PHASES.CASCADE);
   };
 
   const retry = () => {
-    clearTimers();
     setPhase(PHASES.IDLE);
+    setRedRows(0);
     setReactionTime(null);
   };
 
   const handlePress = () => {
-    if (phase === PHASES.READY) {
-      // Went before the green light appeared
-      clearTimers();
+    if (phase === PHASES.CASCADE || phase === PHASES.TENSION) {
+      // Steps 1-4: went before the green light appeared
       setPhase(PHASES.FALSE_START);
       if (onResult) onResult({ falseStart: true, reactionTime: null });
     } else if (phase === PHASES.GO) {
@@ -140,9 +152,12 @@ const F1LightsTestArea = ({ onResult }) => {
     return () => window.removeEventListener('keydown', onKey);
   }, [isPlayable, phase]);
 
-  // Reds stay frozen on a false start so the mistake is visible
-  const redsOn = phase === PHASES.READY || phase === PHASES.FALSE_START;
   const greenOn = phase === PHASES.GO;
+  // Reds show during the cascade/tension and stay frozen on a false start
+  const litRedRows =
+    phase === PHASES.CASCADE || phase === PHASES.TENSION || phase === PHASES.FALSE_START
+      ? redRows
+      : 0;
 
   return (
     <div
@@ -177,12 +192,12 @@ const F1LightsTestArea = ({ onResult }) => {
         {/* ---------- IDLE ---------- */}
         {phase === PHASES.IDLE && (
           <div className="space-y-6">
-            <LightTower redsOn={false} greenOn={false} />
+            <LightTower redRows={0} greenOn={false} />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
               Reaction Light Tower
             </h2>
             <p className="text-base sm:text-lg text-dark-300 max-w-2xl mx-auto">
-              The red lights come on. The moment they switch to{' '}
+              Three red lights drop one by one. The instant they switch to{' '}
               <span className="text-green-400 font-semibold">green</span> — react.
             </p>
             <button
@@ -199,12 +214,12 @@ const F1LightsTestArea = ({ onResult }) => {
           </div>
         )}
 
-        {/* ---------- READY (reds on, random hold running) ---------- */}
-        {phase === PHASES.READY && (
+        {/* ---------- CASCADE + TENSION ---------- */}
+        {(phase === PHASES.CASCADE || phase === PHASES.TENSION) && (
           <div className="space-y-6 sm:space-y-8">
-            <LightTower redsOn greenOn={false} />
+            <LightTower redRows={litRedRows} greenOn={false} />
             <div className="text-xl sm:text-2xl md:text-3xl font-bold text-red-400 animate-pulse">
-              Wait for green…
+              {phase === PHASES.CASCADE ? 'Staging…' : 'Wait for green…'}
             </div>
             <p className="text-dark-400 text-xs sm:text-sm">
               Don&apos;t go yet — reacting while the lights are red is a false start
@@ -215,7 +230,7 @@ const F1LightsTestArea = ({ onResult }) => {
         {/* ---------- GO ---------- */}
         {phase === PHASES.GO && (
           <div className="space-y-6 sm:space-y-8">
-            <LightTower redsOn={false} greenOn />
+            <LightTower redRows={0} greenOn />
             <Zap size={56} className="sm:w-16 sm:h-16 mx-auto text-green-400 animate-pulse" />
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-green-400 animate-pulse">
               GO!
@@ -254,7 +269,8 @@ const F1LightsTestArea = ({ onResult }) => {
         {/* ---------- FALSE START ---------- */}
         {phase === PHASES.FALSE_START && (
           <div className="space-y-5 sm:space-y-6">
-            <LightTower redsOn greenOn={false} />
+            {/* Reds stay frozen where they were, so the mistake is obvious */}
+            <LightTower redRows={litRedRows} greenOn={false} />
             <AlertCircle size={56} className="sm:w-16 sm:h-16 mx-auto text-orange-500" />
             <div className="space-y-2">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-orange-500">
