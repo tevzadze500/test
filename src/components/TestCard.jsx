@@ -71,12 +71,12 @@ const TestCard = ({ test }) => {
     >
       {/* Top Section: Icon + Name */}
       <div className="flex items-start gap-3 mb-3">
-        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center shadow-lg shrink-0 transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center shadow-lg shrink-0 overflow-hidden transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
           {test.id === 'f1-reaction' ? (
             <img
               src="/f1-logo.webp"
               alt="F1 Reflex Test"
-              className="w-8 h-8 sm:w-9 sm:h-9 object-contain"
+              className="w-full h-full object-contain object-center"
               loading="lazy"
               decoding="async"
             />

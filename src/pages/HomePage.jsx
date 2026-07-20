@@ -111,11 +111,11 @@ function HomePage() {
                 <div className="max-w-4xl mx-auto mb-8">
                   <div className="bg-gradient-to-br from-red-500/20 via-rose-500/10 to-orange-500/10 border-2 border-red-500/50 rounded-2xl p-8 shadow-2xl">
                     <div className="flex flex-col md:flex-row items-center gap-6">
-                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0">
+                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0 overflow-hidden">
                         <img
                           src="/f1-logo.webp"
                           alt="F1 Reflex Test"
-                          className="w-16 h-16 object-contain"
+                          className="w-full h-full object-contain object-center"
                           decoding="async"
                         />
                       </div>
@@ -148,7 +148,7 @@ function HomePage() {
                             src="/f1-logo.webp"
                             alt=""
                             aria-hidden="true"
-                            className="w-6 h-6 object-contain shrink-0"
+                            className="w-6 h-6 object-contain object-center shrink-0"
                             decoding="async"
                           />
                           Start your F1 Reflex Test Now!
