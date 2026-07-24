@@ -91,7 +91,7 @@ const ConversionFooter = () => {
             <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
               <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
             </div>
-            <span>© 2026 TestHub. Professional Testing Platform.</span>
+            <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">

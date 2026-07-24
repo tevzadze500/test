@@ -96,7 +96,7 @@ const HearingTestPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Hearing Frequency Test - Audio Health Check | TestHub"
+        title="Hearing Frequency Test - Audio Health Check | ReactionTestPro"
         description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
         keywords="hearing test, frequency test, hearing range, audio test, hearing health, frequency hearing test, online hearing test, audiometry"
         canonical="/test/hearing"
@@ -120,7 +120,7 @@ const HearingTestPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
@@ -128,7 +128,7 @@ const HearingTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Hearing health check</p>
                 </div>
@@ -341,7 +341,7 @@ const HearingTestPage = () => {
               <div className="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
                 <Headphones size={12} className="text-white" />
               </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
+              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
             </div>
             <div className="flex items-center gap-6">
               <span>No signup required</span>

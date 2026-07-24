@@ -204,7 +204,7 @@ const VisionTestPage = () => {
                   </div>
                   <div>
                     <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
-                      TestHub
+                      ReactionTestPro
                     </p>
                     <p className="text-xs text-dark-400">Testing Platform</p>
                   </div>
@@ -322,7 +322,7 @@ const VisionTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>

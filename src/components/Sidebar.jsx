@@ -179,7 +179,7 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                 </span>
               </div>
               <div>
-                <div className="text-lg font-bold text-white leading-tight">TestHub</div>
+                <div className="text-base font-bold text-white leading-tight whitespace-nowrap">ReactionTestPro</div>
                 <p className="text-[11px] text-dark-400 flex items-center gap-1.5">
                   <span className="inline-block w-1 h-1 rounded-full bg-green-400" />
                   Free • No signup

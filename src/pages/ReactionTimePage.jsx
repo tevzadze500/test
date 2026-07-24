@@ -91,13 +91,13 @@ const ReactionTimePage = () => {
           <div className="flex items-center justify-between gap-4">
             {/* Left: Brand + Back */}
             <div className="flex items-center gap-3 sm:gap-6">
-              <Link to="/" aria-label="TestHub home" className="flex items-center gap-2 sm:gap-3 group">
+              <Link to="/" aria-label="ReactionTestPro home" className="flex items-center gap-2 sm:gap-3 group">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                   <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div className="hidden sm:block">
                   <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -216,7 +216,7 @@ const ReactionTimePage = () => {
               <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
                 <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
+              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-center">
               <span>No signup required</span>

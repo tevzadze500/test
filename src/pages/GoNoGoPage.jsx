@@ -95,7 +95,7 @@ const GoNoGoPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -364,7 +364,7 @@ const GoNoGoPage = () => {
               <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
                 <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
               </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
+              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
             </div>
             <div className="flex items-center gap-6">
               <span>No signup required</span>

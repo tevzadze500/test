@@ -194,7 +194,7 @@ export const getColorBlindMotivation = (score) => {
 
 // General Share Message Generator
 export const generateShareMessage = (testName, score, level) => {
-  return `I just scored ${score} on ${testName} at TestHub.\nRank: ${level}\n\nCan you beat me? Try it now!`;
+  return `I just scored ${score} on ${testName} at ReactionTestPro.\nRank: ${level}\n\nCan you beat me? Try it now!`;
 };
 
 // Get suggested tests based on current test.

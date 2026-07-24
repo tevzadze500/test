@@ -231,7 +231,7 @@ const AdhdTestPage = () => {
                   </div>
                   <div>
                     <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                      TestHub
+                      ReactionTestPro
                     </p>
                     <p className="text-xs text-dark-400">Testing Platform</p>
                   </div>
@@ -327,7 +327,7 @@ const AdhdTestPage = () => {
     return (
       <>
         <Seo
-          title="ADHD Test in Progress | TestHub"
+          title="ADHD Test in Progress | ReactionTestPro"
           description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
           canonical="/test/adhd"
         />
@@ -361,7 +361,7 @@ const AdhdTestPage = () => {
     return (
       <>
         <Seo
-          title="Your ADHD Test Results | TestHub"
+          title="Your ADHD Test Results | ReactionTestPro"
           description="View your ADHD self-assessment results and get insights into your attention, focus, and impulse control patterns."
           canonical="/test/adhd"
         />
@@ -375,7 +375,7 @@ const AdhdTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -488,7 +488,7 @@ const AdhdTestPage = () => {
   return (
     <>
       <Seo
-        title={`ADHD Test - Question ${currentQuestion + 1} of ${totalQuestions} | TestHub`}
+        title={`ADHD Test - Question ${currentQuestion + 1} of ${totalQuestions} | ReactionTestPro`}
         description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
         canonical="/test/adhd"
       />

@@ -122,13 +122,13 @@ const F1ReactionPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
               >
                 <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-10 h-10 rounded-lg" />
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">F1 Lights Reaction</p>
                 </div>
@@ -389,7 +389,7 @@ const F1ReactionPage = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
             <div className="flex items-center gap-2">
               <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-6 h-6 rounded" />
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
+              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
             </div>
             <div className="flex items-center gap-6">
               <span>No signup required</span>

@@ -80,7 +80,7 @@ const ColorBlindTestPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Color Blindness Test - Quick Screening | TestHub"
+        title="Color Blindness Test - Quick Screening | ReactionTestPro"
         description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
         keywords="color blindness test, color vision test, Ishihara test, color deficiency, red green color blind, color vision screening"
         canonical="/test/color-blind"
@@ -104,14 +104,14 @@ const ColorBlindTestPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
                   <Palette size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">TestHub</p>
+                  <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">ReactionTestPro</p>
                   <p className="text-xs text-dark-400">Quick screening</p>
                 </div>
               </Link>
@@ -293,7 +293,7 @@ const ColorBlindTestPage = () => {
               <div className="w-6 h-6 rounded bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
                 <Palette size={12} className="text-white" />
               </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
+              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
             </div>
             <div className="flex items-center gap-6">
               <span>No signup required</span>
