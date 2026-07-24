@@ -5,6 +5,7 @@ import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
 
 const HearingTestPage = () => {
   const [stats, setStats] = useState({
@@ -333,26 +334,7 @@ const HearingTestPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
-                <Headphones size={12} className="text-white" />
-              </div>
-              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-12" Icon={Headphones} accent="from-blue-500 to-cyan-600" />
     </div>
   );
 };

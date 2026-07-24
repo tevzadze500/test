@@ -6,6 +6,7 @@ import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/stru
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
 import ReactionInfoSection, { reactionFaqs } from '../components/test/ReactionInfoSection';
+import SiteFooter from '../components/SiteFooter';
 
 const ReactionTimePage = () => {
   const [stats, setStats] = useState({
@@ -208,26 +209,7 @@ const ReactionTimePage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-8 sm:mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
-              </div>
-              <span>© 2026 ReactionTestPro. Professional Testing Platform.</span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-center">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-8 sm:mt-12" />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Bra
 import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
 
 const questions = [
   // Attention / Focus (25 questions)
@@ -312,6 +313,7 @@ const AdhdTestPage = () => {
 
         {/* SEO Content Section on Intro Page */}
         <AdhdSeoContent />
+        <SiteFooter className="mt-12" Icon={Brain} accent="from-blue-500 to-cyan-600" />
       </div>
       </>
     );
@@ -479,6 +481,7 @@ const AdhdTestPage = () => {
 
         {/* SEO Content Section */}
         <AdhdSeoContent />
+        <SiteFooter className="mt-12" Icon={Brain} accent="from-blue-500 to-cyan-600" />
       </div>
       </>
     );

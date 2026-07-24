@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
+import SiteFooter from '../components/SiteFooter';
 
 // Letters commonly used in vision tests
 const TEST_LETTERS = ['C', 'D', 'E', 'F', 'H', 'K', 'N', 'O', 'P', 'R', 'S', 'V', 'Z'];
@@ -302,6 +303,7 @@ const VisionTestPage = () => {
             </div>
           </div>
         </main>
+      <SiteFooter className="mt-12" Icon={Eye} accent="from-cyan-500 to-teal-600" />
       </div>
     );
   }
@@ -422,6 +424,7 @@ const VisionTestPage = () => {
             </Link>
           </div>
         </main>
+      <SiteFooter className="mt-12" Icon={Eye} accent="from-cyan-500 to-teal-600" />
       </div>
     );
   }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Home, Zap, ArrowRight } from 'lucide-react';
 import F1LightsIcon from '../components/icons/F1LightsIcon';
+import SiteFooter from '../components/SiteFooter';
 
 function NotFoundPage() {
   return (
@@ -60,6 +61,7 @@ function NotFoundPage() {
           </Link>
         </div>
       </div>
+      <SiteFooter className="mt-12" />
     </div>
   );
 }

@@ -14,6 +14,10 @@ const ColorBlindTestPage = lazy(() => import('./pages/ColorBlindTestPage'));
 const WorkingMemoryPage = lazy(() => import('./pages/WorkingMemoryPage'));
 const AnticipationPage = lazy(() => import('./pages/AnticipationPage'));
 const AuditoryReactionPage = lazy(() => import('./pages/AuditoryReactionPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const PageLoader = () => (
@@ -46,5 +50,9 @@ export const routes = [
   { path: '/test/memory', element: page(WorkingMemoryPage) },
   { path: '/test/anticipation', element: page(AnticipationPage) },
   { path: '/test/auditory-reaction', element: page(AuditoryReactionPage) },
+  { path: '/privacy', element: page(PrivacyPage) },
+  { path: '/terms', element: page(TermsPage) },
+  { path: '/about', element: page(AboutPage) },
+  { path: '/contact', element: page(ContactPage) },
   { path: '*', element: page(NotFoundPage) },
 ];

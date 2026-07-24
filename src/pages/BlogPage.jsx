@@ -4,7 +4,8 @@ import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import Seo from '../components/Seo';
 import { articleSchema } from '../utils/structuredData';
-import { ArrowLeft, Zap, Activity, Car, Brain, Target, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Zap, Activity, Car, Brain, Target, TrendingUp, BookOpen } from 'lucide-react';
+import SiteFooter from '../components/SiteFooter';
 
 function BlogPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -257,6 +258,7 @@ function BlogPage() {
           </article>
         </div>
       </main>
+      <SiteFooter className="mt-12" Icon={BookOpen} accent="from-blue-500 to-indigo-600" />
     </div>
   );
 }
