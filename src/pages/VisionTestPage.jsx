@@ -4,6 +4,8 @@ import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
 import SiteFooter from '../components/SiteFooter';
+import TrustBlock from '../components/TrustBlock';
+import { visionReferences, LAST_UPDATED } from '../data/references';
 
 // Letters commonly used in vision tests
 const TEST_LETTERS = ['C', 'D', 'E', 'F', 'H', 'K', 'N', 'O', 'P', 'R', 'S', 'V', 'Z'];
@@ -301,6 +303,13 @@ const VisionTestPage = () => {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="mt-10">
+            <TrustBlock
+              lastUpdated={LAST_UPDATED}
+              references={visionReferences}
+              methodology="Letters are drawn at decreasing sizes in the browser, following the idea behind the Snellen chart. A real acuity test depends on a fixed 20-foot (6-metre) viewing distance and a calibrated chart size; neither can be controlled on your screen, so this simulation cannot produce a genuine 20/20-style measurement."
+            />
           </div>
         </main>
       <SiteFooter className="mt-12" Icon={Eye} accent="from-cyan-500 to-teal-600" />

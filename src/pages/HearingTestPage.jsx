@@ -6,6 +6,8 @@ import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
+import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import { hearingReferences, LAST_UPDATED } from '../data/references';
 
 const HearingTestPage = () => {
   const [stats, setStats] = useState({
@@ -218,6 +220,12 @@ const HearingTestPage = () => {
           </div>
         </div>
 
+        <MedicalDisclaimerBanner>
+          This is not audiometry. Your headphones, speakers and sound card shape which frequencies
+          actually reach your ears, so a tone you cannot hear here does not mean hearing loss. Only
+          a qualified audiologist can test your hearing.
+        </MedicalDisclaimerBanner>
+
         {/* Test Area + Stats */}
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {/* Test Area (2 columns on large screens) */}
@@ -334,6 +342,13 @@ const HearingTestPage = () => {
         </div>
       </main>
 
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <TrustBlock
+          lastUpdated={LAST_UPDATED}
+          references={hearingReferences}
+          methodology="Tones are synthesised in your browser with the Web Audio API and played at increasing frequencies; you report which ones you can still hear. No microphone is used and nothing is recorded. Unlike pure-tone audiometry, the loudness reaching your ear is uncontrolled, so this maps the top of your frequency range only in the roughest terms."
+        />
+      </div>
       <SiteFooter className="mt-12" Icon={Headphones} accent="from-blue-500 to-cyan-600" />
     </div>
   );

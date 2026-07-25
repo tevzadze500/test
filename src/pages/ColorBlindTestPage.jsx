@@ -6,6 +6,8 @@ import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
+import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import { colorBlindReferences, LAST_UPDATED } from '../data/references';
 
 const ColorBlindTestPage = () => {
   const [stats, setStats] = useState({
@@ -178,6 +180,12 @@ const ColorBlindTestPage = () => {
           </div>
         </div>
 
+        <MedicalDisclaimerBanner>
+          This is a screening tool, not a clinical colour vision assessment. Screen brightness,
+          ambient lighting and display calibration all affect the result — only an eye care
+          professional can assess your colour vision properly.
+        </MedicalDisclaimerBanner>
+
         {/* Test Area + Stats */}
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <div className="lg:col-span-2">
@@ -286,6 +294,13 @@ const ColorBlindTestPage = () => {
         </div>
       </main>
 
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <TrustBlock
+          lastUpdated={LAST_UPDATED}
+          references={colorBlindReferences}
+          methodology="The screening shows coloured-dot plates in which a digit is formed from dots that differ from the background only in hue. This is the same format as the plate tests used in clinical screening, rendered on your own uncalibrated display — which is why it can suggest a possible deficiency but cannot measure one."
+        />
+      </div>
       <SiteFooter className="mt-12" Icon={Palette} accent="from-purple-500 to-violet-600" />
     </div>
   );

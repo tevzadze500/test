@@ -5,6 +5,8 @@ import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
+import TrustBlock from '../components/TrustBlock';
+import { adhdReferences, LAST_UPDATED } from '../data/references';
 
 const questions = [
   // Attention / Focus (25 questions)
@@ -342,6 +344,14 @@ const AdhdTestPage = () => {
             Start Test
           </button>
         </main>
+
+        <div className="max-w-3xl mx-auto px-6 pb-12">
+          <TrustBlock
+            lastUpdated={LAST_UPDATED}
+            references={adhdReferences}
+            methodology="The questionnaire is modelled on the format of the WHO Adult ADHD Self-Report Scale (ASRS-v1.1): frequency-rated statements about attention, organisation, impulsivity and emotional regulation, each scored 0-4. It is not the ASRS itself, it has not been validated, and the score is a rough indication of how strongly your answers cluster — nothing more. Answers are held in your browser and are never sent anywhere."
+          />
+        </div>
 
         {/* SEO Content Section on Intro Page */}
         <AdhdSeoContent />
