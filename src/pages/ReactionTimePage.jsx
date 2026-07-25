@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Zap, Clock, Users } from 'lucide-react';
+import { ArrowLeft, Home, Zap, Clock, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
 import ReactionInfoSection, { reactionFaqs } from '../components/test/ReactionInfoSection';
+import SiteFooter from '../components/SiteFooter';
 
 const ReactionTimePage = () => {
   const [stats, setStats] = useState({
@@ -72,7 +73,6 @@ const ReactionTimePage = () => {
       <Seo
         title="Reaction Time Test – Check Your Reflexes & Average Speed"
         description="Test your reaction time free in milliseconds. See how your reflexes compare to the average human reaction speed, learn what affects them, and how to react faster. No signup."
-        keywords="reaction time test, average reaction speed, human reflexes, how to test reflexes, millisecond reaction clock, visual reaction speed, measure reaction time"
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
@@ -91,13 +91,13 @@ const ReactionTimePage = () => {
           <div className="flex items-center justify-between gap-4">
             {/* Left: Brand + Back */}
             <div className="flex items-center gap-3 sm:gap-6">
-              <Link to="/" aria-label="TestHub home" className="flex items-center gap-2 sm:gap-3 group">
+              <Link to="/" aria-label="ReactionTestPro home" className="flex items-center gap-2 sm:gap-3 group">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                   <Zap size={20} className="text-white" strokeWidth={2.5} fill="white" />
                 </div>
                 <div className="hidden sm:block">
                   <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -172,8 +172,8 @@ const ReactionTimePage = () => {
               <span className="text-green-400 font-medium">Easy</span>
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={12} className="sm:w-3.5 sm:h-3.5 text-purple-400" />
-              <span className="text-white">150K+ participants</span>
+              <Info size={12} className="sm:w-3.5 sm:h-3.5 text-dark-400" />
+              <span className="text-white">No audio needed</span>
             </div>
           </div>
         </div>
@@ -208,26 +208,7 @@ const ReactionTimePage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-8 sm:mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
-              </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-center">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-8 sm:mt-12" />
     </div>
   );
 };

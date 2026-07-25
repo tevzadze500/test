@@ -20,46 +20,34 @@ export const tests = [
     featured: true,
     recommendation: 'Perfect for beginners',
     requirements: 'No audio needed',
-    stats: {
-      avgScore: '245 ms',
-      participants: '150K+',
-    },
     badges: ['Most Popular', 'Quick Start'],
   },
   {
     id: 'f1-reaction',
-    name: 'F1 Lights Reaction Test',
-    description: 'React the instant the start lights go out',
+    name: 'Start Lights Reaction Test',
+    description: 'React the instant the five red lights go out',
     category: testCategories.PERFORMANCE,
     duration: '1 min',
     difficulty: 'Medium',
-    icon: 'Flag',
+    icon: 'StartLights',
     color: 'green',
     popular: true,
     recommendation: 'Fastest test available',
     requirements: 'No audio needed',
-    stats: {
-      avgScore: '228 ms',
-      participants: '42K+',
-    },
     badges: ['Premium', '< 1 min'],
   },
   {
     id: 'adhd-test',
     name: 'ADHD Screening Test',
-    description: 'Quick attention and focus assessment',
+    description: '100-question attention and focus self-assessment',
     category: testCategories.FOCUS,
-    duration: '5 min',
+    duration: '10-15 min',
     difficulty: 'Medium',
     icon: 'Focus',
     color: 'blue',
     popular: true,
     recommendation: 'Comprehensive assessment',
     requirements: 'Focus required',
-    stats: {
-      avgScore: '68/100',
-      participants: '85K+',
-    },
     badges: ['Recommended', 'Detailed'],
   },
   {
@@ -74,10 +62,6 @@ export const tests = [
     popular: true,
     recommendation: 'Essential health check',
     requirements: 'Good lighting',
-    stats: {
-      avgScore: '20/20',
-      participants: '120K+',
-    },
     badges: ['Essential', 'Health'],
   },
   {
@@ -91,10 +75,6 @@ export const tests = [
     color: 'blue',
     recommendation: 'Hearing health check',
     requirements: 'Audio required',
-    stats: {
-      avgScore: '18 kHz',
-      participants: '65K+',
-    },
     badges: ['Audio Required', 'Health'],
   },
   {
@@ -108,10 +88,6 @@ export const tests = [
     color: 'purple',
     recommendation: 'Quick screening',
     requirements: 'Color display',
-    stats: {
-      avgScore: 'Normal',
-      participants: '95K+',
-    },
     badges: ['Quick', 'Easy'],
   },
   {
@@ -126,10 +102,6 @@ export const tests = [
     popular: false,
     recommendation: 'Challenge yourself',
     requirements: 'Focus required',
-    stats: {
-      avgScore: '7 items',
-      participants: '72K+',
-    },
     badges: ['Challenging', 'Brain'],
   },
   {
@@ -144,10 +116,6 @@ export const tests = [
     popular: false,
     recommendation: 'Test your control',
     requirements: 'Focus required',
-    stats: {
-      avgScore: '94%',
-      participants: '38K+',
-    },
     badges: ['Inhibition', 'New'],
   },
   {
@@ -161,10 +129,6 @@ export const tests = [
     color: 'blue',
     recommendation: 'Advanced timing',
     requirements: 'No audio needed',
-    stats: {
-      avgScore: '85%',
-      participants: '45K+',
-    },
     badges: ['New', 'Timing'],
   },
   {
@@ -178,10 +142,6 @@ export const tests = [
     color: 'green',
     recommendation: 'Test sound response',
     requirements: 'Audio required',
-    stats: {
-      avgScore: '220 ms',
-      participants: '55K+',
-    },
     badges: ['Audio Required', 'Fast'],
   },
 ];

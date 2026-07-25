@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Clock, Users, Trophy, Zap, Activity } from 'lucide-react';
+import { ArrowLeft, Home, Clock, Trophy, Zap, Activity, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import GoNoGoTestArea from '../components/test/GoNoGoTestArea';
 import GoNoGoStatsCard from '../components/test/GoNoGoStatsCard';
 import EnhancedResultCard from '../components/EnhancedResultCard';
+import SiteFooter from '../components/SiteFooter';
 import {
   getGoNoGoLevel,
   getGoNoGoMotivation,
@@ -69,7 +70,6 @@ const GoNoGoPage = () => {
       <Seo
         title="Go/No-Go Test – Measure Your Response Inhibition & Focus"
         description="Take the free Go/No-Go test: react to green 'Go' signals, hold back on red 'No-Go' signals, and measure your response inhibition and impulse control. Instant results, no signup."
-        keywords="go no go test, response inhibition test, impulse control task, cognitive control game, go/no-go task, inhibition test, executive function test"
         canonical="/test/go-no-go"
         jsonLd={[
           webApplicationSchema({
@@ -95,7 +95,7 @@ const GoNoGoPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -172,8 +172,8 @@ const GoNoGoPage = () => {
               <span className="text-yellow-400 font-medium">Medium</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">38K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">Focus required</span>
             </div>
           </div>
         </div>
@@ -356,26 +356,7 @@ const GoNoGoPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-                <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
-              </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-12" />
     </div>
   );
 };

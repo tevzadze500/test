@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
+import SiteFooter from '../components/SiteFooter';
+import TrustBlock from '../components/TrustBlock';
+import { visionReferences, LAST_UPDATED } from '../data/references';
 
 // Letters commonly used in vision tests
 const TEST_LETTERS = ['C', 'D', 'E', 'F', 'H', 'K', 'N', 'O', 'P', 'R', 'S', 'V', 'Z'];
@@ -174,7 +177,6 @@ const VisionTestPage = () => {
     <Seo
       title="Visual Acuity Test - Check Your Eyesight Online | ReactionTestPro"
       description="Check your visual acuity with our free online eye test. Measures from 20/200 down to 20/20 vision. No signup required, instant results."
-      keywords="visual acuity test, online eye test, vision test, eyesight test, 20/20 vision test, free eye exam, visual clarity test"
       canonical="/test/vision"
       jsonLd={[
         webApplicationSchema({
@@ -184,6 +186,12 @@ const VisionTestPage = () => {
           category: 'HealthApplication',
         }),
         breadcrumbSchema('Visual Acuity Test', '/test/vision'),
+          medicalWebPageSchema({
+            name: 'Visual Acuity Test',
+            description: 'An interactive visual acuity screening simulation based on the Snellen chart format. Educational only: viewing distance and screen size cannot be controlled, so this is not a medical eye test and cannot produce a genuine acuity measurement.',
+            path: '/test/vision',
+            lastReviewed: LAST_UPDATED,
+          }),
         faqSchema(faqs),
       ]}
     />
@@ -204,7 +212,7 @@ const VisionTestPage = () => {
                   </div>
                   <div>
                     <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
-                      TestHub
+                      ReactionTestPro
                     </p>
                     <p className="text-xs text-dark-400">Testing Platform</p>
                   </div>
@@ -301,7 +309,15 @@ const VisionTestPage = () => {
               ))}
             </div>
           </div>
+          <div className="mt-10">
+            <TrustBlock
+              lastUpdated={LAST_UPDATED}
+              references={visionReferences}
+              methodology="Letters are drawn at decreasing sizes in the browser, following the idea behind the Snellen chart. A real acuity test depends on a fixed 20-foot (6-metre) viewing distance and a calibrated chart size; neither can be controlled on your screen, so this simulation cannot produce a genuine 20/20-style measurement."
+            />
+          </div>
         </main>
+      <SiteFooter className="mt-12" Icon={Eye} accent="from-cyan-500 to-teal-600" />
       </div>
     );
   }
@@ -322,7 +338,7 @@ const VisionTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -422,6 +438,7 @@ const VisionTestPage = () => {
             </Link>
           </div>
         </main>
+      <SiteFooter className="mt-12" Icon={Eye} accent="from-cyan-500 to-teal-600" />
       </div>
     );
   }

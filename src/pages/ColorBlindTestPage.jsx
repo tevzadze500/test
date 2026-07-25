@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Eye, Clock, Users, Palette, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Eye, Clock, Palette, AlertTriangle, Info } from 'lucide-react';
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
+import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import { colorBlindReferences, LAST_UPDATED } from '../data/references';
 
 const ColorBlindTestPage = () => {
   const [stats, setStats] = useState({
@@ -80,9 +83,8 @@ const ColorBlindTestPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Color Blindness Test - Quick Screening | TestHub"
+        title="Color Blindness Test - Quick Screening | ReactionTestPro"
         description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
-        keywords="color blindness test, color vision test, Ishihara test, color deficiency, red green color blind, color vision screening"
         canonical="/test/color-blind"
         jsonLd={[
           webApplicationSchema({
@@ -93,6 +95,12 @@ const ColorBlindTestPage = () => {
             category: 'HealthApplication',
           }),
           breadcrumbSchema('Color Blindness Test', '/test/color-blind'),
+          medicalWebPageSchema({
+            name: 'Color Blindness Test',
+            description: 'A colour vision screening using coloured-dot plates. Educational only: display calibration and ambient lighting affect the result, so this is not a clinical colour vision assessment.',
+            path: '/test/color-blind',
+            lastReviewed: LAST_UPDATED,
+          }),
           faqSchema(faqs),
         ]}
       />
@@ -104,14 +112,14 @@ const ColorBlindTestPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
               >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
                   <Palette size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">TestHub</p>
+                  <p className="text-lg font-bold text-white group-hover:text-purple-400 transition-colors">ReactionTestPro</p>
                   <p className="text-xs text-dark-400">Quick screening</p>
                 </div>
               </Link>
@@ -160,8 +168,8 @@ const ColorBlindTestPage = () => {
               <span className="text-white">3 min</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">95K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">Colour display required</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
               <Palette size={14} className="text-purple-400" />
@@ -176,6 +184,12 @@ const ColorBlindTestPage = () => {
             </div>
           </div>
         </div>
+
+        <MedicalDisclaimerBanner>
+          This is a screening tool, not a clinical colour vision assessment. Screen brightness,
+          ambient lighting and display calibration all affect the result — only an eye care
+          professional can assess your colour vision properly.
+        </MedicalDisclaimerBanner>
 
         {/* Test Area + Stats */}
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -285,26 +299,14 @@ const ColorBlindTestPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-purple-500 to-violet-600 flex items-center justify-center">
-                <Palette size={12} className="text-white" />
-              </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <TrustBlock
+          lastUpdated={LAST_UPDATED}
+          references={colorBlindReferences}
+          methodology="The screening shows coloured-dot plates in which a digit is formed from dots that differ from the background only in hue. This is the same format as the plate tests used in clinical screening, rendered on your own uncalibrated display — which is why it can suggest a possible deficiency but cannot measure one."
+        />
+      </div>
+      <SiteFooter className="mt-12" Icon={Palette} accent="from-purple-500 to-violet-600" />
     </div>
   );
 };

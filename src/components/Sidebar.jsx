@@ -8,13 +8,13 @@ import {
   Focus,
   Headphones,
   Target,
-  Flame,
   Trophy,
+  Shield,
   Sparkles,
   ArrowRight,
 } from 'lucide-react';
 import { tests, testCategories } from '../data/tests';
-import F1LightsIcon from './icons/F1LightsIcon';
+import StartLightsIcon from './icons/StartLightsIcon';
 
 const CATEGORY_THEMES = {
   ALL: {
@@ -172,14 +172,9 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                 <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-105 transition-transform">
                   <Zap className="w-6 h-6 text-white" strokeWidth={2.5} fill="white" />
                 </div>
-                {/* Live indicator dot */}
-                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-dark-900" />
-                </span>
               </div>
               <div>
-                <div className="text-lg font-bold text-white leading-tight">TestHub</div>
+                <div className="text-base font-bold text-white leading-tight whitespace-nowrap">ReactionTestPro</div>
                 <p className="text-[11px] text-dark-400 flex items-center gap-1.5">
                   <span className="inline-block w-1 h-1 rounded-full bg-green-400" />
                   Free • No signup
@@ -212,11 +207,7 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                     </div>
                     <span className="text-sm font-semibold">Dashboard</span>
                   </div>
-                  {isActive && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-green-400 bg-green-500/15 px-2 py-0.5 rounded-md border border-green-500/30">
-                      Live
-                    </span>
-                  )}
+
                 </>
               )}
             </NavLink>
@@ -290,8 +281,8 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
             {/* Featured spotlight */}
             <div className="pt-5 pb-2 px-3">
               <span className="text-[10px] font-bold text-dark-500 uppercase tracking-wider flex items-center gap-1.5">
-                <Flame size={11} className="text-orange-400" />
-                Trending
+                <Sparkles size={11} className="text-orange-400" />
+                Featured
               </span>
             </div>
 
@@ -305,14 +296,13 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
 
               <div className="relative flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/30 shrink-0">
-                  <F1LightsIcon size={18} className="text-white" />
+                  <StartLightsIcon size={18} className="text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-white leading-tight flex items-center gap-1.5">
-                    F1 Reaction
+                    Start Lights
                     <span className="inline-flex items-center gap-0.5 text-[9px] font-bold uppercase tracking-wider text-orange-300 bg-orange-500/20 px-1.5 py-0.5 rounded">
-                      <Flame size={9} />
-                      Hot
+                      1 min
                     </span>
                   </div>
                   <div className="text-[10.5px] text-dark-400 flex items-center gap-1">
@@ -338,9 +328,8 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold text-white leading-tight">Guest mode</p>
-                    <p className="text-[10.5px] text-dark-400 flex items-center gap-1 mt-0.5">
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                      Ready to play
+                    <p className="text-[10.5px] text-dark-400 mt-0.5">
+                      No account needed
                     </p>
                   </div>
                 </div>
@@ -355,10 +344,10 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                     </div>
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Flame size={12} className="text-orange-400 shrink-0" />
+                    <Shield size={12} className="text-green-400 shrink-0" />
                     <div className="min-w-0">
-                      <div className="text-[10px] text-dark-500 leading-none">Today</div>
-                      <div className="text-xs font-bold text-white tabular-nums">1.2K</div>
+                      <div className="text-[10px] text-dark-500 leading-none">Cost</div>
+                      <div className="text-xs font-bold text-white">Free</div>
                     </div>
                   </div>
                 </div>

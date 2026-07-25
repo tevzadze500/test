@@ -9,13 +9,13 @@ const MobileTopBar = ({ onMenuToggle, isMenuOpen }) => {
         {/* Logo/Brand - links back to the homepage */}
         <Link
           to="/"
-          aria-label="TestHub home"
+          aria-label="ReactionTestPro home"
           className="flex items-center gap-2.5 rounded-lg group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
         >
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
             <img src="/favicon.png" alt="" aria-hidden="true" width="24" height="24" className="w-6 h-6 object-contain" />
           </div>
-          <span className="text-white font-bold text-base group-hover:text-green-400 transition-colors">TestHub</span>
+          <span className="text-white font-bold text-[15px] whitespace-nowrap group-hover:text-green-400 transition-colors">ReactionTestPro</span>
         </Link>
 
         {/* Menu Button - Compact & Clean */}

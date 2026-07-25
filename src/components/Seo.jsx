@@ -13,7 +13,6 @@ import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from '../utils/structuredData';
  *  - canonical: path ('/test/x') or absolute URL
  *  - image: absolute OG/Twitter image URL (defaults to the site OG image)
  *  - type: Open Graph type ('website' | 'article')
- *  - keywords: optional comma-separated string
  *  - jsonLd: a schema.org object or array of objects
  */
 const Seo = ({
@@ -22,7 +21,6 @@ const Seo = ({
   canonical,
   image = DEFAULT_OG_IMAGE,
   type = 'website',
-  keywords,
   jsonLd,
 }) => {
   const url = canonical
@@ -36,7 +34,6 @@ const Seo = ({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
       {url && <link rel="canonical" href={url} />}
 
       {/* Open Graph */}

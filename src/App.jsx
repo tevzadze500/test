@@ -4,7 +4,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ReactionTimePage = lazy(() => import('./pages/ReactionTimePage'));
 const GoNoGoPage = lazy(() => import('./pages/GoNoGoPage'));
-const F1ReactionPage = lazy(() => import('./pages/F1ReactionPage'));
+const StartLightsPage = lazy(() => import('./pages/StartLightsPage'));
 const AdhdTestPage = lazy(() => import('./pages/AdhdTestPage'));
 const VisionTestPage = lazy(() => import('./pages/VisionTestPage'));
 const GamingTestPage = lazy(() => import('./pages/GamingTestPage'));
@@ -14,6 +14,10 @@ const ColorBlindTestPage = lazy(() => import('./pages/ColorBlindTestPage'));
 const WorkingMemoryPage = lazy(() => import('./pages/WorkingMemoryPage'));
 const AnticipationPage = lazy(() => import('./pages/AnticipationPage'));
 const AuditoryReactionPage = lazy(() => import('./pages/AuditoryReactionPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const TermsPage = lazy(() => import('./pages/TermsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const PageLoader = () => (
@@ -36,7 +40,7 @@ export const routes = [
   { path: '/blog/reaction-time-crucial', element: page(BlogPage) },
   { path: '/test/reaction-time', element: page(ReactionTimePage) },
   { path: '/test/go-no-go', element: page(GoNoGoPage) },
-  { path: '/test/f1-reaction', element: page(F1ReactionPage) },
+  { path: '/test/f1-reaction', element: page(StartLightsPage) },
   { path: '/test/adhd', element: page(AdhdTestPage) },
   { path: '/test/vision', element: page(VisionTestPage) },
   { path: '/gaming-test', element: page(GamingTestPage) },
@@ -46,5 +50,9 @@ export const routes = [
   { path: '/test/memory', element: page(WorkingMemoryPage) },
   { path: '/test/anticipation', element: page(AnticipationPage) },
   { path: '/test/auditory-reaction', element: page(AuditoryReactionPage) },
+  { path: '/privacy', element: page(PrivacyPage) },
+  { path: '/terms', element: page(TermsPage) },
+  { path: '/about', element: page(AboutPage) },
+  { path: '/contact', element: page(ContactPage) },
   { path: '*', element: page(NotFoundPage) },
 ];

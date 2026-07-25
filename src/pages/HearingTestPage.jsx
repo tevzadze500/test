@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Headphones, Clock, Volume2, Heart, Lightbulb, Info } from 'lucide-react';
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
+import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import { hearingReferences, LAST_UPDATED } from '../data/references';
 
 const HearingTestPage = () => {
   const [stats, setStats] = useState({
@@ -96,9 +99,8 @@ const HearingTestPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Hearing Frequency Test - Audio Health Check | TestHub"
+        title="Hearing Frequency Test - Audio Health Check | ReactionTestPro"
         description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
-        keywords="hearing test, frequency test, hearing range, audio test, hearing health, frequency hearing test, online hearing test, audiometry"
         canonical="/test/hearing"
         jsonLd={[
           webApplicationSchema({
@@ -108,6 +110,12 @@ const HearingTestPage = () => {
             category: 'HealthApplication',
           }),
           breadcrumbSchema('Hearing Frequency Test', '/test/hearing'),
+          medicalWebPageSchema({
+            name: 'Hearing Frequency Test',
+            description: 'A hearing frequency range screening using tones generated in the browser. Educational only: playback volume and headphone response are uncontrolled, so this is not audiometry and cannot detect hearing loss.',
+            path: '/test/hearing',
+            lastReviewed: LAST_UPDATED,
+          }),
           faqSchema(faqs),
         ]}
       />
@@ -120,7 +128,7 @@ const HearingTestPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               >
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
@@ -128,7 +136,7 @@ const HearingTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Hearing health check</p>
                 </div>
@@ -199,8 +207,8 @@ const HearingTestPage = () => {
               <span className="text-white">4 min</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">65K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">Headphones required</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
               <Volume2 size={14} className="text-yellow-400" />
@@ -216,6 +224,12 @@ const HearingTestPage = () => {
             </div>
           </div>
         </div>
+
+        <MedicalDisclaimerBanner>
+          This is not audiometry. Your headphones, speakers and sound card shape which frequencies
+          actually reach your ears, so a tone you cannot hear here does not mean hearing loss. Only
+          a qualified audiologist can test your hearing.
+        </MedicalDisclaimerBanner>
 
         {/* Test Area + Stats */}
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
@@ -333,26 +347,14 @@ const HearingTestPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
-                <Headphones size={12} className="text-white" />
-              </div>
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div className="max-w-7xl mx-auto px-6 pb-12">
+        <TrustBlock
+          lastUpdated={LAST_UPDATED}
+          references={hearingReferences}
+          methodology="Tones are synthesised in your browser with the Web Audio API and played at increasing frequencies; you report which ones you can still hear. No microphone is used and nothing is recorded. Unlike pure-tone audiometry, the loudness reaching your ear is uncontrolled, so this maps the top of your frequency range only in the roughest terms."
+        />
+      </div>
+      <SiteFooter className="mt-12" Icon={Headphones} accent="from-blue-500 to-cyan-600" />
     </div>
   );
 };

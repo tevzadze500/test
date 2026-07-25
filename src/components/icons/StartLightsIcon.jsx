@@ -1,10 +1,10 @@
 import React from 'react';
 
 /**
- * F1 starting lights gantry icon — 5 dots with a top bar.
- * Iconic Formula 1 starting procedure visual.
+ * Start lights gantry icon — a mounting bar with five lights beneath it.
+ * Generic five-light starting signal; no third-party marks.
  */
-const F1LightsIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
+const StartLightsIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -29,4 +29,4 @@ const F1LightsIcon = ({ size = 24, className = '', strokeWidth = 2 }) => (
   </svg>
 );
 
-export default F1LightsIcon;
+export default StartLightsIcon;

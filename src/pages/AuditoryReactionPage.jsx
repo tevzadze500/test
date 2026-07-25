@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, Clock, Users, Activity, Ear, HelpCircle, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Volume2, Clock, Activity, Ear, HelpCircle, AlertCircle, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import AuditoryReactionTestArea from '../components/test/AuditoryReactionTestArea';
@@ -65,7 +65,6 @@ const AuditoryReactionPage = () => {
       <Seo
         title="Auditory Reaction Test - Measure Your Response to Sound | ReactionTestPro"
         description="Test your auditory reaction time for free. Click the instant you hear the beep and measure how fast you respond to sound in milliseconds. Instant results, no signup."
-        keywords="auditory reaction test, reaction to sound, sound reaction time, audio reflex test, hearing reaction time, reaction speed sound"
         canonical="/test/auditory-reaction"
         jsonLd={[
           webApplicationSchema({
@@ -81,12 +80,12 @@ const AuditoryReactionPage = () => {
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center gap-3 sm:gap-6">
-            <Link to="/" aria-label="TestHub home" className="flex items-center gap-2 sm:gap-3 group">
+            <Link to="/" aria-label="ReactionTestPro home" className="flex items-center gap-2 sm:gap-3 group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                 <Volume2 size={20} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="hidden sm:block">
-                <h2 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">TestHub</h2>
+                <h2 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</h2>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </Link>
@@ -113,7 +112,7 @@ const AuditoryReactionPage = () => {
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><span className="text-dark-400">Category:</span><span className="text-green-400 font-medium">Performance</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Clock size={12} className="text-blue-400" /><span className="text-white">2 min</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Volume2 size={12} className="text-pink-400" /><span className="text-white">Audio required</span></div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Users size={12} className="text-purple-400" /><span className="text-white">55K+ participants</span></div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Info size={12} className="text-dark-400" /><span className="text-white">Headphones required</span></div>
           </div>
         </div>
 

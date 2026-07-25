@@ -158,7 +158,7 @@ const AdhdSeoContent = () => {
           </div>
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-dark-800/40 border border-dark-700/50 rounded-full">
             <CheckCircle2 size={16} className="text-green-400" />
-            <span className="text-sm text-dark-300 font-medium">25 Questions</span>
+            <span className="text-sm text-dark-300 font-medium">100 Questions</span>
           </div>
         </div>
 

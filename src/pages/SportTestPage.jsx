@@ -8,7 +8,7 @@ import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import { tests } from '../data/tests';
 import { Trophy, Zap, Target, ArrowLeft, Lightbulb, Swords, Activity, Circle, Footprints } from 'lucide-react';
-import F1LightsIcon from '../components/icons/F1LightsIcon';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
 
 function SportTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -46,7 +46,6 @@ function SportTestPage() {
       <Seo
         title="Sports Reaction Test - Improve Athletic Reflexes | ReactionTestPro"
         description="Test your sports reaction time and improve your athletic performance. Perfect for athletes in boxing, tennis, baseball, soccer, and all competitive sports. Measure your reflexes like a pro."
-        keywords="sports reaction test, athletic reflex test, athlete reaction time, sports performance test, boxing reflexes, tennis reaction speed, baseball reaction time"
         canonical="/sport-test"
         jsonLd={[
           webApplicationSchema({
@@ -141,7 +140,7 @@ function SportTestPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <F1LightsIcon size={20} className="text-orange-400 shrink-0 mt-1" />
+                    <StartLightsIcon size={20} className="text-orange-400 shrink-0 mt-1" />
                     <div>
                       <strong className="text-white">Racing Sports:</strong> Formula 1, MotoGP, and track cycling require lightning-fast reactions to maintain control, avoid collisions, and respond to changing conditions.
                     </div>

@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import { Home, Zap, ArrowRight } from 'lucide-react';
-import F1LightsIcon from '../components/icons/F1LightsIcon';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
+import SiteFooter from '../components/SiteFooter';
 
 function NotFoundPage() {
   return (
@@ -54,12 +55,13 @@ function NotFoundPage() {
             to="/test/f1-reaction"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-red-500/60 text-white font-bold rounded-xl transition-all duration-200 transform hover:scale-105"
           >
-            <F1LightsIcon size={20} className="text-white" />
-            F1 Reaction
+            <StartLightsIcon size={20} className="text-white" />
+            Start Lights
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
+      <SiteFooter className="mt-12" />
     </div>
   );
 }

@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Zap, Clock, Users, Lightbulb } from 'lucide-react';
-import F1LightsTestArea from '../components/test/F1LightsTestArea';
-import F1StatsCard from '../components/test/F1StatsCard';
+import { ArrowLeft, Zap, Clock, Lightbulb, Info } from 'lucide-react';
+import StartLightsTestArea from '../components/test/StartLightsTestArea';
+import StartLightsStatsCard from '../components/test/StartLightsStatsCard';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
 
 const faqs = [
   {
-    question: 'What is a good reaction time on the F1 test?',
-    answer: 'Anything under 280 ms is elite territory on this test, and under 230 ms earns the top Hamilton Tier. Because you have to track a cascading light sequence and hold through a random delay before the green appears, times here naturally run a little higher than a bare click test.',
+    question: 'What is a good reaction time on this test?',
+    answer: 'Anything under 280 ms is elite territory on this test, and under 230 ms earns the top Lightning Launch tier. Because you have to track a cascading light sequence and hold through a random delay before the green appears, times here naturally run a little higher than a bare click test.',
   },
   {
-    question: 'How fast do real F1 drivers react at the start?',
-    answer: 'On a real grid, top drivers launch in around 150–200 milliseconds. This test uses a green-light start with a longer cascade to watch, which adds cognitive load — that is why the tiers here sit slightly higher than raw Formula 1 telemetry.',
+    question: 'How does a real race start actually work?',
+    answer: 'Under the FIA Formula 1 Sporting Regulations (Article B5.7.1), five red lights are illuminated one at a time at one-second intervals. The interval between the fifth light and all lights being extinguished — the actual start signal — is at the sole discretion of the starter, which is why it cannot be anticipated. Individual drivers\' start reaction times are not published as a ranking, so this test does not claim to compare you against any of them.',
   },
   {
     question: 'Why do I keep getting a false start?',
     answer: 'You are pressing while the red lights are still on. The hold before the green is random on purpose, so do not try to predict it — watch the bottom row and react only once it turns green.',
   },
   {
-    question: 'Does this test really measure Formula 1 reflexes?',
+    question: 'Does this test really measure racing reflexes?',
     answer: 'It measures the same visual reaction your launch depends on, but your result also depends on your device, screen refresh rate and input lag — so treat it as a fun, repeatable benchmark, not lab-grade telemetry.',
   },
 ];
 
-const F1ReactionPage = () => {
+const StartLightsPage = () => {
   const [stats, setStats] = useState({
     best: null,
     average: null,
@@ -98,18 +100,17 @@ const F1ReactionPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="F1 Reaction Test – Can You Beat 230ms Like Hamilton?"
-        description="Take the free F1 reaction test: three rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your driver tier."
-        keywords="F1 reaction test, formula 1 reaction test, F1 reaction time test, F1 start lights, racing reaction time, F1 reflexes, formula 1 reaction speed"
+        title="Start Lights Reaction Test – How Fast Is Your Launch?"
+        description="Free start lights reaction test: rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your tier."
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({
-            name: 'F1 Reaction Test',
+            name: 'Start Lights Reaction Test',
             description: 'Recreate a race-start light sequence and measure your visual reaction time in milliseconds — react the instant the bottom row of lights turns green.',
             path: '/test/f1-reaction',
             category: 'GameApplication',
           }),
-          breadcrumbSchema('F1 Reaction Test', '/test/f1-reaction'),
+          breadcrumbSchema('Start Lights Reaction Test', '/test/f1-reaction'),
           faqSchema(faqs),
         ]}
       />
@@ -122,15 +123,15 @@ const F1ReactionPage = () => {
             <div className="flex items-center gap-6">
               <Link
                 to="/"
-                aria-label="TestHub home"
+                aria-label="ReactionTestPro home"
                 className="flex items-center gap-3 group rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
               >
-                <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-10 h-10 rounded-lg" />
+                <img src="/checkered-flag.svg" alt="" aria-hidden="true" className="w-10 h-10 rounded-lg" />
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-green-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
-                  <p className="text-xs text-dark-400">F1 Lights Reaction</p>
+                  <p className="text-xs text-dark-400">Start Lights Reaction</p>
                 </div>
               </Link>
 
@@ -175,16 +176,25 @@ const F1ReactionPage = () => {
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-12 h-12 rounded-xl shadow-lg" />
+            <img src="/checkered-flag.svg" alt="" aria-hidden="true" className="w-12 h-12 rounded-xl shadow-lg" />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white">
-                F1 Reaction Test: Can You Launch Like a Formula 1 Driver?
+                Start Lights Reaction Test: How Fast Is Your Launch?
               </h1>
               <p className="text-dark-400 mt-1">
-                React the instant the bottom row turns green — and see how you rank against real F1 drivers
+                React the instant the bottom row turns green, and measure your launch in milliseconds
               </p>
             </div>
           </div>
+
+          {/* Nominative descriptive use: names the real-world procedure the test
+              recreates, without borrowing anyone's branding. */}
+          <p className="text-sm text-dark-400 border-l-2 border-dark-700 pl-3 mb-4 max-w-3xl">
+            This test is inspired by the light-gantry starting procedure used in Formula 1 racing; it is
+            not an exact reproduction of it. It is an independent fan-made tool and is not affiliated
+            with, endorsed by, or associated with Formula One World Championship Limited or any
+            racing series.
+          </p>
 
           {/* Meta Info */}
           <div className="flex flex-wrap items-center gap-4 text-sm">
@@ -201,8 +211,8 @@ const F1ReactionPage = () => {
               <span className="text-yellow-400 font-medium">Medium</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">42K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">No audio needed</span>
             </div>
           </div>
         </div>
@@ -211,12 +221,12 @@ const F1ReactionPage = () => {
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           {/* Test Area (2 columns on large screens) */}
           <div className="lg:col-span-2">
-            <F1LightsTestArea onResult={handleResult} />
+            <StartLightsTestArea onResult={handleResult} />
           </div>
 
           {/* Stats Sidebar (1 column on large screens) */}
           <div className="lg:col-span-1">
-            <F1StatsCard stats={stats} onReset={handleReset} />
+            <StartLightsStatsCard stats={stats} onReset={handleReset} />
           </div>
         </div>
 
@@ -227,9 +237,9 @@ const F1ReactionPage = () => {
             <p className="text-dark-200 text-lg leading-relaxed mb-8">
               At a race start, everything is decided in a single blink. Elite drivers launch in around <strong className="text-white">150–200 milliseconds</strong> — barely longer than one film frame. This free reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
             </p>
-            <h2 className="text-3xl font-bold text-white mb-4">What Is the F1 Reaction Test?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">What Is the Start Lights Reaction Test?</h2>
             <p className="text-dark-300 leading-relaxed">
-              The F1 Reaction Test is a free online tool that recreates a race-start light sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
+              The Start Lights Reaction Test is a free online tool that recreates a race-start light sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
             </p>
           </section>
 
@@ -269,9 +279,9 @@ const F1ReactionPage = () => {
             </div>
           </section>
 
-          {/* What is a good F1 reaction time + benchmark table */}
+          {/* What is a good start lights reaction time + benchmark table */}
           <section>
-            <h2 className="text-3xl font-bold text-white mb-4">What Is a Good F1 Reaction Time?</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">What Is a Good Start Lights Reaction Time?</h2>
             <p className="text-dark-300 leading-relaxed mb-5">
               A bare click reaction averages around <strong className="text-white">250 ms</strong> — but this is not a bare click test. Here you have to track a three-row cascade, hold through a random tension delay, and then react to a <em>colour change</em>. That extra processing adds real cognitive load, which is why scoring <strong className="text-white">under 280 ms on this test</strong> proves genuinely elite racing reflexes — faster than most everyday drivers. Here is how your time stacks up:
             </p>
@@ -287,27 +297,27 @@ const F1ReactionPage = () => {
                 <tbody className="text-dark-300">
                   <tr className="border-t border-dark-800">
                     <td className="py-3 px-4 font-bold text-purple-400 whitespace-nowrap">&lt; 230 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">🏆 Hamilton Tier</td>
-                    <td className="py-3 px-4">Championship-winning reflexes — the very top of the board</td>
+                    <td className="py-3 px-4 whitespace-nowrap">🏆 Lightning Launch</td>
+                    <td className="py-3 px-4">The very top of the board — an exceptional launch</td>
                   </tr>
                   <tr className="border-t border-dark-800">
                     <td className="py-3 px-4 font-bold text-green-400 whitespace-nowrap">230–280 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Future F1 Pro</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Race Ready</td>
                     <td className="py-3 px-4">Elite range — sharper than most everyday drivers</td>
                   </tr>
                   <tr className="border-t border-dark-800">
                     <td className="py-3 px-4 font-bold text-blue-400 whitespace-nowrap">281–350 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Pro Kart Racer</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Quick Off the Line</td>
                     <td className="py-3 px-4">Genuinely quick — a little practice and you are in the big leagues</td>
                   </tr>
                   <tr className="border-t border-dark-800">
                     <td className="py-3 px-4 font-bold text-cyan-400 whitespace-nowrap">351–450 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Solid Driver</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Steady Starter</td>
                     <td className="py-3 px-4">Solid launch — your tyres were just a little cold</td>
                   </tr>
                   <tr className="border-t border-dark-800">
                     <td className="py-3 px-4 font-bold text-orange-400 whitespace-nowrap">&gt; 450 ms</td>
-                    <td className="py-3 px-4 whitespace-nowrap">Safety Car</td>
+                    <td className="py-3 px-4 whitespace-nowrap">Slow Getaway</td>
                     <td className="py-3 px-4">Stalled on the grid — go again and take your revenge</td>
                   </tr>
                 </tbody>
@@ -336,13 +346,13 @@ const F1ReactionPage = () => {
             </ul>
             <p className="text-sm text-dark-400 mt-4 flex items-start gap-2">
               <Lightbulb size={16} className="text-amber-400 shrink-0 mt-0.5" />
-              <span>Real F1 starts also involve clutch control, wheelspin management and racecraft — pure reaction time is just one component.</span>
+              <span>Real racing starts also involve clutch control, wheelspin management and racecraft — pure reaction time is just one component.</span>
             </p>
           </section>
 
           {/* False Starts */}
           <section className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">False Starts and the Jump-Start Rule in F1</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">False Starts and the Jump-Start Rule in Racing</h2>
             <p className="text-dark-300 mb-3">
               In this test, going before the green light appears is a false start. In real Formula 1, jumping the start triggers the same kind of sanction — and the penalties are severe:
             </p>
@@ -383,26 +393,9 @@ const F1ReactionPage = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-dark-800 mt-12">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-dark-400">
-            <div className="flex items-center gap-2">
-              <img src="/checkered-flag.svg" alt="Checkered Flag Logo" className="w-6 h-6 rounded" />
-              <span>© 2026 TestHub. Professional Testing Platform.</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <span>No signup required</span>
-              <span>•</span>
-              <span>Instant results</span>
-              <span>•</span>
-              <span>Free to use</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter className="mt-12" Icon={StartLightsIcon} accent="from-red-500 to-rose-600" />
     </div>
   );
 };
 
-export default F1ReactionPage;
+export default StartLightsPage;

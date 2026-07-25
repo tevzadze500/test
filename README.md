@@ -1,4 +1,4 @@
-# TestHub - Professional Testing Platform
+# ReactionTestPro - Professional Testing Platform
 
 A modern, premium testing platform dashboard built with React, Vite, and Tailwind CSS. Inspired by Korpi AI's visual quality, designed specifically for online cognitive, vision, hearing, and performance tests.
 

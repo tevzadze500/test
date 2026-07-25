@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Brain, Clock, Users, Target, AlertCircle, Trophy, Hash, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Brain, Clock, Target, AlertCircle, Trophy, Hash, RotateCcw, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import MemoryTestArea from '../components/test/MemoryTestArea';
@@ -59,7 +59,6 @@ const WorkingMemoryPage = () => {
       <Seo
         title="Working Memory Test – Can You Remember More Than 7 Digits?"
         description="Take the free working memory test. Memorize a growing sequence, measure your short-term memory span, and see how you rank — most adults manage 5 to 9. No signup."
-        keywords="working memory test, working memory capacity, short-term memory test, digit span task, sequence memory, improve working memory, cognitive training, brain health"
         canonical="/test/memory"
         jsonLd={[
           webApplicationSchema({
@@ -75,12 +74,12 @@ const WorkingMemoryPage = () => {
       <header className="sticky top-0 z-40 bg-dark-900/95 backdrop-blur-sm border-b border-dark-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center gap-3 sm:gap-6">
-            <Link to="/" aria-label="TestHub home" className="flex items-center gap-2 sm:gap-3 group">
+            <Link to="/" aria-label="ReactionTestPro home" className="flex items-center gap-2 sm:gap-3 group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">
                 <Brain size={20} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="hidden sm:block">
-                <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">TestHub</p>
+                <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</p>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </Link>
@@ -106,7 +105,7 @@ const WorkingMemoryPage = () => {
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><span className="text-dark-400">Category:</span><span className="text-green-400 font-medium">Cognitive</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Clock size={12} className="text-blue-400" /><span className="text-white">6 min</span></div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Users size={12} className="text-purple-400" /><span className="text-white">72K+ participants</span></div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Info size={12} className="text-dark-400" /><span className="text-white">Focus required</span></div>
           </div>
         </div>
 
@@ -219,7 +218,7 @@ const WorkingMemoryPage = () => {
               <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Protect your sleep</strong> — memory consolidation happens overnight; even one poor night measurably shrinks your span.</span></li>
               <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Kill distractions</strong> — every notification forces a costly mental reload. Single-task when it matters.</span></li>
               <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Move your body</strong> — regular aerobic exercise supports <strong className="text-white">brain health</strong> and the prefrontal circuits behind working memory.</span></li>
-              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Train your processing speed too</strong> — memory works best when your brain registers information fast. Pair this with our <Link to="/test/f1-reaction" className="text-green-400 hover:text-green-300 underline font-medium">F1 Reaction Test</Link>: sharp visual processing speed is the perfect complement to short-term memory.</span></li>
+              <li className="flex items-start gap-3"><span className="text-green-500 mt-1">•</span><span><strong className="text-white">Train your processing speed too</strong> — memory works best when your brain registers information fast. Pair this with our <Link to="/test/f1-reaction" className="text-green-400 hover:text-green-300 underline font-medium">Start Lights Reaction Test</Link>: sharp visual processing speed is the perfect complement to short-term memory.</span></li>
             </ul>
           </section>
 

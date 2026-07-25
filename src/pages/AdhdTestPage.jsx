@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
+import SiteFooter from '../components/SiteFooter';
+import TrustBlock from '../components/TrustBlock';
+import { adhdReferences, LAST_UPDATED } from '../data/references';
 
 const questions = [
   // Attention / Focus (25 questions)
@@ -123,6 +126,11 @@ const answerOptions = [
   { label: 'Very Often', value: 4 },
 ];
 
+// Each item is scored 0-4, so the maximum is 4 x the number of questions.
+// Derived rather than hardcoded: the bands broke last time because the
+// question count changed and the 0-100 assumption did not.
+const MAX_ANSWER_VALUE = Math.max(...answerOptions.map((o) => o.value));
+
 const AdhdTestPage = () => {
   const [testState, setTestState] = useState('intro'); // 'intro', 'testing', 'section-break', 'results'
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -131,6 +139,7 @@ const AdhdTestPage = () => {
   const [sectionBreakType, setSectionBreakType] = useState('');
 
   const totalQuestions = questions.length;
+  const maxScore = totalQuestions * MAX_ANSWER_VALUE;
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
 
   const handleStart = () => {
@@ -182,11 +191,25 @@ const AdhdTestPage = () => {
     return totalScore;
   };
 
+  // Bands are quarters of the achievable range, so they hold whatever the
+  // question count is. Previously these compared a 0-400 score against 0-100
+  // thresholds, which put almost every completed test in "High Likelihood".
+  const scoreBands = [
+    { upTo: 0.25, label: 'Low Likelihood', color: 'green', description: 'Your responses suggest minimal signs of ADHD-related behaviors.' },
+    { upTo: 0.5, label: 'Mild Signs', color: 'yellow', description: 'Your responses indicate some behaviors that may be associated with attention challenges.' },
+    { upTo: 0.75, label: 'Moderate Signs', color: 'orange', description: 'Your responses show moderate patterns that are commonly associated with ADHD.' },
+    { upTo: 1, label: 'High Likelihood', color: 'red', description: 'Your responses indicate significant patterns that are commonly associated with ADHD.' },
+  ];
+
+  const bandRange = (index) => {
+    const lower = index === 0 ? 0 : Math.floor(scoreBands[index - 1].upTo * maxScore) + 1;
+    const upper = Math.floor(scoreBands[index].upTo * maxScore);
+    return `${lower} - ${upper}`;
+  };
+
   const getScoreCategory = (score) => {
-    if (score <= 25) return { label: 'Low Likelihood', color: 'green', description: 'Your responses suggest minimal signs of ADHD-related behaviors.' };
-    if (score <= 50) return { label: 'Mild Signs', color: 'yellow', description: 'Your responses indicate some behaviors that may be associated with attention challenges.' };
-    if (score <= 75) return { label: 'Moderate Signs', color: 'orange', description: 'Your responses show moderate patterns that are commonly associated with ADHD.' };
-    return { label: 'High Likelihood', color: 'red', description: 'Your responses indicate significant patterns that are commonly associated with ADHD.' };
+    const ratio = maxScore > 0 ? score / maxScore : 0;
+    return scoreBands.find((band) => ratio <= band.upTo) || scoreBands[scoreBands.length - 1];
   };
 
   const handleRetry = () => {
@@ -196,8 +219,20 @@ const AdhdTestPage = () => {
     setSelectedAnswer(null);
   };
 
-  const handleShare = () => {
-    alert('Share functionality (UI only)');
+  const [shareCopied, setShareCopied] = useState(false);
+
+  const handleShare = async () => {
+    const score = calculateScore();
+    const message = `I scored ${score} out of ${maxScore} on the ${totalQuestions}-question ADHD screening at ReactionTestPro.\nResult band: ${getScoreCategory(score).label}\n\nThis is an educational screening tool, not a diagnosis.`;
+    try {
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(message);
+        setShareCopied(true);
+        setTimeout(() => setShareCopied(false), 2000);
+      }
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
   };
 
   // INTRO SCREEN
@@ -207,7 +242,6 @@ const AdhdTestPage = () => {
         <Seo
           title="ADHD Screening Test – Check Your Focus & Impulse Control"
           description="A free, private ADHD screening self-assessment for attention and impulse control. For education only — not a medical diagnosis. Get instant insights and clear next steps."
-          keywords="adhd screening test, adhd test, impulse control test, attention span check, adhd self-assessment, attention deficit test, focus test, online adhd screening"
           canonical="/test/adhd"
           jsonLd={[
             webApplicationSchema({
@@ -217,6 +251,12 @@ const AdhdTestPage = () => {
               category: "HealthApplication",
             }),
             breadcrumbSchema("ADHD Screening Test", "/test/adhd"),
+          medicalWebPageSchema({
+            name: 'ADHD Screening Test',
+            description: 'A free 100-question ADHD screening self-assessment covering attention, organisation, impulse control and emotional regulation. Educational only: this is not a diagnostic instrument and only a qualified healthcare professional can diagnose ADHD.',
+            path: '/test/adhd',
+            lastReviewed: LAST_UPDATED,
+          }),
             faqSchema(adhdFaqs),
           ]}
         />
@@ -231,7 +271,7 @@ const AdhdTestPage = () => {
                   </div>
                   <div>
                     <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                      TestHub
+                      ReactionTestPro
                     </p>
                     <p className="text-xs text-dark-400">Testing Platform</p>
                   </div>
@@ -283,11 +323,11 @@ const AdhdTestPage = () => {
             <div className="space-y-3 text-dark-300">
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-blue-500 flex-shrink-0 mt-0.5" size={20} />
-                <p><strong className="text-white">25 Questions</strong> covering attention, organization, and impulse control</p>
+                <p><strong className="text-white">{totalQuestions} Questions</strong> covering attention, organization, impulse control and emotional regulation</p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-blue-500 flex-shrink-0 mt-0.5" size={20} />
-                <p><strong className="text-white">5 minutes</strong> to complete</p>
+                <p><strong className="text-white">About 10-15 minutes</strong> to complete, with three short breaks</p>
               </div>
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="text-blue-500 flex-shrink-0 mt-0.5" size={20} />
@@ -310,8 +350,17 @@ const AdhdTestPage = () => {
           </button>
         </main>
 
+        <div className="max-w-3xl mx-auto px-6 pb-12">
+          <TrustBlock
+            lastUpdated={LAST_UPDATED}
+            references={adhdReferences}
+            methodology="The questionnaire is modelled on the format of the WHO Adult ADHD Self-Report Scale (ASRS-v1.1): frequency-rated statements about attention, organisation, impulsivity and emotional regulation, each scored 0-4. It is not the ASRS itself, it has not been validated, and the score is a rough indication of how strongly your answers cluster — nothing more. Answers are held in your browser and are never sent anywhere."
+          />
+        </div>
+
         {/* SEO Content Section on Intro Page */}
         <AdhdSeoContent />
+        <SiteFooter className="mt-12" Icon={Brain} accent="from-blue-500 to-cyan-600" />
       </div>
       </>
     );
@@ -319,16 +368,19 @@ const AdhdTestPage = () => {
 
   // SECTION BREAK
   if (testState === 'section-break') {
-    const breakTitle = sectionBreakType === 'focus' 
-      ? 'Focus Section Completed' 
-      : 'Organization Section Completed';
+    const breakTitles = {
+      focus: 'Attention & Focus Section Completed',
+      organization: 'Organization & Execution Section Completed',
+      impulsivity: 'Impulsivity & Hyperactivity Section Completed',
+    };
+    const breakTitle = breakTitles[sectionBreakType] || 'Section Completed';
     const breakIcon = sectionBreakType === 'focus' ? '✓' : '✓';
 
     return (
       <>
         <Seo
-          title="ADHD Test in Progress | TestHub"
-          description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
+          title="ADHD Test in Progress | ReactionTestPro"
+          description="Take our free 100-question ADHD screening self-assessment covering attention, organisation, impulse control and emotional regulation. Instant results in your browser — educational only, not a diagnosis."
           canonical="/test/adhd"
         />
         <div className="min-h-screen bg-dark-950 flex items-center justify-center px-6">
@@ -361,7 +413,7 @@ const AdhdTestPage = () => {
     return (
       <>
         <Seo
-          title="Your ADHD Test Results | TestHub"
+          title="Your ADHD Test Results | ReactionTestPro"
           description="View your ADHD self-assessment results and get insights into your attention, focus, and impulse control patterns."
           canonical="/test/adhd"
         />
@@ -375,7 +427,7 @@ const AdhdTestPage = () => {
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                    TestHub
+                    ReactionTestPro
                   </p>
                   <p className="text-xs text-dark-400">Testing Platform</p>
                 </div>
@@ -396,7 +448,7 @@ const AdhdTestPage = () => {
           <div className="bg-gradient-to-br from-dark-900 to-dark-800 border border-dark-700 rounded-2xl p-8 mb-6 text-center">
             <div className="mb-6">
               <div className="text-7xl font-bold text-white mb-2">{score}</div>
-              <div className="text-dark-400 text-sm">out of 100</div>
+              <div className="text-dark-400 text-sm">out of {maxScore}</div>
             </div>
             
             <div className={`inline-block px-6 py-3 rounded-xl text-lg font-bold ${
@@ -426,22 +478,20 @@ const AdhdTestPage = () => {
           <div className="bg-dark-900/50 border border-dark-800 rounded-xl p-6 mb-8">
             <h3 className="text-xl font-bold text-white mb-4">Understanding Your Score</h3>
             <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-dark-300">0 - 25</span>
-                <span className="text-green-400 font-medium">Low Likelihood</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-dark-300">26 - 50</span>
-                <span className="text-yellow-400 font-medium">Mild Signs</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-dark-300">51 - 75</span>
-                <span className="text-orange-400 font-medium">Moderate Signs</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-dark-300">76 - 100</span>
-                <span className="text-red-400 font-medium">High Likelihood</span>
-              </div>
+              {scoreBands.map((band, index) => (
+                <div key={band.label} className="flex justify-between items-center">
+                  <span className="text-dark-300 tabular-nums">{bandRange(index)}</span>
+                  <span
+                    className={`font-medium ${
+                      band.color === 'green' ? 'text-green-400' :
+                      band.color === 'yellow' ? 'text-yellow-400' :
+                      band.color === 'orange' ? 'text-orange-400' : 'text-red-400'
+                    }`}
+                  >
+                    {band.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -461,7 +511,7 @@ const AdhdTestPage = () => {
               className="flex-1 flex items-center justify-center gap-2 min-h-[48px] py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
               <Share2 size={20} />
-              Share Result
+              {shareCopied ? 'Copied!' : 'Copy Result'}
             </button>
           </div>
 
@@ -479,6 +529,7 @@ const AdhdTestPage = () => {
 
         {/* SEO Content Section */}
         <AdhdSeoContent />
+        <SiteFooter className="mt-12" Icon={Brain} accent="from-blue-500 to-cyan-600" />
       </div>
       </>
     );
@@ -488,8 +539,8 @@ const AdhdTestPage = () => {
   return (
     <>
       <Seo
-        title={`ADHD Test - Question ${currentQuestion + 1} of ${totalQuestions} | TestHub`}
-        description="Take our comprehensive 100-question ADHD and reaction test. Free online self-assessment for attention, focus, and impulse control. Get instant results and insights into ADHD symptoms."
+        title={`ADHD Test - Question ${currentQuestion + 1} of ${totalQuestions} | ReactionTestPro`}
+        description="Take our free 100-question ADHD screening self-assessment covering attention, organisation, impulse control and emotional regulation. Instant results in your browser — educational only, not a diagnosis."
         canonical="/test/adhd"
       />
       <div className="min-h-screen bg-dark-950">

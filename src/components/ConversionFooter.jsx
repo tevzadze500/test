@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, ArrowRight, Trophy, Clock, Shield, BookOpen, Eye, Headphones } from 'lucide-react';
-import F1LightsIcon from './icons/F1LightsIcon';
+import StartLightsIcon from './icons/StartLightsIcon';
+import { SiteFooterBar } from './SiteFooter';
 
 const ConversionFooter = () => {
   const quickTests = [
     { name: 'Reaction Time', path: '/test/reaction-time', time: '2 min', Icon: Zap, accent: 'from-green-500 to-emerald-600' },
-    { name: 'F1 Reaction', path: '/test/f1-reaction', time: '1 min', Icon: F1LightsIcon, accent: 'from-red-500 to-rose-600' },
+    { name: 'Start Lights', path: '/test/f1-reaction', time: '1 min', Icon: StartLightsIcon, accent: 'from-red-500 to-rose-600' },
     { name: 'Vision Test', path: '/test/vision', time: '3 min', Icon: Eye, accent: 'from-cyan-500 to-teal-600' },
     { name: 'Hearing Test', path: '/test/hearing', time: '4 min', Icon: Headphones, accent: 'from-pink-500 to-rose-600' },
   ];
@@ -85,31 +86,26 @@ const ConversionFooter = () => {
       </div>
 
       {/* Info Footer */}
-      <div className="py-6 sm:py-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-dark-400 px-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <Zap size={14} className="text-white" strokeWidth={2.5} fill="white" />
-            </div>
-            <span>© 2026 TestHub. Professional Testing Platform.</span>
+      <div className="py-6 sm:py-8 px-4">
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-sm text-dark-400 mb-5">
+          <div className="flex items-center gap-1.5">
+            <Shield size={14} className="text-green-500" />
+            <span>No signup</span>
           </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6">
-            <div className="flex items-center gap-1.5">
-              <Shield size={14} className="text-green-500" />
-              <span>No signup</span>
-            </div>
-            <span className="hidden sm:inline text-dark-700">•</span>
-            <div className="flex items-center gap-1.5">
-              <Zap size={14} className="text-green-500" />
-              <span>Instant results</span>
-            </div>
-            <span className="hidden sm:inline text-dark-700">•</span>
-            <div className="flex items-center gap-1.5">
-              <Trophy size={14} className="text-green-500" />
-              <span>Free forever</span>
-            </div>
+          <span className="hidden sm:inline text-dark-700">•</span>
+          <div className="flex items-center gap-1.5">
+            <Zap size={14} className="text-green-500" />
+            <span>Instant results</span>
           </div>
+          <span className="hidden sm:inline text-dark-700">•</span>
+          <div className="flex items-center gap-1.5">
+            <Trophy size={14} className="text-green-500" />
+            <span>Free forever</span>
+          </div>
+        </div>
+
+        <div className="pt-5 border-t border-dark-800">
+          <SiteFooterBar />
         </div>
       </div>
     </footer>
