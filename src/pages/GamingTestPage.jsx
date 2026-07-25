@@ -8,7 +8,7 @@ import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import { tests } from '../data/tests';
 import { Gamepad2, Zap, Target, ArrowLeft, Crosshair, Brain, Trophy, Star, Sparkles, ThumbsUp, Swords } from 'lucide-react';
-import F1LightsIcon from '../components/icons/F1LightsIcon';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
 
 function GamingTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -141,7 +141,7 @@ function GamingTestPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <F1LightsIcon size={20} className="text-green-400 shrink-0 mt-1" />
+                    <StartLightsIcon size={20} className="text-green-400 shrink-0 mt-1" />
                     <div>
                       <strong className="text-white">Racing Games:</strong> In simulators like iRacing, F1, and Gran Turismo, quick reactions help you avoid collisions, take optimal racing lines, and respond to changing track conditions.
                     </div>

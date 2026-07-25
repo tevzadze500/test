@@ -10,7 +10,7 @@ import {
   Target,
   Volume2,
 } from 'lucide-react';
-import F1LightsIcon from './F1LightsIcon';
+import StartLightsIcon from './StartLightsIcon';
 
 /**
  * Renders the proper icon for a given test id.
@@ -18,7 +18,7 @@ import F1LightsIcon from './F1LightsIcon';
  */
 const ICON_MAP = {
   'reaction-time': Zap,
-  'f1-reaction': F1LightsIcon,
+  'f1-reaction': StartLightsIcon,
   'go-no-go': Activity,
   'adhd-test': Focus,
   'vision-test': Eye,

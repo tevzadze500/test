@@ -8,7 +8,7 @@ import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import { tests } from '../data/tests';
 import { Trophy, Zap, Target, ArrowLeft, Lightbulb, Swords, Activity, Circle, Footprints } from 'lucide-react';
-import F1LightsIcon from '../components/icons/F1LightsIcon';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
 
 function SportTestPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -141,7 +141,7 @@ function SportTestPage() {
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
-                    <F1LightsIcon size={20} className="text-orange-400 shrink-0 mt-1" />
+                    <StartLightsIcon size={20} className="text-orange-400 shrink-0 mt-1" />
                     <div>
                       <strong className="text-white">Racing Sports:</strong> Formula 1, MotoGP, and track cycling require lightning-fast reactions to maintain control, avoid collisions, and respond to changing conditions.
                     </div>

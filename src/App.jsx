@@ -4,7 +4,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const ReactionTimePage = lazy(() => import('./pages/ReactionTimePage'));
 const GoNoGoPage = lazy(() => import('./pages/GoNoGoPage'));
-const F1ReactionPage = lazy(() => import('./pages/F1ReactionPage'));
+const StartLightsPage = lazy(() => import('./pages/StartLightsPage'));
 const AdhdTestPage = lazy(() => import('./pages/AdhdTestPage'));
 const VisionTestPage = lazy(() => import('./pages/VisionTestPage'));
 const GamingTestPage = lazy(() => import('./pages/GamingTestPage'));
@@ -40,7 +40,7 @@ export const routes = [
   { path: '/blog/reaction-time-crucial', element: page(BlogPage) },
   { path: '/test/reaction-time', element: page(ReactionTimePage) },
   { path: '/test/go-no-go', element: page(GoNoGoPage) },
-  { path: '/test/f1-reaction', element: page(F1ReactionPage) },
+  { path: '/test/f1-reaction', element: page(StartLightsPage) },
   { path: '/test/adhd', element: page(AdhdTestPage) },
   { path: '/test/vision', element: page(VisionTestPage) },
   { path: '/gaming-test', element: page(GamingTestPage) },

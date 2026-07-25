@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Users, ArrowRight, Zap, Star, Info, Flag, Focus, Eye, Headphones, Palette, Brain, Activity, Target, Volume2 } from 'lucide-react';
+import StartLightsIcon from './icons/StartLightsIcon';
 
 // Icon mapping for test icons
 const iconMap = {
@@ -14,6 +15,7 @@ const iconMap = {
   Activity: Activity,
   Target: Target,
   Volume2: Volume2,
+  StartLights: StartLightsIcon,
 };
 
 const TestCard = ({ test }) => {
@@ -72,17 +74,7 @@ const TestCard = ({ test }) => {
       {/* Top Section: Icon + Name */}
       <div className="flex items-start gap-3 mb-3">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${iconBgClasses[test.color]} flex items-center justify-center shadow-lg shrink-0 overflow-hidden transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
-          {test.id === 'f1-reaction' ? (
-            <img
-              src="/f1-logo.webp"
-              alt="F1 Reflex Test"
-              className="w-full h-full object-contain object-center"
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" strokeWidth={2.5} />
-          )}
+          <IconComponent className="w-7 h-7 sm:w-8 sm:h-8 text-white" strokeWidth={2.5} />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-base sm:text-lg font-bold text-white mb-1 leading-tight">

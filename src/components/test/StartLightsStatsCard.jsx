@@ -1,12 +1,12 @@
 import React from 'react';
 import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
-import { getF1ReactionLevel } from '../../utils/scoreUtils';
+import { getStartLightsLevel } from '../../utils/scoreUtils';
 
-const F1StatsCard = ({ stats, onReset }) => {
+const StartLightsStatsCard = ({ stats, onReset }) => {
   // Single source of truth: the same tiers the result screen shows, so the
   // sidebar can never disagree with the headline level.
-  const getScoreColor = (score) => (score ? getF1ReactionLevel(score).color : 'text-dark-400');
-  const getScoreRating = (score) => (score ? getF1ReactionLevel(score).name : 'No data');
+  const getScoreColor = (score) => (score ? getStartLightsLevel(score).color : 'text-dark-400');
+  const getScoreRating = (score) => (score ? getStartLightsLevel(score).name : 'No data');
 
   return (
     <div className="space-y-4">
@@ -97,7 +97,7 @@ const F1StatsCard = ({ stats, onReset }) => {
               <h4 className="text-sm font-semibold text-white mb-1">Performance Analysis</h4>
               <p className="text-sm text-dark-300">
                 {stats.best < 230
-                  ? "Hamilton Tier reflexes — championship-winning reaction speed."
+                  ? "Lightning Launch reflexes — about as quick off the lights as it gets."
                   : stats.best <= 280
                   ? "Elite range. You're sharper than most everyday drivers."
                   : stats.best <= 350
@@ -125,7 +125,7 @@ const F1StatsCard = ({ stats, onReset }) => {
         </div>
       )}
 
-      {/* F1 Context */}
+      {/* Start sequence explainer */}
       <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4">
         <h4 className="text-sm font-semibold text-white mb-3">Start Light Sequence</h4>
         <div className="space-y-2 text-xs text-dark-300">
@@ -145,4 +145,4 @@ const F1StatsCard = ({ stats, onReset }) => {
   );
 };
 
-export default F1StatsCard;
+export default StartLightsStatsCard;

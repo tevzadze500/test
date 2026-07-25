@@ -57,62 +57,23 @@ export const getComparisonMessage = (percentile) => {
   return `You're faster than ${percentile}% of users. Room to grow.`;
 };
 
-// F1 Reaction Test Utilities
-// Tiers are deliberately generous and share-oriented: the goal is for players to
-// finish the run feeling fast and want to post their result.
-export const getF1ReactionLevel = (score) => {
-  if (score < 230) return { name: 'Hamilton Tier', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
-  if (score <= 280) return { name: 'Future F1 Pro', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
-  if (score <= 350) return { name: 'Pro Kart Racer', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
-  if (score <= 450) return { name: 'Solid Driver', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
-  return { name: 'Safety Car', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+// Start Lights Reaction Test Utilities
+// Tier names describe the performance, not a person. Naming real drivers here
+// appropriated their name and likeness and implied times we cannot substantiate.
+export const getStartLightsLevel = (score) => {
+  if (score < 230) return { name: 'Lightning Launch', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (score <= 280) return { name: 'Race Ready', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (score <= 350) return { name: 'Quick Off the Line', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (score <= 450) return { name: 'Steady Starter', color: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30' };
+  return { name: 'Slow Getaway', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
 };
 
-export const getF1Motivation = (score) => {
-  if (score < 230) return "Unreal! You've got the launch reflexes of a seven-time world champion. Straight-up F1 material.";
-  if (score <= 280) return "Elite reflexes. You're faster than 90% of drivers — Formula 1 is calling.";
-  if (score <= 350) return "Seriously sharp reaction time! A little more practice and you're running with the big leagues.";
-  if (score <= 450) return "Solid! Your tyres were just a little cold — go again and warm those reflexes up.";
-  return "Oops, you stalled on the grid! Hit Start and take your revenge.";
-};
-
-// Grid rivals. Ahead of the player, ordered fastest first; behind, ordered
-// closest first. Their times are simulated around the player's own run.
-const F1_GRID_AHEAD = ['Max Verstappen', 'Lewis Hamilton', 'Lando Norris'];
-const F1_GRID_BEHIND = ['George Russell', 'Charles Leclerc', 'Carlos Sainz'];
-
-/**
- * Builds a 7-row race grid where the player is ALWAYS 4th (dead centre):
- * three drivers ahead (each strictly faster) and three behind (each strictly
- * slower). Every rival time is derived from the player's own score, so the grid
- * always feels like a close fight no matter how fast or slow the run was.
- */
-export const getDynamicF1Leaderboard = (score) => {
-  const safeScore = Math.max(1, Math.round(score || 0));
-  const gap = Math.max(12, Math.round(safeScore * 0.05));
-
-  // Three drivers ahead — strictly decreasing times.
-  // n = 1 is the closest rival, so it takes the last name in the list.
-  const ahead = [];
-  let prev = safeScore;
-  for (let n = 1; n <= 3; n += 1) {
-    const time = Math.max(1, Math.min(prev - 1, safeScore - gap * n));
-    ahead.push({ name: F1_GRID_AHEAD[F1_GRID_AHEAD.length - n], time, isPlayer: false });
-    prev = time;
-  }
-  ahead.reverse(); // fastest at the top of the grid
-
-  // Three drivers behind — strictly increasing times
-  const behind = [];
-  for (let n = 1; n <= 3; n += 1) {
-    behind.push({
-      name: F1_GRID_BEHIND[n - 1],
-      time: safeScore + gap * n,
-      isPlayer: false,
-    });
-  }
-
-  return [...ahead, { name: 'You', time: safeScore, isPlayer: true }, ...behind];
+export const getStartLightsMotivation = (score) => {
+  if (score < 230) return "Outstanding launch. That is quicker off the lights than almost anyone manages.";
+  if (score <= 280) return "Elite reflexes — a genuinely sharp getaway.";
+  if (score <= 350) return "Seriously quick. A little more practice and you'll be in the top tier.";
+  if (score <= 450) return "Solid start. Go again — reaction times improve once you're warmed up.";
+  return "Slow off the line this time. Hit Start and take your revenge.";
 };
 
 // Go/No-Go Test Utilities
@@ -202,7 +163,7 @@ export const generateShareMessage = (testName, score, level) => {
 export const getSuggestedTests = (currentTestId) => {
   const suggestions = {
     'reaction-time': [
-      { id: 'f1-reaction', name: 'F1 Lights Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+      { id: 'f1-reaction', name: 'Start Lights Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
       { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
       { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
@@ -219,12 +180,12 @@ export const getSuggestedTests = (currentTestId) => {
     'vision': [
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
       { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
-      { id: 'f1-reaction', name: 'F1 Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+      { id: 'f1-reaction', name: 'Start Lights', iconId: 'f1-reaction', path: '/test/f1-reaction' },
     ],
     'go-no-go': [
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
       { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
-      { id: 'f1-reaction', name: 'F1 Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+      { id: 'f1-reaction', name: 'Start Lights', iconId: 'f1-reaction', path: '/test/f1-reaction' },
     ],
     'hearing': [
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },

@@ -8,6 +8,7 @@ import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
 import Leaderboard from '../components/Leaderboard';
 import SeoContent from '../components/SeoContent';
+import StartLightsIcon from '../components/icons/StartLightsIcon';
 import { tests, testCategories } from '../data/tests';
 import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users, AlertTriangle } from 'lucide-react';
 
@@ -24,7 +25,7 @@ function HomePage() {
     }
   }, [hash]);
 
-  // Get F1 test
+  // Featured test shown in the hero
   const f1Test = tests.find(test => test.id === 'f1-reaction');
 
   // Filter tests based on selected category
@@ -48,7 +49,7 @@ function HomePage() {
       <Seo
         title="Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro"
         description="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required."
-        keywords="reaction time test, reflex test online, cognitive tests, vision test, hearing test, F1 reaction test, Go No-Go test, free online tests"
+        keywords="reaction time test, reflex test online, cognitive tests, vision test, hearing test, start lights reaction test, Go No-Go test, free online tests"
         canonical="/"
         jsonLd={[websiteSchema(), organizationSchema()]}
       />
@@ -106,25 +107,20 @@ function HomePage() {
                 Measure your reflexes, vision, hearing, and cognitive performance in seconds. Free, instant results, no signup required.
               </p>
 
-              {/* F1 Test Card - Featured */}
+              {/* Featured test card */}
               {f1Test && (
                 <div className="max-w-4xl mx-auto mb-8">
                   <div className="bg-gradient-to-br from-red-500/20 via-rose-500/10 to-orange-500/10 border-2 border-red-500/50 rounded-2xl p-8 shadow-2xl">
                     <div className="flex flex-col md:flex-row items-center gap-6">
-                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0 overflow-hidden">
-                        <img
-                          src="/f1-logo.webp"
-                          alt="F1 Reflex Test"
-                          className="w-full h-full object-contain object-center"
-                          decoding="async"
-                        />
+                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0 p-4">
+                        <StartLightsIcon size={64} className="text-white w-full h-full" />
                       </div>
                       <div className="flex-1 text-left">
                         <h2 className="text-3xl font-bold text-white mb-3">
-                          F1 Lights Reaction Test
+                          Start Lights Reaction Test
                         </h2>
                         <p className="text-dark-100 text-lg mb-6 leading-relaxed">
-                          React the instant the start lights go out, just like in real Formula 1 races. Test your reflexes against professional F1 drivers and track your improvement!
+                          Five red lights come on one by one. React the instant they go out — the sequence is based on the five-light starting procedure used in Formula 1 racing. Measure your launch in milliseconds and track your improvement.
                         </p>
                         <div className="flex flex-wrap gap-3 mb-6">
                           <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-400/50 rounded-lg text-green-200 text-sm font-semibold">
@@ -144,14 +140,8 @@ function HomePage() {
                           to="/test/f1-reaction"
                           className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-red-500/50 transition-all duration-200 text-xl transform hover:scale-105"
                         >
-                          <img
-                            src="/f1-logo.webp"
-                            alt=""
-                            aria-hidden="true"
-                            className="w-6 h-6 object-contain object-center shrink-0"
-                            decoding="async"
-                          />
-                          Start your F1 Reflex Test Now!
+                          <StartLightsIcon size={24} className="shrink-0" />
+                          Start the Reaction Test Now!
                           <ArrowRight className="w-6 h-6" />
                         </Link>
                       </div>
@@ -235,17 +225,17 @@ function HomePage() {
               </div>
             </div>
 
-            {/* SEO Content - What is F1 Reaction Test */}
+            {/* SEO Content - What is the Start Lights Reaction Test */}
             <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8 mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                What is the Formula 1 Reaction Test?
+                What Is the Start Lights Reaction Test?
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  The Formula 1 Reaction Test is an online tool that simulates the starting procedure used in real Formula 1 races. This test measures how quickly you can react when the five red start lights go out, which is the signal for drivers to launch their cars at the beginning of a race.
+                  The Start Lights Reaction Test is a free online tool that recreates the five-light starting procedure used in Formula 1 racing. It measures how quickly you react when the red lights go out — the signal that starts the race.
                 </p>
                 <p className="leading-relaxed">
-                  During the test, five red lights illuminate sequentially, building anticipation just like on the actual F1 starting grid. After a random delay of 1-4 seconds, all lights turn off simultaneously, and you must click or tap as quickly as possible. Your reaction time is measured in milliseconds (ms), allowing you to compare your performance with professional F1 drivers.
+                  Five red lights illuminate one by one, building anticipation. After a random delay of 1–4 seconds they all go out at once, and you click or tap as fast as you can. Your reaction time is measured in milliseconds, so you can track it across attempts and see which tier it falls into.
                 </p>
               </div>
             </div>
@@ -257,7 +247,7 @@ function HomePage() {
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  Reaction time is a crucial skill in many aspects of life, from sports and gaming to driving and everyday decision-making. Testing your reflexes with our F1 Reaction Test offers several benefits:
+                  Reaction time is a crucial skill in many aspects of life, from sports and gaming to driving and everyday decision-making. Testing your reflexes with our Start Lights Reaction Test offers several benefits:
                 </p>
                 <ul className="space-y-3 ml-4">
                   <li className="flex items-start gap-3">
@@ -286,23 +276,23 @@ function HomePage() {
             {/* SEO Content - How the Test Works */}
             <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                How Does the F1 Reaction Test Work?
+                How Does the Start Lights Reaction Test Work?
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  Our Formula 1 Reaction Test follows the official FIA starting procedure used in real Formula 1 races:
+                  The test follows the same five-light sequence used to start a Formula 1 race:
                 </p>
                 <ol className="space-y-4 ml-4">
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 font-bold text-lg shrink-0">1.</span>
                     <div>
-                      <strong className="text-white">Light Sequence:</strong> Five red lights illuminate one by one at 500-millisecond intervals, similar to the actual F1 start lights gantry above the starting grid.
+                      <strong className="text-white">Light Sequence:</strong> Five red lights illuminate one by one at 500-millisecond intervals, mirroring the start lights gantry above a racing grid.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 font-bold text-lg shrink-0">2.</span>
                     <div>
-                      <strong className="text-white">Random Delay:</strong> After all five lights are illuminated, there's a random delay between 1-4 seconds. This unpredictability prevents you from anticipating the exact moment, just like real F1 drivers experience.
+                      <strong className="text-white">Random Delay:</strong> After all five lights are illuminated, there's a random delay of 1–4 seconds. The unpredictability stops you anticipating the exact moment, exactly as it does on a real grid.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -314,14 +304,14 @@ function HomePage() {
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 font-bold text-lg shrink-0">4.</span>
                     <div>
-                      <strong className="text-white">Instant Results:</strong> Your reaction time is measured in milliseconds and displayed immediately, along with performance ratings comparing you to professional F1 drivers.
+                      <strong className="text-white">Instant Results:</strong> Your reaction time is measured in milliseconds and displayed immediately, with a performance tier based on published reaction-time ranges.
                     </div>
                   </li>
                 </ol>
                 <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mt-4 flex items-start gap-3">
                   <AlertTriangle size={20} className="text-orange-400 shrink-0 mt-0.5" />
                   <p className="text-sm">
-                    <strong className="text-orange-400">False Start Warning:</strong> Just like in real F1, clicking before the lights go out counts as a false start and will be penalized. In Formula 1, false starts result in severe time penalties.
+                    <strong className="text-orange-400">False Start Warning:</strong> Clicking before the lights go out counts as a false start and is not scored — jumping the start carries a penalty in real racing too.
                   </p>
                 </div>
               </div>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, ArrowRight, Trophy, Clock, Shield, BookOpen, Eye, Headphones } from 'lucide-react';
-import F1LightsIcon from './icons/F1LightsIcon';
+import StartLightsIcon from './icons/StartLightsIcon';
 import { SiteFooterBar } from './SiteFooter';
 
 const ConversionFooter = () => {
   const quickTests = [
     { name: 'Reaction Time', path: '/test/reaction-time', time: '2 min', Icon: Zap, accent: 'from-green-500 to-emerald-600' },
-    { name: 'F1 Reaction', path: '/test/f1-reaction', time: '1 min', Icon: F1LightsIcon, accent: 'from-red-500 to-rose-600' },
+    { name: 'Start Lights', path: '/test/f1-reaction', time: '1 min', Icon: StartLightsIcon, accent: 'from-red-500 to-rose-600' },
     { name: 'Vision Test', path: '/test/vision', time: '3 min', Icon: Eye, accent: 'from-cyan-500 to-teal-600' },
     { name: 'Hearing Test', path: '/test/hearing', time: '4 min', Icon: Headphones, accent: 'from-pink-500 to-rose-600' },
   ];

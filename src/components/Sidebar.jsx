@@ -14,7 +14,7 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { tests, testCategories } from '../data/tests';
-import F1LightsIcon from './icons/F1LightsIcon';
+import StartLightsIcon from './icons/StartLightsIcon';
 
 const CATEGORY_THEMES = {
   ALL: {
@@ -305,11 +305,11 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
 
               <div className="relative flex items-center gap-3">
                 <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/30 shrink-0">
-                  <F1LightsIcon size={18} className="text-white" />
+                  <StartLightsIcon size={18} className="text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-white leading-tight flex items-center gap-1.5">
-                    F1 Reaction
+                    Start Lights
                     <span className="inline-flex items-center gap-0.5 text-[9px] font-bold uppercase tracking-wider text-orange-300 bg-orange-500/20 px-1.5 py-0.5 rounded">
                       <Flame size={9} />
                       Hot

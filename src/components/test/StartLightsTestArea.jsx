@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Play, Zap, AlertCircle, RotateCcw } from 'lucide-react';
 import EnhancedResultCard from '../EnhancedResultCard';
 import {
-  getF1ReactionLevel,
+  getStartLightsLevel,
   getReactionTimePercentile,
-  getF1Motivation,
+  getStartLightsMotivation,
   getComparisonMessage,
   generateShareMessage,
   getSuggestedTests,
-  getDynamicF1Leaderboard,
 } from '../../utils/scoreUtils';
 
 const PHASES = {
@@ -75,7 +74,7 @@ const LightTower = ({ redRows, greenOn }) => (
   </div>
 );
 
-const F1LightsTestArea = ({ onResult }) => {
+const StartLightsTestArea = ({ onResult }) => {
   const [phase, setPhase] = useState(PHASES.IDLE);
   const [redRows, setRedRows] = useState(0); // 0-3 red rows currently lit
   const [reactionTime, setReactionTime] = useState(null);
@@ -248,11 +247,10 @@ const F1LightsTestArea = ({ onResult }) => {
             <EnhancedResultCard
               score={reactionTime}
               scoreLabel="ms"
-              level={getF1ReactionLevel(reactionTime)}
+              level={getStartLightsLevel(reactionTime)}
               percentile={getReactionTimePercentile(reactionTime)}
-              motivation={getF1Motivation(reactionTime)}
+              motivation={getStartLightsMotivation(reactionTime)}
               comparisonMessage={getComparisonMessage(getReactionTimePercentile(reactionTime))}
-              leaderboard={getDynamicF1Leaderboard(reactionTime)}
               onRetry={(e) => {
                 if (e) e.stopPropagation();
                 retry();
@@ -260,9 +258,9 @@ const F1LightsTestArea = ({ onResult }) => {
               testId="f1-reaction"
               suggestedTests={getSuggestedTests('f1-reaction')}
               shareMessage={generateShareMessage(
-                'F1 Lights Reaction Test',
+                'Start Lights Reaction Test',
                 `${reactionTime}ms`,
-                getF1ReactionLevel(reactionTime).name
+                getStartLightsLevel(reactionTime).name
               )}
             />
           </div>
@@ -306,4 +304,4 @@ const F1LightsTestArea = ({ onResult }) => {
   );
 };
 
-export default F1LightsTestArea;
+export default StartLightsTestArea;
