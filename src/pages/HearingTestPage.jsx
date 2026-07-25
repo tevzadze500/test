@@ -4,7 +4,7 @@ import { ArrowLeft, Headphones, Clock, Volume2, Heart, Lightbulb, Info } from 'l
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
 import { hearingReferences, LAST_UPDATED } from '../data/references';
@@ -101,7 +101,6 @@ const HearingTestPage = () => {
       <Seo
         title="Hearing Frequency Test - Audio Health Check | ReactionTestPro"
         description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
-        keywords="hearing test, frequency test, hearing range, audio test, hearing health, frequency hearing test, online hearing test, audiometry"
         canonical="/test/hearing"
         jsonLd={[
           webApplicationSchema({
@@ -111,6 +110,12 @@ const HearingTestPage = () => {
             category: 'HealthApplication',
           }),
           breadcrumbSchema('Hearing Frequency Test', '/test/hearing'),
+          medicalWebPageSchema({
+            name: 'Hearing Frequency Test',
+            description: 'A hearing frequency range screening using tones generated in the browser. Educational only: playback volume and headphone response are uncontrolled, so this is not audiometry and cannot detect hearing loss.',
+            path: '/test/hearing',
+            lastReviewed: LAST_UPDATED,
+          }),
           faqSchema(faqs),
         ]}
       />

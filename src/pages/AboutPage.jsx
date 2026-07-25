@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
-import { SITE_NAME } from '../utils/structuredData';
+import { SITE_NAME, infoPageSchema } from '../utils/structuredData';
 import { tests } from '../data/tests';
 
 const LAST_UPDATED = '2026-07-24';
@@ -11,6 +11,7 @@ const AboutPage = () => (
     title={`About ${SITE_NAME} | Who Builds These Tests`}
     description="Who runs ReactionTestPro, why it exists, and how the tests are built — client-side timing with performance.now(), no server, no accounts, no data collection."
     canonical="/about"
+    jsonLd={infoPageSchema({ name: 'About', description: `${SITE_NAME} — about`, path: '/about', type: 'AboutPage' })}
     heading={`About ${SITE_NAME}`}
     intro={`${SITE_NAME} is a small, free collection of ${tests.length} browser-based tests for reaction time, attention, memory, vision and hearing. No accounts, no paywall, no data collection.`}
     lastUpdated={LAST_UPDATED}

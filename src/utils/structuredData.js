@@ -47,7 +47,25 @@ export const webApplicationSchema = ({
   applicationCategory: category,
   operatingSystem: 'Any (web browser)',
   browserRequirements: 'Requires JavaScript',
+  isAccessibleForFree: true,
+  inLanguage: 'en',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@type': 'Organization', name: SITE_NAME, logo: ORG_LOGO },
+});
+
+// Health-adjacent (YMYL) pages: /test/adhd, /test/vision, /test/color-blind,
+// /test/hearing. Declares the page as health content, carries the
+// non-diagnostic disclaimer, and exposes the same review date the page shows
+// visibly so the two cannot drift apart.
+export const medicalWebPageSchema = ({ name, description, path, lastReviewed }) => ({
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name,
+  description,
+  url: abs(path),
+  lastReviewed,
+  inLanguage: 'en',
+  isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: `${SITE_URL}/` },
   publisher: { '@type': 'Organization', name: SITE_NAME, logo: ORG_LOGO },
 });
 
@@ -92,4 +110,16 @@ export const articleSchema = ({
     name: SITE_NAME,
     logo: { '@type': 'ImageObject', url: ORG_LOGO },
   },
+});
+
+// Static information pages (/privacy, /terms, /about, /contact).
+export const infoPageSchema = ({ name, description, path, type = 'WebPage' }) => ({
+  '@context': 'https://schema.org',
+  '@type': type,
+  name,
+  description,
+  url: abs(path),
+  inLanguage: 'en',
+  isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: `${SITE_URL}/` },
+  publisher: { '@type': 'Organization', name: SITE_NAME, logo: ORG_LOGO },
 });

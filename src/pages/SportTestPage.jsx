@@ -46,7 +46,6 @@ function SportTestPage() {
       <Seo
         title="Sports Reaction Test - Improve Athletic Reflexes | ReactionTestPro"
         description="Test your sports reaction time and improve your athletic performance. Perfect for athletes in boxing, tennis, baseball, soccer, and all competitive sports. Measure your reflexes like a pro."
-        keywords="sports reaction test, athletic reflex test, athlete reaction time, sports performance test, boxing reflexes, tennis reaction speed, baseball reaction time"
         canonical="/sport-test"
         jsonLd={[
           webApplicationSchema({

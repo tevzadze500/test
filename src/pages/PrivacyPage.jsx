@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
-import { SITE_NAME, SITE_URL } from '../utils/structuredData';
+import { SITE_NAME, SITE_URL, infoPageSchema } from '../utils/structuredData';
 
 const LAST_UPDATED = '2026-07-24';
 
@@ -26,6 +26,7 @@ const PrivacyPage = () => (
     title={`Privacy Policy | ${SITE_NAME}`}
     description="How ReactionTestPro handles your data: tests run entirely in your browser, no accounts, no cookies, no analytics, and no test answers are ever sent to a server."
     canonical="/privacy"
+    jsonLd={infoPageSchema({ name: 'Privacy Policy', description: `${SITE_NAME} — privacy policy`, path: '/privacy', type: 'WebPage' })}
     heading="Privacy Policy"
     intro="This policy describes exactly what happens to your data when you use this site. It is written to match how the site actually works, not to cover every hypothetical."
     lastUpdated={LAST_UPDATED}

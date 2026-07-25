@@ -59,7 +59,6 @@ const WorkingMemoryPage = () => {
       <Seo
         title="Working Memory Test – Can You Remember More Than 7 Digits?"
         description="Take the free working memory test. Memorize a growing sequence, measure your short-term memory span, and see how you rank — most adults manage 5 to 9. No signup."
-        keywords="working memory test, working memory capacity, short-term memory test, digit span task, sequence memory, improve working memory, cognitive training, brain health"
         canonical="/test/memory"
         jsonLd={[
           webApplicationSchema({

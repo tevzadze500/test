@@ -70,7 +70,6 @@ const GoNoGoPage = () => {
       <Seo
         title="Go/No-Go Test – Measure Your Response Inhibition & Focus"
         description="Take the free Go/No-Go test: react to green 'Go' signals, hold back on red 'No-Go' signals, and measure your response inhibition and impulse control. Instant results, no signup."
-        keywords="go no go test, response inhibition test, impulse control task, cognitive control game, go/no-go task, inhibition test, executive function test"
         canonical="/test/go-no-go"
         jsonLd={[
           webApplicationSchema({

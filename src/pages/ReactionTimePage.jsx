@@ -73,7 +73,6 @@ const ReactionTimePage = () => {
       <Seo
         title="Reaction Time Test – Check Your Reflexes & Average Speed"
         description="Test your reaction time free in milliseconds. See how your reflexes compare to the average human reaction speed, learn what affects them, and how to react faster. No signup."
-        keywords="reaction time test, average reaction speed, human reflexes, how to test reflexes, millisecond reaction clock, visual reaction speed, measure reaction time"
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({

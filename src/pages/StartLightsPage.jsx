@@ -102,7 +102,6 @@ const StartLightsPage = () => {
       <Seo
         title="Start Lights Reaction Test – How Fast Is Your Launch?"
         description="Free start lights reaction test: rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your tier."
-        keywords="start lights reaction test, racing reaction time, reaction time test, start lights reflex test, launch reaction time"
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({

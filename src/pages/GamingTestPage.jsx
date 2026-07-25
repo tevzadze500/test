@@ -46,7 +46,6 @@ function GamingTestPage() {
       <Seo
         title="Gaming Reaction Test - Improve Your Gaming Reflexes | ReactionTestPro"
         description="Test and improve your gaming reaction time. Perfect for FPS, MOBA, and competitive gaming. Measure your reflexes in milliseconds and boost your gaming performance."
-        keywords="gaming reaction test, gamer reflex test, FPS reaction time, esports reflexes, gaming performance test, competitive gaming, reaction speed gaming"
         canonical="/gaming-test"
         jsonLd={[
           webApplicationSchema({

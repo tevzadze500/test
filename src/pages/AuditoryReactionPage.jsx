@@ -65,7 +65,6 @@ const AuditoryReactionPage = () => {
       <Seo
         title="Auditory Reaction Test - Measure Your Response to Sound | ReactionTestPro"
         description="Test your auditory reaction time for free. Click the instant you hear the beep and measure how fast you respond to sound in milliseconds. Instant results, no signup."
-        keywords="auditory reaction test, reaction to sound, sound reaction time, audio reflex test, hearing reaction time, reaction speed sound"
         canonical="/test/auditory-reaction"
         jsonLd={[
           webApplicationSchema({

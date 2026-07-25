@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
-import { SITE_NAME, SITE_URL } from '../utils/structuredData';
+import { SITE_NAME, SITE_URL, infoPageSchema } from '../utils/structuredData';
 
 const LAST_UPDATED = '2026-07-24';
 
@@ -10,6 +10,7 @@ const TermsPage = () => (
     title={`Terms of Use | ${SITE_NAME}`}
     description="The terms that govern your use of ReactionTestPro, including the important limitation that none of the tests provide medical advice or a diagnosis."
     canonical="/terms"
+    jsonLd={infoPageSchema({ name: 'Terms of Use', description: `${SITE_NAME} — terms of use`, path: '/terms', type: 'WebPage' })}
     heading="Terms of Use"
     intro="By using this site you agree to these terms. They are deliberately short and readable — please read the medical section in particular."
     lastUpdated={LAST_UPDATED}

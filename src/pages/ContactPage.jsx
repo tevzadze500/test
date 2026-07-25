@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Bug, BookOpen, Shield } from 'lucide-react';
 import LegalLayout, { LegalSection, Placeholder } from '../components/LegalLayout';
-import { SITE_NAME } from '../utils/structuredData';
+import { SITE_NAME, infoPageSchema } from '../utils/structuredData';
 
 const LAST_UPDATED = '2026-07-24';
 
@@ -36,6 +36,7 @@ const ContactPage = () => (
     title={`Contact | ${SITE_NAME}`}
     description="Get in touch with ReactionTestPro about a bug, a correction to a cited source, or a privacy question."
     canonical="/contact"
+    jsonLd={infoPageSchema({ name: 'Contact', description: `${SITE_NAME} — contact`, path: '/contact', type: 'ContactPage' })}
     heading="Contact"
     intro="This is a small site with no support team, but every message is read. Bug reports and factual corrections are especially welcome."
     lastUpdated={LAST_UPDATED}

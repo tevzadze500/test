@@ -49,7 +49,6 @@ function HomePage() {
       <Seo
         title="Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro"
         description="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required."
-        keywords="reaction time test, reflex test online, cognitive tests, vision test, hearing test, start lights reaction test, Go No-Go test, free online tests"
         canonical="/"
         jsonLd={[websiteSchema(), organizationSchema()]}
       />
@@ -81,7 +80,7 @@ function HomePage() {
             aria-hidden="true"
             className="fixed inset-0 z-0 w-full h-full object-cover pointer-events-none"
             style={{ filter: 'brightness(0.4)' }}
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
           />
         </picture>

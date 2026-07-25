@@ -59,7 +59,6 @@ const AnticipationPage = () => {
       <Seo
         title="Anticipation Test - Coincidence Timing & Prediction | ReactionTestPro"
         description="Test your anticipation and timing for free. Predict when a moving marker reaches the target — even after it vanishes — and measure your coincidence-timing accuracy."
-        keywords="anticipation test, timing test, coincidence anticipation, prediction test, timing accuracy, interceptive timing, sports timing test"
         canonical="/test/anticipation"
         jsonLd={[
           webApplicationSchema({

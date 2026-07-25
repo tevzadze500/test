@@ -4,7 +4,7 @@ import { ArrowLeft, Eye, Clock, Palette, AlertTriangle, Info } from 'lucide-reac
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
 import { colorBlindReferences, LAST_UPDATED } from '../data/references';
@@ -85,7 +85,6 @@ const ColorBlindTestPage = () => {
       <Seo
         title="Color Blindness Test - Quick Screening | ReactionTestPro"
         description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
-        keywords="color blindness test, color vision test, Ishihara test, color deficiency, red green color blind, color vision screening"
         canonical="/test/color-blind"
         jsonLd={[
           webApplicationSchema({
@@ -96,6 +95,12 @@ const ColorBlindTestPage = () => {
             category: 'HealthApplication',
           }),
           breadcrumbSchema('Color Blindness Test', '/test/color-blind'),
+          medicalWebPageSchema({
+            name: 'Color Blindness Test',
+            description: 'A colour vision screening using coloured-dot plates. Educational only: display calibration and ambient lighting affect the result, so this is not a clinical colour vision assessment.',
+            path: '/test/color-blind',
+            lastReviewed: LAST_UPDATED,
+          }),
           faqSchema(faqs),
         ]}
       />

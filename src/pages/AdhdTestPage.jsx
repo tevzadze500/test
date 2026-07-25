@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock from '../components/TrustBlock';
 import { adhdReferences, LAST_UPDATED } from '../data/references';
@@ -242,7 +242,6 @@ const AdhdTestPage = () => {
         <Seo
           title="ADHD Screening Test – Check Your Focus & Impulse Control"
           description="A free, private ADHD screening self-assessment for attention and impulse control. For education only — not a medical diagnosis. Get instant insights and clear next steps."
-          keywords="adhd screening test, adhd test, impulse control test, attention span check, adhd self-assessment, attention deficit test, focus test, online adhd screening"
           canonical="/test/adhd"
           jsonLd={[
             webApplicationSchema({
@@ -252,6 +251,12 @@ const AdhdTestPage = () => {
               category: "HealthApplication",
             }),
             breadcrumbSchema("ADHD Screening Test", "/test/adhd"),
+          medicalWebPageSchema({
+            name: 'ADHD Screening Test',
+            description: 'A free 100-question ADHD screening self-assessment covering attention, organisation, impulse control and emotional regulation. Educational only: this is not a diagnostic instrument and only a qualified healthcare professional can diagnose ADHD.',
+            path: '/test/adhd',
+            lastReviewed: LAST_UPDATED,
+          }),
             faqSchema(adhdFaqs),
           ]}
         />

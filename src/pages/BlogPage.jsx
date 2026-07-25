@@ -16,7 +16,6 @@ function BlogPage() {
       <Seo
         title="Why Reaction Time is Crucial in Everyday Life and Performance | ReactionTestPro"
         description="Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test."
-        keywords="reaction time test, improve reaction time, reaction time for sports, reaction time driving, reaction speed test, reaction time exercises, cognitive health reaction time, measure your reaction time"
         canonical="/blog/reaction-time-crucial"
         type="article"
         jsonLd={articleSchema({
