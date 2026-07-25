@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Users, ArrowRight, Zap, Star, Info, Flag, Focus, Eye, Headphones, Palette, Brain, Activity, Target, Volume2 } from 'lucide-react';
+import { Clock, BarChart3, ArrowRight, Zap, Star, Info, Flag, Focus, Eye, Headphones, Palette, Brain, Activity, Target, Volume2 } from 'lucide-react';
 import StartLightsIcon from './icons/StartLightsIcon';
 
 // Icon mapping for test icons
@@ -103,8 +103,8 @@ const TestCard = ({ test }) => {
           <span className="text-white font-medium">{test.duration}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <Users size={14} className="text-dark-400 shrink-0" />
-          <span className="text-white font-medium">{test.stats.participants}</span>
+          <BarChart3 size={14} className="text-dark-400 shrink-0" />
+          <span className="text-white font-medium">{test.difficulty}</span>
         </div>
       </div>
 
@@ -127,9 +127,6 @@ const TestCard = ({ test }) => {
               {badge}
             </span>
           ))}
-          <span className="px-2.5 py-1 text-xs font-semibold bg-dark-800/50 text-dark-400 rounded-md">
-            {test.difficulty}
-          </span>
         </div>
       )}
 

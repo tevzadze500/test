@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Zap, Clock, Users } from 'lucide-react';
+import { ArrowLeft, Home, Zap, Clock, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import ReactionTestArea from '../components/test/ReactionTestArea';
@@ -173,8 +173,8 @@ const ReactionTimePage = () => {
               <span className="text-green-400 font-medium">Easy</span>
             </div>
             <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={12} className="sm:w-3.5 sm:h-3.5 text-purple-400" />
-              <span className="text-white">150K+ participants</span>
+              <Info size={12} className="sm:w-3.5 sm:h-3.5 text-dark-400" />
+              <span className="text-white">No audio needed</span>
             </div>
           </div>
         </div>

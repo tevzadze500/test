@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Zap, Clock, Users, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Zap, Clock, Lightbulb, Info } from 'lucide-react';
 import StartLightsTestArea from '../components/test/StartLightsTestArea';
 import StartLightsStatsCard from '../components/test/StartLightsStatsCard';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
@@ -212,8 +212,8 @@ const StartLightsPage = () => {
               <span className="text-yellow-400 font-medium">Medium</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">42K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">No audio needed</span>
             </div>
           </div>
         </div>

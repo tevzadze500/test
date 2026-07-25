@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Brain, Clock, Users, Target, AlertCircle, Trophy, Hash, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Brain, Clock, Target, AlertCircle, Trophy, Hash, RotateCcw, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import MemoryTestArea from '../components/test/MemoryTestArea';
@@ -106,7 +106,7 @@ const WorkingMemoryPage = () => {
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><span className="text-dark-400">Category:</span><span className="text-green-400 font-medium">Cognitive</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Clock size={12} className="text-blue-400" /><span className="text-white">6 min</span></div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Users size={12} className="text-purple-400" /><span className="text-white">72K+ participants</span></div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Info size={12} className="text-dark-400" /><span className="text-white">Focus required</span></div>
           </div>
         </div>
 

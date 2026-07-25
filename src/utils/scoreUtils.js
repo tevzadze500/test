@@ -49,12 +49,15 @@ export const getReactionTimeMotivation = (score, bestScore) => {
   return "Keep practicing — every attempt makes you faster.";
 };
 
+// The percentile is an estimate against a typical adult reaction-time
+// distribution, not a measurement against this site's visitors — we do not
+// collect or store anyone's scores on a server, so no such population exists.
 export const getComparisonMessage = (percentile) => {
-  if (percentile >= 95) return `You're faster than ${percentile}% of all users. Outstanding.`;
-  if (percentile >= 80) return `You beat ${percentile}% of users. Impressive.`;
-  if (percentile >= 60) return `Better than ${percentile}% of users. Above average.`;
-  if (percentile >= 40) return `You're in the middle ${percentile}% range. Keep improving.`;
-  return `You're faster than ${percentile}% of users. Room to grow.`;
+  if (percentile >= 95) return `That is around the ${percentile}th percentile of typical adult reaction times. Outstanding.`;
+  if (percentile >= 80) return `That is around the ${percentile}th percentile of typical adult reaction times. Impressive.`;
+  if (percentile >= 60) return `That is around the ${percentile}th percentile of typical adult reaction times — above average.`;
+  if (percentile >= 40) return `That sits mid-range against typical adult reaction times. Keep improving.`;
+  return `That sits below the typical adult range. Room to grow.`;
 };
 
 // Start Lights Reaction Test Utilities

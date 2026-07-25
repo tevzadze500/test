@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Volume2, Clock, Users, Activity, Ear, HelpCircle, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Volume2, Clock, Activity, Ear, HelpCircle, AlertCircle, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import AuditoryReactionTestArea from '../components/test/AuditoryReactionTestArea';
@@ -113,7 +113,7 @@ const AuditoryReactionPage = () => {
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><span className="text-dark-400">Category:</span><span className="text-green-400 font-medium">Performance</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Clock size={12} className="text-blue-400" /><span className="text-white">2 min</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Volume2 size={12} className="text-pink-400" /><span className="text-white">Audio required</span></div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Users size={12} className="text-purple-400" /><span className="text-white">55K+ participants</span></div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Info size={12} className="text-dark-400" /><span className="text-white">Headphones required</span></div>
           </div>
         </div>
 

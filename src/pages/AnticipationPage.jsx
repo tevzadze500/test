@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Target, Clock, Users, Activity, Crosshair, HelpCircle, AlertCircle, Trophy, Hash, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Target, Clock, Activity, Crosshair, HelpCircle, AlertCircle, Trophy, Hash, RotateCcw, Info } from 'lucide-react';
 import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import AnticipationTestArea from '../components/test/AnticipationTestArea';
@@ -107,7 +107,7 @@ const AnticipationPage = () => {
           <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><span className="text-dark-400">Category:</span><span className="text-green-400 font-medium">Performance</span></div>
             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Clock size={12} className="text-blue-400" /><span className="text-white">2 min</span></div>
-            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Users size={12} className="text-purple-400" /><span className="text-white">45K+ participants</span></div>
+            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700"><Info size={12} className="text-dark-400" /><span className="text-white">No audio needed</span></div>
           </div>
         </div>
 

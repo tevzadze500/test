@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Headphones, Clock, Users, Volume2, Heart, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Headphones, Clock, Volume2, Heart, Lightbulb, Info } from 'lucide-react';
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
@@ -200,8 +200,8 @@ const HearingTestPage = () => {
               <span className="text-white">4 min</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">65K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">Headphones required</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
               <Volume2 size={14} className="text-yellow-400" />

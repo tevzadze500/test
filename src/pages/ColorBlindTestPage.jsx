@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Eye, Clock, Users, Palette, AlertTriangle } from 'lucide-react';
+import { ArrowLeft, Eye, Clock, Palette, AlertTriangle, Info } from 'lucide-react';
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
@@ -161,8 +161,8 @@ const ColorBlindTestPage = () => {
               <span className="text-white">3 min</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Users size={14} className="text-purple-400" />
-              <span className="text-white">95K+ participants</span>
+              <Info size={14} className="text-dark-400" />
+              <span className="text-white">Colour display required</span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
               <Palette size={14} className="text-purple-400" />
