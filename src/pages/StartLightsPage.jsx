@@ -14,8 +14,8 @@ const faqs = [
     answer: 'Anything under 280 ms is elite territory on this test, and under 230 ms earns the top Lightning Launch tier. Because you have to track a cascading light sequence and hold through a random delay before the green appears, times here naturally run a little higher than a bare click test.',
   },
   {
-    question: 'How fast do professional racing drivers react at the start?',
-    answer: 'On a real grid, top drivers launch in around 150–200 milliseconds. This test uses a green-light start with a longer cascade to watch, which adds cognitive load — that is why the tiers here sit slightly higher than a bare reaction measurement.',
+    question: 'How does a real race start actually work?',
+    answer: 'Under the FIA Formula 1 Sporting Regulations (Article B5.7.1), five red lights are illuminated one at a time at one-second intervals. The interval between the fifth light and all lights being extinguished — the actual start signal — is at the sole discretion of the starter, which is why it cannot be anticipated. Individual drivers\' start reaction times are not published as a ranking, so this test does not claim to compare you against any of them.',
   },
   {
     question: 'Why do I keep getting a false start?',
@@ -191,9 +191,10 @@ const StartLightsPage = () => {
           {/* Nominative descriptive use: names the real-world procedure the test
               recreates, without borrowing anyone's branding. */}
           <p className="text-sm text-dark-400 border-l-2 border-dark-700 pl-3 mb-4 max-w-3xl">
-            This test is based on the five-light starting procedure used in Formula 1 racing. It is
-            an independent fan-made tool and is not affiliated with, endorsed by, or associated with
-            Formula One World Championship Limited or any racing series.
+            This test is inspired by the light-gantry starting procedure used in Formula 1 racing; it is
+            not an exact reproduction of it. It is an independent fan-made tool and is not affiliated
+            with, endorsed by, or associated with Formula One World Championship Limited or any
+            racing series.
           </p>
 
           {/* Meta Info */}

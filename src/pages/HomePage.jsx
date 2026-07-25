@@ -6,7 +6,7 @@ import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
-import Leaderboard from '../components/Leaderboard';
+import ReactionBenchmarks from '../components/ReactionBenchmarks';
 import SeoContent from '../components/SeoContent';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import { tests, testCategories } from '../data/tests';
@@ -120,7 +120,7 @@ function HomePage() {
                           Start Lights Reaction Test
                         </h2>
                         <p className="text-dark-100 text-lg mb-6 leading-relaxed">
-                          Five red lights come on one by one. React the instant they go out — the sequence is based on the five-light starting procedure used in Formula 1 racing. Measure your launch in milliseconds and track your improvement.
+                          Three rows of red lights cascade downward, hold for an unpredictable moment, then cut out as the bottom row turns green. React the instant you see green. The format is inspired by the light-gantry starting procedure used in motor racing.
                         </p>
                         <div className="flex flex-wrap gap-3 mb-6">
                           <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-400/50 rounded-lg text-green-200 text-sm font-semibold">
@@ -151,8 +151,8 @@ function HomePage() {
               )}
             </div>
 
-            {/* Top 10 Leaderboard */}
-            <Leaderboard />
+            {/* Published reaction-time reference points */}
+            <ReactionBenchmarks />
 
             {/* Explore More Tests - Enhanced Mobile-First Section */}
             <div className="max-w-4xl mx-auto mb-12">
@@ -232,10 +232,10 @@ function HomePage() {
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  The Start Lights Reaction Test is a free online tool that recreates the five-light starting procedure used in Formula 1 racing. It measures how quickly you react when the red lights go out — the signal that starts the race.
+                  The Start Lights Reaction Test is a free online tool built around a race-start light gantry. It measures how quickly you react at the moment the red lights go out and the green appears — the same cue that starts a real race.
                 </p>
                 <p className="leading-relaxed">
-                  Five red lights illuminate one by one, building anticipation. After a random delay of 1–4 seconds they all go out at once, and you click or tap as fast as you can. Your reaction time is measured in milliseconds, so you can track it across attempts and see which tier it falls into.
+                  Three rows of red lights light up one row at a time, building anticipation. After an unpredictable hold they cut out and the bottom row turns green, and you click or tap as fast as you can. Your time is measured in milliseconds, so you can track it across attempts and see which tier it falls into.
                 </p>
               </div>
             </div>
@@ -280,19 +280,19 @@ function HomePage() {
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  The test follows the same five-light sequence used to start a Formula 1 race:
+                  Here is exactly how the test runs:
                 </p>
                 <ol className="space-y-4 ml-4">
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 font-bold text-lg shrink-0">1.</span>
                     <div>
-                      <strong className="text-white">Light Sequence:</strong> Five red lights illuminate one by one at 500-millisecond intervals, mirroring the start lights gantry above a racing grid.
+                      <strong className="text-white">Light Sequence:</strong> Three rows of red lights illuminate one row at a time at 500-millisecond intervals, cascading down the gantry.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-red-500 font-bold text-lg shrink-0">2.</span>
                     <div>
-                      <strong className="text-white">Random Delay:</strong> After all five lights are illuminated, there's a random delay of 1–4 seconds. The unpredictability stops you anticipating the exact moment, exactly as it does on a real grid.
+                      <strong className="text-white">Random Hold:</strong> Once all three red rows are lit, the lights hold for a random 0.5 to 2.5 seconds. The unpredictability stops you anticipating the exact moment, exactly as it does on a real grid.
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
