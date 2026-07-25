@@ -240,36 +240,6 @@ function HomePage() {
               </div>
             </div>
 
-            {/* SEO Content - Why Test Your Reaction Time */}
-            <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8 mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                Why Test Your Reaction Time?
-              </h2>
-              <div className="text-dark-300 space-y-4">
-                <p className="leading-relaxed">
-                  Reaction time is a crucial skill in many aspects of life, from sports and gaming to driving and everyday decision-making. Testing your reflexes with our Start Lights Reaction Test offers several benefits:
-                </p>
-                <ul className="space-y-3 ml-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">✓</span>
-                    <span><strong className="text-white">Athletic Performance:</strong> Athletes, especially in racing, combat sports, and ball games, need quick reflexes to excel. Regular testing helps track improvements.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">✓</span>
-                    <span><strong className="text-white">Gaming Skills:</strong> Gamers can improve their competitive edge in fast-paced games like FPS, racing simulators, and esports.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">✓</span>
-                    <span><strong className="text-white">Driving Safety:</strong> Faster reaction times can help prevent accidents by allowing you to respond quickly to unexpected situations on the road.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-green-500 font-bold text-xl shrink-0">✓</span>
-                    <span><strong className="text-white">Cognitive Health:</strong> Reaction time testing can provide insights into your cognitive function and mental alertness.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
             {/* SEO Content Component */}
             <SeoContent />
 
