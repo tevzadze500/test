@@ -39,9 +39,9 @@ export const tests = [
   {
     id: 'adhd-test',
     name: 'ADHD Screening Test',
-    description: 'Quick attention and focus assessment',
+    description: '100-question attention and focus self-assessment',
     category: testCategories.FOCUS,
-    duration: '5 min',
+    duration: '10-15 min',
     difficulty: 'Medium',
     icon: 'Focus',
     color: 'blue',
