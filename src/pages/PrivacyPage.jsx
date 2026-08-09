@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
+import LegalLayout, { LegalSection, LegalCallout } from '../components/LegalLayout';
 import { SITE_NAME, SITE_URL, infoPageSchema } from '../utils/structuredData';
+import { OWNER_DESCRIPTOR, JURISDICTION } from '../data/site';
 
-const LAST_UPDATED = '2026-07-24';
+const LAST_UPDATED = '2026-08-09';
 
 /**
  * Every claim on this page was verified against the source before being
@@ -41,8 +42,7 @@ const PrivacyPage = () => (
 
     <LegalSection title="1. Who is responsible for this site">
       <p>
-        {SITE_NAME} ({SITE_URL}) is operated by{' '}
-        <Placeholder>your full name or registered business entity</Placeholder>. For any privacy
+        {SITE_NAME} ({SITE_URL}) is operated as {OWNER_DESCRIPTOR}. For any privacy
         question you can reach us via the <Link to="/contact" className="text-green-400 hover:text-green-300 underline">contact page</Link>.
       </p>
     </LegalSection>
@@ -149,7 +149,7 @@ const PrivacyPage = () => (
       </p>
       <p>
         If you believe we hold data about you regardless, contact us and we will investigate.
-        Governing law and supervisory authority: <Placeholder>country / state whose law governs this site</Placeholder>.
+        Governing law and supervisory authority: {JURISDICTION}.
       </p>
     </LegalSection>
 

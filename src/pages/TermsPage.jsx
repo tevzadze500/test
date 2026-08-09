@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
+import LegalLayout, { LegalSection, LegalCallout } from '../components/LegalLayout';
 import { SITE_NAME, SITE_URL, infoPageSchema } from '../utils/structuredData';
+import { OWNER_DESCRIPTOR, JURISDICTION } from '../data/site';
 
-const LAST_UPDATED = '2026-07-24';
+const LAST_UPDATED = '2026-08-09';
 
 const TermsPage = () => (
   <LegalLayout
@@ -36,9 +37,8 @@ const TermsPage = () => (
 
     <LegalSection title="1. Who these terms are with">
       <p>
-        These terms are an agreement between you and{' '}
-        <Placeholder>your full name or registered business entity</Placeholder>, the operator of{' '}
-        {SITE_NAME} ({SITE_URL}). If you do not accept them, please do not use the site.
+        These terms are an agreement between you and the operator of {SITE_NAME} ({SITE_URL}),{' '}
+        {OWNER_DESCRIPTOR}. If you do not accept them, please do not use the site.
       </p>
     </LegalSection>
 
@@ -121,8 +121,7 @@ const TermsPage = () => (
         after an update means you accept the revised terms.
       </p>
       <p>
-        These terms are governed by the laws of{' '}
-        <Placeholder>country / state whose law governs this site</Placeholder>, and any dispute will
+        These terms are governed by the laws of {JURISDICTION}, and any dispute will
         be subject to the courts of that jurisdiction.
       </p>
       <p>

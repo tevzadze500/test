@@ -3,15 +3,9 @@ import { Link } from 'react-router-dom';
 import { Mail, Bug, BookOpen, Shield } from 'lucide-react';
 import LegalLayout, { LegalSection, Placeholder } from '../components/LegalLayout';
 import { SITE_NAME, infoPageSchema } from '../utils/structuredData';
+import { CONTACT_EMAIL } from '../data/site';
 
-const LAST_UPDATED = '2026-07-24';
-
-/**
- * Replace CONTACT_EMAIL with a real address. It is the only thing standing
- * between this page and being fully functional — the mailto link below is
- * intentionally inert until then, rather than pointing at a made-up mailbox.
- */
-const CONTACT_EMAIL = null;
+const LAST_UPDATED = '2026-08-09';
 
 const REASONS = [
   {
@@ -61,16 +55,9 @@ const ContactPage = () => (
                 </p>
               </>
             ) : (
-              <>
-                <p className="text-base font-semibold text-white mb-1">
-                  <Placeholder>your contact email address</Placeholder>
-                </p>
-                <p className="text-sm text-dark-400">
-                  Set <code className="font-mono text-[0.9em] text-green-300">CONTACT_EMAIL</code> in{' '}
-                  <code className="font-mono text-[0.9em] text-green-300">src/pages/ContactPage.jsx</code>{' '}
-                  and this becomes a live mailto link.
-                </p>
-              </>
+              <p className="text-base font-semibold text-white mb-1">
+                <Placeholder>your contact email address</Placeholder>
+              </p>
             )}
           </div>
         </div>

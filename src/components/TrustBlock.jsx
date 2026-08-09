@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { UserRound, CalendarDays, BookOpen, ExternalLink, ShieldAlert } from 'lucide-react';
+import { AUTHOR_NAME } from '../data/site';
 
 /**
  * Expertise / authorship signals for the health-adjacent (YMYL) test pages:
  * /test/adhd, /test/vision, /test/color-blind, /test/hearing.
  *
  * Two rules this component exists to enforce:
- *  1. No invented people. The byline renders a visible [PLACEHOLDER] until a
- *     real name is supplied, and the reviewer line is omitted entirely rather
- *     than fabricated — an absent reviewer is honest, a made-up one is not.
+ *  1. No invented people. The byline defaults to the site's publishing name
+ *     from src/data/site.js (falling back to a visible [PLACEHOLDER] if that
+ *     is ever nulled), and the reviewer line is omitted entirely rather than
+ *     fabricated — an absent reviewer is honest, a made-up one is not.
  *  2. No invented sources. Every entry in `references` was opened and checked
  *     before being added; anything unverifiable was left out.
  */
@@ -27,7 +29,7 @@ export const MedicalDisclaimerBanner = ({ children }) => (
 );
 
 const TrustBlock = ({
-  author = null,
+  author = AUTHOR_NAME,
   reviewer = null,
   lastUpdated,
   references = [],
