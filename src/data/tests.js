@@ -9,6 +9,7 @@ export const testCategories = {
 export const tests = [
   {
     id: 'reaction-time',
+    route: '/test/reaction-time',
     name: 'Reaction Time Test',
     description: 'Measure your visual reaction speed in milliseconds',
     category: testCategories.PERFORMANCE,
@@ -24,6 +25,7 @@ export const tests = [
   },
   {
     id: 'f1-reaction',
+    route: '/test/f1-reaction',
     name: 'Start Lights Reaction Test',
     description: 'React the instant the five red lights go out',
     category: testCategories.PERFORMANCE,
@@ -38,6 +40,7 @@ export const tests = [
   },
   {
     id: 'adhd-test',
+    route: '/test/adhd',
     name: 'ADHD Screening Test',
     description: '100-question attention and focus self-assessment',
     category: testCategories.FOCUS,
@@ -52,6 +55,7 @@ export const tests = [
   },
   {
     id: 'vision-test',
+    route: '/test/vision',
     name: 'Visual Acuity Test',
     description: 'Check your eyesight and visual clarity',
     category: testCategories.VISION,
@@ -66,6 +70,7 @@ export const tests = [
   },
   {
     id: 'hearing-test',
+    route: '/test/hearing',
     name: 'Hearing Frequency Test',
     description: 'Test your auditory range and sensitivity',
     category: testCategories.HEARING,
@@ -79,6 +84,7 @@ export const tests = [
   },
   {
     id: 'color-blind-test',
+    route: '/test/color-blind',
     name: 'Color Blindness Test',
     description: 'Detect color vision deficiencies',
     category: testCategories.VISION,
@@ -92,6 +98,7 @@ export const tests = [
   },
   {
     id: 'memory-test',
+    route: '/test/memory',
     name: 'Working Memory Test',
     description: 'Evaluate your short-term memory capacity',
     category: testCategories.COGNITIVE,
@@ -106,6 +113,7 @@ export const tests = [
   },
   {
     id: 'go-no-go',
+    route: '/test/go-no-go',
     name: 'Go/No-Go Reaction Test',
     description: 'Measure your cognitive inhibition and impulse control',
     category: testCategories.COGNITIVE,
@@ -120,6 +128,7 @@ export const tests = [
   },
   {
     id: 'anticipation-test',
+    route: '/test/anticipation',
     name: 'Anticipation Test',
     description: 'Test your timing and prediction skills',
     category: testCategories.PERFORMANCE,
@@ -133,6 +142,7 @@ export const tests = [
   },
   {
     id: 'auditory-reaction',
+    route: '/test/auditory-reaction',
     name: 'Auditory Reaction Test',
     description: 'Measure your response to sound stimuli',
     category: testCategories.PERFORMANCE,
