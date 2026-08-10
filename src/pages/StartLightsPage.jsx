@@ -100,8 +100,8 @@ const StartLightsPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Start Lights Reaction Test – How Fast Is Your Launch?"
-        description="Free start lights reaction test: rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your tier."
+        title="Start Lights Reaction Test (F1 Lights Out) | ReactionTestPro"
+        description="Race-start lights cascade red, then go green — react instantly and get your launch time in milliseconds. Free F1-style reaction test, try it now."
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({

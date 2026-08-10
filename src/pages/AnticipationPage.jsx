@@ -57,8 +57,8 @@ const AnticipationPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Anticipation Test - Coincidence Timing & Prediction | ReactionTestPro"
-        description="Test your anticipation and timing for free. Predict when a moving marker reaches the target — even after it vanishes — and measure your coincidence-timing accuracy."
+        title="Anticipation Test – Timing & Prediction | ReactionTestPro"
+        description="Predict the exact moment a moving marker hits the target — even after it disappears. Test your coincidence timing free and see your accuracy now."
         canonical="/test/anticipation"
         jsonLd={[
           webApplicationSchema({

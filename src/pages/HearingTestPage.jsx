@@ -100,8 +100,8 @@ const HearingTestPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Hearing Frequency Test - Audio Health Check | ReactionTestPro"
-        description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
+        title="Hearing Test – Check Your Frequency Range | ReactionTestPro"
+        description="Find the highest frequency you can hear, from 250 Hz to 20 kHz. Free browser hearing screening with instant results — grab headphones and start now."
         canonical="/test/hearing"
         jsonLd={[
           webApplicationSchema({

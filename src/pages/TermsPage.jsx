@@ -9,7 +9,7 @@ const LAST_UPDATED = '2026-08-09';
 const TermsPage = () => (
   <LegalLayout
     title={`Terms of Use | ${SITE_NAME}`}
-    description="The terms that govern your use of ReactionTestPro, including the important limitation that none of the tests provide medical advice or a diagnosis."
+    description="The terms that govern ReactionTestPro, including the key point that no test here provides medical advice or a diagnosis. Read the full terms of use."
     canonical="/terms"
     jsonLd={infoPageSchema({ name: 'Terms of Use', description: `${SITE_NAME} — terms of use`, path: '/terms', type: 'WebPage' })}
     heading="Terms of Use"

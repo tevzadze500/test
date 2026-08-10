@@ -63,8 +63,8 @@ const AuditoryReactionPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Auditory Reaction Test - Measure Your Response to Sound | ReactionTestPro"
-        description="Test your auditory reaction time for free. Click the instant you hear the beep and measure how fast you respond to sound in milliseconds. Instant results, no signup."
+        title="Auditory Reaction Test – Respond to Sound | ReactionTestPro"
+        description="Click the instant you hear the beep and measure your auditory reaction time in milliseconds. Free with instant results — put your ears to the test."
         canonical="/test/auditory-reaction"
         jsonLd={[
           webApplicationSchema({

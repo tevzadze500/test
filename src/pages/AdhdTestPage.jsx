@@ -240,8 +240,8 @@ const AdhdTestPage = () => {
     return (
       <>
         <Seo
-          title="ADHD Screening Test – Check Your Focus & Impulse Control"
-          description="A free, private ADHD screening self-assessment for attention and impulse control. For education only — not a medical diagnosis. Get instant insights and clear next steps."
+          title="ADHD Screening Test – Free Self-Assessment | ReactionTestPro"
+          description="Take a free, private ADHD screening self-assessment for attention and impulse control. Educational only, not a diagnosis — see your result instantly."
           canonical="/test/adhd"
           jsonLd={[
             webApplicationSchema({

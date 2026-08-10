@@ -176,8 +176,8 @@ const VisionTestPage = () => {
 
   const seoTags = (
     <Seo
-      title="Visual Acuity Test - Check Your Eyesight Online | ReactionTestPro"
-      description="Check your visual acuity with our free online eye test. Measures from 20/200 down to 20/20 vision. No signup required, instant results."
+      title="Visual Acuity Test – Free Online Eye Check | ReactionTestPro"
+      description="Screen your visual acuity from 20/200 to 20/20 with a free Snellen-style eye test. Instant results right in your browser — check your vision now."
       canonical="/test/vision"
       jsonLd={[
         webApplicationSchema({

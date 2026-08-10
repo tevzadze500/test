@@ -44,8 +44,8 @@ function SportTestPage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Sports Reaction Test - Improve Athletic Reflexes | ReactionTestPro"
-        description="Test your sports reaction time and improve your athletic performance. Perfect for athletes in boxing, tennis, baseball, soccer, and all competitive sports. Measure your reflexes like a pro."
+        title="Sports Reaction Time Test for Athletes | ReactionTestPro"
+        description="Test the reaction speed behind sprint starts, tennis returns and boxing counters. Free sports reaction test with instant results — see your time now."
         canonical="/sport-test"
         jsonLd={[
           webApplicationSchema({

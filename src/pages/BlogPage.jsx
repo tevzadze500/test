@@ -14,13 +14,13 @@ function BlogPage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Why Reaction Time is Crucial in Everyday Life and Performance | ReactionTestPro"
-        description="Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test."
+        title="Why Reaction Time Matters in Sport, Driving & Daily Life"
+        description="Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours. Read the full guide."
         canonical="/blog/reaction-time-crucial"
         type="article"
         jsonLd={articleSchema({
-          headline: 'Why Reaction Time is Crucial in Everyday Life and Performance',
-          description: 'Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test.',
+          headline: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
+          description: 'Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours.',
           path: '/blog/reaction-time-crucial',
           datePublished: '2026-01-20',
         })}
@@ -54,7 +54,7 @@ function BlogPage() {
           {/* Article Header */}
           <article className="prose prose-invert max-w-none">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Why Reaction Time is Crucial in Everyday Life and Performance
+              Why Reaction Time Matters in Sport, Driving & Daily Life
             </h1>
             
             <p className="text-lg text-dark-300 leading-relaxed mb-8">

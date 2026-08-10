@@ -44,8 +44,8 @@ function GamingTestPage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Gaming Reaction Test - Improve Your Gaming Reflexes | ReactionTestPro"
-        description="Test and improve your gaming reaction time. Perfect for FPS, MOBA, and competitive gaming. Measure your reflexes in milliseconds and boost your gaming performance."
+        title="Gaming Reaction Time Test for FPS & MOBA | ReactionTestPro"
+        description="How fast are your gaming reflexes? Test your reaction time for FPS, MOBA and racing games, see cited benchmarks, and learn how to shave off milliseconds."
         canonical="/gaming-test"
         jsonLd={[
           webApplicationSchema({

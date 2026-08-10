@@ -84,8 +84,8 @@ const ColorBlindTestPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Color Blindness Test - Quick Screening | ReactionTestPro"
-        description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
+        title="Color Blind Test – Ishihara-Style Plates | ReactionTestPro"
+        description="Screen for red-green color vision deficiency with Ishihara-style plates. Free three-minute test with instant results — check your color vision now."
         canonical="/test/color-blind"
         jsonLd={[
           webApplicationSchema({

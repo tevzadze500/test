@@ -9,8 +9,8 @@ const LAST_UPDATED = '2026-08-09';
 
 const AboutPage = () => (
   <LegalLayout
-    title={`About ${SITE_NAME} | Who Builds These Tests`}
-    description="Who runs ReactionTestPro, why it exists, and how the tests are built — client-side timing with performance.now(), no server, no accounts, no data collection."
+    title="About ReactionTestPro – Who Builds These Tests"
+    description="Who builds ReactionTestPro, how the tests are engineered with high-resolution browser timing, and why there are no accounts or data collection."
     canonical="/about"
     jsonLd={infoPageSchema({ name: 'About', description: `${SITE_NAME} — about`, path: '/about', type: 'AboutPage' })}
     heading={`About ${SITE_NAME}`}

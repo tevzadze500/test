@@ -25,7 +25,7 @@ const STORAGE_KEYS = [
 const PrivacyPage = () => (
   <LegalLayout
     title={`Privacy Policy | ${SITE_NAME}`}
-    description="How ReactionTestPro handles your data: tests run entirely in your browser, no accounts, no cookies, no analytics, and no test answers are ever sent to a server."
+    description="How ReactionTestPro handles data: every test runs in your browser, with no accounts, cookies or analytics. Read the full privacy policy for details."
     canonical="/privacy"
     jsonLd={infoPageSchema({ name: 'Privacy Policy', description: `${SITE_NAME} — privacy policy`, path: '/privacy', type: 'WebPage' })}
     heading="Privacy Policy"

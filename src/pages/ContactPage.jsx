@@ -27,8 +27,8 @@ const REASONS = [
 
 const ContactPage = () => (
   <LegalLayout
-    title={`Contact | ${SITE_NAME}`}
-    description="Get in touch with ReactionTestPro about a bug, a correction to a cited source, or a privacy question."
+    title="Contact ReactionTestPro – Bugs & Corrections"
+    description="Get in touch with ReactionTestPro about a bug, a factual correction to a cited source, or a privacy question. Every message is read — email us today."
     canonical="/contact"
     jsonLd={infoPageSchema({ name: 'Contact', description: `${SITE_NAME} — contact`, path: '/contact', type: 'ContactPage' })}
     heading="Contact"

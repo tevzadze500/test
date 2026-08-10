@@ -47,8 +47,8 @@ function HomePage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Free Online Reaction Time Tests – Reflexes, Cognitive & Vision | ReactionTestPro"
-        description="Test your reaction time, cognitive performance, vision, and hearing for free. Measure your reflexes in milliseconds with instant results. No signup required."
+        title="Free Reaction Time & Cognitive Tests | ReactionTestPro"
+        description="Measure your reaction time, memory, vision and hearing with 10 free browser tests. Instant millisecond results, no signup — start your first test now."
         canonical="/"
         jsonLd={[websiteSchema(), organizationSchema()]}
       />

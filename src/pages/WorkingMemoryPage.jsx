@@ -57,8 +57,8 @@ const WorkingMemoryPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Working Memory Test – Can You Remember More Than 7 Digits?"
-        description="Take the free working memory test. Memorize a growing sequence, measure your short-term memory span, and see how you rank — most adults manage 5 to 9. No signup."
+        title="Working Memory Test – Digit Span Challenge | ReactionTestPro"
+        description="Memorize growing digit sequences and measure your working memory span. Most adults hold 5–9 digits — take the free test and find your limit now."
         canonical="/test/memory"
         jsonLd={[
           webApplicationSchema({

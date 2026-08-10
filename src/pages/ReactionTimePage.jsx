@@ -71,8 +71,8 @@ const ReactionTimePage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Reaction Time Test – Check Your Reflexes & Average Speed"
-        description="Test your reaction time free in milliseconds. See how your reflexes compare to the average human reaction speed, learn what affects them, and how to react faster. No signup."
+        title="Reaction Time Test – Check Your Reflexes | ReactionTestPro"
+        description="Take the free reaction time test and see your speed in milliseconds. Compare yourself to the 213 ms adult average and learn how to react faster."
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({

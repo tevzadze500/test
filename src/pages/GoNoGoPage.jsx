@@ -68,8 +68,8 @@ const GoNoGoPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Go/No-Go Test – Measure Your Response Inhibition & Focus"
-        description="Take the free Go/No-Go test: react to green 'Go' signals, hold back on red 'No-Go' signals, and measure your response inhibition and impulse control. Instant results, no signup."
+        title="Go/No-Go Test – Impulse Control & Focus | ReactionTestPro"
+        description="React to green Go signals and hold back on red No-Go signals. Measure your response inhibition free in about 2 minutes — start the test now."
         canonical="/test/go-no-go"
         jsonLd={[
           webApplicationSchema({
