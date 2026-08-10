@@ -298,6 +298,64 @@ const VisionTestPage = () => {
             </div>
           </button>
 
+          {/* Educational prose */}
+          <div className="mt-12 space-y-8">
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-4">What Is a Visual Acuity Test?</h2>
+              <div className="space-y-4 text-dark-300 leading-relaxed">
+                <p>
+                  Visual acuity is the sharpness of your vision — how well your eyes resolve fine detail at a
+                  distance. The classic way to measure it is the Snellen chart, the wall of shrinking letters
+                  hanging in every optometrist&rsquo;s office since the 1860s: you read down the rows until the
+                  letters become too small to identify, and the smallest row you can read defines your acuity.
+                </p>
+                <p>
+                  This screening follows the same idea in your browser. Letters are drawn at progressively
+                  smaller sizes, and how far you get gives an educational estimate of how sharp your distance
+                  vision is — enough to notice that something might be worth a professional look.
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-4">What Do 20/20 and 20/40 Actually Mean?</h2>
+              <div className="space-y-4 text-dark-300 leading-relaxed">
+                <p>
+                  The fraction compares you to a typical eye. <strong className="text-white">20/20</strong> means that at
+                  20 feet you can read what a typical eye reads at 20 feet — normal sharpness, not
+                  &ldquo;perfect vision&rdquo;. <strong className="text-white">20/40</strong> means you need to be at 20 feet to read
+                  what a typical eye can read from 40 feet away — the detail has to be twice as close (or twice
+                  as large) before you resolve it. In metric countries the same idea is written 6/6 and 6/12.
+                </p>
+                <p>
+                  Acuity is only one dimension of eyesight. Contrast sensitivity, peripheral vision, depth
+                  perception and{' '}
+                  <Link to="/test/color-blind" className="text-purple-400 hover:text-purple-300 underline">color vision</Link>{' '}
+                  are separate abilities — you can be 20/20 and still have a color vision deficiency, which is
+                  why screenings test them separately.
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-4">When Should You See an Optometrist?</h2>
+              <div className="space-y-4 text-dark-300 leading-relaxed">
+                <p>
+                  Treat this test as a prompt, never as an answer. A real eye exam controls the two things a
+                  browser cannot: a fixed viewing distance and a calibrated letter size — and it examines eye
+                  health, not just sharpness. Book a professional exam if you struggle to read street signs or
+                  subtitles, find yourself squinting or getting headaches after screen time, notice a sudden
+                  change in either eye, or simply have not had your eyes checked in the last two years.
+                </p>
+                <p>
+                  If your result here was worse than you expected, do not panic — screen glare, display
+                  scaling and sitting too close all skew the outcome. If it stays poor across attempts on a
+                  properly positioned screen, that is exactly the signal a quick optometrist visit is for.
+                </p>
+              </div>
+            </section>
+          </div>
+
           {/* FAQ */}
           <div className="mt-12">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">Frequently Asked Questions</h2>

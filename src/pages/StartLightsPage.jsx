@@ -235,11 +235,11 @@ const StartLightsPage = () => {
           {/* Hook + What Is */}
           <section>
             <p className="text-dark-200 text-lg leading-relaxed mb-8">
-              At a race start, everything is decided in a single blink. Elite drivers launch in around <strong className="text-white">150–200 milliseconds</strong> — barely longer than one film frame. This free reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
+              At a race start, everything is decided in a single blink — barely longer than one film frame. This free F1-style reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
             </p>
             <h2 className="text-3xl font-bold text-white mb-4">What Is the Start Lights Reaction Test?</h2>
             <p className="text-dark-300 leading-relaxed">
-              The Start Lights Reaction Test is a free online tool that recreates a race-start light sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
+              The Start Lights Reaction Test is a free online tool that recreates an F1-style “lights out” start sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
             </p>
           </section>
 
