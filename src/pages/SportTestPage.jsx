@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { infoPageSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
@@ -48,11 +48,11 @@ function SportTestPage() {
         description="Test the reaction speed behind sprint starts, tennis returns and boxing counters. Free sports reaction test with instant results — see your time now."
         canonical="/sport-test"
         jsonLd={[
-          webApplicationSchema({
+          infoPageSchema({
             name: 'Sports Reaction Test',
-            description: 'Test your sports reaction time and improve your athletic performance across boxing, tennis, baseball, soccer, and all competitive sports.',
+            description: 'Curated reaction and timing tests for athletes, with cited adult reaction-time benchmarks.',
             path: '/sport-test',
-            category: 'HealthApplication'
+            type: 'CollectionPage',
           }),
           breadcrumbSchema('Sports Reaction Test', '/sport-test'),
           faqSchema(faqs)
@@ -232,23 +232,13 @@ function SportTestPage() {
                 Athletic Reaction Time Benchmarks
               </h2>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center shadow-lg shrink-0">
-                    <Trophy size={22} className="text-white" strokeWidth={2.4} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Elite Athletes (120-180ms)</div>
-                    <div className="text-sm text-dark-300">Olympic athletes, professional fighters, F1 drivers</div>
-                  </div>
-                </div>
-
                 <div className="flex items-center gap-4 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
                   <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center shadow-lg shrink-0">
                     <Trophy size={22} className="text-white" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Professional Level (180-220ms)</div>
-                    <div className="text-sm text-dark-300">Professional athletes and competitive sports players</div>
+                    <div className="font-bold text-white mb-1">Under ~190 ms — faster than the lab reference</div>
+                    <div className="text-sm text-dark-300">Quicker than the long-accepted laboratory figure for college-age adults reacting to a light stimulus (Jain et al., 2015)</div>
                   </div>
                 </div>
 
@@ -257,8 +247,8 @@ function SportTestPage() {
                     <Trophy size={22} className="text-white" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Competitive Amateur (220-270ms)</div>
-                    <div className="text-sm text-dark-300">College athletes and serious amateur competitors</div>
+                    <div className="font-bold text-white mb-1">190–213 ms — faster than the corrected adult mean</div>
+                    <div className="text-sm text-dark-300">Beats the hardware-corrected average of 213 ms measured across 1,469 adults aged 18–65 (Woods et al., 2015)</div>
                   </div>
                 </div>
                 
@@ -267,8 +257,8 @@ function SportTestPage() {
                     ⭐
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Active Individual (270-320ms)</div>
-                    <div className="text-sm text-dark-300">Recreational athletes and fitness enthusiasts</div>
+                    <div className="font-bold text-white mb-1">213–231 ms and above — the measured adult range</div>
+                    <div className="text-sm text-dark-300">The same study's uncorrected mean is 231 ms — the closest published equivalent to a browser test — and times lengthen naturally with age (Woods et al., 2015)</div>
                   </div>
                 </div>
               </div>
@@ -276,7 +266,8 @@ function SportTestPage() {
               <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl flex items-start gap-3">
                 <Lightbulb size={20} className="text-blue-300 shrink-0 mt-0.5" />
                 <p className="text-sm text-dark-300">
-                  <strong className="text-blue-400">Pro Tip:</strong> Elite sprinters like Usain Bolt have reaction times around 155ms. However, anything under 100ms is considered a false start in track and field because it's deemed humanly impossible to react that quickly to the starting gun.
+                  <strong className="text-blue-400">Did you know?</strong> World Athletics rules a sprint start a false start if the athlete reacts within 100 ms of the gun (Technical Rule 16.8) — reacting faster than that is treated as anticipation, not reaction. See the{' '}
+                  <a href="https://worldathletics.org/about-iaaf/documents/book-of-rules" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 underline">official rulebook</a>.
                 </p>
               </div>
             </div>

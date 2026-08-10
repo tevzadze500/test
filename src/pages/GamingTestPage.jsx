@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
+import { infoPageSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
@@ -48,11 +48,11 @@ function GamingTestPage() {
         description="How fast are your gaming reflexes? Test your reaction time for FPS, MOBA and racing games, see cited benchmarks, and learn how to shave off milliseconds."
         canonical="/gaming-test"
         jsonLd={[
-          webApplicationSchema({
+          infoPageSchema({
             name: 'Gaming Reaction Test',
-            description: 'Test and improve your gaming reaction time for FPS, MOBA, and competitive esports performance.',
+            description: 'Curated reaction, aim and reflex tests for FPS, MOBA and racing players, with cited benchmarks.',
             path: '/gaming-test',
-            category: 'GameApplication'
+            type: 'CollectionPage',
           }),
           breadcrumbSchema('Gaming Reaction Test', '/gaming-test'),
           faqSchema(faqs)
@@ -225,8 +225,8 @@ function GamingTestPage() {
                     <Trophy size={22} className="text-green-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Pro Level (150-200ms)</div>
-                    <div className="text-sm text-dark-300">Professional esports players and top-tier competitive gamers</div>
+                    <div className="font-bold text-white mb-1">Under ~190 ms — faster than the lab reference</div>
+                    <div className="text-sm text-dark-300">Quicker than the long-accepted laboratory figure for college-age adults reacting to a light stimulus (Jain et al., 2015)</div>
                   </div>
                 </div>
 
@@ -235,8 +235,8 @@ function GamingTestPage() {
                     <Star size={22} className="text-blue-300" strokeWidth={2.4} fill="currentColor" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Competitive (200-250ms)</div>
-                    <div className="text-sm text-dark-300">High-ranked players in competitive games</div>
+                    <div className="font-bold text-white mb-1">190–213 ms — faster than the corrected adult mean</div>
+                    <div className="text-sm text-dark-300">Beats the hardware-corrected average of 213 ms measured across 1,469 adults aged 18–65 (Woods et al., 2015)</div>
                   </div>
                 </div>
 
@@ -245,8 +245,8 @@ function GamingTestPage() {
                     <Sparkles size={22} className="text-yellow-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Above Average (250-300ms)</div>
-                    <div className="text-sm text-dark-300">Dedicated gamers with good reflexes</div>
+                    <div className="font-bold text-white mb-1">213–231 ms — around the measured adult average</div>
+                    <div className="text-sm text-dark-300">The same study's uncorrected mean — the closest published equivalent to what a browser test records (Woods et al., 2015)</div>
                   </div>
                 </div>
 
@@ -255,10 +255,19 @@ function GamingTestPage() {
                     <ThumbsUp size={22} className="text-orange-300" strokeWidth={2.4} />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-white mb-1">Average (300-350ms)</div>
-                    <div className="text-sm text-dark-300">Casual gamers and average reaction time</div>
+                    <div className="font-bold text-white mb-1">Above ~231 ms — headroom to train</div>
+                    <div className="text-sm text-dark-300">Slower than the measured adult mean; consistent practice, sleep and warm-up routines are where gamers gain the most</div>
                   </div>
                 </div>
+
+                <p className="text-xs text-dark-400 leading-relaxed pt-2">
+                  Published per-rank esports reaction-time figures do not exist, so these bands compare you
+                  to peer-reviewed adult averages instead — see the full{' '}
+                  <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">
+                    cited reaction-time benchmarks
+                  </Link>{' '}
+                  for the sources.
+                </p>
               </div>
             </div>
           </section>
