@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Head } from 'vite-react-ssg';
 import Seo from '../components/Seo';
 import { websiteSchema, organizationSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
@@ -44,6 +45,14 @@ function HomePage() {
 
   return (
     <div className="flex min-h-screen bg-dark-950">
+      {/* Hero preloads: only the homepage renders the hero, so only it pays
+          the high-priority fetch (previously in index.html on every route). */}
+      <Head>
+        <link rel="preload" as="image" href="/hero-1280.webp" type="image/webp" media="(min-width: 768px) and (max-width: 1279px)" />
+        <link rel="preload" as="image" href="/hero-1920.webp" type="image/webp" media="(min-width: 1280px)" />
+        <link rel="preload" as="image" href="/hero-768.webp" type="image/webp" media="(max-width: 767px)" />
+      </Head>
+
       {/* SEO Meta Tags */}
       <Seo
         title="Free Reaction Time & Cognitive Tests | ReactionTestPro"

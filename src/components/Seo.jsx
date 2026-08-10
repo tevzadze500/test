@@ -22,6 +22,7 @@ const Seo = ({
   image = DEFAULT_OG_IMAGE,
   type = 'website',
   jsonLd,
+  noindex = false,
 }) => {
   const url = canonical
     ? canonical.startsWith('http')
@@ -34,6 +35,7 @@ const Seo = ({
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex" />}
       {url && <link rel="canonical" href={url} />}
 
       {/* Open Graph */}
