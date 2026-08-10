@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { infoPageSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
@@ -71,6 +72,7 @@ function GamingTestPage() {
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
         <div className="max-w-7xl mx-auto p-4 pt-0 sm:p-6 lg:p-8 lg:pt-8">
+          <Breadcrumb name="Gaming Reaction Test" className="mb-4" />
           
           {/* Back Navigation */}
           <div className="pt-6 sm:pt-8 mb-6">

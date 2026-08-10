@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home, Clock, Trophy, Zap, Activity, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import GoNoGoTestArea from '../components/test/GoNoGoTestArea';
 import GoNoGoStatsCard from '../components/test/GoNoGoStatsCard';
@@ -141,6 +142,7 @@ const GoNoGoPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Go/No-Go Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

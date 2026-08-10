@@ -4,6 +4,7 @@ import { ArrowLeft, Eye, Clock, Palette, AlertTriangle, Info } from 'lucide-reac
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
@@ -150,6 +151,7 @@ const ColorBlindTestPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Color Blindness Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

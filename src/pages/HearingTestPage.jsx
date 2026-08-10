@@ -4,6 +4,7 @@ import { ArrowLeft, Headphones, Clock, Volume2, Heart, Lightbulb, Info } from 'l
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
@@ -185,6 +186,7 @@ const HearingTestPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Hearing Frequency Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

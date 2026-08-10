@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock from '../components/TrustBlock';
@@ -292,6 +293,7 @@ const AdhdTestPage = () => {
         </header>
 
         <main className="max-w-3xl mx-auto px-6 py-12">
+          <Breadcrumb name="ADHD Screening Test" className="mb-4" />
           <div className="text-center mb-8">
             <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 items-center justify-center mb-6 shadow-xl shadow-blue-500/30">
               <Brain size={44} className="text-white" strokeWidth={2.4} />

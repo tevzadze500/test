@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import Seo from '../components/Seo';
-import { articleSchema } from '../utils/structuredData';
+import Breadcrumb from '../components/Breadcrumb';
+import { articleSchema, breadcrumbSchema } from '../utils/structuredData';
 import { ArrowLeft, Zap, Activity, Car, Brain, Target, TrendingUp, BookOpen } from 'lucide-react';
 import SiteFooter from '../components/SiteFooter';
 
@@ -18,12 +19,20 @@ function BlogPage() {
         description="Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours. Read the full guide."
         canonical="/blog/reaction-time-crucial"
         type="article"
-        jsonLd={articleSchema({
-          headline: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
-          description: 'Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours.',
-          path: '/blog/reaction-time-crucial',
-          datePublished: '2026-01-20',
-        })}
+        jsonLd={[
+          articleSchema({
+            headline: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
+            description: 'Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours.',
+            path: '/blog/reaction-time-crucial',
+            datePublished: '2026-05-01',
+            dateModified: '2026-08-09',
+          }),
+          breadcrumbSchema(
+            'Why Reaction Time Matters',
+            '/blog/reaction-time-crucial',
+            { name: 'Blog', path: '/blog' },
+          ),
+        ]}
       />
 
       {/* Mobile Top Bar */}
@@ -50,6 +59,12 @@ function BlogPage() {
             <ArrowLeft size={20} />
             <span>Back to Home</span>
           </Link>
+
+          <Breadcrumb
+            name="Why Reaction Time Matters"
+            parent={{ name: 'Blog', to: '/blog' }}
+            className="mb-6"
+          />
 
           {/* Article Header */}
           <article className="prose prose-invert max-w-none">

@@ -5,6 +5,7 @@ import StartLightsTestArea from '../components/test/StartLightsTestArea';
 import StartLightsStatsCard from '../components/test/StartLightsStatsCard';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 
@@ -173,6 +174,7 @@ const StartLightsPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Start Lights Reaction Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

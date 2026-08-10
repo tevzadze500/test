@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import { ArrowLeft, AlertCircle, Eye, RotateCcw, Home, CheckCircle2, Zap, Target, Glasses, Search } from 'lucide-react';
 import SiteFooter from '../components/SiteFooter';
@@ -234,6 +235,7 @@ const VisionTestPage = () => {
         </header>
 
         <main className="max-w-3xl mx-auto px-6 py-12">
+          <Breadcrumb name="Visual Acuity Test" className="mb-4" />
           <div className="text-center mb-8">
             <div className="inline-flex w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-violet-600 items-center justify-center mb-6 shadow-xl shadow-purple-500/30">
               <Eye size={44} className="text-white" strokeWidth={2.4} />
