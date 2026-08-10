@@ -7,6 +7,7 @@ import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import RelatedTests from '../components/RelatedTests';
 import { colorBlindReferences, LAST_UPDATED } from '../data/references';
 
 const ColorBlindTestPage = () => {
@@ -305,6 +306,7 @@ const ColorBlindTestPage = () => {
           references={colorBlindReferences}
           methodology="The screening shows coloured-dot plates in which a digit is formed from dots that differ from the background only in hue. This is the same format as the plate tests used in clinical screening, rendered on your own uncalibrated display — which is why it can suggest a possible deficiency but cannot measure one."
         />
+        <RelatedTests ids={['vision-test', 'hearing-test', 'reaction-time']} />
       </div>
       <SiteFooter className="mt-12" Icon={Palette} accent="from-purple-500 to-violet-600" />
     </div>

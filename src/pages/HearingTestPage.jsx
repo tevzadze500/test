@@ -7,6 +7,7 @@ import Seo from '../components/Seo';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import RelatedTests from '../components/RelatedTests';
 import { hearingReferences, LAST_UPDATED } from '../data/references';
 
 const HearingTestPage = () => {
@@ -353,6 +354,7 @@ const HearingTestPage = () => {
           references={hearingReferences}
           methodology="Tones are synthesised in your browser with the Web Audio API and played at increasing frequencies; you report which ones you can still hear. No microphone is used and nothing is recorded. Unlike pure-tone audiometry, the loudness reaching your ear is uncontrolled, so this maps the top of your frequency range only in the roughest terms."
         />
+        <RelatedTests ids={['auditory-reaction', 'vision-test', 'color-blind-test']} />
       </div>
       <SiteFooter className="mt-12" Icon={Headphones} accent="from-blue-500 to-cyan-600" />
     </div>

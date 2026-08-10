@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useNavigate, useLocation, Link } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
   Zap,
@@ -106,7 +106,6 @@ const CATEGORY_THEMES = {
 const CATEGORY_ORDER = ['ALL', 'PERFORMANCE', 'COGNITIVE', 'FOCUS', 'VISION', 'HEARING'];
 
 const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) => {
-  const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -120,12 +119,13 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
     return acc;
   }, {});
 
-  const handleCategoryClick = (categoryKey) => {
+  // Categories render as real links to /#all-tests so crawlers see them; on the
+  // homepage the navigation is intercepted and replaced by filter + smooth scroll.
+  const handleCategoryClick = (event, categoryKey) => {
     const categoryId = categoryKey === 'ALL' ? 'ALL' : testCategories[categoryKey];
     if (setSelectedCategory) setSelectedCategory(categoryId);
-    if (!isHomePage) {
-      navigate('/#all-tests');
-    } else {
+    if (isHomePage) {
+      event.preventDefault();
       document.getElementById('all-tests')?.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
@@ -230,10 +230,10 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
               const count = counts[key];
 
               return (
-                <button
+                <Link
                   key={key}
-                  type="button"
-                  onClick={() => handleCategoryClick(key)}
+                  to="/#all-tests"
+                  onClick={(event) => handleCategoryClick(event, key)}
                   className={`
                     w-full flex items-center justify-between px-3 py-2.5 rounded-xl
                     transition-all duration-200 group
@@ -243,7 +243,6 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                       : 'text-dark-300 hover:text-white hover:bg-dark-800/60'
                     }
                   `}
-                  aria-pressed={selected}
                 >
                   <div className="flex items-center gap-3 min-w-0">
                     <div className={`
@@ -274,7 +273,7 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                   `}>
                     {count}
                   </span>
-                </button>
+                </Link>
               );
             })}
 
