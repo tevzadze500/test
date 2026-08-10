@@ -6,11 +6,10 @@ import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
 import ConversionFooter from '../components/ConversionFooter';
-import ReactionBenchmarks from '../components/ReactionBenchmarks';
 import SeoContent from '../components/SeoContent';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import { tests, testCategories } from '../data/tests';
-import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users, AlertTriangle } from 'lucide-react';
+import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users } from 'lucide-react';
 
 function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -150,8 +149,6 @@ function HomePage() {
               )}
             </div>
 
-            {/* Published reaction-time reference points */}
-            <ReactionBenchmarks />
 
             {/* Explore More Tests - Enhanced Mobile-First Section */}
             <div className="max-w-4xl mx-auto mb-12">
@@ -224,65 +221,85 @@ function HomePage() {
               </div>
             </div>
 
-            {/* SEO Content - What is the Start Lights Reaction Test */}
+            {/* Hub guidance - which test to take first */}
             <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8 mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                What Is the Start Lights Reaction Test?
+                Which Test Should You Start With?
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  The Start Lights Reaction Test is a free online tool built around a race-start light gantry. It measures how quickly you react at the moment the red lights go out and the green appears — the same cue that starts a real race.
+                  Every test here runs free in your browser and takes between one and fifteen minutes, so the right starting point depends on what you want to know about yourself.
                 </p>
-                <p className="leading-relaxed">
-                  Three rows of red lights light up one row at a time, building anticipation. After an unpredictable hold they cut out and the bottom row turns green, and you click or tap as fast as you can. Your time is measured in milliseconds, so you can track it across attempts and see which tier it falls into.
-                </p>
+                <ul className="space-y-3">
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Want a quick thrill?</strong> The{' '}
+                    <Link to="/test/f1-reaction" className="text-red-400 hover:text-red-300 underline">Start Lights Reaction Test</Link>{' '}
+                    takes under a minute: red lights cascade, hold, then go green — and your launch time is on the clock.
+                  </li>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Want a proper baseline?</strong> The classic{' '}
+                    <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">Reaction Time Test</Link>{' '}
+                    measures your average over several attempts and compares it to published adult benchmarks.
+                  </li>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Curious about self-control?</strong> The{' '}
+                    <Link to="/test/go-no-go" className="text-blue-400 hover:text-blue-300 underline">Go/No-Go Test</Link>{' '}
+                    adds a twist: reacting fast is only half the job — you also have to hold back on the wrong signal.
+                  </li>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Checking in on your senses?</strong> The{' '}
+                    <Link to="/test/vision" className="text-cyan-400 hover:text-cyan-300 underline">visual acuity</Link>,{' '}
+                    <Link to="/test/color-blind" className="text-purple-400 hover:text-purple-300 underline">color vision</Link>{' '}
+                    and{' '}
+                    <Link to="/test/hearing" className="text-pink-400 hover:text-pink-300 underline">hearing frequency</Link>{' '}
+                    screenings give you a quick, educational read — not a diagnosis — in a few minutes each.
+                  </li>
+                </ul>
               </div>
             </div>
 
             {/* SEO Content Component */}
             <SeoContent />
 
-            {/* SEO Content - How the Test Works */}
+            {/* Hub guidance - how the test types differ */}
             <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-                How Does the Start Lights Reaction Test Work?
+                How Our Tests Differ
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  Here is exactly how the test runs:
+                  The tests look similar on the surface — a signal appears, you respond — but they measure different things:
                 </p>
-                <ol className="space-y-4 ml-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold text-lg shrink-0">1.</span>
-                    <div>
-                      <strong className="text-white">Light Sequence:</strong> Three rows of red lights illuminate one row at a time at 500-millisecond intervals, cascading down the gantry.
-                    </div>
+                <ul className="space-y-3">
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Simple reaction</strong> — one signal, one response. The{' '}
+                    <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">visual</Link>,{' '}
+                    <Link to="/test/auditory-reaction" className="text-green-400 hover:text-green-300 underline">auditory</Link>{' '}
+                    and{' '}
+                    <Link to="/test/f1-reaction" className="text-red-400 hover:text-red-300 underline">start lights</Link>{' '}
+                    tests time the raw perception-to-movement loop.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold text-lg shrink-0">2.</span>
-                    <div>
-                      <strong className="text-white">Random Hold:</strong> Once all three red rows are lit, the lights hold for a random 0.5 to 2.5 seconds. The unpredictability stops you anticipating the exact moment, exactly as it does on a real grid.
-                    </div>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Choice and inhibition</strong> — some signals must be answered, others ignored. The{' '}
+                    <Link to="/test/go-no-go" className="text-blue-400 hover:text-blue-300 underline">Go/No-Go Test</Link>{' '}
+                    measures how well your brain vetoes an action it has already primed.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold text-lg shrink-0">3.</span>
-                    <div>
-                      <strong className="text-white">Lights Out:</strong> All five lights turn off simultaneously - this is your signal to react! Click or tap as quickly as possible.
-                    </div>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Anticipation</strong> — nothing to react to, everything to predict. The{' '}
+                    <Link to="/test/anticipation" className="text-blue-400 hover:text-blue-300 underline">Anticipation Test</Link>{' '}
+                    scores how precisely you time a moving target's arrival.
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-red-500 font-bold text-lg shrink-0">4.</span>
-                    <div>
-                      <strong className="text-white">Instant Results:</strong> Your reaction time is measured in milliseconds and displayed immediately, with a performance tier based on published reaction-time ranges.
-                    </div>
+                  <li className="leading-relaxed">
+                    <strong className="text-white">Capacity</strong> — no clock pressure at all. The{' '}
+                    <Link to="/test/memory" className="text-purple-400 hover:text-purple-300 underline">Working Memory Test</Link>{' '}
+                    stretches how many digits you can hold and recall.
                   </li>
-                </ol>
-                <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 mt-4 flex items-start gap-3">
-                  <AlertTriangle size={20} className="text-orange-400 shrink-0 mt-0.5" />
-                  <p className="text-sm">
-                    <strong className="text-orange-400">False Start Warning:</strong> Clicking before the lights go out counts as a false start and is not scored — jumping the start carries a penalty in real racing too.
-                  </p>
-                </div>
+                </ul>
+                <p className="leading-relaxed">
+                  Whichever you pick, your time always includes your hardware — display and input latency can add 20–50 ms — so trends on the same device matter more than one-off numbers. For the published adult averages we benchmark against, see the{' '}
+                  <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">cited reaction-time benchmarks</Link>{' '}
+                  on the main test page.
+                </p>
               </div>
             </div>
           </section>

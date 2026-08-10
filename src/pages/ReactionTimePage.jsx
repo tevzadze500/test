@@ -6,6 +6,7 @@ import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/stru
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
 import ReactionInfoSection, { reactionFaqs } from '../components/test/ReactionInfoSection';
+import ReactionBenchmarks from '../components/ReactionBenchmarks';
 import SiteFooter from '../components/SiteFooter';
 
 const ReactionTimePage = () => {
@@ -194,6 +195,9 @@ const ReactionTimePage = () => {
         {/* Informational Content Section */}
         <div className="border-t border-dark-800 pt-8 sm:pt-12">
           <ReactionInfoSection />
+
+          {/* Published reaction-time reference points (cited) */}
+          <ReactionBenchmarks />
         </div>
 
         {/* Footer CTA */}
