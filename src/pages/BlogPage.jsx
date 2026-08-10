@@ -53,11 +53,11 @@ function BlogPage() {
           
           {/* Back Button */}
           <Link 
-            to="/" 
+            to="/blog" 
             className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-8"
           >
             <ArrowLeft size={20} />
-            <span>Back to Home</span>
+            <span>Back to the Blog</span>
           </Link>
 
           <Breadcrumb
