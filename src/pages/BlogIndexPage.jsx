@@ -15,6 +15,14 @@ import SiteFooter from '../components/SiteFooter';
  */
 const posts = [
   {
+    title: 'Average Reaction Time by Age: What Studies Show',
+    path: '/blog/average-reaction-time-by-age',
+    datePublished: '2026-08-20',
+    excerpt:
+      'Aging costs about half a millisecond a year — less than a bad night of sleep. The cited numbers behind the adult average, the real age bands, and what actually moves your time.',
+    readingTime: '6 min read',
+  },
+  {
     title: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
     path: '/blog/reaction-time-crucial',
     datePublished: '2026-05-01',
