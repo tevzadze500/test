@@ -73,13 +73,13 @@ const ReactionTimePage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Reaction Time Test – Check Your Reflexes | ReactionTestPro"
-        description="Take the free reaction time test and see your speed in milliseconds. Compare yourself to the 213 ms adult average and learn how to react faster."
+        title="Average Reaction Time Test – Compare Your Speed"
+        description="How fast is fast? Take the free test, then compare your milliseconds against the 213 ms hardware-corrected adult average from published research."
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
-            name: 'Reaction Time Test',
-            description: 'Measure your visual reaction speed in milliseconds with instant results.',
+            name: 'Average Reaction Time Test',
+            description: 'Measure your visual reaction speed over several attempts and compare your average against published benchmarks.',
             path: '/test/reaction-time',
           }),
           breadcrumbSchema('Reaction Time Test', '/test/reaction-time'),
@@ -152,7 +152,7 @@ const ReactionTimePage = () => {
             </div>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                Reaction Time Test: Measure Your Instant Reflexes
+                Average Reaction Time Test: How Do You Compare?
               </h1>
               <p className="text-sm sm:text-base text-dark-400 mt-1">
                 How fast can you react? Measure your reflexes in milliseconds
@@ -182,6 +182,9 @@ const ReactionTimePage = () => {
         </div>
 
         {/* Test Area + Stats */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
+          Measure Your Average Reaction Time
+        </h2>
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Test Area (2 columns on large screens) */}
           <div className="lg:col-span-2">

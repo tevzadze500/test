@@ -108,7 +108,9 @@ function SportTestPage() {
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  In competitive sports, the difference between victory and defeat often comes down to milliseconds. A boxer who can react 50ms faster can dodge a punch or land a counter before their opponent. A tennis player with superior reflexes can return a serve that others would miss. A soccer goalkeeper with quick reactions can make impossible saves.
+                  In competitive sports, the difference between victory and defeat often comes down to milliseconds. A boxer who can react 50ms faster can dodge a punch or land a counter before their opponent. A tennis player with superior reflexes can return a serve that others would miss. A soccer goalkeeper with quick reactions can make impossible saves. Before you train it, though, you need a number to train against &mdash;{' '}
+                  <Link to="/" className="text-green-400 hover:text-green-300 underline">measure your reaction speed</Link>{' '}
+                  first.
                 </p>
                 <p className="leading-relaxed">
                   Professional athletes across all sports regularly test and train their reaction times to maintain peak performance. Our sports reaction tests help you measure your current baseline, identify areas for improvement, and track your progress as you train to become faster and more responsive.

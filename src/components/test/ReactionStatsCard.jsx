@@ -92,7 +92,7 @@ const ReactionStatsCard = ({ stats, onReset }) => {
         <div className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/20 rounded-xl p-4">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h4 className="text-sm font-semibold text-white mb-1">Performance Insight</h4>
+              <h3 className="text-sm font-semibold text-white mb-1">Performance Insight</h3>
               <p className="text-sm text-dark-300">
                 {stats.best < 250 
                   ? "Outstanding reflexes! You're in the top tier of reaction times."
@@ -125,7 +125,7 @@ const ReactionStatsCard = ({ stats, onReset }) => {
 
       {/* Reaction Time Scale — always shown (generic reference; avoids layout shift / adds static content) */}
       <div className="bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-xl p-4">
-          <h4 className="text-sm font-semibold text-white mb-3">Reaction Time Scale</h4>
+          <h3 className="text-sm font-semibold text-white mb-3">Reaction Time Scale</h3>
           <div className="space-y-2 text-xs">
             <div className="flex items-center justify-between">
               <span className="text-green-500">Elite (&lt;200ms)</span>

@@ -229,7 +229,8 @@ const GoNoGoPage = () => {
             <section>
               <h2 className="text-3xl font-bold text-white mb-4">What Is a Go/No-Go Test?</h2>
               <p className="text-dark-300 text-lg leading-relaxed">
-                The Go/No-Go test is a classic paradigm from cognitive psychology and neuropsychology, used for decades in labs and clinics to measure <strong className="text-white">response inhibition</strong> — your ability to stop an action you have already begun to prepare. On each trial you see a signal: most of the time it is a "Go" cue you should respond to, but every so often a "No-Go" cue appears and you must do nothing. Because responding quickly becomes an ingrained habit, holding back on the rare No-Go trial is genuinely hard — which is exactly what makes this such a sensitive probe of impulse control. Researchers use it to study executive function, ADHD, self-regulation, and recovery from brain injury.
+                The Go/No-Go test is a classic paradigm from cognitive psychology and neuropsychology, used for decades in labs and clinics to measure <strong className="text-white">response inhibition</strong> — your ability to stop an action you have already begun to prepare. On each trial you see a signal: most of the time it is a "Go" cue you should respond to, but every so often a "No-Go" cue appears and you must do nothing. Because responding quickly becomes an ingrained habit, holding back on the rare No-Go trial is genuinely hard — which is exactly what makes this such a sensitive probe of impulse control. Researchers use it to study executive function, ADHD, self-regulation, and recovery from brain injury. For the pure speed half of the equation, without the inhibition twist, take the{' '}
+                <Link to="/" className="text-green-400 hover:text-green-300 underline">reaction time test</Link>.
               </p>
             </section>
 

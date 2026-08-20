@@ -30,7 +30,7 @@ const ReactionInfoSection = () => {
     <div className="space-y-8">
       {/* What is a reaction time test */}
       <section>
-        <h2 className="text-3xl font-bold text-white mb-4">What Is a Reaction Time Test?</h2>
+        <h2 className="text-3xl font-bold text-white mb-4">How We Measure Your Average Reaction Time</h2>
         <p className="text-dark-300 text-lg leading-relaxed">
           A <strong className="text-white">reaction time test</strong> measures how fast you respond to a stimulus — the split-second gap between a signal appearing and your body reacting to it. This is a <strong className="text-white">visual reaction time test</strong>: you wait for the screen to turn green, then click or tap as fast as you can. Your score is shown in <strong className="text-white">milliseconds (ms)</strong> — thousandths of a second. That single number captures a whole chain of events: your eyes detect the change, your brain processes it, and your muscles fire. It is the same reflex that lets you slam the brakes, return a serve, or land a headshot. Run several attempts — your best and average reveal your true reaction speed.
         </p>

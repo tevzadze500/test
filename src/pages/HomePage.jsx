@@ -6,10 +6,12 @@ import { websiteSchema, organizationSchema } from '../utils/structuredData';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import TestCard from '../components/TestCard';
+import StartLightsTestArea from '../components/test/StartLightsTestArea';
+import useStartLightsStats from '../hooks/useStartLightsStats';
 import ConversionFooter from '../components/ConversionFooter';
 import SeoContent from '../components/SeoContent';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
-import { tests, testCategories } from '../data/tests';
+import { tests, testCategories, testFamilies, getTestsByFamily } from '../data/tests';
 import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users } from 'lucide-react';
 
 function HomePage() {
@@ -25,8 +27,13 @@ function HomePage() {
     }
   }, [hash]);
 
-  // Featured test shown in the hero
-  const f1Test = tests.find(test => test.id === 'f1-reaction');
+  // The Start Lights test is played directly on this page; stats are shared
+  // with /test/f1-reaction through the same hook.
+  const { stats, handleResult } = useStartLightsStats();
+
+  // Two-level catalogue: reaction tests first, then the broader screenings.
+  const reactionTests = getTestsByFamily(testFamilies.REACTION);
+  const cognitiveTests = getTestsByFamily(testFamilies.COGNITIVE);
 
   // Filter tests based on selected category
   const filteredTests = selectedCategory === 'ALL' 
@@ -55,8 +62,8 @@ function HomePage() {
 
       {/* SEO Meta Tags */}
       <Seo
-        title="Free Reaction Time & Cognitive Tests | ReactionTestPro"
-        description="Measure your reaction time, memory, vision and hearing with 10 free browser tests. Instant millisecond results, no signup — start your first test now."
+        title="Reaction Time Test – Test Your Reflexes Online"
+        description="Take our free online reaction time test. Wait for the lights to turn on, react as fast as you can, and measure your reaction speed in milliseconds."
         canonical="/"
         jsonLd={[websiteSchema(), organizationSchema()]}
       />
@@ -108,61 +115,90 @@ function HomePage() {
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
-                Free Online Reaction & Cognitive Tests
+                Reaction Time Test &ndash; Test Your Reflexes Online
               </h1>
-              <p className="text-xl sm:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed mb-8 font-medium">
-                Measure your reflexes, vision, hearing, and cognitive performance in seconds. Free, instant results, no signup required.
+              <p className="text-xl sm:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed font-medium">
+                Test your reaction time with our free online reaction time test. Wait for the lights to turn on, then react as quickly as possible. Measure your reaction speed in milliseconds and see how fast your reflexes really are.
               </p>
-
-              {/* Featured test card */}
-              {f1Test && (
-                <div className="max-w-4xl mx-auto mb-8">
-                  <div className="bg-gradient-to-br from-red-500/20 via-rose-500/10 to-orange-500/10 border-2 border-red-500/50 rounded-2xl p-8 shadow-2xl">
-                    <div className="flex flex-col md:flex-row items-center gap-6">
-                      <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-xl shrink-0 p-4">
-                        <StartLightsIcon size={64} className="text-white w-full h-full" />
-                      </div>
-                      <div className="flex-1 text-left">
-                        <h2 className="text-3xl font-bold text-white mb-3">
-                          Start Lights Reaction Test
-                        </h2>
-                        <p className="text-dark-100 text-lg mb-6 leading-relaxed">
-                          Three rows of red lights cascade downward, hold for an unpredictable moment, then cut out as the bottom row turns green. React the instant you see green. The format is inspired by the light-gantry starting procedure used in motor racing.
-                        </p>
-                        <div className="flex flex-wrap gap-3 mb-6">
-                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-400/50 rounded-lg text-green-200 text-sm font-semibold">
-                            <Zap className="w-4 h-4" />
-                            Quick 1-min test
-                          </span>
-                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-400/50 rounded-lg text-blue-200 text-sm font-semibold">
-                            <Target className="w-4 h-4" />
-                            No signup needed
-                          </span>
-                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-400/50 rounded-lg text-purple-200 text-sm font-semibold">
-                            <TrendingUp className="w-4 h-4" />
-                            Instant results
-                          </span>
-                        </div>
-                        <Link
-                          to="/test/f1-reaction"
-                          className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold rounded-xl shadow-2xl hover:shadow-red-500/50 transition-all duration-200 text-xl transform hover:scale-105"
-                        >
-                          <StartLightsIcon size={24} className="shrink-0" />
-                          Try the Start Lights Test
-                          <ArrowRight className="w-6 h-6" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
 
+            {/* PRIMARY INTERACTIVE TEST — the Start Lights game, playable here */}
+            <section aria-labelledby="reaction-time-test-heading" className="max-w-5xl mx-auto mb-12">
+              <h2
+                id="reaction-time-test-heading"
+                className="text-3xl sm:text-4xl font-bold text-white mb-6 text-center"
+              >
+                Test Your Reaction Time with the Start Lights Test
+              </h2>
+
+              <StartLightsTestArea onResult={handleResult} />
+
+              {stats.attempts > 0 && (
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm">
+                  <span className="px-4 py-2 rounded-lg bg-dark-900/70 border border-dark-800 text-dark-300">
+                    Best <strong className="text-green-400 tabular-nums">{stats.best} ms</strong>
+                  </span>
+                  <span className="px-4 py-2 rounded-lg bg-dark-900/70 border border-dark-800 text-dark-300">
+                    Average <strong className="text-white tabular-nums">{stats.average} ms</strong>
+                  </span>
+                  <span className="px-4 py-2 rounded-lg bg-dark-900/70 border border-dark-800 text-dark-300">
+                    Attempts <strong className="text-white tabular-nums">{stats.attempts}</strong>
+                  </span>
+                </div>
+              )}
+
+              <p className="mt-5 text-center">
+                <Link
+                  to="/test/f1-reaction"
+                  className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 font-semibold underline underline-offset-4"
+                >
+                  <StartLightsIcon size={18} className="shrink-0" />
+                  Open the full Start Lights test &mdash; scoring tiers, stats and tips
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </p>
+            </section>
+
+            {/* How the primary test works */}
+            <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8 mb-12">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+                How Does This Reaction Time Test Work?
+              </h2>
+              <ol className="space-y-5">
+                <li className="flex items-start gap-4">
+                  <span className="shrink-0 w-9 h-9 rounded-full bg-red-500/20 text-red-300 font-bold flex items-center justify-center">1</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Wait for the lights to turn on</h3>
+                    <p className="text-dark-300 leading-relaxed">
+                      Start the test and watch the tower. The red lights come on row by row, then hold for an unpredictable moment &mdash; so you cannot guess the signal.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="shrink-0 w-9 h-9 rounded-full bg-green-500/20 text-green-300 font-bold flex items-center justify-center">2</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">React as quickly as possible</h3>
+                    <p className="text-dark-300 leading-relaxed">
+                      The instant the lights switch to green, click or tap. Reacting before the signal is caught as a false start rather than counted as a fast time.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4">
+                  <span className="shrink-0 w-9 h-9 rounded-full bg-blue-500/20 text-blue-300 font-bold flex items-center justify-center">3</span>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Get your reaction time in milliseconds</h3>
+                    <p className="text-dark-300 leading-relaxed">
+                      Your result appears immediately. Repeat a few times to build a reliable average &mdash; a single attempt is noise, and your times include your screen and input lag.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
 
             {/* Explore More Tests - Enhanced Mobile-First Section */}
             <div className="max-w-4xl mx-auto mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
-                Explore More Tests
+                Reaction Time Tests by Activity
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-4">
                 <Link 
@@ -172,9 +208,9 @@ function HomePage() {
                   <div className="flex justify-center mb-4">
                     <Zap className="w-16 h-16 sm:w-12 sm:h-12 text-green-400" />
                   </div>
-                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-green-300 transition-colors">
+                  <h3 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-green-300 transition-colors">
                     General Reaction Test
-                  </h4>
+                  </h3>
                   <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Simple visual reaction time measurement
                   </p>
@@ -193,9 +229,9 @@ function HomePage() {
                   <div className="flex justify-center mb-4">
                     <Gamepad2 className="w-16 h-16 sm:w-12 sm:h-12 text-purple-400" />
                   </div>
-                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-purple-300 transition-colors">
+                  <h3 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-purple-300 transition-colors">
                     Gaming Reaction Test
-                  </h4>
+                  </h3>
                   <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Optimize your gaming reflexes
                   </p>
@@ -214,9 +250,9 @@ function HomePage() {
                   <div className="flex justify-center mb-4">
                     <Activity className="w-16 h-16 sm:w-12 sm:h-12 text-blue-400" />
                   </div>
-                  <h4 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-2xl sm:text-xl font-bold text-white mb-3 sm:mb-2 text-center group-hover:text-blue-300 transition-colors">
                     Sports Reaction Test
-                  </h4>
+                  </h3>
                   <p className="text-base sm:text-sm text-dark-200 text-center mb-5 sm:mb-4 leading-relaxed">
                     Test your athletic reflexes
                   </p>
@@ -246,8 +282,8 @@ function HomePage() {
                     takes under a minute: red lights cascade, hold, then go green — and your launch time is on the clock.
                   </li>
                   <li className="leading-relaxed">
-                    <strong className="text-white">Want a proper baseline?</strong> The classic{' '}
-                    <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">Reaction Time Test</Link>{' '}
+                    <strong className="text-white">Want a proper baseline?</strong> The{' '}
+                    <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">average reaction time test</Link>{' '}
                     measures your average over several attempts and compares it to published adult benchmarks.
                   </li>
                   <li className="leading-relaxed">
@@ -313,33 +349,69 @@ function HomePage() {
             </div>
           </section>
 
-          {/* Browse All Tests Section with Category Sidebar */}
+          {/* Test catalogue, two levels: reaction tests first (the site's
+              primary subject), then the broader cognitive / vision / hearing
+              screenings. Picking a sidebar category collapses it to one grid. */}
           <section className="mb-12 sm:mb-16" id="all-tests">
-            <div className="mb-6 sm:mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
-                Browse All Tests
-              </h2>
-              <p className="text-base sm:text-lg text-dark-400">
-                Select a category to filter tests or browse all available tests
-              </p>
-            </div>
-
-            {/* Tests Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-              {filteredTests.map((test) => (
-                <TestCard key={test.id} test={test} />
-              ))}
-            </div>
-            
-            {/* No Results Message */}
-            {filteredTests.length === 0 && (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-dark-800 flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-8 h-8 text-dark-600" />
+            {selectedCategory === 'ALL' ? (
+              <>
+                <div className="mb-6 sm:mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                    More Reaction Time Tests
+                  </h2>
+                  <p className="text-base sm:text-lg text-dark-400">
+                    Other ways to measure how fast you react &mdash; to light, to sound, and when you have to hold back.
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">No tests found</h3>
-                <p className="text-dark-400">Try selecting a different category</p>
-              </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 mb-12 sm:mb-16">
+                  {reactionTests.map((test) => (
+                    <TestCard key={test.id} test={test} />
+                  ))}
+                </div>
+
+                <div className="mb-6 sm:mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                    Explore More Cognitive Tests
+                  </h2>
+                  <p className="text-base sm:text-lg text-dark-400">
+                    Memory, attention, vision and hearing screenings &mdash; free, instant, and private to your browser.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+                  {cognitiveTests.map((test) => (
+                    <TestCard key={test.id} test={test} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mb-6 sm:mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
+                    Browse All Tests
+                  </h2>
+                  <p className="text-base sm:text-lg text-dark-400">
+                    Select a category to filter tests or browse all available tests
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+                  {filteredTests.map((test) => (
+                    <TestCard key={test.id} test={test} />
+                  ))}
+                </div>
+
+                {filteredTests.length === 0 && (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 rounded-full bg-dark-800 flex items-center justify-center mx-auto mb-4">
+                      <Target className="w-8 h-8 text-dark-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">No tests found</h3>
+                    <p className="text-dark-400">Try selecting a different category</p>
+                  </div>
+                )}
+              </>
             )}
           </section>
 
