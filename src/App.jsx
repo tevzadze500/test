@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogAvgReactionTimePage = lazy(() => import('./pages/BlogAvgReactionTimePage'));
 const ReactionTimePage = lazy(() => import('./pages/ReactionTimePage'));
 const GoNoGoPage = lazy(() => import('./pages/GoNoGoPage'));
 const StartLightsPage = lazy(() => import('./pages/StartLightsPage'));
@@ -40,6 +41,7 @@ export const routes = [
   { path: '/', element: page(HomePage) },
   { path: '/blog', element: page(BlogIndexPage) },
   { path: '/blog/reaction-time-crucial', element: page(BlogPage) },
+  { path: '/blog/average-reaction-time-by-age', element: page(BlogAvgReactionTimePage) },
   { path: '/test/reaction-time', element: page(ReactionTimePage) },
   { path: '/test/go-no-go', element: page(GoNoGoPage) },
   { path: '/test/f1-reaction', element: page(StartLightsPage) },
