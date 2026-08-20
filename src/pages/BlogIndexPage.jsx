@@ -95,6 +95,39 @@ const BlogIndexPage = () => {
               </Link>
             ))}
           </div>
+
+          {/* What this blog is about */}
+          <section aria-labelledby="about-blog" className="mt-12 space-y-6">
+            <h2 id="about-blog" className="text-2xl font-bold text-white">
+              What you&rsquo;ll find here
+            </h2>
+            <div className="space-y-4 text-dark-300 leading-relaxed">
+              <p>
+                Every test on this site raises the same questions: what does my number actually
+                mean, how do I compare, and can I get faster? This blog answers them properly —
+                with the published research behind reaction time, attention and the senses, not
+                with invented leaderboards or made-up averages. When an article states a figure,
+                it cites the study it comes from, the same rule the rest of the site follows.
+              </p>
+              <p>
+                Expect practical guides on what a good reaction time looks like at different ages,
+                how sleep, caffeine and training genuinely affect your reflexes, why sound beats
+                sight by a few crucial milliseconds, and what tests like{' '}
+                <Link to="/test/go-no-go" className="text-green-400 hover:text-green-300 underline">Go/No-Go</Link>{' '}
+                or the{' '}
+                <Link to="/test/f1-reaction" className="text-green-400 hover:text-green-300 underline">F1-style start lights</Link>{' '}
+                really measure. Each guide pairs with a test you can run in your browser — read the
+                theory, then put your own reflexes on the clock.
+              </p>
+              <p>
+                New here? Start with your baseline on the{' '}
+                <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">reaction time test</Link>{' '}
+                and check the{' '}
+                <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">cited adult benchmarks</Link>{' '}
+                — then come back for the guides as they land.
+              </p>
+            </div>
+          </section>
         </div>
 
         <SiteFooter />
