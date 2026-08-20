@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useLocation, Link } from 'react-router-dom';
 import {
   LayoutDashboard,
+  BookOpen,
   Zap,
   Brain,
   Eye,
@@ -209,6 +210,29 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                   </div>
 
                 </>
+              )}
+            </NavLink>
+
+            {/* Blog link */}
+            <NavLink
+              to="/blog"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) => `
+                w-full flex items-center justify-between px-3 py-2.5 rounded-xl
+                transition-all duration-200 group
+                ${isActive
+                  ? 'bg-gradient-to-r from-green-500/15 to-emerald-600/15 text-white border border-green-400/30 shadow-md shadow-green-500/10'
+                  : 'text-dark-300 hover:text-white hover:bg-dark-800/60'
+                }
+              `}
+            >
+              {({ isActive }) => (
+                <div className="flex items-center gap-3">
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all ${isActive ? 'bg-green-500/25' : 'bg-dark-800 group-hover:bg-green-500/15'}`}>
+                    <BookOpen size={17} className={isActive ? 'text-green-300' : 'text-dark-400 group-hover:text-green-400'} />
+                  </div>
+                  <span className="text-sm font-semibold">Blog &amp; Guides</span>
+                </div>
               )}
             </NavLink>
 
