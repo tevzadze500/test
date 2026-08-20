@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Zap, Clock, Lightbulb, Info } from 'lucide-react';
 import StartLightsTestArea from '../components/test/StartLightsTestArea';
+import useStartLightsStats from '../hooks/useStartLightsStats';
 import StartLightsStatsCard from '../components/test/StartLightsStatsCard';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import Seo from '../components/Seo';
@@ -29,73 +30,7 @@ const faqs = [
 ];
 
 const StartLightsPage = () => {
-  const [stats, setStats] = useState({
-    best: null,
-    average: null,
-    latest: null,
-    attempts: 0,
-    falseStarts: 0,
-    allScores: [],
-  });
-
-  // Load stats from localStorage on mount
-  useEffect(() => {
-    const savedStats = localStorage.getItem('f1ReactionStats');
-    if (savedStats) {
-      try {
-        setStats(JSON.parse(savedStats));
-      } catch (e) {
-        console.error('Failed to parse stats:', e);
-      }
-    }
-  }, []);
-
-  // Save stats to localStorage whenever they change
-  useEffect(() => {
-    if (stats.attempts > 0 || stats.falseStarts > 0) {
-      localStorage.setItem('f1ReactionStats', JSON.stringify(stats));
-    }
-  }, [stats]);
-
-  const handleResult = ({ falseStart, reactionTime }) => {
-    setStats((prevStats) => {
-      if (falseStart) {
-        return {
-          ...prevStats,
-          falseStarts: prevStats.falseStarts + 1,
-        };
-      }
-
-      const newScores = [...prevStats.allScores, reactionTime];
-      const newBest = prevStats.best ? Math.min(prevStats.best, reactionTime) : reactionTime;
-      const newAverage = Math.round(
-        newScores.reduce((sum, score) => sum + score, 0) / newScores.length
-      );
-
-      return {
-        best: newBest,
-        average: newAverage,
-        latest: reactionTime,
-        attempts: prevStats.attempts + 1,
-        falseStarts: prevStats.falseStarts,
-        allScores: newScores,
-      };
-    });
-  };
-
-  const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your stats?')) {
-      setStats({
-        best: null,
-        average: null,
-        latest: null,
-        attempts: 0,
-        falseStarts: 0,
-        allScores: [],
-      });
-      localStorage.removeItem('f1ReactionStats');
-    }
-  };
+  const { stats, handleResult, handleReset } = useStartLightsStats();
 
   return (
     <div className="min-h-screen bg-dark-950">

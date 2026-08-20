@@ -1,3 +1,14 @@
+/**
+ * `family` splits the catalogue into the site's two top-level groups:
+ *  - 'reaction'  — tests that time a response (the site's primary subject)
+ *  - 'cognitive' — memory, attention, vision and hearing screenings
+ * `category` stays the finer-grained filter used by the sidebar.
+ */
+export const testFamilies = {
+  REACTION: 'reaction',
+  COGNITIVE: 'cognitive',
+};
+
 export const testCategories = {
   COGNITIVE: 'Cognitive',
   FOCUS: 'Focus',
@@ -9,6 +20,7 @@ export const testCategories = {
 export const tests = [
   {
     id: 'reaction-time',
+    family: 'reaction',
     route: '/test/reaction-time',
     name: 'Reaction Time Test',
     description: 'Measure your visual reaction speed in milliseconds',
@@ -25,6 +37,7 @@ export const tests = [
   },
   {
     id: 'f1-reaction',
+    family: 'reaction',
     route: '/test/f1-reaction',
     name: 'Start Lights Reaction Test',
     description: 'React the instant the five red lights go out',
@@ -40,6 +53,7 @@ export const tests = [
   },
   {
     id: 'adhd-test',
+    family: 'cognitive',
     route: '/test/adhd',
     name: 'ADHD Screening Test',
     description: '100-question attention and focus self-assessment',
@@ -55,6 +69,7 @@ export const tests = [
   },
   {
     id: 'vision-test',
+    family: 'cognitive',
     route: '/test/vision',
     name: 'Visual Acuity Test',
     description: 'Check your eyesight and visual clarity',
@@ -70,6 +85,7 @@ export const tests = [
   },
   {
     id: 'hearing-test',
+    family: 'cognitive',
     route: '/test/hearing',
     name: 'Hearing Frequency Test',
     description: 'Test your auditory range and sensitivity',
@@ -84,6 +100,7 @@ export const tests = [
   },
   {
     id: 'color-blind-test',
+    family: 'cognitive',
     route: '/test/color-blind',
     name: 'Color Blindness Test',
     description: 'Detect color vision deficiencies',
@@ -98,6 +115,7 @@ export const tests = [
   },
   {
     id: 'memory-test',
+    family: 'cognitive',
     route: '/test/memory',
     name: 'Working Memory Test',
     description: 'Evaluate your short-term memory capacity',
@@ -113,6 +131,7 @@ export const tests = [
   },
   {
     id: 'go-no-go',
+    family: 'reaction',
     route: '/test/go-no-go',
     name: 'Go/No-Go Reaction Test',
     description: 'Measure your cognitive inhibition and impulse control',
@@ -128,6 +147,7 @@ export const tests = [
   },
   {
     id: 'anticipation-test',
+    family: 'reaction',
     route: '/test/anticipation',
     name: 'Anticipation Test',
     description: 'Test your timing and prediction skills',
@@ -142,6 +162,7 @@ export const tests = [
   },
   {
     id: 'auditory-reaction',
+    family: 'reaction',
     route: '/test/auditory-reaction',
     name: 'Auditory Reaction Test',
     description: 'Measure your response to sound stimuli',
@@ -155,6 +176,10 @@ export const tests = [
     badges: ['Audio Required', 'Fast'],
   },
 ];
+
+export const getTestsByFamily = (family) => {
+  return tests.filter(test => test.family === family);
+};
 
 export const getTestsByCategory = (category) => {
   return tests.filter(test => test.category === category);

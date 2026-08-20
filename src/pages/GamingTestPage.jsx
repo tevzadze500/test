@@ -108,7 +108,9 @@ function GamingTestPage() {
               </h2>
               <div className="text-dark-300 space-y-4">
                 <p className="leading-relaxed">
-                  In competitive gaming, every millisecond counts. Whether you're playing first-person shooters like CS:GO and Valorant, battle royales like Fortnite and Apex Legends, or MOBAs like League of Legends and Dota 2, your reaction time directly impacts your performance and ranking.
+                  In competitive gaming, every millisecond counts. Whether you're playing first-person shooters like CS:GO and Valorant, battle royales like Fortnite and Apex Legends, or MOBAs like League of Legends and Dota 2, your reaction time directly impacts your performance and ranking. If you have not measured yours yet, start with the{' '}
+                  <Link to="/" className="text-green-400 hover:text-green-300 underline">main reaction time test</Link>{' '}
+                  and come back with a baseline.
                 </p>
                 <p className="leading-relaxed">
                   Professional esports players typically have reaction times between 150-200ms. By regularly testing and training your reflexes, you can identify your baseline, track improvements, and develop the lightning-fast responses needed to compete at the highest levels.
