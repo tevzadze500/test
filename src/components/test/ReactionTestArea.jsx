@@ -210,9 +210,11 @@ const ReactionTestArea = ({ onResult }) => {
       {/* Content */}
       <div className="relative z-10 text-center px-4">
         {config.icon}
-        <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${config.textColor} mb-2 sm:mb-3`}>
+        {/* Live status readout, not a section heading: this text cycles through
+            "Wait for it...", "CLICK NOW!" and "Too Early!" as the test runs. */}
+        <p className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${config.textColor} mb-2 sm:mb-3`}>
           {config.title}
-        </h2>
+        </p>
         {config.message && (
           <p className="text-lg sm:text-xl md:text-2xl text-dark-300 mb-2">
             {config.message}

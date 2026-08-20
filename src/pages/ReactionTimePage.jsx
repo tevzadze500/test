@@ -78,8 +78,8 @@ const ReactionTimePage = () => {
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
-            name: 'Reaction Time Test',
-            description: 'Measure your visual reaction speed in milliseconds with instant results.',
+            name: 'Average Reaction Time Test',
+            description: 'Measure your visual reaction speed over several attempts and compare your average against published benchmarks.',
             path: '/test/reaction-time',
           }),
           breadcrumbSchema('Reaction Time Test', '/test/reaction-time'),
@@ -182,6 +182,9 @@ const ReactionTimePage = () => {
         </div>
 
         {/* Test Area + Stats */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
+          Measure Your Average Reaction Time
+        </h2>
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Test Area (2 columns on large screens) */}
           <div className="lg:col-span-2">
