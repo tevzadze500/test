@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import MobileTopBar from '../components/MobileTopBar';
 import Seo from '../components/Seo';
-import { articleSchema } from '../utils/structuredData';
+import Breadcrumb from '../components/Breadcrumb';
+import { articleSchema, breadcrumbSchema } from '../utils/structuredData';
 import { ArrowLeft, Zap, Activity, Car, Brain, Target, TrendingUp, BookOpen } from 'lucide-react';
 import SiteFooter from '../components/SiteFooter';
 
@@ -14,16 +15,24 @@ function BlogPage() {
     <div className="flex min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Why Reaction Time is Crucial in Everyday Life and Performance | ReactionTestPro"
-        description="Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test."
+        title="Why Reaction Time Matters in Sport, Driving & Daily Life"
+        description="Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours. Read the full guide."
         canonical="/blog/reaction-time-crucial"
         type="article"
-        jsonLd={articleSchema({
-          headline: 'Why Reaction Time is Crucial in Everyday Life and Performance',
-          description: 'Discover why reaction time matters in sports, driving, cognitive health, and daily life. Learn how to improve your reflexes with our free reaction time test.',
-          path: '/blog/reaction-time-crucial',
-          datePublished: '2026-01-20',
-        })}
+        jsonLd={[
+          articleSchema({
+            headline: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
+            description: 'Why milliseconds matter: how reaction time shapes sports, driving safety and brain health — and proven ways to improve yours.',
+            path: '/blog/reaction-time-crucial',
+            datePublished: '2026-05-01',
+            dateModified: '2026-08-09',
+          }),
+          breadcrumbSchema(
+            'Why Reaction Time Matters',
+            '/blog/reaction-time-crucial',
+            { name: 'Blog', path: '/blog' },
+          ),
+        ]}
       />
 
       {/* Mobile Top Bar */}
@@ -44,17 +53,23 @@ function BlogPage() {
           
           {/* Back Button */}
           <Link 
-            to="/" 
+            to="/blog" 
             className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-8"
           >
             <ArrowLeft size={20} />
-            <span>Back to Home</span>
+            <span>Back to the Blog</span>
           </Link>
+
+          <Breadcrumb
+            name="Why Reaction Time Matters"
+            parent={{ name: 'Blog', to: '/blog' }}
+            className="mb-6"
+          />
 
           {/* Article Header */}
           <article className="prose prose-invert max-w-none">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Why Reaction Time is Crucial in Everyday Life and Performance
+              Why Reaction Time Matters in Sport, Driving & Daily Life
             </h1>
             
             <p className="text-lg text-dark-300 leading-relaxed mb-8">

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Gamepad2, Activity, Car, Brain, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Gamepad2, Activity, Car, Brain, CheckCircle2, Zap } from 'lucide-react';
 
 const SeoContent = () => {
   return (
@@ -26,7 +27,9 @@ const SeoContent = () => {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Gaming Skills</h4>
                 <p className="text-sm text-dark-300 leading-relaxed">
-                  Improve your reaction time to boost your performance in fast-paced games. Competitive gamers need lightning-fast reflexes to dominate in FPS, MOBA, and racing games.
+                  Improve your reaction time to boost your performance in fast-paced games. Competitive gamers need lightning-fast reflexes to dominate — see how you stack up on our{' '}
+                  <Link to="/gaming-test" className="text-purple-400 hover:text-purple-300 underline">gaming reaction test</Link>{' '}
+                  for FPS, MOBA, and racing games.
                 </p>
               </div>
             </div>
@@ -40,7 +43,9 @@ const SeoContent = () => {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Athletic Performance</h4>
                 <p className="text-sm text-dark-300 leading-relaxed">
-                  Track your reaction speed to optimize your performance in sports. Athletes in tennis, boxing, and track events rely on quick reflexes to gain a competitive edge.
+                  Track your reaction speed to optimize your performance in sports. Athletes in tennis, boxing, and track events rely on quick reflexes — our{' '}
+                  <Link to="/sport-test" className="text-blue-400 hover:text-blue-300 underline">sports reaction test</Link>{' '}
+                  shows where you stand.
                 </p>
               </div>
             </div>
@@ -54,7 +59,9 @@ const SeoContent = () => {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Driving Safety</h4>
                 <p className="text-sm text-dark-300 leading-relaxed">
-                  Enhance your reflexes to react more quickly in unexpected driving situations. Faster reaction times can help prevent accidents and save lives on the road.
+                  Enhance your reflexes to react more quickly in unexpected driving situations.{' '}
+                  <Link to="/blog/reaction-time-crucial" className="text-red-400 hover:text-red-300 underline">Faster reaction times help prevent accidents</Link>{' '}
+                  and save lives on the road.
                 </p>
               </div>
             </div>
@@ -68,7 +75,9 @@ const SeoContent = () => {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Cognitive Health</h4>
                 <p className="text-sm text-dark-300 leading-relaxed">
-                  Reaction time testing can provide insights into your cognitive function and mental agility. Regular testing helps monitor brain health and mental sharpness.
+                  Reaction time testing can provide insights into your cognitive function and mental agility. Pair it with the{' '}
+                  <Link to="/test/go-no-go" className="text-green-400 hover:text-green-300 underline">Go/No-Go impulse control test</Link>{' '}
+                  to monitor brain health and mental sharpness.
                 </p>
               </div>
             </div>
@@ -82,8 +91,15 @@ const SeoContent = () => {
           Ready to Test Your Reaction Speed?
         </h3>
         <p className="text-dark-200 text-lg mb-6 max-w-2xl mx-auto">
-          Click below to take our Reaction Time Test and see how your reflexes measure up against top performers!
+          Take our Reaction Time Test and see how your reflexes measure up against top performers!
         </p>
+        <Link
+          to="/test/reaction-time"
+          className="inline-flex items-center justify-center gap-2 px-8 py-4 mb-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 rounded-xl text-white text-base font-bold shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02]"
+        >
+          <Zap size={18} className="shrink-0" />
+          Take the Reaction Time Test
+        </Link>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-dark-800/40 border border-dark-700/50 rounded-full">
             <CheckCircle2 size={16} className="text-green-400" />

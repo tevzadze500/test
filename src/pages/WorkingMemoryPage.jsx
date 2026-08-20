@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Brain, Clock, Target, AlertCircle, Trophy, Hash, RotateCcw, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import MemoryTestArea from '../components/test/MemoryTestArea';
 import ConversionFooter from '../components/ConversionFooter';
@@ -57,8 +58,8 @@ const WorkingMemoryPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Working Memory Test – Can You Remember More Than 7 Digits?"
-        description="Take the free working memory test. Memorize a growing sequence, measure your short-term memory span, and see how you rank — most adults manage 5 to 9. No signup."
+        title="Working Memory Test – Digit Span Challenge | ReactionTestPro"
+        description="Memorize growing digit sequences and measure your working memory span. Most adults hold 5–9 digits — take the free test and find your limit now."
         canonical="/test/memory"
         jsonLd={[
           webApplicationSchema({
@@ -92,6 +93,7 @@ const WorkingMemoryPage = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
+        <Breadcrumb name="Working Memory Test" className="mb-4" />
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 shrink-0">

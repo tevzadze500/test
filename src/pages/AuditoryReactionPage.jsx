@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Volume2, Clock, Activity, Ear, HelpCircle, AlertCircle, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import AuditoryReactionTestArea from '../components/test/AuditoryReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
@@ -63,8 +64,8 @@ const AuditoryReactionPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Auditory Reaction Test - Measure Your Response to Sound | ReactionTestPro"
-        description="Test your auditory reaction time for free. Click the instant you hear the beep and measure how fast you respond to sound in milliseconds. Instant results, no signup."
+        title="Auditory Reaction Test – Respond to Sound | ReactionTestPro"
+        description="Click the instant you hear the beep and measure your auditory reaction time in milliseconds. Free with instant results — put your ears to the test."
         canonical="/test/auditory-reaction"
         jsonLd={[
           webApplicationSchema({
@@ -85,7 +86,7 @@ const AuditoryReactionPage = () => {
                 <Volume2 size={20} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="hidden sm:block">
-                <h2 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</h2>
+                <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</p>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </Link>
@@ -98,6 +99,7 @@ const AuditoryReactionPage = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
+        <Breadcrumb name="Auditory Reaction Test" className="mb-4" />
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 shrink-0">
@@ -150,17 +152,58 @@ const AuditoryReactionPage = () => {
               <h3 className="text-xl font-bold text-white">Auditory vs. Visual Reaction Time</h3>
             </div>
             <p className="text-dark-300 leading-relaxed">
-              Reaction to sound is usually faster than reaction to a visual cue. Sound signals reach the brain through a shorter
-              neural pathway, so most people react to a beep in roughly 140–200 ms, versus 200–300 ms for a visual change. This is
-              exactly why athletics sprints start with a gun and not a light — the auditory channel shaves precious milliseconds off
-              every competitor's launch.
+              Reaction to sound is usually faster than reaction to a visual cue: auditory signals reach the motor cortex
+              through a shorter neural pathway, and comparative studies such as{' '}
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4456887/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 underline">Jain et al. (2015)</a>{' '}
+              measured faster times to a tone than to a light in the same participants. This is exactly why athletics
+              sprints start with a gun and not a light — the auditory channel shaves precious milliseconds off every
+              competitor's launch.
             </p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">What&rsquo;s a Good Auditory Reaction Time?</h2>
+            <div className="space-y-4 text-dark-300 leading-relaxed">
+              <p>
+                Because the auditory pathway is faster, a typical adult&rsquo;s reaction to a beep lands somewhat below their
+                visual reaction time — the hardware-corrected adult average for a <em>visual</em> stimulus is 213&nbsp;ms
+                (Woods et al., 2015), and sound responses in comparative studies come in faster still. If your times here
+                are quicker than your score on the{' '}
+                <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">visual reaction test</Link>,
+                that is the expected pattern, not a fluke.
+              </p>
+              <p>
+                One caveat specific to this test: audio adds its own lag. Bluetooth headphones can delay the beep by
+                100&nbsp;ms or more before you ever hear it, which lands on your time through no fault of your reflexes.
+                Wired headphones or built-in speakers give the truest reading, and comparing your own results on the
+                same setup matters more than any single number.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">How to Improve Your Response to Sound</h2>
+            <div className="space-y-4 text-dark-300 leading-relaxed">
+              <p>
+                The basics move the needle most: consistent sleep, an alert (not over-caffeinated) state, and repeated
+                practice so the beep-to-click loop becomes automatic. Eliminate competing noise — a quiet room lets your
+                auditory system commit to one signal instead of filtering many.
+              </p>
+              <p>
+                Sound-led reactions matter anywhere a cue arrives by ear first: sprint starts, a teammate&rsquo;s callout in a
+                shooter, the horn in a fencing bout. If that is your world, the{' '}
+                <Link to="/sport-test" className="text-blue-400 hover:text-blue-300 underline">sports reaction guide</Link>{' '}
+                and{' '}
+                <Link to="/gaming-test" className="text-purple-400 hover:text-purple-300 underline">gaming reaction guide</Link>{' '}
+                cover how athletes and players train the full loop.
+              </p>
+            </div>
           </section>
 
           <section>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center"><HelpCircle className="text-white" size={20} /></div>
-              <h3 className="text-xl font-bold text-white">Frequently Asked Questions</h3>
+              <h2 className="text-xl font-bold text-white">Frequently Asked Questions</h2>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (

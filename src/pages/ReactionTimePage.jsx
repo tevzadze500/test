@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home, Zap, Clock, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import ReactionTestArea from '../components/test/ReactionTestArea';
 import ReactionStatsCard from '../components/test/ReactionStatsCard';
 import ReactionInfoSection, { reactionFaqs } from '../components/test/ReactionInfoSection';
+import ReactionBenchmarks from '../components/ReactionBenchmarks';
 import SiteFooter from '../components/SiteFooter';
 
 const ReactionTimePage = () => {
@@ -71,8 +73,8 @@ const ReactionTimePage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Reaction Time Test – Check Your Reflexes & Average Speed"
-        description="Test your reaction time free in milliseconds. See how your reflexes compare to the average human reaction speed, learn what affects them, and how to react faster. No signup."
+        title="Reaction Time Test – Check Your Reflexes | ReactionTestPro"
+        description="Take the free reaction time test and see your speed in milliseconds. Compare yourself to the 213 ms adult average and learn how to react faster."
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
@@ -141,6 +143,7 @@ const ReactionTimePage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
+        <Breadcrumb name="Reaction Time Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
@@ -194,6 +197,9 @@ const ReactionTimePage = () => {
         {/* Informational Content Section */}
         <div className="border-t border-dark-800 pt-8 sm:pt-12">
           <ReactionInfoSection />
+
+          {/* Published reaction-time reference points (cited) */}
+          <ReactionBenchmarks />
         </div>
 
         {/* Footer CTA */}

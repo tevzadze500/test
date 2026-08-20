@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Target, Clock, Activity, Crosshair, HelpCircle, AlertCircle, Trophy, Hash, RotateCcw, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import AnticipationTestArea from '../components/test/AnticipationTestArea';
 import ConversionFooter from '../components/ConversionFooter';
@@ -57,8 +58,8 @@ const AnticipationPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Anticipation Test - Coincidence Timing & Prediction | ReactionTestPro"
-        description="Test your anticipation and timing for free. Predict when a moving marker reaches the target — even after it vanishes — and measure your coincidence-timing accuracy."
+        title="Anticipation Test – Timing & Prediction | ReactionTestPro"
+        description="Predict the exact moment a moving marker hits the target — even after it disappears. Test your coincidence timing free and see your accuracy now."
         canonical="/test/anticipation"
         jsonLd={[
           webApplicationSchema({
@@ -80,7 +81,7 @@ const AnticipationPage = () => {
                 <Target size={20} className="text-white" strokeWidth={2.5} />
               </div>
               <div className="hidden sm:block">
-                <h2 className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</h2>
+                <p className="text-base sm:text-lg font-bold text-white group-hover:text-green-400 transition-colors">ReactionTestPro</p>
                 <p className="text-xs text-dark-400">Testing Platform</p>
               </div>
             </Link>
@@ -93,6 +94,7 @@ const AnticipationPage = () => {
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
+        <Breadcrumb name="Anticipation Test" className="mb-4" />
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 shrink-0">
@@ -171,9 +173,46 @@ const AnticipationPage = () => {
           </section>
 
           <section>
+            <h2 className="text-3xl font-bold text-white mb-4">What&rsquo;s a Good Anticipation Score?</h2>
+            <div className="space-y-4 text-dark-300 leading-relaxed">
+              <p>
+                Your score is the average timing error across five trials, in milliseconds — how far from the
+                true crossing moment you pressed, whether early or late. Unlike simple reaction time, there is
+                no large published dataset of coincidence-timing norms for a browser task like this one, so we
+                deliberately do not invent population percentiles for it.
+              </p>
+              <p>
+                What the number can tell you is direction and trend. If you are consistently <strong className="text-white">early</strong>,
+                your internal clock is running fast — you are committing before you have tracked enough of the
+                marker&rsquo;s motion. Consistently <strong className="text-white">late</strong> usually means you are waiting for visual
+                confirmation that never comes instead of trusting the extrapolation. A tight error that shrinks
+                across sessions on the same device is the real sign of improvement.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-4">Anticipation vs Simple Reaction Time</h2>
+            <div className="space-y-4 text-dark-300 leading-relaxed">
+              <p>
+                A <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">simple reaction test</Link> measures
+                how fast you respond <em>after</em> a signal appears; nothing you do before the stimulus helps.
+                Anticipation flips that: the useful work happens <em>before</em> the moment of action, as your brain
+                extrapolates the marker&rsquo;s speed and position while it is hidden. They rely on different processes —
+                a lightning reaction time does not guarantee good coincidence timing, and vice versa.
+              </p>
+              <p>
+                For the fullest picture of your timing skills, pair this test with the{' '}
+                <Link to="/test/f1-reaction" className="text-red-400 hover:text-red-300 underline">Start Lights Reaction Test</Link>,
+                where a random hold makes anticipation impossible and pure reaction is all that counts.
+              </p>
+            </div>
+          </section>
+
+          <section>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center"><HelpCircle className="text-white" size={20} /></div>
-              <h3 className="text-xl font-bold text-white">Frequently Asked Questions</h3>
+              <h2 className="text-xl font-bold text-white">Frequently Asked Questions</h2>
             </div>
             <div className="space-y-4">
               {faqs.map((faq, i) => (

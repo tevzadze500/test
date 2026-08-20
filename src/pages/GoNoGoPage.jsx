@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home, Clock, Trophy, Zap, Activity, Info } from 'lucide-react';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import GoNoGoTestArea from '../components/test/GoNoGoTestArea';
 import GoNoGoStatsCard from '../components/test/GoNoGoStatsCard';
@@ -68,8 +69,8 @@ const GoNoGoPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Go/No-Go Test – Measure Your Response Inhibition & Focus"
-        description="Take the free Go/No-Go test: react to green 'Go' signals, hold back on red 'No-Go' signals, and measure your response inhibition and impulse control. Instant results, no signup."
+        title="Go/No-Go Test – Impulse Control & Focus | ReactionTestPro"
+        description="React to green Go signals and hold back on red No-Go signals. Measure your response inhibition free in about 2 minutes — start the test now."
         canonical="/test/go-no-go"
         jsonLd={[
           webApplicationSchema({
@@ -141,6 +142,7 @@ const GoNoGoPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Go/No-Go Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">

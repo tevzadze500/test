@@ -39,29 +39,9 @@ const TestCard = ({ test }) => {
     purple: 'text-purple-400',
   };
 
-  // Get the route for the test
-  const getTestRoute = (testId) => {
-    if (testId === 'reaction-time') return '/test/reaction-time';
-    if (testId === 'go-no-go') return '/test/go-no-go';
-    if (testId === 'f1-reaction') return '/test/f1-reaction';
-    if (testId === 'adhd-test') return '/test/adhd';
-    if (testId === 'vision-test') return '/test/vision';
-    if (testId === 'hearing-test') return '/test/hearing';
-    if (testId === 'color-blind-test') return '/test/color-blind';
-    if (testId === 'memory-test') return '/test/memory';
-    if (testId === 'anticipation-test') return '/test/anticipation';
-    if (testId === 'auditory-reaction') return '/test/auditory-reaction';
-    return '#';
-  };
-
-  const testRoute = getTestRoute(test.id);
-  const shouldOpenInNewTab = test.id === 'f1-reaction' || test.id === 'adhd-test';
-
   return (
     <Link
-      to={testRoute}
-      target={shouldOpenInNewTab ? '_blank' : undefined}
-      rel={shouldOpenInNewTab ? 'noopener noreferrer' : undefined}
+      to={test.route}
       className={`
         group relative bg-gradient-to-br from-slate-900 to-slate-800
         ${colorClasses[test.color]}

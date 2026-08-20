@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LegalLayout, { LegalSection, LegalCallout, Placeholder } from '../components/LegalLayout';
+import LegalLayout, { LegalSection, LegalCallout } from '../components/LegalLayout';
 import { SITE_NAME, infoPageSchema } from '../utils/structuredData';
+import { OWNER_NAME } from '../data/site';
 import { tests } from '../data/tests';
 
-const LAST_UPDATED = '2026-07-24';
+const LAST_UPDATED = '2026-08-09';
 
 const AboutPage = () => (
   <LegalLayout
-    title={`About ${SITE_NAME} | Who Builds These Tests`}
-    description="Who runs ReactionTestPro, why it exists, and how the tests are built — client-side timing with performance.now(), no server, no accounts, no data collection."
+    title="About ReactionTestPro – Who Builds These Tests"
+    description="Who builds ReactionTestPro, how the tests are engineered with high-resolution browser timing, and why there are no accounts or data collection."
     canonical="/about"
     jsonLd={infoPageSchema({ name: 'About', description: `${SITE_NAME} — about`, path: '/about', type: 'AboutPage' })}
     heading={`About ${SITE_NAME}`}
@@ -18,14 +19,14 @@ const AboutPage = () => (
   >
     <LegalSection title="Who runs this site">
       <p>
-        This site is built and maintained by{' '}
-        <Placeholder>your name, or the business name you publish under</Placeholder>.
+        This site is built and maintained by a single independent developer, publishing under the{' '}
+        <strong className="text-white">{OWNER_NAME}</strong> name.
       </p>
       <p>
-        <Placeholder>
-          two or three sentences about you: your background, what you do, and why you started
-          building reaction tests — real experience only, no invented credentials
-        </Placeholder>
+        {OWNER_NAME} started as a personal tool for measuring reaction time accurately in the
+        browser and grew into the collection of tests you see today. Everything on the site — the
+        timing engines, the scoring, the write-ups — is built and maintained in-house, and every
+        factual claim cites its source on the page that makes it.
       </p>
       <LegalCallout title="A note on expertise">
         <p>

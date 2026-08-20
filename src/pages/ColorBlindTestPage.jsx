@@ -4,9 +4,11 @@ import { ArrowLeft, Eye, Clock, Palette, AlertTriangle, Info } from 'lucide-reac
 import ColorBlindTestArea from '../components/test/ColorBlindTestArea';
 import ColorBlindStatsCard from '../components/test/ColorBlindStatsCard';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import RelatedTests from '../components/RelatedTests';
 import { colorBlindReferences, LAST_UPDATED } from '../data/references';
 
 const ColorBlindTestPage = () => {
@@ -83,8 +85,8 @@ const ColorBlindTestPage = () => {
   return (
     <div className="min-h-screen bg-dark-950">
       <Seo
-        title="Color Blindness Test - Quick Screening | ReactionTestPro"
-        description="Free online color blindness test. Detect color vision deficiencies with Ishihara-style plates. Quick 3-minute screening, instant results, no signup required."
+        title="Color Blind Test – Ishihara-Style Plates | ReactionTestPro"
+        description="Screen for red-green color vision deficiency with Ishihara-style plates. Free three-minute test with instant results — check your color vision now."
         canonical="/test/color-blind"
         jsonLd={[
           webApplicationSchema({
@@ -149,6 +151,7 @@ const ColorBlindTestPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Color Blindness Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -305,6 +308,7 @@ const ColorBlindTestPage = () => {
           references={colorBlindReferences}
           methodology="The screening shows coloured-dot plates in which a digit is formed from dots that differ from the background only in hue. This is the same format as the plate tests used in clinical screening, rendered on your own uncalibrated display — which is why it can suggest a possible deficiency but cannot measure one."
         />
+        <RelatedTests ids={['vision-test', 'hearing-test', 'reaction-time']} />
       </div>
       <SiteFooter className="mt-12" Icon={Palette} accent="from-purple-500 to-violet-600" />
     </div>

@@ -11,6 +11,7 @@ function NotFoundPage() {
       <Seo
         title="Page Not Found (404) | ReactionTestPro"
         description="The page you are looking for does not exist. Explore our free online reaction time and cognitive tests."
+        noindex
       />
 
       <div className="max-w-2xl mx-auto">

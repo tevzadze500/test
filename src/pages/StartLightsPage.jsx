@@ -5,6 +5,7 @@ import StartLightsTestArea from '../components/test/StartLightsTestArea';
 import StartLightsStatsCard from '../components/test/StartLightsStatsCard';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 
@@ -100,8 +101,8 @@ const StartLightsPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Start Lights Reaction Test – How Fast Is Your Launch?"
-        description="Free start lights reaction test: rows of red lights cascade, then react the instant the bottom row turns green. Get your time in milliseconds and find your tier."
+        title="Start Lights Reaction Test (F1 Lights Out) | ReactionTestPro"
+        description="Race-start lights cascade red, then go green — react instantly and get your launch time in milliseconds. Free F1-style reaction test, try it now."
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({
@@ -173,6 +174,7 @@ const StartLightsPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Start Lights Reaction Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -235,11 +237,11 @@ const StartLightsPage = () => {
           {/* Hook + What Is */}
           <section>
             <p className="text-dark-200 text-lg leading-relaxed mb-8">
-              At a race start, everything is decided in a single blink. Elite drivers launch in around <strong className="text-white">150–200 milliseconds</strong> — barely longer than one film frame. This free reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
+              At a race start, everything is decided in a single blink — barely longer than one film frame. This free F1-style reaction test drops you onto the starting grid: watch the three rows of red lights cascade down, hold your nerve through the random delay, then fire the instant the bottom row flashes <strong className="text-green-400">green</strong>.
             </p>
             <h2 className="text-3xl font-bold text-white mb-4">What Is the Start Lights Reaction Test?</h2>
             <p className="text-dark-300 leading-relaxed">
-              The Start Lights Reaction Test is a free online tool that recreates a race-start light sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
+              The Start Lights Reaction Test is a free online tool that recreates an F1-style “lights out” start sequence to measure your visual reaction time in milliseconds. Three rows of red lights come on in a downward cascade across five columns, hold for an unpredictable delay, then cut out as the bottom row turns green — your cue to click or tap as fast as humanly possible. No signup, no download: just you, the lights, and the clock.
             </p>
           </section>
 

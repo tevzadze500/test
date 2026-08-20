@@ -4,9 +4,11 @@ import { ArrowLeft, Headphones, Clock, Volume2, Heart, Lightbulb, Info } from 'l
 import HearingTestArea from '../components/test/HearingTestArea';
 import HearingStatsCard from '../components/test/HearingStatsCard';
 import Seo from '../components/Seo';
+import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema, medicalWebPageSchema } from '../utils/structuredData';
 import SiteFooter from '../components/SiteFooter';
 import TrustBlock, { MedicalDisclaimerBanner } from '../components/TrustBlock';
+import RelatedTests from '../components/RelatedTests';
 import { hearingReferences, LAST_UPDATED } from '../data/references';
 
 const HearingTestPage = () => {
@@ -99,8 +101,8 @@ const HearingTestPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Hearing Frequency Test - Audio Health Check | ReactionTestPro"
-        description="Test your hearing range and sensitivity with our free online hearing frequency test. Discover which frequencies you can hear from 250 Hz to 20 kHz. Instant results, no signup required."
+        title="Hearing Test – Check Your Frequency Range | ReactionTestPro"
+        description="Find the highest frequency you can hear, from 250 Hz to 20 kHz. Free browser hearing screening with instant results — grab headphones and start now."
         canonical="/test/hearing"
         jsonLd={[
           webApplicationSchema({
@@ -184,6 +186,7 @@ const HearingTestPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
+        <Breadcrumb name="Hearing Frequency Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -353,6 +356,7 @@ const HearingTestPage = () => {
           references={hearingReferences}
           methodology="Tones are synthesised in your browser with the Web Audio API and played at increasing frequencies; you report which ones you can still hear. No microphone is used and nothing is recorded. Unlike pure-tone audiometry, the loudness reaching your ear is uncontrolled, so this maps the top of your frequency range only in the roughest terms."
         />
+        <RelatedTests ids={['auditory-reaction', 'vision-test', 'color-blind-test']} />
       </div>
       <SiteFooter className="mt-12" Icon={Headphones} accent="from-blue-500 to-cyan-600" />
     </div>

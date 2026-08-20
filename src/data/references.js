@@ -7,7 +7,35 @@
  * dropped. Do not add an entry you have not opened.
  */
 
-export const LAST_UPDATED = '2026-07-24';
+export const LAST_UPDATED = '2026-08-09';
+
+/**
+ * Peer-reviewed reaction-time sources shared by the benchmarks table and the
+ * hub pages. Links point at the freely readable PMC/PubMed record for each
+ * paper rather than the DOI, because several publishers block direct access.
+ * The DOI stays in the citation text.
+ */
+export const benchmarkSources = {
+  woods: {
+    id: 'woods-2015',
+    label: 'Woods et al. (2015)',
+    text: 'Woods DL, Wyma JM, Yund EW, Herron TJ, Reed B. Factors influencing the latency of simple reaction time. Frontiers in Human Neuroscience, 9:131. doi:10.3389/fnhum.2015.00131',
+    href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4374455/',
+  },
+  jain: {
+    id: 'jain-2015',
+    label: 'Jain et al. (2015)',
+    text: 'Jain A, Bansal R, Kumar A, Singh KD. A comparative study of visual and auditory reaction times on the basis of gender and physical activity levels of medical first year students. International Journal of Applied and Basic Medical Research, 5(2):124–127.',
+    href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4456887/',
+  },
+  der: {
+    id: 'der-2006',
+    label: 'Der & Deary (2006)',
+    text: 'Der G, Deary IJ. Age and sex differences in reaction time in adulthood: results from the United Kingdom Health and Lifestyle Survey. Psychology and Aging, 21(1):62–73. doi:10.1037/0882-7974.21.1.62',
+    href: 'https://pubmed.ncbi.nlm.nih.gov/16594792/',
+  },
+};
+
 
 export const adhdReferences = [
   {
