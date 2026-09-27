@@ -38,6 +38,14 @@ function GamingTestPage() {
     {
       question: 'How does my setup affect gaming reaction time?',
       answer: 'Input lag, monitor refresh rate, and network latency all add delay on top of your biological reaction time. A 144Hz or higher monitor, a low-latency wired mouse, and a stable connection can shave precious milliseconds off how fast your reactions register in-game.'
+    },
+    {
+      question: 'What is a good reaction time for Valorant?',
+      answer: 'On a simple visual test, under 213 ms beats the hardware-corrected adult mean and under 190 ms beats the laboratory reference for young adults (Woods et al., 2015; Jain et al., 2015). No per-rank Valorant dataset exists, so treat those as the honest bar. In-game, crosshair placement converts an average reaction into a first shot more reliably than a few milliseconds of raw speed.'
+    },
+    {
+      question: 'What is a good reaction time for CS2?',
+      answer: 'The same cited bands apply: under 213 ms is faster than the corrected adult mean. Because so much of CS2 is sound-led — footsteps, reloads, utility — your auditory reaction time matters too, and reactions to sound are measurably faster than to light (Jain et al., 2015). Test both and train the slower one.'
     }
   ];
 
@@ -46,7 +54,7 @@ function GamingTestPage() {
       {/* SEO Meta Tags */}
       <Seo
         title="Gaming Reaction Time Test for FPS & MOBA | ReactionTestPro"
-        description="How fast are your gaming reflexes? Test your reaction time for FPS, MOBA and racing games, see cited benchmarks, and learn how to shave off milliseconds."
+        description="How fast are your gaming reflexes? Test your reaction time for Valorant, CS2, Fortnite and other FPS or MOBA titles, compare against cited benchmarks, and shave off milliseconds."
         canonical="/gaming-test"
         jsonLd={[
           infoPageSchema({
@@ -157,6 +165,50 @@ function GamingTestPage() {
                   </li>
                 </ul>
               </div>
+            </div>
+
+            {/* Per-game breakdown: what reaction time buys you in each title
+                and which test on the site measures it. Bands stay anchored to
+                the cited adult means — no per-rank or pro figures are invented. */}
+            <div className="max-w-4xl mx-auto bg-dark-900/50 backdrop-blur-sm border border-dark-800 rounded-2xl p-6 sm:p-8 mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Reaction Time by Game: Valorant, CS2, Fortnite &amp; Apex
+              </h2>
+              <p className="text-dark-300 leading-relaxed mb-6">
+                "Good" depends on what the game asks of you. Some titles are decided by a single first shot; others by tracking, decisions and building. Here is what reaction time actually buys you in each, and which test on this site measures it.
+              </p>
+              <div className="space-y-6 text-dark-300">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Valorant reaction time</h3>
+                  <p className="leading-relaxed">
+                    Valorant duels end in one bullet: a Vandal or Operator headshot kills instantly, so whoever registers the peek first usually wins. Riot runs its servers at 128 tick, so your input is sampled roughly every 8 ms — a rounding error next to a 200 ms human reaction. What separates ranks is not raw speed but pre-aim: holding the crosshair where the enemy will appear turns an average 231 ms reaction into a first shot. Benchmark yourself on the{' '}
+                    <Link to="/" className="text-green-400 hover:text-green-300 underline">reaction time test</Link>; under 213 ms puts you ahead of the corrected adult mean (Woods et al., 2015). Then use the{' '}
+                    <Link to="/test/f1-reaction" className="text-green-400 hover:text-green-300 underline">F1 start lights test</Link>{' '}
+                    to train the discipline of not firing early — a false start there is a wasted peek in-game.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">CS2 (Counter-Strike 2) reaction time</h3>
+                  <p className="leading-relaxed">
+                    Counter-Strike 2 records the exact moment of your click with its sub-tick system rather than waiting for the next server tick, so the game is as honest about your reaction as your hardware allows. Two things matter more here than anywhere else: counter-strafing, stopping dead before you shoot, and sound. Footsteps and reloads reach you before the enemy is on screen, and reactions to sound are measurably faster than reactions to light (Jain et al., 2015). Pair the visual test with the{' '}
+                    <Link to="/test/auditory-reaction" className="text-green-400 hover:text-green-300 underline">auditory reaction test</Link>: the gap between your two numbers is the edge good headphones give you.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Fortnite &amp; Apex Legends reaction time</h3>
+                  <p className="leading-relaxed">
+                    Time-to-kill is longer in Fortnite and Apex, so a single 20 ms edge rarely decides a fight. What does is choosing the right action fast — shoot, build, slide, heal — and tracking a moving target. That is a choice reaction, which is slower than a simple one and declines more steeply with age (Der &amp; Deary, 2006). The{' '}
+                    <Link to="/test/go-no-go" className="text-green-400 hover:text-green-300 underline">Go/No-Go test</Link>{' '}
+                    measures exactly that shoot-or-hold decision, and the{' '}
+                    <Link to="/test/anticipation" className="text-green-400 hover:text-green-300 underline">anticipation test</Link>{' '}
+                    scores how well you time a moving target.
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-dark-400 leading-relaxed mt-6">
+                No published per-game or per-rank reaction-time dataset exists, so the bands above compare you to peer-reviewed adult averages rather than to named pros. Wondering what your own number means? See{' '}
+                <Link to="/blog/good-reaction-time-ms" className="text-green-400 hover:text-green-300 underline">Is 200 ms a good reaction time?</Link>
+              </p>
             </div>
 
             {/* Training Tips */}
