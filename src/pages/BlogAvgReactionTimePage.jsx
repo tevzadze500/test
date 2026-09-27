@@ -261,6 +261,9 @@ function BlogAvgReactionTimePage() {
               <p className="text-dark-300 leading-relaxed">
                 The full set of cited reference points — including the age bands — lives on the{' '}
                 <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">reaction time test page</Link>.
+                If you just want the verdict on a specific number, see{' '}
+                <Link to="/blog/good-reaction-time-ms" className="text-green-400 hover:text-green-300 underline">Is 200 ms a good reaction time?</Link>{' '}
+                — every bracket from 100 to 400 ms, explained.
               </p>
             </div>
 

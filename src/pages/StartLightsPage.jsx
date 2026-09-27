@@ -36,17 +36,17 @@ const StartLightsPage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Start Lights Reaction Test (F1 Lights Out) | ReactionTestPro"
-        description="Race-start lights cascade red, then go green — react instantly and get your launch time in milliseconds. Free F1-style reaction test, try it now."
+        title="F1 Reaction Test – Lights Out Start Lights | ReactionTestPro"
+        description="Five red lights, a random hold, then lights out: react the instant the row goes green and get your launch time in ms. Free F1-style lights out reaction test."
         canonical="/test/f1-reaction"
         jsonLd={[
           webApplicationSchema({
-            name: 'Start Lights Reaction Test',
-            description: 'Recreate a race-start light sequence and measure your visual reaction time in milliseconds — react the instant the bottom row of lights turns green.',
+            name: 'F1 Reaction Test (Start Lights)',
+            description: 'Recreate an F1-style lights-out start sequence and measure your visual reaction time in milliseconds — react the instant the bottom row of lights turns green.',
             path: '/test/f1-reaction',
             category: 'GameApplication',
           }),
-          breadcrumbSchema('Start Lights Reaction Test', '/test/f1-reaction'),
+          breadcrumbSchema('F1 Reaction Test', '/test/f1-reaction'),
           faqSchema(faqs),
         ]}
       />
@@ -109,17 +109,17 @@ const StartLightsPage = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8 lg:py-12">
-        <Breadcrumb name="Start Lights Reaction Test" className="mb-4" />
+        <Breadcrumb name="F1 Reaction Test" className="mb-4" />
         {/* Page Header */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
             <img src="/checkered-flag.svg" alt="" aria-hidden="true" className="w-12 h-12 rounded-xl shadow-lg" />
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white">
-                Start Lights Reaction Test: How Fast Is Your Launch?
+                F1 Reaction Test: How Fast Is Your Lights-Out Launch?
               </h1>
               <p className="text-dark-400 mt-1">
-                React the instant the bottom row turns green, and measure your launch in milliseconds
+                Wait for the red start lights to go out, react the instant the bottom row turns green, and measure your launch in milliseconds
               </p>
             </div>
           </div>

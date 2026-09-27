@@ -15,6 +15,14 @@ import SiteFooter from '../components/SiteFooter';
  */
 const posts = [
   {
+    title: 'Is 200 ms a Good Reaction Time? Benchmarks From 100 to 400 ms',
+    path: '/blog/good-reaction-time-ms',
+    datePublished: '2026-09-27',
+    excerpt:
+      'A straight answer for every number: what 150, 200, 231, 250, 300 and 350 ms mean against the cited adult averages, why your device shifts the verdict, and how to get a number you can trust.',
+    readingTime: '5 min read',
+  },
+  {
     title: 'Average Reaction Time by Age: What Studies Show',
     path: '/blog/average-reaction-time-by-age',
     datePublished: '2026-08-20',

@@ -48,6 +48,7 @@ const navColumns = [
       { name: 'Gaming Reaction Test', path: '/gaming-test' },
       { name: 'Sports Reaction Test', path: '/sport-test' },
       { name: 'Blog', path: '/blog' },
+      { name: 'Is My Reaction Time Good?', path: '/blog/good-reaction-time-ms' },
       { name: 'Why Reaction Time Matters', path: '/blog/reaction-time-crucial' },
     ],
   },

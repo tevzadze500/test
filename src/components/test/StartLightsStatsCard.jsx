@@ -1,5 +1,6 @@
 import React from 'react';
-import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw, Lightbulb } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Trophy, Target, BarChart3, Hash, XCircle, RotateCcw, Lightbulb, ArrowRight } from 'lucide-react';
 import { getStartLightsLevel } from '../../utils/scoreUtils';
 
 const StartLightsStatsCard = ({ stats, onReset }) => {
@@ -110,6 +111,13 @@ const StartLightsStatsCard = ({ stats, onReset }) => {
                   <span><strong className="text-dark-300">Tip:</strong> {stats.falseStarts === 1 ? '1 false start' : `${stats.falseStarts} false starts`} — wait for the bottom row to turn green.</span>
                 </div>
               )}
+              <Link
+                to="/blog/good-reaction-time-ms"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-green-400 hover:text-green-300 underline underline-offset-2"
+              >
+                Is {stats.best} ms a good reaction time? See what every number means
+                <ArrowRight size={12} className="shrink-0" aria-hidden="true" />
+              </Link>
             </div>
             {onReset && stats.attempts > 0 && (
               <button
