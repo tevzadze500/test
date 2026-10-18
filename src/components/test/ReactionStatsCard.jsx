@@ -1,5 +1,6 @@
 import React from 'react';
-import { Trophy, Target, BarChart3, Hash, RotateCcw, Lightbulb } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Trophy, Target, BarChart3, Hash, RotateCcw, Lightbulb, ArrowRight } from 'lucide-react';
 
 const ReactionStatsCard = ({ stats, onReset }) => {
   const getScoreColor = (score) => {
@@ -108,6 +109,13 @@ const ReactionStatsCard = ({ stats, onReset }) => {
                   <span><strong className="text-dark-300">Tip:</strong> Take short breaks between attempts for best results.</span>
                 </div>
               )}
+              <Link
+                to="/blog/good-reaction-time-ms"
+                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-green-400 hover:text-green-300 underline underline-offset-2"
+              >
+                Is {stats.average || stats.best} ms a good reaction time? See what every number means
+                <ArrowRight size={12} className="shrink-0" aria-hidden="true" />
+              </Link>
             </div>
             {onReset && stats.attempts > 0 && (
               <button

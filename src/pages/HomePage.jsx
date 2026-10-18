@@ -63,7 +63,7 @@ function HomePage() {
       {/* SEO Meta Tags */}
       <Seo
         title="Reaction Time Test – Test Your Reflexes Online"
-        description="Take our free online reaction time test. Wait for the lights to turn on, react as fast as you can, and measure your reaction speed in milliseconds."
+        description="Free online reaction time test: wait for the red lights to go out, click the instant they turn green, and get your reaction speed in milliseconds. No signup."
         canonical="/"
         jsonLd={[websiteSchema(), organizationSchema()]}
       />
@@ -118,7 +118,7 @@ function HomePage() {
                 Reaction Time Test &ndash; Test Your Reflexes Online
               </h1>
               <p className="text-xl sm:text-2xl text-dark-200 max-w-3xl mx-auto leading-relaxed font-medium">
-                Test your reaction time with our free online reaction time test. Wait for the lights to turn on, then react as quickly as possible. Measure your reaction speed in milliseconds and see how fast your reflexes really are.
+                Test your reaction time with our free online reaction time test. Wait for the red lights to go out, then react the instant they turn green. Measure your reaction speed in milliseconds and see how fast your reflexes really are.
               </p>
             </div>
 
@@ -144,6 +144,12 @@ function HomePage() {
                   <span className="px-4 py-2 rounded-lg bg-dark-900/70 border border-dark-800 text-dark-300">
                     Attempts <strong className="text-white tabular-nums">{stats.attempts}</strong>
                   </span>
+                  <Link
+                    to="/blog/good-reaction-time-ms"
+                    className="px-4 py-2 rounded-lg bg-dark-900/70 border border-dark-800 text-green-400 hover:text-green-300 hover:border-green-500/50 transition-colors"
+                  >
+                    Is {stats.best} ms good? &rarr;
+                  </Link>
                 </div>
               )}
 
@@ -168,9 +174,9 @@ function HomePage() {
                 <li className="flex items-start gap-4">
                   <span className="shrink-0 w-9 h-9 rounded-full bg-red-500/20 text-red-300 font-bold flex items-center justify-center">1</span>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">Wait for the lights to turn on</h3>
+                    <h3 className="text-lg font-semibold text-white mb-1">Wait for the red lights to go out</h3>
                     <p className="text-dark-300 leading-relaxed">
-                      Start the test and watch the tower. The red lights come on row by row, then hold for an unpredictable moment &mdash; so you cannot guess the signal.
+                      Start the test and watch the tower. The red lights come on row by row, hold for an unpredictable moment, then go out as the bottom row turns green &mdash; so you cannot guess the signal.
                     </p>
                   </div>
                 </li>
