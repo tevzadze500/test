@@ -5,6 +5,7 @@ const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogAvgReactionTimePage = lazy(() => import('./pages/BlogAvgReactionTimePage'));
 const BlogGoodReactionTimePage = lazy(() => import('./pages/BlogGoodReactionTimePage'));
+const BlogImproveGamingReactionPage = lazy(() => import('./pages/BlogImproveGamingReactionPage'));
 const ReactionTimePage = lazy(() => import('./pages/ReactionTimePage'));
 const GoNoGoPage = lazy(() => import('./pages/GoNoGoPage'));
 const StartLightsPage = lazy(() => import('./pages/StartLightsPage'));
@@ -44,6 +45,7 @@ export const routes = [
   { path: '/blog/reaction-time-crucial', element: page(BlogPage) },
   { path: '/blog/average-reaction-time-by-age', element: page(BlogAvgReactionTimePage) },
   { path: '/blog/good-reaction-time-ms', element: page(BlogGoodReactionTimePage) },
+  { path: '/blog/improve-reaction-time-gaming', element: page(BlogImproveGamingReactionPage) },
   { path: '/test/reaction-time', element: page(ReactionTimePage) },
   { path: '/test/go-no-go', element: page(GoNoGoPage) },
   { path: '/test/f1-reaction', element: page(StartLightsPage) },

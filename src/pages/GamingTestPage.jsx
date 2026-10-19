@@ -216,6 +216,10 @@ function GamingTestPage() {
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
                 Tips to Improve Your Gaming Reflexes
               </h2>
+              <p className="text-dark-300 leading-relaxed mb-4">
+                The short version is below. For the evidence behind each step, frame times by refresh rate and how to train the reaction your game uses, read the full guide:{' '}
+                <Link to="/blog/improve-reaction-time-gaming" className="text-green-400 hover:text-green-300 underline">how to improve your reaction time for gaming</Link>.
+              </p>
               <div className="text-dark-300 space-y-3">
                 <div className="flex items-start gap-3">
                   <span className="text-purple-400 font-bold shrink-0">1.</span>
