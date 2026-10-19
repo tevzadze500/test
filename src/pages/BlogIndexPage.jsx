@@ -15,6 +15,14 @@ import SiteFooter from '../components/SiteFooter';
  */
 const posts = [
   {
+    title: 'How to Improve Your Reaction Time for Gaming: What Actually Works',
+    path: '/blog/improve-reaction-time-gaming',
+    datePublished: '2026-10-18',
+    excerpt:
+      'The quick wins are in your setup, not your hands: frame times by refresh rate, why sleep matters more than you think, and how to train the exact reaction Valorant or CS2 asks of you.',
+    readingTime: '6 min read',
+  },
+  {
     title: 'Is 200 ms a Good Reaction Time? Benchmarks From 100 to 400 ms',
     path: '/blog/good-reaction-time-ms',
     datePublished: '2026-09-27',
@@ -31,12 +39,12 @@ const posts = [
     readingTime: '6 min read',
   },
   {
-    title: 'Why Reaction Time Matters in Sport, Driving & Daily Life',
+    title: 'Why Is Reaction Time Important in Sport? Football, Netball & More',
     path: '/blog/reaction-time-crucial',
-    datePublished: '2026-05-01',
+    datePublished: '2026-10-18',
     excerpt:
-      'Milliseconds decide more than games: how reaction time shapes sports performance, driving safety and long-term brain health — and the proven ways to sharpen yours.',
-    readingTime: '5 min read',
+      'A penalty reaches the goal in about 0.4 seconds. Why reaction time decides moments in football, netball, basketball, boxing and sprinting — and which sports need it most.',
+    readingTime: '6 min read',
   },
 ];
 

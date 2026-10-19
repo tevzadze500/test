@@ -36,6 +36,46 @@ export const benchmarkSources = {
   },
 };
 
+/**
+ * Sport rules quoted by the sport article. Kept apart from benchmarkSources
+ * because several pages render Object.values(benchmarkSources) as their
+ * reference list, and these are not reaction-time studies.
+ *
+ * Checked 2026-10-18: IFAB Law 1.6 (penalty mark 11 m / 12 yds), IFAB Law 14
+ * (goalkeeper on the goal line until the ball is kicked), World Athletics
+ * Technical Rules C2.1 (start information system flags a possible false
+ * start when reaction time is less than 0.100 second).
+ */
+export const sportSources = {
+  ifabLaw1: {
+    id: 'ifab-law-1',
+    label: 'IFAB Laws of the Game, Law 1',
+    text: 'The International Football Association Board. Laws of the Game, Law 1 – The Field of Play (1.6: penalty mark 11 m / 12 yds from the midpoint between the goalposts).',
+    href: 'https://www.theifab.com/laws/latest/the-field-of-play/',
+  },
+  ifabLaw14: {
+    id: 'ifab-law-14',
+    label: 'IFAB Laws of the Game, Law 14',
+    text: 'The International Football Association Board. Laws of the Game, Law 14 – The Penalty Kick (the goalkeeper must remain on the goal line, facing the kicker, until the ball is kicked).',
+    href: 'https://www.theifab.com/laws/latest/the-penalty-kick/',
+  },
+  worldAthletics: {
+    id: 'world-athletics-c21',
+    label: 'World Athletics Technical Rules',
+    text: 'World Athletics. Book of Rules, C2.1 – Technical Rules: a certified start information system signals a possible false start when the reaction time is less than 0.100 second.',
+    href: 'https://worldathletics.org/about-iaaf/documents/book-of-rules',
+  },
+};
+
+/** Training-related evidence used by the improvement guides. */
+export const trainingSources = {
+  lim: {
+    id: 'lim-dinges-2010',
+    label: 'Lim & Dinges (2010)',
+    text: 'Lim J, Dinges DF. A meta-analysis of the impact of short-term sleep deprivation on cognitive variables. Psychological Bulletin, 136(3):375–389. doi:10.1037/a0018883',
+    href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3290659/',
+  },
+};
 
 export const adhdReferences = [
   {
