@@ -115,6 +115,10 @@ function SportTestPage() {
                 <p className="leading-relaxed">
                   Professional athletes across all sports regularly test and train their reaction times to maintain peak performance. Our sports reaction tests help you measure your current baseline, identify areas for improvement, and track your progress as you train to become faster and more responsive.
                 </p>
+                <p className="leading-relaxed">
+                  Want the full explanation, sport by sport? Read{' '}
+                  <Link to="/blog/reaction-time-crucial" className="text-green-400 hover:text-green-300 underline">why reaction time is important in football, netball and other sports</Link>.
+                </p>
               </div>
             </div>
 

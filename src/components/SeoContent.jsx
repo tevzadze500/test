@@ -59,9 +59,8 @@ const SeoContent = () => {
               <div>
                 <h4 className="text-lg font-bold text-white mb-2">Driving Safety</h4>
                 <p className="text-sm text-dark-300 leading-relaxed">
-                  Enhance your reflexes to react more quickly in unexpected driving situations.{' '}
-                  <Link to="/blog/reaction-time-crucial" className="text-red-400 hover:text-red-300 underline">Faster reaction times help prevent accidents</Link>{' '}
-                  and save lives on the road.
+                  Enhance your reflexes to react more quickly in unexpected driving situations.
+                  Faster reaction times help prevent accidents and save lives on the road.
                 </p>
               </div>
             </div>

@@ -22,7 +22,7 @@ const ConversionFooter = () => {
             <h3 className="text-xl font-bold text-white">Learn More About Reaction Time</h3>
           </div>
           <p className="text-sm text-dark-300 mb-4">
-            Discover why reaction time is crucial in sports, driving, cognitive health, and everyday life.
+            Discover why reaction time is crucial in football, netball, boxing, sprinting and every other sport.
           </p>
           <Link 
             to="/blog/reaction-time-crucial"
