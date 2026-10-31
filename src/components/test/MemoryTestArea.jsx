@@ -66,8 +66,8 @@ const MemoryTestArea = ({ onResult }) => {
         setInputPos(next);
       }
     } else {
-      // wrong → game over. Best fully-recalled length = START_LEN + level - 1.
-      const span = level === 0 ? START_LEN - 1 : START_LEN + level - 1;
+      // wrong → game over. Best fully-recalled length = 0 on level 0, else START_LEN + level - 1.
+      const span = level === 0 ? 0 : START_LEN + level - 1;
       setFinalSpan(span);
       setPhase('gameover');
       clearTimers();

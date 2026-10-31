@@ -25,6 +25,7 @@ const CATEGORY_THEMES = {
     accent: 'sky',
     gradient: 'from-sky-500 to-blue-600',
     iconColor: 'text-sky-300',
+    iconHoverColor: 'group-hover:text-sky-400',
     iconBg: 'bg-sky-500/15 group-hover:bg-sky-500/25',
     selectedBg: 'bg-gradient-to-r from-sky-500/20 to-blue-600/20',
     selectedBorder: 'border-sky-400/40',
@@ -39,6 +40,7 @@ const CATEGORY_THEMES = {
     accent: 'green',
     gradient: 'from-green-500 to-emerald-600',
     iconColor: 'text-green-300',
+    iconHoverColor: 'group-hover:text-green-400',
     iconBg: 'bg-green-500/15 group-hover:bg-green-500/25',
     selectedBg: 'bg-gradient-to-r from-green-500/20 to-emerald-600/20',
     selectedBorder: 'border-green-400/40',
@@ -53,6 +55,7 @@ const CATEGORY_THEMES = {
     accent: 'purple',
     gradient: 'from-purple-500 to-violet-600',
     iconColor: 'text-purple-300',
+    iconHoverColor: 'group-hover:text-purple-400',
     iconBg: 'bg-purple-500/15 group-hover:bg-purple-500/25',
     selectedBg: 'bg-gradient-to-r from-purple-500/20 to-violet-600/20',
     selectedBorder: 'border-purple-400/40',
@@ -67,6 +70,7 @@ const CATEGORY_THEMES = {
     accent: 'amber',
     gradient: 'from-amber-500 to-orange-600',
     iconColor: 'text-amber-300',
+    iconHoverColor: 'group-hover:text-amber-400',
     iconBg: 'bg-amber-500/15 group-hover:bg-amber-500/25',
     selectedBg: 'bg-gradient-to-r from-amber-500/20 to-orange-600/20',
     selectedBorder: 'border-amber-400/40',
@@ -81,6 +85,7 @@ const CATEGORY_THEMES = {
     accent: 'cyan',
     gradient: 'from-cyan-500 to-teal-600',
     iconColor: 'text-cyan-300',
+    iconHoverColor: 'group-hover:text-cyan-400',
     iconBg: 'bg-cyan-500/15 group-hover:bg-cyan-500/25',
     selectedBg: 'bg-gradient-to-r from-cyan-500/20 to-teal-600/20',
     selectedBorder: 'border-cyan-400/40',
@@ -95,6 +100,7 @@ const CATEGORY_THEMES = {
     accent: 'pink',
     gradient: 'from-pink-500 to-rose-600',
     iconColor: 'text-pink-300',
+    iconHoverColor: 'group-hover:text-pink-400',
     iconBg: 'bg-pink-500/15 group-hover:bg-pink-500/25',
     selectedBg: 'bg-gradient-to-r from-pink-500/20 to-rose-600/20',
     selectedBorder: 'border-pink-400/40',
@@ -276,7 +282,7 @@ const Sidebar = ({ isOpen, setIsOpen, selectedCategory, setSelectedCategory }) =
                       <Icon
                         size={17}
                         strokeWidth={2.2}
-                        className={`shrink-0 ${selected ? theme.iconColor : `text-dark-400 group-hover:${theme.iconColor.replace('-300', '-400')}`}`}
+                        className={`shrink-0 ${selected ? theme.iconColor : `text-dark-400 ${theme.iconHoverColor}`}`}
                       />
                     </div>
                     <div className="min-w-0 text-left">

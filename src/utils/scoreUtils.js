@@ -181,9 +181,14 @@ export const getSuggestedTests = (currentTestId) => {
       { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
     'vision': [
+      { id: 'color-blind-test', name: 'Color Blind Test', iconId: 'color-blind-test', path: '/test/color-blind' },
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
-      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
       { id: 'f1-reaction', name: 'Start Lights', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+    ],
+    'color-blind': [
+      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'hearing-test', name: 'Hearing Test', iconId: 'hearing-test', path: '/test/hearing' },
     ],
     'go-no-go': [
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../components/Seo';
 import Breadcrumb from '../components/Breadcrumb';
@@ -39,6 +39,13 @@ const VisionTestPage = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [lastCompletedLevel, setLastCompletedLevel] = useState(0);
+  const feedbackTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
+    };
+  }, []);
 
   // Generate a new question
   const generateQuestion = () => {
@@ -63,6 +70,7 @@ const VisionTestPage = () => {
   };
 
   const handleStart = () => {
+    if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
     setTestState('testing');
     setCurrentLevel(0);
     setCorrectAnswers(0);
@@ -81,13 +89,14 @@ const VisionTestPage = () => {
     if (answer === currentLetter) {
       // Correct answer
       setCorrectAnswers(correctAnswers + 1);
+      const completedCount = currentLevel + 1;
+      setLastCompletedLevel(completedCount);
       
       // Wait a bit then move to next question or level
-      setTimeout(() => {
+      feedbackTimeoutRef.current = setTimeout(() => {
         if (currentLevel < LEVELS.length - 1) {
           // Move to next level
           setCurrentLevel(currentLevel + 1);
-          setLastCompletedLevel(currentLevel + 1);
           setLevelMistakes(0);
           generateQuestion();
         } else {
@@ -102,7 +111,7 @@ const VisionTestPage = () => {
       setMistakes(newMistakes);
       setLevelMistakes(newLevelMistakes);
       
-      setTimeout(() => {
+      feedbackTimeoutRef.current = setTimeout(() => {
         if (newLevelMistakes >= MAX_MISTAKES) {
           // Failed this level - end test
           setTestState('results');
@@ -153,6 +162,7 @@ const VisionTestPage = () => {
   };
 
   const handleRetry = () => {
+    if (feedbackTimeoutRef.current) clearTimeout(feedbackTimeoutRef.current);
     setTestState('intro');
   };
 
@@ -436,7 +446,7 @@ const VisionTestPage = () => {
           {/* Stats */}
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="bg-dark-900/50 border border-dark-800 rounded-xl p-6 text-center">
-              <div className="text-3xl font-bold text-white mb-1">{lastCompletedLevel + 1}</div>
+              <div className="text-3xl font-bold text-white mb-1">{lastCompletedLevel}</div>
               <div className="text-sm text-dark-400">Levels Completed</div>
             </div>
             <div className="bg-dark-900/50 border border-dark-800 rounded-xl p-6 text-center">

@@ -12,12 +12,11 @@ import ConversionFooter from '../components/ConversionFooter';
 import SeoContent from '../components/SeoContent';
 import StartLightsIcon from '../components/icons/StartLightsIcon';
 import { tests, testCategories, testFamilies, getTestsByFamily } from '../data/tests';
-import { Sparkles, Zap, Target, TrendingUp, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones, Timer, CheckCircle2, Users } from 'lucide-react';
+import { Zap, Target, ArrowRight, Gamepad2, Activity, Brain, Focus, Eye, Headphones } from 'lucide-react';
 
 function HomePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('ALL');
-  const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const { hash } = useLocation();
 
   useEffect(() => {
@@ -95,7 +94,7 @@ function HomePage() {
             aria-hidden="true"
             className="fixed inset-0 z-0 w-full h-full object-cover pointer-events-none"
             style={{ filter: 'brightness(0.4)' }}
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async"
           />
         </picture>
@@ -107,7 +106,7 @@ function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto p-4 pt-0 sm:p-6 lg:p-8 lg:pt-8">
           
           {/* Hero Section */}
-          <section className="mb-12 sm:mb-16 md:mb-20 pt-20 sm:pt-24 md:pt-8">
+          <section className="mb-12 sm:mb-16 md:mb-20 pt-20 sm:pt-24 lg:pt-8">
             <div className="text-center mb-8">
               <div className="flex items-center justify-center mb-6 pt-4">
                 <div className="w-24 h-24 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-2xl">

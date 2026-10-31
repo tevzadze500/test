@@ -40,7 +40,7 @@ export const tests = [
     family: 'reaction',
     route: '/test/f1-reaction',
     name: 'Start Lights Reaction Test',
-    description: 'React the instant the five red lights go out',
+    description: 'React the instant the red start lights cut to green',
     category: testCategories.PERFORMANCE,
     duration: '1 min',
     difficulty: 'Medium',

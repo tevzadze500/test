@@ -49,6 +49,7 @@ const navColumns = [
       { name: 'Sports Reaction Test', path: '/sport-test' },
       { name: 'Blog', path: '/blog' },
       { name: 'Is My Reaction Time Good?', path: '/blog/good-reaction-time-ms' },
+      { name: 'Average Reaction Time by Age', path: '/blog/average-reaction-time-by-age' },
       { name: 'Reaction Time in Sport', path: '/blog/reaction-time-crucial' },
       { name: 'Improve Gaming Reaction Time', path: '/blog/improve-reaction-time-gaming' },
     ],

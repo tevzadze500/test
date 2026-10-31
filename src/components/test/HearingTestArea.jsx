@@ -42,9 +42,7 @@ const HearingTestArea = ({ onResult }) => {
   const [currentFreqIndex, setCurrentFreqIndex] = useState(0);
   const [results, setResults] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioPermission, setAudioPermission] = useState(false);
   const [highestHeard, setHighestHeard] = useState(0);
-  const [totalHeard, setTotalHeard] = useState(0);
 
   const audioContextRef = useRef(null);
   const oscillatorRef = useRef(null);
@@ -63,16 +61,17 @@ const HearingTestArea = ({ onResult }) => {
 
   const initAudio = async () => {
     try {
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      if (!audioContextRef.current || audioContextRef.current.state === 'closed') {
+        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+      }
       await audioContextRef.current.resume();
-      setAudioPermission(true);
       setState(TEST_STATES.PLAYING);
       setCurrentFreqIndex(0);
       setResults([]);
       setHighestHeard(0);
-      setTotalHeard(0);
       // Start playing the first frequency after a short delay
-      setTimeout(() => playTone(0), 500);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => playTone(0), 500);
     } catch (err) {
       console.error('Audio initialization failed:', err);
       alert('Could not initialize audio. Please ensure your browser supports the Web Audio API and try again.');
@@ -155,7 +154,6 @@ const HearingTestArea = ({ onResult }) => {
 
     if (heard) {
       setHighestHeard(freq.hz);
-      setTotalHeard((prev) => prev + 1);
     }
 
     const nextIndex = currentFreqIndex + 1;
@@ -179,7 +177,8 @@ const HearingTestArea = ({ onResult }) => {
     } else {
       setCurrentFreqIndex(nextIndex);
       setState(TEST_STATES.PLAYING);
-      setTimeout(() => playTone(nextIndex), 800);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => playTone(nextIndex), 800);
     }
   };
 
@@ -193,11 +192,6 @@ const HearingTestArea = ({ onResult }) => {
     setCurrentFreqIndex(0);
     setResults([]);
     setHighestHeard(0);
-    setTotalHeard(0);
-  };
-
-  const getProgressPercent = () => {
-    return Math.round((currentFreqIndex / FREQUENCIES.length) * 100);
   };
 
   const getFinalScore = () => {

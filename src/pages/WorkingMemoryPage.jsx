@@ -42,7 +42,7 @@ const WorkingMemoryPage = () => {
 
   const handleResult = (span) => {
     setStats((prev) => ({
-      best: prev.best ? Math.max(prev.best, span) : span,
+      best: prev.best !== null ? Math.max(prev.best, span) : span,
       latest: span,
       attempts: prev.attempts + 1,
     }));

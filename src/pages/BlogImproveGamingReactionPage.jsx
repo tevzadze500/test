@@ -119,7 +119,7 @@ function BlogImproveGamingReactionPage() {
 
       <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-      <main className="flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto pt-16 lg:pt-0">
         <div className="max-w-4xl mx-auto p-6 sm:p-8 lg:p-12">
 
           <Link
