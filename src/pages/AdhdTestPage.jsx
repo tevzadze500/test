@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, AlertCircle, CheckCircle2, RotateCcw, Share2, Home, Zap, Brain } from 'lucide-react';
 import AdhdSeoContent, { adhdFaqs } from '../components/AdhdSeoContent';
@@ -138,16 +138,45 @@ const AdhdTestPage = () => {
   const [answers, setAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [sectionBreakType, setSectionBreakType] = useState('');
+  const [savedProgress, setSavedProgress] = useState(null);
 
   const totalQuestions = questions.length;
   const maxScore = totalQuestions * MAX_ANSWER_VALUE;
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('adhd_test_progress');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && Array.isArray(parsed.answers) && parsed.answers.length > 0 && parsed.answers.length < totalQuestions) {
+          setSavedProgress(parsed);
+        }
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  }, [totalQuestions]);
+
   const handleStart = () => {
+    try {
+      localStorage.removeItem('adhd_test_progress');
+    } catch (e) {
+      /* ignore */
+    }
+    setSavedProgress(null);
     setTestState('testing');
     setCurrentQuestion(0);
     setAnswers([]);
     setSelectedAnswer(null);
+  };
+
+  const handleResume = () => {
+    if (!savedProgress) return;
+    setAnswers(savedProgress.answers);
+    setCurrentQuestion(savedProgress.currentQuestion || savedProgress.answers.length);
+    setSelectedAnswer(null);
+    setTestState('testing');
   };
 
   const handleAnswerSelect = (value) => {
@@ -160,6 +189,16 @@ const AdhdTestPage = () => {
     const newAnswers = [...answers, selectedAnswer];
     setAnswers(newAnswers);
     setSelectedAnswer(null);
+
+    // Auto-save progress
+    try {
+      localStorage.setItem('adhd_test_progress', JSON.stringify({
+        answers: newAnswers,
+        currentQuestion: currentQuestion + 1,
+      }));
+    } catch (e) {
+      /* ignore */
+    }
 
     // Check for section breaks
     if (currentQuestion === 24) {
@@ -176,6 +215,12 @@ const AdhdTestPage = () => {
       setTestState('section-break');
     } else if (currentQuestion === totalQuestions - 1) {
       // Test complete
+      try {
+        localStorage.removeItem('adhd_test_progress');
+      } catch (e) {
+        /* ignore */
+      }
+      setSavedProgress(null);
       setTestState('results');
     } else {
       setCurrentQuestion(currentQuestion + 1);
@@ -342,13 +387,41 @@ const AdhdTestPage = () => {
             </div>
           </div>
 
+          {/* Saved Progress Resume Card */}
+          {savedProgress && (
+            <div className="mb-6 p-4 sm:p-5 bg-gradient-to-r from-blue-900/40 to-cyan-900/40 border border-blue-500/40 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="text-white font-bold text-base">Unfinished Test Found</div>
+                <div className="text-xs sm:text-sm text-dark-300">
+                  You previously completed {savedProgress.answers.length} of {totalQuestions} questions ({Math.round((savedProgress.answers.length / totalQuestions) * 100)}%).
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={handleResume}
+                  className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-sm rounded-lg shadow-md transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                >
+                  Resume (Q{savedProgress.answers.length + 1})
+                </button>
+                <button
+                  type="button"
+                  onClick={handleStart}
+                  className="px-3 py-2.5 bg-dark-800 hover:bg-dark-700 text-dark-300 hover:text-white text-sm rounded-lg transition-colors"
+                >
+                  Start Over
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Start Button */}
           <button
             type="button"
             onClick={handleStart}
             className="w-full min-h-[48px] py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
           >
-            Start Test
+            {savedProgress ? 'Start New Test from Beginning' : 'Start Test'}
           </button>
         </main>
 

@@ -1,5 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Target, Play, RotateCcw } from 'lucide-react';
+import EnhancedResultCard from '../EnhancedResultCard';
+import {
+  getAnticipationLevel,
+  getAnticipationPercentile,
+  getAnticipationMotivation,
+  generateShareMessage,
+  getSuggestedTests,
+} from '../../utils/scoreUtils';
 
 const TRIALS = 5;
 const TARGET = 0.85; // target line position (fraction of track)
@@ -104,24 +112,30 @@ const AnticipationTestArea = ({ onResult }) => {
   };
 
   // ----- DONE screen -----
-  if (phase === 'done') {
-    const rating =
-      finalScore >= 90 ? { name: 'Elite timing', color: 'text-purple-400' }
-      : finalScore >= 80 ? { name: 'Excellent', color: 'text-green-400' }
-      : finalScore >= 65 ? { name: 'Good', color: 'text-blue-400' }
-      : finalScore >= 50 ? { name: 'Average', color: 'text-yellow-400' }
-      : { name: 'Keep practicing', color: 'text-orange-400' };
+  if (phase === 'done' && finalScore != null) {
+    const level = getAnticipationLevel(finalScore);
+    const percentile = getAnticipationPercentile(finalScore);
+    const motivation = getAnticipationMotivation(finalScore, avgError);
+    const shareMsg = generateShareMessage('Anticipation Timing Test', `${finalScore}% accuracy`, level.name, '/test/anticipation');
+
     return (
-      <div className="bg-gradient-to-br from-dark-800 to-dark-900 border-2 border-green-500/40 rounded-xl sm:rounded-2xl p-8 sm:p-12 min-h-[400px] sm:min-h-[520px] flex flex-col items-center justify-center text-center">
-        <Target size={56} className="text-green-500 mb-4" />
-        <p className="text-dark-400 text-sm mb-2">Your anticipation accuracy</p>
-        <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{finalScore}<span className="text-2xl text-dark-400 ml-1">%</span></div>
-        <div className={`text-lg font-semibold mb-1 ${rating.color}`}>{rating.name}</div>
-        <p className="text-dark-400 text-sm mb-8">Avg. timing error: {avgError} ms over {TRIALS} trials</p>
-        <button type="button" onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
-          <RotateCcw size={18} /> Try Again
-        </button>
-      </div>
+      <EnhancedResultCard
+        score={finalScore}
+        scoreLabel="%"
+        level={level}
+        percentile={percentile}
+        motivation={motivation}
+        comparisonMessage={`Average timing error: ${avgError} ms over ${TRIALS} trials.`}
+        onRetry={startGame}
+        testId="anticipation"
+        suggestedTests={getSuggestedTests('anticipation')}
+        shareMessage={shareMsg}
+        additionalStats={[
+          { label: 'Avg Error', value: `${avgError} ms` },
+          { label: 'Trials', value: TRIALS },
+          { label: 'Accuracy', value: `${finalScore}%` },
+        ]}
+      />
     );
   }
 

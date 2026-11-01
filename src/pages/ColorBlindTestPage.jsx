@@ -53,10 +53,8 @@ const ColorBlindTestPage = () => {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your color blindness test stats?')) {
-      setStats({ bestScore: null, latestScore: null, averageScore: null, attempts: 0, allScores: [] });
-      localStorage.removeItem('colorBlindTestStats');
-    }
+    setStats({ bestScore: null, latestScore: null, averageScore: null, attempts: 0, allScores: [] });
+    localStorage.removeItem('colorBlindTestStats');
   };
 
   const faqs = [

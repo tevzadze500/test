@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, Ear, AlertCircle, RotateCcw } from 'lucide-react';
+import { Volume2, Ear, AlertCircle, RotateCcw, Target } from 'lucide-react';
+import EnhancedResultCard from '../EnhancedResultCard';
+import {
+  getAuditoryReactionLevel,
+  getAuditoryReactionPercentile,
+  getAuditoryReactionMotivation,
+  generateShareMessage,
+  getSuggestedTests,
+} from '../../utils/scoreUtils';
 
 const STATES = {
   IDLE: 'idle',
@@ -25,11 +33,24 @@ const getRating = (ms) => {
 const AuditoryReactionTestArea = ({ onResult }) => {
   const [state, setState] = useState(STATES.IDLE);
   const [reaction, setReaction] = useState(null);
+  const [challengeTarget, setChallengeTarget] = useState(null);
   const timeoutRef = useRef(null);
   const startRef = useRef(null);
   const audioCtxRef = useRef(null);
 
   useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const beatVal = parseInt(params.get('beat') || params.get('challenge'), 10);
+        if (!isNaN(beatVal) && beatVal >= 50 && beatVal <= 999) {
+          setChallengeTarget(beatVal);
+        }
+      }
+    } catch (e) {
+      /* ignore */
+    }
+
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       if (audioCtxRef.current && audioCtxRef.current.state !== 'closed') {
@@ -144,20 +165,40 @@ const AuditoryReactionTestArea = ({ onResult }) => {
   }[state];
 
   if (state === STATES.RESULT && reaction != null) {
-    const rating = getRating(reaction);
+    const level = getAuditoryReactionLevel(reaction);
+    const percentile = getAuditoryReactionPercentile(reaction);
+    const motivation = getAuditoryReactionMotivation(reaction);
+    const shareMsg = generateShareMessage('Auditory Reaction Test', `${reaction}ms`, level.name, '/test/auditory-reaction');
+    const isBeaten = challengeTarget && reaction < challengeTarget;
+
     return (
-      <div className="bg-gradient-to-br from-dark-800 to-dark-900 border-2 border-green-500/40 rounded-xl sm:rounded-2xl p-8 sm:p-12 min-h-[400px] sm:min-h-[500px] flex flex-col items-center justify-center text-center">
-        <Volume2 size={56} className="text-green-500 mb-4" />
-        <p className="text-dark-400 text-sm mb-2">Your auditory reaction time</p>
-        <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{reaction}<span className="text-2xl text-dark-400 ml-1">ms</span></div>
-        <div className={`text-lg font-semibold mb-8 ${rating.color}`}>{rating.name}</div>
-        <button
-          type="button"
-          onClick={handleClick}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
-        >
-          <RotateCcw size={18} /> Try Again
-        </button>
+      <div className="space-y-4">
+        {challengeTarget && (
+          <div className={`p-4 rounded-xl border flex items-center justify-center gap-3 text-center ${
+            isBeaten 
+              ? 'bg-green-500/15 border-green-500/30 text-green-300' 
+              : 'bg-yellow-500/15 border-yellow-500/30 text-yellow-300'
+          }`}>
+            <Target size={20} className={isBeaten ? 'text-green-400' : 'text-yellow-400'} />
+            <span className="font-semibold text-sm sm:text-base">
+              {isBeaten 
+                ? `🏆 Challenge beaten! You reacted in ${reaction} ms, beating the target of ${challengeTarget} ms by ${challengeTarget - reaction} ms!`
+                : `Target was ${challengeTarget} ms. You were ${reaction - challengeTarget} ms away. Try again!`}
+            </span>
+          </div>
+        )}
+        <EnhancedResultCard
+          score={reaction}
+          scoreLabel="ms"
+          level={level}
+          percentile={percentile}
+          motivation={motivation}
+          comparisonMessage={`Acoustic cues reach processing cortex in ~8–10 ms, making sound reactions faster than light.`}
+          onRetry={handleClick}
+          testId="auditory-reaction"
+          suggestedTests={getSuggestedTests('auditory-reaction')}
+          shareMessage={shareMsg}
+        />
       </div>
     );
   }
@@ -173,6 +214,11 @@ const AuditoryReactionTestArea = ({ onResult }) => {
       className={`relative overflow-hidden ${config.bg} ${config.border} cursor-pointer border-2 rounded-xl sm:rounded-2xl p-8 sm:p-12 md:p-20 transition-all duration-200 flex flex-col items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px] select-none touch-manipulation focus:outline-none focus-visible:ring-4 focus-visible:ring-green-500/50`}
     >
       <div className="relative z-10 text-center px-4">
+        {challengeTarget && state === STATES.IDLE && (
+          <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 text-sm font-semibold">
+            <Target size={16} /> Challenge: Beat {challengeTarget} ms!
+          </div>
+        )}
         {config.icon}
         <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${config.color} mb-2 sm:mb-3`}>{config.title}</h2>
         {config.message && <p className="text-lg sm:text-xl md:text-2xl text-dark-300 mb-2">{config.message}</p>}

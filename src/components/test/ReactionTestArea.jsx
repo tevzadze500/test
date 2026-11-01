@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Zap, Clock, AlertCircle } from 'lucide-react';
+import { Zap, Clock, AlertCircle, Target, Monitor } from 'lucide-react';
 import EnhancedResultCard from '../EnhancedResultCard';
+import useScreenRefreshRate from '../../hooks/useScreenRefreshRate';
 import { 
   getReactionTimeLevel, 
   getReactionTimePercentile, 
@@ -22,10 +23,24 @@ const ReactionTestArea = ({ onResult }) => {
   const [state, setState] = useState(TEST_STATES.IDLE);
   const [reactionTime, setReactionTime] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [challengeTarget, setChallengeTarget] = useState(null);
   const timeoutRef = useRef(null);
   const startTimeRef = useRef(null);
+  const refreshRate = useScreenRefreshRate();
 
   useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const beatVal = parseInt(params.get('beat') || params.get('challenge'), 10);
+        if (!isNaN(beatVal) && beatVal >= 50 && beatVal <= 999) {
+          setChallengeTarget(beatVal);
+        }
+      }
+    } catch (e) {
+      /* ignore */
+    }
+
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -148,22 +163,39 @@ const ReactionTestArea = ({ onResult }) => {
     const percentile = getReactionTimePercentile(reactionTime);
     const motivation = getReactionTimeMotivation(reactionTime, null);
     const comparisonMessage = getComparisonMessage(percentile);
-    const shareMessage = generateShareMessage('Reaction Time Test', `${reactionTime}ms`, level.name);
+    const shareMessage = generateShareMessage('Reaction Time Test', `${reactionTime}ms`, level.name, '/test/reaction-time');
     const suggestedTests = getSuggestedTests('reaction-time');
+    const isBeaten = challengeTarget && reactionTime < challengeTarget;
 
     return (
-      <EnhancedResultCard
-        score={reactionTime}
-        scoreLabel="ms"
-        level={level}
-        percentile={percentile}
-        motivation={motivation}
-        comparisonMessage={comparisonMessage}
-        onRetry={handleRetry}
-        testId="reaction-time"
-        suggestedTests={suggestedTests}
-        shareMessage={shareMessage}
-      />
+      <div className="space-y-4">
+        {challengeTarget && (
+          <div className={`p-4 rounded-xl border flex items-center justify-center gap-3 text-center ${
+            isBeaten 
+              ? 'bg-green-500/15 border-green-500/30 text-green-300' 
+              : 'bg-yellow-500/15 border-yellow-500/30 text-yellow-300'
+          }`}>
+            <Target size={20} className={isBeaten ? 'text-green-400' : 'text-yellow-400'} />
+            <span className="font-semibold text-sm sm:text-base">
+              {isBeaten 
+                ? `🏆 Challenge beaten! You reacted in ${reactionTime} ms, beating the target of ${challengeTarget} ms by ${challengeTarget - reactionTime} ms!`
+                : `Target was ${challengeTarget} ms. You were ${reactionTime - challengeTarget} ms away. Try again!`}
+            </span>
+          </div>
+        )}
+        <EnhancedResultCard
+          score={reactionTime}
+          scoreLabel="ms"
+          level={level}
+          percentile={percentile}
+          motivation={motivation}
+          comparisonMessage={comparisonMessage}
+          onRetry={handleRetry}
+          testId="reaction-time"
+          suggestedTests={suggestedTests}
+          shareMessage={shareMessage}
+        />
+      </div>
     );
   }
 
@@ -209,6 +241,11 @@ const ReactionTestArea = ({ onResult }) => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4">
+        {challengeTarget && state === TEST_STATES.IDLE && (
+          <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 text-sm font-semibold">
+            <Target size={16} /> Challenge: Beat {challengeTarget} ms!
+          </div>
+        )}
         {config.icon}
         {/* Live status readout, not a section heading: this text cycles through
             "Wait for it...", "CLICK NOW!" and "Too Early!" as the test runs. */}
@@ -224,6 +261,13 @@ const ReactionTestArea = ({ onResult }) => {
           <p className="text-sm md:text-base text-dark-400 mt-3 sm:mt-4">
             {config.submessage}
           </p>
+        )}
+
+        {refreshRate && state === TEST_STATES.IDLE && (
+          <div className="mt-6 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-900/60 border border-dark-700/60 text-xs text-dark-400">
+            <Monitor size={12} className="text-green-400" />
+            <span>Display: <strong className="text-dark-200">{refreshRate.label}</strong></span>
+          </div>
         )}
       </div>
 

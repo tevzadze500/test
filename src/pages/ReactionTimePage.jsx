@@ -57,16 +57,14 @@ const ReactionTimePage = () => {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your stats?')) {
-      setStats({
-        best: null,
-        average: null,
-        latest: null,
-        attempts: 0,
-        allScores: [],
-      });
-      localStorage.removeItem('reactionTimeStats');
-    }
+    setStats({
+      best: null,
+      average: null,
+      latest: null,
+      attempts: 0,
+      allScores: [],
+    });
+    localStorage.removeItem('reactionTimeStats');
   };
 
   return (

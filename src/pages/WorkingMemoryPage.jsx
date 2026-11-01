@@ -28,6 +28,7 @@ const faqs = [
 
 const WorkingMemoryPage = () => {
   const [stats, setStats] = useState({ best: null, latest: null, attempts: 0 });
+  const [isConfirmingReset, setIsConfirmingReset] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('workingMemoryStats');
@@ -49,10 +50,8 @@ const WorkingMemoryPage = () => {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your stats?')) {
-      setStats({ best: null, latest: null, attempts: 0 });
-      localStorage.removeItem('workingMemoryStats');
-    }
+    setStats({ best: null, latest: null, attempts: 0 });
+    localStorage.removeItem('workingMemoryStats');
   };
 
   return (
@@ -129,9 +128,28 @@ const WorkingMemoryPage = () => {
               </div>
             </div>
             {stats.attempts > 0 && (
-              <button type="button" onClick={handleReset} className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-lg text-sm text-dark-300 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
-                <RotateCcw size={14} /> Reset stats
-              </button>
+              isConfirmingReset ? (
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => { setIsConfirmingReset(false); handleReset(); }}
+                    className="flex-1 py-2 bg-red-600 hover:bg-red-700 text-xs text-white font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
+                  >
+                    Confirm Reset?
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsConfirmingReset(false)}
+                    className="px-3 py-2 bg-dark-800 hover:bg-dark-700 text-xs text-dark-300 rounded-lg transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <button type="button" onClick={() => setIsConfirmingReset(true)} className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 rounded-lg text-sm text-dark-300 hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
+                  <RotateCcw size={14} /> Reset stats
+                </button>
+              )
             )}
           </div>
         </div>

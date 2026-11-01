@@ -15,6 +15,14 @@ import SiteFooter from '../components/SiteFooter';
  */
 const posts = [
   {
+    title: 'Auditory vs. Visual Reaction Time: Why Sound Beats Sight by 40 ms',
+    path: '/blog/auditory-vs-visual-reaction-time',
+    datePublished: '2026-11-01',
+    excerpt:
+      'Sound signals reach your auditory cortex in 8–10 ms, while the retina takes 20–40 ms just to chemically convert photons. The biology, lab benchmarks, and what it means for gaming and sports.',
+    readingTime: '5 min read',
+  },
+  {
     title: 'How to Improve Your Reaction Time for Gaming: What Actually Works',
     path: '/blog/improve-reaction-time-gaming',
     datePublished: '2026-10-18',

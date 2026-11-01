@@ -156,9 +156,92 @@ export const getColorBlindMotivation = (score) => {
   return "Significant color vision differences. Please see an eye care professional.";
 };
 
-// General Share Message Generator
-export const generateShareMessage = (testName, score, level) => {
-  return `I just scored ${score} on ${testName} at ReactionTestPro.\nRank: ${level}\n\nCan you beat me? Try it now!`;
+// Auditory Reaction Test Utilities (Sound travels into auditory cortex in ~8-10ms vs ~20-40ms for retina)
+export const getAuditoryReactionLevel = (ms) => {
+  if (ms < 160) return { name: 'Sonic Reflexes', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (ms < 190) return { name: 'Elite Hearing', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (ms < 230) return { name: 'Fast Responder', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (ms < 280) return { name: 'Average Hearing', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
+  return { name: 'Room to Improve', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+};
+
+export const getAuditoryReactionPercentile = (ms) => {
+  if (ms < 150) return 99;
+  if (ms < 170) return 95;
+  if (ms < 190) return 88;
+  if (ms < 210) return 75;
+  if (ms < 240) return 60;
+  if (ms < 280) return 42;
+  if (ms < 320) return 25;
+  return 10;
+};
+
+export const getAuditoryReactionMotivation = (ms) => {
+  if (ms < 160) return "Lightning-fast auditory processing. Sound signals are reaching your motor cortex instantaneously.";
+  if (ms < 190) return "Superb acoustic reflexes. That beats the typical sound reaction benchmark.";
+  if (ms < 230) return "Solid auditory reaction speed. Faster than standard visual response times.";
+  if (ms < 280) return "Average hearing response speed. Try with headphones in a quiet room.";
+  return "Take a breath, ensure your audio volume is comfortable, and try again.";
+};
+
+// Anticipation Timing Test Utilities
+export const getAnticipationLevel = (score) => {
+  if (score >= 90) return { name: 'Precise Master', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (score >= 80) return { name: 'Sharp Timing', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (score >= 65) return { name: 'Good Rhythm', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (score >= 50) return { name: 'Steady', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
+  return { name: 'Needs Practice', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+};
+
+export const getAnticipationPercentile = (score) => {
+  if (score >= 95) return 98;
+  if (score >= 90) return 92;
+  if (score >= 80) return 80;
+  if (score >= 65) return 60;
+  if (score >= 50) return 40;
+  return 15;
+};
+
+export const getAnticipationMotivation = (score, avgError) => {
+  if (score >= 90) return "Flawless temporal estimation. Your internal clock predicts motion almost perfectly.";
+  if (score >= 80) return "Great anticipation timing. You track occluded velocity with high accuracy.";
+  if (score >= 65) return "Good timing accuracy. You stay within a tight millisecond window.";
+  return "Coincidence timing takes practice. Track the marker speed before it disappears.";
+};
+
+// Working Memory Span Test Utilities
+export const getMemoryLevel = (span) => {
+  if (span >= 9) return { name: 'Genius Tier', color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30' };
+  if (span >= 7) return { name: 'Exceptional', color: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/30' };
+  if (span >= 5) return { name: 'Solid Memory', color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30' };
+  if (span >= 4) return { name: 'Average Span', color: 'text-yellow-400', bg: 'bg-yellow-500/10', border: 'border-yellow-500/30' };
+  return { name: 'Practicing', color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/30' };
+};
+
+export const getMemoryPercentile = (span) => {
+  if (span >= 10) return 99;
+  if (span >= 9) return 95;
+  if (span >= 8) return 90;
+  if (span >= 7) return 75;
+  if (span >= 6) return 60;
+  if (span >= 5) return 45;
+  if (span >= 4) return 30;
+  return 10;
+};
+
+export const getMemoryMotivation = (span) => {
+  if (span >= 9) return "Outstanding working memory capacity! You hold sequences beyond the classic 7 ± 2 limit.";
+  if (span >= 7) return "Excellent short-term memory span — squarely in the upper tier of cognitive capacity.";
+  if (span >= 5) return "Good working memory. Typical adults hold between 5 and 7 items.";
+  return "Chunking and focused attention will quickly improve your sequence span.";
+};
+
+// General Share Message Generator with Challenge URL
+export const generateShareMessage = (testName, score, level, path = '') => {
+  const cleanScore = typeof score === 'number' ? score : parseInt(score, 10);
+  const challengeParam = !isNaN(cleanScore) ? `?beat=${cleanScore}` : '';
+  const url = path ? `https://reactiontestpro.com${path}${challengeParam}` : 'https://reactiontestpro.com/';
+  return `I just scored ${score} on ${testName} at ReactionTestPro!\nRank: ${level}\n\nCan you beat my score? Try it here: ${url}`;
 };
 
 // Get suggested tests based on current test.
@@ -167,18 +250,33 @@ export const getSuggestedTests = (currentTestId) => {
   const suggestions = {
     'reaction-time': [
       { id: 'f1-reaction', name: 'Start Lights Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+      { id: 'auditory-reaction', name: 'Auditory Reaction', iconId: 'auditory-reaction', path: '/test/auditory-reaction' },
       { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
-      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
     'f1-reaction': [
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'auditory-reaction', name: 'Auditory Reaction', iconId: 'auditory-reaction', path: '/test/auditory-reaction' },
       { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+    ],
+    'auditory-reaction': [
+      { id: 'reaction-time', name: 'Visual Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'hearing-test', name: 'Hearing Frequency Test', iconId: 'hearing-test', path: '/test/hearing' },
+      { id: 'f1-reaction', name: 'Start Lights Reaction', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+    ],
+    'anticipation': [
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
+      { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'f1-reaction', name: 'Start Lights', iconId: 'f1-reaction', path: '/test/f1-reaction' },
+    ],
+    'memory': [
       { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
+      { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
     ],
     'adhd': [
       { id: 'go-no-go', name: 'Go/No-Go Test', iconId: 'go-no-go', path: '/test/go-no-go' },
+      { id: 'memory-test', name: 'Memory Test', iconId: 'memory-test', path: '/test/memory' },
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
-      { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
     ],
     'vision': [
       { id: 'color-blind-test', name: 'Color Blind Test', iconId: 'color-blind-test', path: '/test/color-blind' },
@@ -196,9 +294,9 @@ export const getSuggestedTests = (currentTestId) => {
       { id: 'f1-reaction', name: 'Start Lights', iconId: 'f1-reaction', path: '/test/f1-reaction' },
     ],
     'hearing': [
+      { id: 'auditory-reaction', name: 'Auditory Reaction', iconId: 'auditory-reaction', path: '/test/auditory-reaction' },
       { id: 'reaction-time', name: 'Reaction Time', iconId: 'reaction-time', path: '/test/reaction-time' },
       { id: 'vision-test', name: 'Vision Test', iconId: 'vision-test', path: '/test/vision' },
-      { id: 'adhd-test', name: 'ADHD Test', iconId: 'adhd-test', path: '/test/adhd' },
     ],
   };
 

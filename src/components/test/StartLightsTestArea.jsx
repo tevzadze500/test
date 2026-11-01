@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Zap, AlertCircle, RotateCcw } from 'lucide-react';
+import { Play, Zap, AlertCircle, RotateCcw, Target, Monitor } from 'lucide-react';
 import EnhancedResultCard from '../EnhancedResultCard';
+import useScreenRefreshRate from '../../hooks/useScreenRefreshRate';
 import {
   getStartLightsLevel,
   getReactionTimePercentile,
@@ -78,8 +79,23 @@ const StartLightsTestArea = ({ onResult }) => {
   const [phase, setPhase] = useState(PHASES.IDLE);
   const [redRows, setRedRows] = useState(0); // 0-3 red rows currently lit
   const [reactionTime, setReactionTime] = useState(null);
-
+  const [challengeTarget, setChallengeTarget] = useState(null);
   const goAtRef = useRef(0);
+  const refreshRate = useScreenRefreshRate();
+
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const beatVal = parseInt(params.get('beat') || params.get('challenge'), 10);
+        if (!isNaN(beatVal) && beatVal >= 50 && beatVal <= 999) {
+          setChallengeTarget(beatVal);
+        }
+      }
+    } catch (e) {
+      /* ignore */
+    }
+  }, []);
 
   /**
    * Drives the whole sequence. Every branch returns its own cleanup, so changing
@@ -192,6 +208,11 @@ const StartLightsTestArea = ({ onResult }) => {
         {/* ---------- IDLE ---------- */}
         {phase === PHASES.IDLE && (
           <div className="space-y-6">
+            {challengeTarget && (
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 text-sm font-semibold">
+                <Target size={16} /> Challenge: Beat {challengeTarget} ms!
+              </div>
+            )}
             <LightTower redRows={0} greenOn={false} />
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
               Reaction Light Tower
@@ -200,17 +221,25 @@ const StartLightsTestArea = ({ onResult }) => {
               Three red lights drop one by one. The instant they switch to{' '}
               <span className="text-green-400 font-semibold">green</span> — react.
             </p>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                startTest();
-              }}
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-red-500/30 text-base sm:text-lg touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
-            >
-              <Play size={20} className="sm:w-6 sm:h-6" />
-              <span>Start Engine</span>
-            </button>
+            <div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  startTest();
+                }}
+                className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-lg sm:rounded-xl transition-all shadow-lg shadow-red-500/30 text-base sm:text-lg touch-manipulation min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
+              >
+                <Play size={20} className="sm:w-6 sm:h-6" />
+                <span>Start Engine</span>
+              </button>
+            </div>
+            {refreshRate && (
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-900/60 border border-dark-700/60 text-xs text-dark-400">
+                <Monitor size={12} className="text-red-400" />
+                <span>Display: <strong className="text-dark-200">{refreshRate.label}</strong></span>
+              </div>
+            )}
           </div>
         )}
 
@@ -243,7 +272,21 @@ const StartLightsTestArea = ({ onResult }) => {
 
         {/* ---------- RESULT ---------- */}
         {phase === PHASES.RESULT && (
-          <div className="w-full">
+          <div className="w-full space-y-4">
+            {challengeTarget && (
+              <div className={`p-4 rounded-xl border flex items-center justify-center gap-3 text-center ${
+                reactionTime < challengeTarget
+                  ? 'bg-green-500/15 border-green-500/30 text-green-300' 
+                  : 'bg-yellow-500/15 border-yellow-500/30 text-yellow-300'
+              }`}>
+                <Target size={20} className={reactionTime < challengeTarget ? 'text-green-400' : 'text-yellow-400'} />
+                <span className="font-semibold text-sm sm:text-base">
+                  {reactionTime < challengeTarget
+                    ? `🏆 Challenge beaten! You launched in ${reactionTime} ms, beating the target of ${challengeTarget} ms by ${challengeTarget - reactionTime} ms!`
+                    : `Target was ${challengeTarget} ms. You were ${reactionTime - challengeTarget} ms away. Try again!`}
+                </span>
+              </div>
+            )}
             <EnhancedResultCard
               score={reactionTime}
               scoreLabel="ms"
@@ -260,7 +303,8 @@ const StartLightsTestArea = ({ onResult }) => {
               shareMessage={generateShareMessage(
                 'Start Lights Reaction Test',
                 `${reactionTime}ms`,
-                getStartLightsLevel(reactionTime).name
+                getStartLightsLevel(reactionTime).name,
+                '/test/f1-reaction'
               )}
             />
           </div>

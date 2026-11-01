@@ -69,10 +69,8 @@ export default function useStartLightsStats() {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your stats?')) {
-      setStats(EMPTY_STATS);
-      localStorage.removeItem(STORAGE_KEY);
-    }
+    setStats(EMPTY_STATS);
+    localStorage.removeItem(STORAGE_KEY);
   };
 
   return { stats, handleResult, handleReset };

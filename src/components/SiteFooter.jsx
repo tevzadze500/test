@@ -52,6 +52,7 @@ const navColumns = [
       { name: 'Average Reaction Time by Age', path: '/blog/average-reaction-time-by-age' },
       { name: 'Reaction Time in Sport', path: '/blog/reaction-time-crucial' },
       { name: 'Improve Gaming Reaction Time', path: '/blog/improve-reaction-time-gaming' },
+      { name: 'Auditory vs Visual Reaction Time', path: '/blog/auditory-vs-visual-reaction-time' },
     ],
   },
 ];

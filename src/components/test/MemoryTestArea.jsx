@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Brain, Play, RotateCcw } from 'lucide-react';
+import EnhancedResultCard from '../EnhancedResultCard';
+import {
+  getMemoryLevel,
+  getMemoryPercentile,
+  getMemoryMotivation,
+  generateShareMessage,
+  getSuggestedTests,
+} from '../../utils/scoreUtils';
 
 const TILES = Array.from({ length: 9 }, (_, i) => i);
 const START_LEN = 3; // first sequence length
@@ -78,22 +86,28 @@ const MemoryTestArea = ({ onResult }) => {
   const currentLen = sequence.length;
 
   if (phase === 'gameover') {
-    const rating =
-      finalSpan >= 9 ? { name: 'Exceptional memory', color: 'text-purple-400' }
-      : finalSpan >= 7 ? { name: 'Excellent', color: 'text-green-400' }
-      : finalSpan >= 5 ? { name: 'Good', color: 'text-blue-400' }
-      : finalSpan >= 4 ? { name: 'Average', color: 'text-yellow-400' }
-      : { name: 'Keep practicing', color: 'text-orange-400' };
+    const level = getMemoryLevel(finalSpan);
+    const percentile = getMemoryPercentile(finalSpan);
+    const motivation = getMemoryMotivation(finalSpan);
+    const shareMsg = generateShareMessage('Working Memory Test', `${finalSpan} items`, level.name, '/test/memory');
+
     return (
-      <div className="bg-gradient-to-br from-dark-800 to-dark-900 border-2 border-green-500/40 rounded-xl sm:rounded-2xl p-8 sm:p-12 min-h-[400px] sm:min-h-[520px] flex flex-col items-center justify-center text-center">
-        <Brain size={56} className="text-green-500 mb-4" />
-        <p className="text-dark-400 text-sm mb-2">Your memory span</p>
-        <div className="text-6xl sm:text-7xl font-bold text-white mb-2">{finalSpan}<span className="text-2xl text-dark-400 ml-2">items</span></div>
-        <div className={`text-lg font-semibold mb-8 ${rating.color}`}>{rating.name}</div>
-        <button type="button" onClick={startGame} className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg text-white font-bold transition-colors min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400">
-          <RotateCcw size={18} /> Try Again
-        </button>
-      </div>
+      <EnhancedResultCard
+        score={finalSpan}
+        scoreLabel="items"
+        level={level}
+        percentile={percentile}
+        motivation={motivation}
+        comparisonMessage={finalSpan >= 7 ? "You reached or exceeded the classic 7 ± 2 Miller limit." : "Adult average memory span is typically 5 to 7 digits."}
+        onRetry={startGame}
+        testId="memory"
+        suggestedTests={getSuggestedTests('memory')}
+        shareMessage={shareMsg}
+        additionalStats={[
+          { label: 'Rounds', value: level },
+          { label: 'Span', value: `${finalSpan} items` },
+        ]}
+      />
     );
   }
 

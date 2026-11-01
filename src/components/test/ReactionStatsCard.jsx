@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trophy, Target, BarChart3, Hash, RotateCcw, Lightbulb, ArrowRight } from 'lucide-react';
 
 const ReactionStatsCard = ({ stats, onReset }) => {
+  const [isConfirmingReset, setIsConfirmingReset] = useState(false);
   const getScoreColor = (score) => {
     if (!score) return 'text-dark-400';
     if (score < 200) return 'text-green-500';
@@ -118,14 +119,36 @@ const ReactionStatsCard = ({ stats, onReset }) => {
               </Link>
             </div>
             {onReset && stats.attempts > 0 && (
-              <button
-                type="button"
-                onClick={onReset}
-                className="flex items-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 rounded-lg text-sm text-dark-300 hover:text-white transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-              >
-                <RotateCcw size={14} />
-                <span>Reset</span>
-              </button>
+              isConfirmingReset ? (
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsConfirmingReset(false);
+                      onReset();
+                    }}
+                    className="px-2.5 py-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
+                  >
+                    Confirm?
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsConfirmingReset(false)}
+                    className="px-2 py-1.5 bg-dark-800 hover:bg-dark-700 text-dark-300 hover:text-white text-xs rounded-lg transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsConfirmingReset(true)}
+                  className="flex items-center gap-2 px-3 py-2 bg-dark-800 hover:bg-dark-700 border border-dark-700 hover:border-dark-600 rounded-lg text-sm text-dark-300 hover:text-white transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                >
+                  <RotateCcw size={14} />
+                  <span>Reset</span>
+                </button>
+              )
             )}
           </div>
         </div>

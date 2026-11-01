@@ -55,10 +55,8 @@ const AuditoryReactionPage = () => {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your stats?')) {
-      setStats({ best: null, average: null, latest: null, attempts: 0, allScores: [] });
-      localStorage.removeItem('auditoryReactionStats');
-    }
+    setStats({ best: null, average: null, latest: null, attempts: 0, allScores: [] });
+    localStorage.removeItem('auditoryReactionStats');
   };
 
   return (
@@ -151,13 +149,19 @@ const AuditoryReactionPage = () => {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center"><Ear className="text-white" size={20} /></div>
               <h3 className="text-xl font-bold text-white">Auditory vs. Visual Reaction Time</h3>
             </div>
-            <p className="text-dark-300 leading-relaxed">
+            <p className="text-dark-300 leading-relaxed mb-4">
               Reaction to sound is usually faster than reaction to a visual cue: auditory signals reach the motor cortex
               through a shorter neural pathway, and comparative studies such as{' '}
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4456887/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 underline">Jain et al. (2015)</a>{' '}
               measured faster times to a tone than to a light in the same participants. This is exactly why athletics
               sprints start with a gun and not a light — the auditory channel shaves precious milliseconds off every
               competitor's launch.
+            </p>
+            <p className="text-dark-300 leading-relaxed">
+              Want the full biological breakdown and laboratory charts? Read our complete guide to{' '}
+              <Link to="/blog/auditory-vs-visual-reaction-time" className="text-green-400 hover:text-green-300 underline font-semibold">
+                auditory vs. visual reaction time and why sound beats sight by 40 ms
+              </Link>.
             </p>
           </section>
 

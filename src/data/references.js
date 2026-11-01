@@ -34,6 +34,12 @@ export const benchmarkSources = {
     text: 'Der G, Deary IJ. Age and sex differences in reaction time in adulthood: results from the United Kingdom Health and Lifestyle Survey. Psychology and Aging, 21(1):62–73. doi:10.1037/0882-7974.21.1.62',
     href: 'https://pubmed.ncbi.nlm.nih.gov/16594792/',
   },
+  kemp: {
+    id: 'kemp-1973',
+    label: 'Kemp (1973)',
+    text: 'Kemp BJ. Reaction time of young and elderly subjects in relation to changes in auditory and visual stimulation. Journal of Experimental Psychology, 100(2):268–272.',
+    href: 'https://pubmed.ncbi.nlm.nih.gov/4751412/',
+  },
 };
 
 /**

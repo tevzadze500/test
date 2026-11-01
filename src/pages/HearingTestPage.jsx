@@ -65,17 +65,15 @@ const HearingTestPage = () => {
   };
 
   const handleReset = () => {
-    if (window.confirm('Are you sure you want to reset all your hearing test stats?')) {
-      setStats({
-        bestScore: null,
-        latestScore: null,
-        averageScore: null,
-        highestFrequency: null,
-        attempts: 0,
-        allScores: [],
-      });
-      localStorage.removeItem('hearingTestStats');
-    }
+    setStats({
+      bestScore: null,
+      latestScore: null,
+      averageScore: null,
+      highestFrequency: null,
+      attempts: 0,
+      allScores: [],
+    });
+    localStorage.removeItem('hearingTestStats');
   };
 
   const faqs = [
