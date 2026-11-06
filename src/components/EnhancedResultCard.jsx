@@ -10,6 +10,8 @@ import {
   Zap,
   Lightbulb,
   CircleUser,
+  Swords,
+  Copy,
 } from 'lucide-react';
 import TestIcon from './icons/TestIcon';
 
@@ -33,6 +35,7 @@ const EnhancedResultCard = ({
   children
 }) => {
   const [copied, setCopied] = useState(false);
+  const [copiedChallenge, setCopiedChallenge] = useState(false);
 
   const handleShare = async () => {
     try {
@@ -43,6 +46,21 @@ const EnhancedResultCard = ({
       }
     } catch (err) {
       console.error('Failed to copy:', err);
+    }
+  };
+
+  const handleChallenge = async () => {
+    try {
+      const origin = typeof window !== 'undefined' ? window.location.origin : 'https://reactiontestpro.com';
+      const challengeUrl = `${origin}/?beat=${score}`;
+      const text = `⚔️ I just scored ${score} ${scoreLabel} on ReactionTestPro! Can you beat my reflex score? Play here: ${challengeUrl}`;
+      if (navigator.clipboard) {
+        await navigator.clipboard.writeText(text);
+        setCopiedChallenge(true);
+        setTimeout(() => setCopiedChallenge(false), 2500);
+      }
+    } catch (err) {
+      console.error('Failed to copy challenge link:', err);
     }
   };
 
@@ -157,6 +175,37 @@ const EnhancedResultCard = ({
             )}
           </div>
         )}
+      </div>
+
+      {/* Challenge a Friend Viral Box */}
+      <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border border-blue-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left shadow-lg shadow-blue-500/5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center shrink-0">
+            <Swords className="text-blue-400" size={20} />
+          </div>
+          <div>
+            <div className="font-bold text-white text-sm sm:text-base">Défier un ami / Challenge a Friend</div>
+            <div className="text-xs text-dark-300">Envoie ton score de {score} {scoreLabel} à battre sur Discord ou WhatsApp</div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          onClick={handleChallenge}
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 active:scale-95 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all touch-manipulation min-h-[44px]"
+        >
+          {copiedChallenge ? (
+            <>
+              <Check size={16} className="text-white" />
+              <span>Lien copié ! Partage-le ⚔️</span>
+            </>
+          ) : (
+            <>
+              <Copy size={16} />
+              <span>Copier le lien de défi</span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* Action Buttons */}

@@ -23,6 +23,7 @@ const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const GscStatsPage = lazy(() => import('./pages/GscStatsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 const PageLoader = () => (
@@ -64,5 +65,6 @@ export const routes = [
   { path: '/terms', element: page(TermsPage) },
   { path: '/about', element: page(AboutPage) },
   { path: '/contact', element: page(ContactPage) },
+  { path: '/admin/stats', element: page(GscStatsPage) },
   { path: '*', element: page(NotFoundPage) },
 ];
