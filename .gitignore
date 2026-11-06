@@ -11,9 +11,10 @@ dist
 !.env.example
 *.json.key
 *service*account*.json
-*gsc*.json
 credentials.json
 reactiontestpro-seo-*.json
+*gsc*key*.json
+*gsc*secret*.json
 
 # Editor directories and files
 .vscode/*

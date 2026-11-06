@@ -1,0 +1,410 @@
+{
+  "updatedAt": "2026-11-06T18:30:29.334Z",
+  "siteUrl": "https://reactiontestpro.com/",
+  "startDate": "2026-10-07",
+  "endDate": "2026-11-04",
+  "summary": {
+    "clicks": 1164,
+    "impressions": 75338,
+    "ctr": 0.01545037033104144,
+    "position": 8.93126974435212
+  },
+  "daily": [
+    {
+      "date": "2026-10-25",
+      "clicks": 47,
+      "impressions": 3268,
+      "ctr": 0.01438188494492044,
+      "position": 8.980416156670746
+    },
+    {
+      "date": "2026-10-26",
+      "clicks": 57,
+      "impressions": 3892,
+      "ctr": 0.014645426515930112,
+      "position": 8.886433710174718
+    },
+    {
+      "date": "2026-10-27",
+      "clicks": 60,
+      "impressions": 4416,
+      "ctr": 0.01358695652173913,
+      "position": 8.750452898550725
+    },
+    {
+      "date": "2026-10-28",
+      "clicks": 42,
+      "impressions": 3542,
+      "ctr": 0.011857707509881422,
+      "position": 8.618012422360248
+    },
+    {
+      "date": "2026-10-29",
+      "clicks": 102,
+      "impressions": 6175,
+      "ctr": 0.01651821862348178,
+      "position": 8.167773279352227
+    },
+    {
+      "date": "2026-10-30",
+      "clicks": 56,
+      "impressions": 3899,
+      "ctr": 0.01436265709156194,
+      "position": 8.964862785329572
+    },
+    {
+      "date": "2026-10-31",
+      "clicks": 43,
+      "impressions": 2838,
+      "ctr": 0.015151515151515152,
+      "position": 8.754404510218464
+    },
+    {
+      "date": "2026-11-01",
+      "clicks": 26,
+      "impressions": 2048,
+      "ctr": 0.0126953125,
+      "position": 8.5625
+    },
+    {
+      "date": "2026-11-02",
+      "clicks": 42,
+      "impressions": 2205,
+      "ctr": 0.01904761904761905,
+      "position": 8.620408163265306
+    },
+    {
+      "date": "2026-11-03",
+      "clicks": 41,
+      "impressions": 1862,
+      "ctr": 0.02201933404940924,
+      "position": 8.966702470461868
+    },
+    {
+      "date": "2026-11-04",
+      "clicks": 38,
+      "impressions": 2120,
+      "ctr": 0.017924528301886792,
+      "position": 8.815566037735849
+    }
+  ],
+  "queries": [
+    {
+      "query": "reaction time test",
+      "clicks": 260,
+      "impressions": 25782,
+      "ctr": 0.010084555115972383,
+      "position": 9.227096423861608
+    },
+    {
+      "query": "reaction test",
+      "clicks": 53,
+      "impressions": 4147,
+      "ctr": 0.01278032312515071,
+      "position": 8.657824933687003
+    },
+    {
+      "query": "valorant reaction time test",
+      "clicks": 28,
+      "impressions": 1012,
+      "ctr": 0.02766798418972332,
+      "position": 8.09486166007905
+    },
+    {
+      "query": "reaction test pro",
+      "clicks": 16,
+      "impressions": 30,
+      "ctr": 0.5333333333333333,
+      "position": 1.2
+    },
+    {
+      "query": "fast reaction test",
+      "clicks": 12,
+      "impressions": 213,
+      "ctr": 0.056338028169014086,
+      "position": 7.131455399061033
+    },
+    {
+      "query": "valorant reaction test",
+      "clicks": 9,
+      "impressions": 163,
+      "ctr": 0.05521472392638037,
+      "position": 8.165644171779142
+    },
+    {
+      "query": "valorant reflex test",
+      "clicks": 8,
+      "impressions": 208,
+      "ctr": 0.038461538461538464,
+      "position": 7.360576923076923
+    },
+    {
+      "query": "anticipation test",
+      "clicks": 7,
+      "impressions": 19,
+      "ctr": 0.3684210526315789,
+      "position": 1.263157894736842
+    },
+    {
+      "query": "reaction test online",
+      "clicks": 5,
+      "impressions": 176,
+      "ctr": 0.028409090909090908,
+      "position": 7.3125
+    },
+    {
+      "query": "reaction time test valorant",
+      "clicks": 5,
+      "impressions": 198,
+      "ctr": 0.025252525252525252,
+      "position": 8.176767676767676
+    },
+    {
+      "query": "track and field reaction time test",
+      "clicks": 5,
+      "impressions": 10,
+      "ctr": 0.5,
+      "position": 5.3
+    },
+    {
+      "query": "cs2 reaction time test",
+      "clicks": 4,
+      "impressions": 56,
+      "ctr": 0.07142857142857142,
+      "position": 6.946428571428571
+    },
+    {
+      "query": "reaction speed test",
+      "clicks": 4,
+      "impressions": 460,
+      "ctr": 0.008695652173913044,
+      "position": 10.919565217391304
+    },
+    {
+      "query": "reaction time test online",
+      "clicks": 4,
+      "impressions": 192,
+      "ctr": 0.020833333333333332,
+      "position": 8.40625
+    },
+    {
+      "query": "reaction time tester",
+      "clicks": 4,
+      "impressions": 331,
+      "ctr": 0.012084592145015106,
+      "position": 9.072507552870091
+    },
+    {
+      "query": "reaction timer",
+      "clicks": 4,
+      "impressions": 185,
+      "ctr": 0.021621621621621623,
+      "position": 8.2
+    },
+    {
+      "query": "test your reaction time",
+      "clicks": 4,
+      "impressions": 322,
+      "ctr": 0.012422360248447204,
+      "position": 8.925465838509318
+    },
+    {
+      "query": "test your reflexes",
+      "clicks": 4,
+      "impressions": 89,
+      "ctr": 0.0449438202247191,
+      "position": 7.370786516853933
+    },
+    {
+      "query": "badminton reaction time test",
+      "clicks": 3,
+      "impressions": 8,
+      "ctr": 0.375,
+      "position": 2.625
+    },
+    {
+      "query": "fps reaction test",
+      "clicks": 3,
+      "impressions": 48,
+      "ctr": 0.0625,
+      "position": 6.791666666666667
+    },
+    {
+      "query": "online reaction test",
+      "clicks": 3,
+      "impressions": 151,
+      "ctr": 0.019867549668874173,
+      "position": 6.6490066225165565
+    },
+    {
+      "query": "reaction test green light",
+      "clicks": 3,
+      "impressions": 28,
+      "ctr": 0.10714285714285714,
+      "position": 5.464285714285714
+    },
+    {
+      "query": "reaction time green light",
+      "clicks": 3,
+      "impressions": 35,
+      "ctr": 0.08571428571428572,
+      "position": 5.914285714285715
+    },
+    {
+      "query": "reaction time test green light",
+      "clicks": 3,
+      "impressions": 38,
+      "ctr": 0.07894736842105263,
+      "position": 5.868421052631579
+    },
+    {
+      "query": "reaction time tests",
+      "clicks": 3,
+      "impressions": 52,
+      "ctr": 0.057692307692307696,
+      "position": 11.307692307692308
+    },
+    {
+      "query": "reflex speed test",
+      "clicks": 3,
+      "impressions": 58,
+      "ctr": 0.05172413793103448,
+      "position": 8.448275862068964
+    },
+    {
+      "query": "speed reaction test",
+      "clicks": 3,
+      "impressions": 178,
+      "ctr": 0.016853932584269662,
+      "position": 7.595505617977528
+    },
+    {
+      "query": "timing test",
+      "clicks": 3,
+      "impressions": 163,
+      "ctr": 0.018404907975460124,
+      "position": 8.294478527607362
+    },
+    {
+      "query": "valorant reaction time test game",
+      "clicks": 3,
+      "impressions": 27,
+      "ctr": 0.1111111111111111,
+      "position": 8.518518518518519
+    },
+    {
+      "query": "baseball reaction time test",
+      "clicks": 2,
+      "impressions": 4,
+      "ctr": 0.5,
+      "position": 5.75
+    }
+  ],
+  "pages": [
+    {
+      "page": "/",
+      "clicks": 767,
+      "impressions": 47190,
+      "ctr": 0.016253443526170797,
+      "position": 8.75253231616868
+    },
+    {
+      "page": "/gaming-test",
+      "clicks": 134,
+      "impressions": 4475,
+      "ctr": 0.02994413407821229,
+      "position": 7.839329608938548
+    },
+    {
+      "page": "/sport-test",
+      "clicks": 114,
+      "impressions": 2658,
+      "ctr": 0.04288939051918736,
+      "position": 7.468773513920241
+    },
+    {
+      "page": "/test/anticipation",
+      "clicks": 36,
+      "impressions": 716,
+      "ctr": 0.05027932960893855,
+      "position": 5.921787709497207
+    },
+    {
+      "page": "/test/reaction-time",
+      "clicks": 30,
+      "impressions": 13192,
+      "ctr": 0.0022741055184960584,
+      "position": 8.553593086719225
+    },
+    {
+      "page": "/test/f1-reaction",
+      "clicks": 29,
+      "impressions": 1078,
+      "ctr": 0.026901669758812616,
+      "position": 7.6771799628942485
+    },
+    {
+      "page": "/test/auditory-reaction",
+      "clicks": 12,
+      "impressions": 623,
+      "ctr": 0.019261637239165328,
+      "position": 9.690208667736758
+    },
+    {
+      "page": "/blog/reaction-time-crucial",
+      "clicks": 11,
+      "impressions": 1991,
+      "ctr": 0.0055248618784530384,
+      "position": 8.962330487192364
+    },
+    {
+      "page": "/test/vision",
+      "clicks": 11,
+      "impressions": 344,
+      "ctr": 0.03197674418604651,
+      "position": 41.97093023255814
+    },
+    {
+      "page": "/test/go-no-go",
+      "clicks": 9,
+      "impressions": 245,
+      "ctr": 0.036734693877551024,
+      "position": 12.604081632653061
+    },
+    {
+      "page": "/test/hearing",
+      "clicks": 5,
+      "impressions": 315,
+      "ctr": 0.015873015873015872,
+      "position": 27.733333333333334
+    },
+    {
+      "page": "/blog/auditory-vs-visual-reaction-time",
+      "clicks": 3,
+      "impressions": 98,
+      "ctr": 0.030612244897959183,
+      "position": 6.3061224489795915
+    },
+    {
+      "page": "/blog/average-reaction-time-by-age",
+      "clicks": 2,
+      "impressions": 120,
+      "ctr": 0.016666666666666666,
+      "position": 8.541666666666668
+    },
+    {
+      "page": "/blog/good-reaction-time-ms",
+      "clicks": 2,
+      "impressions": 1930,
+      "ctr": 0.0010362694300518134,
+      "position": 6.838860103626943
+    },
+    {
+      "page": "/test/adhd",
+      "clicks": 2,
+      "impressions": 56,
+      "ctr": 0.03571428571428571,
+      "position": 34.589285714285715
+    }
+  ]
+}

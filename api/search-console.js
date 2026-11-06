@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { google } from 'googleapis';
+import { initialGscData } from '../src/data/gscMetrics.js';
 
 export default async function handler(req, res) {
   // Allow simple GET requests
@@ -32,13 +33,8 @@ export default async function handler(req, res) {
           scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
         });
       } else {
-        // Fallback to static snapshot if no API keys are present
-        const snapshotFile = path.resolve('src/data/gscSnapshot.json');
-        if (fs.existsSync(snapshotFile)) {
-          const snapshot = JSON.parse(fs.readFileSync(snapshotFile, 'utf8'));
-          return res.status(200).json({ ...snapshot, isCachedSnapshot: true });
-        }
-        return res.status(500).json({ error: 'No GSC credentials found on server' });
+        // Fallback to static metrics data if no API keys are present in env
+        return res.status(200).json({ ...initialGscData, isCachedSnapshot: true });
       }
     }
 

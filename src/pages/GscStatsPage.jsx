@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Head } from 'vite-react-ssg';
-import initialSnapshot from '../data/gscSnapshot.json';
+import { initialGscData as initialSnapshot } from '../data/gscMetrics';
 import { 
   BarChart3, 
   TrendingUp, 
