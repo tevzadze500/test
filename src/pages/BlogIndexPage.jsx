@@ -15,6 +15,14 @@ import SiteFooter from '../components/SiteFooter';
  */
 const posts = [
   {
+    title: 'Valorant & CS2 Reaction Time: What Pros Score & How to Hit 150 ms',
+    path: '/blog/valorant-cs2-reaction-time-pros',
+    datePublished: '2026-11-06',
+    excerpt:
+      'What reaction time do pro players like TenZ and s1mple actually have? Discover real FPS benchmarks from Bronze to Radiant, hardware latency traps, and training drills to reach 150 ms.',
+    readingTime: '6 min read',
+  },
+  {
     title: 'Auditory vs. Visual Reaction Time: Why Sound Beats Sight by 40 ms',
     path: '/blog/auditory-vs-visual-reaction-time',
     datePublished: '2026-11-01',

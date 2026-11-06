@@ -7,6 +7,7 @@ const BlogAvgReactionTimePage = lazy(() => import('./pages/BlogAvgReactionTimePa
 const BlogGoodReactionTimePage = lazy(() => import('./pages/BlogGoodReactionTimePage'));
 const BlogImproveGamingReactionPage = lazy(() => import('./pages/BlogImproveGamingReactionPage'));
 const BlogAuditoryVsVisualPage = lazy(() => import('./pages/BlogAuditoryVsVisualPage'));
+const BlogValorantCs2ReactionPage = lazy(() => import('./pages/BlogValorantCs2ReactionPage'));
 const ReactionTimePage = lazy(() => import('./pages/ReactionTimePage'));
 const GoNoGoPage = lazy(() => import('./pages/GoNoGoPage'));
 const StartLightsPage = lazy(() => import('./pages/StartLightsPage'));
@@ -49,6 +50,7 @@ export const routes = [
   { path: '/blog/good-reaction-time-ms', element: page(BlogGoodReactionTimePage) },
   { path: '/blog/improve-reaction-time-gaming', element: page(BlogImproveGamingReactionPage) },
   { path: '/blog/auditory-vs-visual-reaction-time', element: page(BlogAuditoryVsVisualPage) },
+  { path: '/blog/valorant-cs2-reaction-time-pros', element: page(BlogValorantCs2ReactionPage) },
   { path: '/test/reaction-time', element: page(ReactionTimePage) },
   { path: '/test/go-no-go', element: page(GoNoGoPage) },
   { path: '/test/f1-reaction', element: page(StartLightsPage) },
