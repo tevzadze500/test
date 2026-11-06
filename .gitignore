@@ -5,6 +5,16 @@ node_modules
 dist
 *.local
 
+# Environment & Credentials (never commit secrets)
+.env
+.env.*
+!.env.example
+*.json.key
+*service*account*.json
+*gsc*.json
+credentials.json
+reactiontestpro-seo-*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

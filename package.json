@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite-react-ssg dev",
     "build": "vite-react-ssg build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gsc": "node scripts/gsc-stats.js"
   },
   "dependencies": {
+    "googleapis": "^189.0.0",
     "lucide-react": "^0.294.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
