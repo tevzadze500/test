@@ -35,7 +35,7 @@ import { benchmarkSources, sportSources, trainingSources } from '../data/referen
  * arithmetic on the cited 11 m distance and is labelled as such.
  */
 
-const TITLE = 'Why Is Reaction Time Important in Sport? Football, Netball & More';
+const TITLE = 'Reaction Time in Sport: Definition, Football & Netball Guide';
 const PATH = '/blog/reaction-time-crucial';
 
 const SourceLink = ({ source }) => (
@@ -130,17 +130,17 @@ function BlogPage() {
     <div className="flex min-h-screen bg-dark-950">
       <Seo
         title={TITLE}
-        description="Why reaction time matters in football, netball, basketball, boxing and sprinting, with real examples, the rules behind them, and how to test and improve yours."
+        description="Clear definition of reaction time in sport & PE, with cited examples in football (0.4s penalty), netball, sprinting (0.100s false-start rule) and boxing."
         canonical={PATH}
         type="article"
         jsonLd={[
           articleSchema({
             headline: TITLE,
             description:
-              'Why reaction time matters in football, netball, basketball, boxing and sprinting, with real examples, the rules behind them, and how to test and improve yours.',
+              'Clear definition of reaction time in sport & PE, with cited examples in football (0.4s penalty), netball, sprinting (0.100s false-start rule) and boxing.',
             path: PATH,
             datePublished: '2026-05-01',
-            dateModified: '2026-10-18',
+            dateModified: '2026-11-07',
           }),
           breadcrumbSchema('Reaction Time in Sport', PATH, { name: 'Blog', path: '/blog' }),
           faqSchema(faqs),
@@ -177,17 +177,37 @@ function BlogPage() {
             </h1>
 
             <p className="text-sm text-dark-400 mb-6">
-              Updated <time dateTime="2026-10-18">October 18, 2026</time> · Figures and rules are
+              Updated <time dateTime="2026-11-07">November 7, 2026</time> · Figures and rules are
               cited to their source.
             </p>
 
-            <p className="text-lg text-dark-300 leading-relaxed mb-8">
+            <p className="text-lg text-dark-300 leading-relaxed mb-6">
               In most sports, the action does not wait for you. A ball deflects, an opponent feints,
               a gun fires, and the player who starts responding first usually wins the moment.
               Reaction time is the part of that response you cannot see: the gap between something
-              happening and your body starting to move. Here is what it is, why it matters in
-              football and other sports, and what you can actually do about yours.
+              happening and your body starting to move. Here is the exact definition, how it works in
+              football, netball, sprinting and boxing, and how to test yours.
             </p>
+
+            {/* Quick Interactive Test Callout */}
+            <div className="not-prose flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-blue-500/10 border border-blue-500/30 rounded-2xl p-4 sm:p-5 mb-8">
+              <div>
+                <p className="text-sm font-bold text-white mb-0.5">
+                  Want to measure your own sport reaction speed first?
+                </p>
+                <p className="text-xs sm:text-sm text-dark-300">
+                  Test both Visual Reflexes (football, netball, racquet) &amp; Starting Gun Sound (sprint starts).
+                </p>
+              </div>
+              <Link
+                to="/sport-test"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-500 hover:bg-blue-400 rounded-xl text-white text-sm font-bold shrink-0 transition-colors"
+              >
+                <Zap size={16} />
+                <span>Open Sports Reaction Test</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
 
             <Section icon={Timer} tint="bg-blue-500/20 text-blue-400" title="What Is Reaction Time in Sport?">
               <p className="text-dark-300 leading-relaxed mb-4">

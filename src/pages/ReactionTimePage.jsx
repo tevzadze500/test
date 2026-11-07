@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Home, Zap, Clock, Info } from 'lucide-react';
+import { ArrowLeft, Home, Zap, Clock } from 'lucide-react';
 import Seo from '../components/Seo';
 import Breadcrumb from '../components/Breadcrumb';
 import { webApplicationSchema, breadcrumbSchema, faqSchema } from '../utils/structuredData';
@@ -71,16 +71,16 @@ const ReactionTimePage = () => {
     <div className="min-h-screen bg-dark-950">
       {/* SEO Meta Tags */}
       <Seo
-        title="Average Reaction Time Test – Compare Your Speed"
-        description="How fast is fast? Take the free test, then compare your milliseconds against the 213 ms hardware-corrected adult average from published research."
+        title="Average Human Reaction Time (213–250 ms) – Live Test & Chart"
+        description="What is the average human reaction time? Peer-reviewed studies measure 213–231 ms for light (~190 ms lab). Take the 5-click test to compare your ms score."
         canonical="/test/reaction-time"
         jsonLd={[
           webApplicationSchema({
-            name: 'Average Reaction Time Test',
-            description: 'Measure your visual reaction speed over several attempts and compare your average against published benchmarks.',
+            name: 'Average Human Reaction Time Test & Benchmark',
+            description: 'Measure your visual reaction speed over 5 attempts and compare your millisecond average against published human reaction time benchmarks.',
             path: '/test/reaction-time',
           }),
-          breadcrumbSchema('Reaction Time Test', '/test/reaction-time'),
+          breadcrumbSchema('Average Human Reaction Time', '/test/reaction-time'),
           faqSchema(reactionFaqs),
         ]}
       />
@@ -140,47 +140,47 @@ const ReactionTimePage = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
-        <Breadcrumb name="Reaction Time Test" className="mb-4" />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6 lg:py-8">
+        <Breadcrumb name="Average Human Reaction Time" className="mb-3" />
         {/* Page Header */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+        <div className="mb-5 sm:mb-6">
+          <div className="flex items-center gap-2 sm:gap-3 mb-3">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg shadow-green-500/30 shrink-0">
               <Zap size={26} className="text-white" strokeWidth={2.5} fill="white" />
             </div>
             <div className="min-w-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-                Average Reaction Time Test: How Do You Compare?
+                Average Human Reaction Time: How Fast Are You?
               </h1>
-              <p className="text-sm sm:text-base text-dark-400 mt-1">
-                How fast can you react? Measure your reflexes in milliseconds
+              <p className="text-sm sm:text-base text-dark-300 mt-1">
+                Peer-reviewed adult visual average: <strong className="text-green-400">213 ms</strong> (lag-corrected) to <strong className="text-cyan-400">231 ms</strong> (measured on screen). Compare your 5-click average below.
               </p>
             </div>
           </div>
 
-          {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm">
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <span className="text-dark-400">Category:</span>
-              <span className="text-green-400 font-medium">Performance</span>
+          {/* Quick Cited Reference Bands */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 text-xs">
+            <div className="px-3 py-2 bg-dark-900/70 rounded-lg border border-purple-500/30">
+              <div className="font-mono font-bold text-purple-400">&lt; 150 ms</div>
+              <div className="text-dark-400">Usually anticipated</div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Clock size={12} className="sm:w-3.5 sm:h-3.5 text-blue-400" />
-              <span className="text-white">2 min</span>
+            <div className="px-3 py-2 bg-dark-900/70 rounded-lg border border-green-500/30">
+              <div className="font-mono font-bold text-green-400">150–189 ms</div>
+              <div className="text-dark-400">Beats ~190 ms lab ref (Jain 2015)</div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <span className="text-dark-400">Difficulty:</span>
-              <span className="text-green-400 font-medium">Easy</span>
+            <div className="px-3 py-2 bg-dark-900/70 rounded-lg border border-cyan-500/30">
+              <div className="font-mono font-bold text-cyan-400">213–231 ms</div>
+              <div className="text-dark-400">Adult mean (Woods 2015)</div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 bg-dark-800/50 rounded-lg border border-dark-700">
-              <Info size={12} className="sm:w-3.5 sm:h-3.5 text-dark-400" />
-              <span className="text-white">No audio needed</span>
+            <div className="px-3 py-2 bg-dark-900/70 rounded-lg border border-amber-500/30">
+              <div className="font-mono font-bold text-amber-400">250+ ms</div>
+              <div className="text-dark-400">60Hz / touch lag or fatigue</div>
             </div>
           </div>
         </div>
 
         {/* Test Area + Stats */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
+        <h2 className="sr-only">
           Measure Your Average Reaction Time
         </h2>
         <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">

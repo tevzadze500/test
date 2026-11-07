@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom';
 import { Gamepad2, Activity, Car, Brain, CheckCircle2, Zap } from 'lucide-react';
 
 const SeoContent = () => {
+  const handleScrollToTest = (e) => {
+    if (typeof window === 'undefined') return;
+    const el = document.getElementById('reaction-time-test-heading');
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-8 mb-12">
       {/* Why Test Your Reaction Time Section */}
@@ -90,15 +100,20 @@ const SeoContent = () => {
           Ready to Test Your Reaction Speed?
         </h3>
         <p className="text-dark-200 text-lg mb-6 max-w-2xl mx-auto">
-          Take our Reaction Time Test and see how your reflexes measure up against top performers!
+          Jump back up to run our 5-round reflex benchmark, or compare your score against{' '}
+          <Link to="/test/reaction-time" className="text-green-400 hover:text-green-300 underline">
+            published average human reaction time benchmarks (213–231 ms)
+          </Link>
+          .
         </p>
-        <Link
-          to="/test/reaction-time"
+        <a
+          href="#reaction-time-test-heading"
+          onClick={handleScrollToTest}
           className="inline-flex items-center justify-center gap-2 px-8 py-4 mb-6 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 rounded-xl text-white text-base font-bold shadow-lg shadow-green-500/30 transition-all hover:scale-[1.02]"
         >
           <Zap size={18} className="shrink-0" />
-          Take the Reaction Time Test
-        </Link>
+          Start the 5-Round Reflex Test &uarr;
+        </a>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-dark-800/40 border border-dark-700/50 rounded-full">
             <CheckCircle2 size={16} className="text-green-400" />

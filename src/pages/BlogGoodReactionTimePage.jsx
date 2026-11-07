@@ -28,9 +28,10 @@ import { benchmarkSources } from '../data/references';
  * published means, never as invented percentiles.
  */
 
-const TITLE = 'Is 200 ms a Good Reaction Time? Benchmarks 100–400 ms';
+const TITLE = 'Is 200 ms a Good Reaction Time? (100–400 ms Score Lookup)';
 const PATH = '/blog/good-reaction-time-ms';
 const PUBLISHED = '2026-09-27';
+const MODIFIED = '2026-11-07';
 
 const SourceLink = ({ source }) => (
   <a
@@ -138,24 +139,56 @@ const faqs = [
   },
 ];
 
+const deviceProfiles = {
+  esports144: {
+    label: '144Hz+ Monitor + Wired Mouse',
+    note: 'Low display & input delay (~15–20 ms overhead — close to the 18 ms apparatus gap in Woods et al., 2015). Compare your score directly against the 231 ms measured adult mean.',
+  },
+  browser60: {
+    label: '60Hz Laptop / Office Monitor',
+    note: 'Standard 60Hz display & browser scheduling typically add ~25–35 ms of hardware delay. A 240 ms score here reflects roughly the same nervous-system speed as ~220 ms on a 144Hz setup.',
+  },
+  mobile: {
+    label: 'Phone / Tablet Touchscreen',
+    note: 'Touchscreen digitizers and mobile compositing commonly add ~30–50 ms of input lag. Scores in the 240–275 ms range on a phone often beat the 231 ms desktop average when retested with a mouse.',
+  },
+};
+
+const getBracketForMs = (ms) => {
+  if (ms < 150) return brackets[0];
+  if (ms <= 189) return brackets[1];
+  if (ms <= 212) return brackets[2];
+  if (ms <= 230) return brackets[3];
+  if (ms <= 260) return brackets[4];
+  if (ms <= 300) return brackets[5];
+  if (ms <= 400) return brackets[6];
+  return brackets[7];
+};
+
 function BlogGoodReactionTimePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [lookupMs, setLookupMs] = useState(200);
+  const [deviceKey, setDeviceKey] = useState('browser60');
+
+  const safeMs = Number.isFinite(lookupMs) ? Math.min(600, Math.max(80, lookupMs)) : 200;
+  const activeBracket = getBracketForMs(safeMs);
+  const deltaVsMeasured = safeMs - 231;
 
   return (
     <div className="flex min-h-screen bg-dark-950">
       <Seo
         title={TITLE}
-        description="Is 200 ms good? Is 250? Is 300? What every reaction time from 100 to 400 ms means against the cited adult averages of 213 and 231 ms, and why your device shifts the verdict."
+        description="Yes — 200 ms beats the 231 ms measured adult average (Woods et al., 2015). Enter your exact ms score (100–400 ms) and device type to check your cited verdict."
         canonical={PATH}
         type="article"
         jsonLd={[
           articleSchema({
             headline: TITLE,
             description:
-              'What every reaction time from 100 to 400 ms means against the cited adult averages of 213 and 231 ms, and why your device shifts the verdict.',
+              'Yes — 200 ms beats the 231 ms measured adult average (Woods et al., 2015). Enter your exact ms score (100–400 ms) and device type to check your cited verdict.',
             path: PATH,
             datePublished: PUBLISHED,
-            dateModified: PUBLISHED,
+            dateModified: MODIFIED,
           }),
           breadcrumbSchema('Is 200 ms a Good Reaction Time?', PATH, { name: 'Blog', path: '/blog' }),
           faqSchema(faqs),
@@ -192,18 +225,134 @@ function BlogGoodReactionTimePage() {
             </h1>
 
             <p className="text-sm text-dark-400 mb-6">
-              Published <time dateTime={PUBLISHED}>September 27, 2026</time> · Every figure below is
-              cited to a peer-reviewed source.
+              Published <time dateTime={PUBLISHED}>September 27, 2026</time> · Updated{' '}
+              <time dateTime={MODIFIED}>November 7, 2026</time> · Every figure below is cited to a
+              peer-reviewed source.
             </p>
 
             <p className="text-lg text-dark-300 leading-relaxed mb-8">
               Short answer: <strong className="text-white">yes, 200 ms is a good reaction time.</strong>{' '}
               It beats both published adult averages — 213 ms with hardware lag removed, 231 ms as
               actually measured — and even the average of the youngest adults in the largest study
-              on the subject. But you probably did not land on exactly 200. Here is the verdict for
-              every bracket, and why the same number can be excellent on one device and merely
-              average on another.
+              on the subject. Enter your exact millisecond score below to see how your result
+              compares on your setup.
             </p>
+
+            {/* Interactive Millisecond Score & Device Lag Lookup */}
+            <div className="not-prose bg-gradient-to-br from-green-500/10 via-dark-900 to-dark-900 border border-green-500/30 rounded-2xl p-5 sm:p-7 mb-8">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-2.5">
+                  <Zap className="w-5 h-5 text-green-400 shrink-0" />
+                  <span>Check Your Exact Millisecond Score</span>
+                </h2>
+                <span className="text-xs font-medium text-green-400 bg-green-500/10 border border-green-500/20 px-2.5 py-1 rounded-full">
+                  Cited Study Lookup
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                <div>
+                  <label htmlFor="ms-score-input" className="block text-xs font-semibold uppercase tracking-wider text-dark-300 mb-2">
+                    Your Reaction Time (ms)
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      id="ms-score-input"
+                      type="number"
+                      min={80}
+                      max={600}
+                      value={lookupMs}
+                      onChange={(e) => setLookupMs(parseInt(e.target.value, 10) || 0)}
+                      className="w-28 px-3 py-2 rounded-xl bg-dark-950 border border-dark-700 text-white font-mono text-lg font-bold focus:outline-none focus:border-green-500"
+                    />
+                    <input
+                      type="range"
+                      aria-label="Adjust reaction time in milliseconds"
+                      min={110}
+                      max={380}
+                      value={Math.min(380, Math.max(110, safeMs))}
+                      onChange={(e) => setLookupMs(parseInt(e.target.value, 10))}
+                      className="flex-1 accent-green-500 cursor-pointer"
+                    />
+                  </div>
+                  <div className="flex flex-wrap gap-1.5 mt-2.5">
+                    {[160, 180, 200, 215, 231, 250, 300].map((preset) => (
+                      <button
+                        key={preset}
+                        type="button"
+                        onClick={() => setLookupMs(preset)}
+                        className={`px-2.5 py-1 rounded-lg text-xs font-mono font-semibold border transition-colors ${
+                          safeMs === preset
+                            ? 'bg-green-500 text-white border-green-400'
+                            : 'bg-dark-800/80 text-dark-300 border-dark-700 hover:text-white'
+                        }`}
+                      >
+                        {preset} ms
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="device-select" className="block text-xs font-semibold uppercase tracking-wider text-dark-300 mb-2">
+                    Device Tested On
+                  </label>
+                  <select
+                    id="device-select"
+                    value={deviceKey}
+                    onChange={(e) => setDeviceKey(e.target.value)}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-dark-950 border border-dark-700 text-white text-sm font-medium focus:outline-none focus:border-green-500"
+                  >
+                    {Object.entries(deviceProfiles).map(([key, profile]) => (
+                      <option key={key} value={key}>
+                        {profile.label}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="text-xs text-dark-400 mt-2 leading-relaxed">
+                    {deviceProfiles[deviceKey].note}
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-dark-950/80 border border-dark-800 rounded-xl p-4 sm:p-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                  <div>
+                    <span className="text-xs uppercase tracking-wider text-dark-400 mr-2">Verdict for {safeMs} ms:</span>
+                    <span className={`text-lg sm:text-xl font-bold ${activeBracket.accent}`}>
+                      {activeBracket.verdict}
+                    </span>
+                  </div>
+                  <span className="text-xs font-mono px-2.5 py-1 rounded-md bg-dark-900 border border-dark-700 text-dark-200">
+                    {deltaVsMeasured === 0
+                      ? 'Exact match with 231 ms measured adult mean'
+                      : deltaVsMeasured < 0
+                        ? `${Math.abs(deltaVsMeasured)} ms faster than 231 ms measured mean`
+                        : `${deltaVsMeasured} ms slower than 231 ms measured mean`}
+                  </span>
+                </div>
+                <p className="text-sm text-dark-300 leading-relaxed mb-3">
+                  {activeBracket.why}
+                  {activeBracket.source && (
+                    <>
+                      {' '}
+                      (<SourceLink source={benchmarkSources[activeBracket.source]} />)
+                    </>
+                  )}
+                </p>
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-dark-800/80 text-xs">
+                  <span className="text-dark-400">
+                    Bracket: <strong className="text-white">{activeBracket.range}</strong>
+                  </span>
+                  <Link
+                    to="/"
+                    className="inline-flex items-center gap-1.5 font-semibold text-green-400 hover:text-green-300"
+                  >
+                    Run a fresh 5-click test to verify &rarr;
+                  </Link>
+                </div>
+              </div>
+            </div>
 
             {/* Verdict table */}
             <div className="bg-dark-900/50 border border-dark-800 rounded-2xl p-6 sm:p-8 mb-8">
